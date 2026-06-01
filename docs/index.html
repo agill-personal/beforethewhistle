@@ -1019,7 +1019,8 @@
     .wk-event:hover { opacity: 0.85; transform: translateY(-1px); }
     .wk-event.type-technical { background: var(--accent-light); color: #1a4d28; }
     .wk-event.type-strength  { background: #fde8c8; color: #7a3f00; }
-    .wk-event.type-group     { background: #dbeafe; color: #1d4ed8; }
+    .wk-event.type-fitness   { background: #dbeafe; color: #1d4ed8; }
+    .wk-event.type-camp      { background: #f3e8ff; color: #5b1a8b; }
     .wk-event .ev-time { font-weight: 400; opacity: 0.75; font-size: 0.6rem; display: block; margin-top: 1px; }
     .wk-milestone {
       font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
@@ -1483,7 +1484,10 @@
   var SHEET_STRENGTH_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=877909294&single=true&output=csv';
   // Paste your Group Sessions sheet CSV URL here (File → Share → Publish to web → CSV, "Group Sessions" tab)
   // Columns: date (YYYY-MM-DD), focus, title, time, location, warmup, main  (warmup/main items separated by ;)
-  var SHEET_GROUP_URL     = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=663801951&single=true&output=csv';
+  var SHEET_FITNESS_URL   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=663801951&single=true&output=csv';
+  // Paste Chan Camp CSV URL here (File → Share → Publish to web → "Chan Camp" tab → CSV)
+  // Columns: date (YYYY-MM-DD), title, time, end_time, location
+  var SHEET_CAMP_URL      = '';
 
   // ── FALLBACK DATA (used until Sheets URLs are set) ──
   const SESSIONS = {
@@ -1555,20 +1559,21 @@
   };
 
   const MILESTONES = {
-    '2026-07-06': { label: '⛺ Camp Starts', cls: '' },
     '2026-08-24': { label: '🏆 Tryouts Start', cls: 'tryouts' },
   };
 
   const PHASES = [
-    { label:'Phase 1', sub:'Jun 1 – Jun 27',  tag:'Foundation', desc:'Bodyweight and light load. Master movement patterns.' },
-    { label:'Phase 2', sub:'Jun 28 – Jul 25', tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
-    { label:'Phase 3', sub:'Jul 26 – Aug 22', tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
-    { label:'Taper',   sub:'Aug 23 – Aug 28', tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
+    { label:'Phase 1',   sub:'Jun 11 – Jul 4',   tag:'Foundation',  desc:'Bodyweight and light load. Master movement patterns.' },
+    { label:'Phase 2',   sub:'Jul 5 – Jul 25',   tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
+    { label:'Phase 3',   sub:'Jul 26 – Aug 15',  tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
+    { label:'Taper',     sub:'Aug 16 – Aug 28',  tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
+    { label:'In-Season', sub:'Aug 29 onwards',   tag:'Sustain',     desc:'Maintain strength through the season. Quality over volume.' },
+    { label:'Spring',    sub:'Spring 2027',       tag:'Spring Build',desc:'Rebuild and progress entering spring season.' },
   ];
 
   const WORKOUTS = {
     0: [
-      { day:'Monday',    title:'Lower Body A',    duration:'45–50 min', exercises:[
+      { day:'Tuesday',   title:'Lower Body A',    duration:'45–50 min', exercises:[
         { name:'Goblet Squat',          note:'Full depth, chest up',                  sets:'3 × 12' },
         { name:'Romanian Deadlift',     note:'Slow eccentric, feel the stretch',      sets:'3 × 10' },
         { name:'Reverse Lunge',         note:'Alternate legs, controlled',            sets:'3 × 10 ea' },
@@ -1576,7 +1581,7 @@
         { name:'Dead Bug',              note:'Lower back stays flat',                 sets:'3 × 10 ea' },
         { name:'Plank Hold',            note:'Shoulders over wrists',                 sets:'3 × 30 sec' },
       ]},
-      { day:'Wednesday', title:'Core & Stability', duration:'35–40 min', exercises:[
+      { day:'Thursday',  title:'Core & Stability', duration:'35–40 min', exercises:[
         { name:'Single-Leg Glute Bridge', note:'Control the drop',                    sets:'3 × 12 ea' },
         { name:'Side Plank',            note:"Hips stacked, don't sag",              sets:'3 × 25 sec ea' },
         { name:'Bird Dog',              note:'Opposite arm + leg, slow',              sets:'3 × 10 ea' },
@@ -1584,7 +1589,7 @@
         { name:'Lateral Band Walk',     note:'Stay low, knees soft',                  sets:'3 × 15 ea' },
         { name:'Hollow Body Hold',      note:'Lower back pressed down',               sets:'3 × 20 sec' },
       ]},
-      { day:'Friday',    title:'Lower Body B',    duration:'45–50 min', exercises:[
+      { day:'Sat / Sun', title:'Lower Body B',    duration:'45–50 min', exercises:[
         { name:'Bulgarian Split Squat', note:'Back foot elevated, drop straight down', sets:'3 × 8 ea' },
         { name:'Sumo Squat',            note:'Wide stance, toes out',                 sets:'3 × 12' },
         { name:'Nordic Hamstring Curl', note:'Partner holds feet or use bench',       sets:'3 × 6' },
@@ -1594,7 +1599,7 @@
       ]},
     ],
     1: [
-      { day:'Monday',    title:'Lower Body A+',  duration:'50–55 min', exercises:[
+      { day:'Tuesday',   title:'Lower Body A+',  duration:'50–55 min', exercises:[
         { name:'Barbell / DB Squat',    note:'Add weight from Phase 1 baseline',      sets:'4 × 8' },
         { name:'Romanian Deadlift',     note:'Increase load 10–15%',                  sets:'4 × 8' },
         { name:'Walking Lunge',         note:'Add dumbbells',                         sets:'3 × 12 ea' },
@@ -1602,7 +1607,7 @@
         { name:'Plank to Push-Up',      note:'Controlled transitions',                sets:'3 × 8 ea' },
         { name:'Dead Bug + Reach',      note:'Slow and deliberate',                   sets:'3 × 10 ea' },
       ]},
-      { day:'Wednesday', title:'Power & Core',   duration:'40–45 min', exercises:[
+      { day:'Thursday',  title:'Power & Core',   duration:'40–45 min', exercises:[
         { name:'Broad Jump',            note:'Max effort, stick the landing',         sets:'4 × 4' },
         { name:'Lateral Bound',         note:'Stick each landing before rebounding',  sets:'3 × 6 ea' },
         { name:'Medicine Ball Slam',    note:'Full hip extension overhead',           sets:'3 × 8' },
@@ -1610,7 +1615,7 @@
         { name:'V-Up',                  note:'Keep legs straight',                    sets:'3 × 12' },
         { name:'Pallof Press Variation',note:'Add half-kneeling position',            sets:'3 × 10 ea' },
       ]},
-      { day:'Friday',    title:'Lower Body B+',  duration:'50–55 min', exercises:[
+      { day:'Sat / Sun', title:'Lower Body B+',  duration:'50–55 min', exercises:[
         { name:'Bulgarian Split Squat (Weighted)', note:'Dumbbells or barbell',       sets:'4 × 6 ea' },
         { name:'Trap Bar / DB Deadlift',note:'Drive floor away, hips and shoulders rise together', sets:'4 × 6' },
         { name:'Lateral Squat',         note:'Sit back into one hip',                 sets:'3 × 10 ea' },
@@ -1620,7 +1625,7 @@
       ]},
     ],
     2: [
-      { day:'Monday',    title:'Peak Strength A', duration:'55–60 min', exercises:[
+      { day:'Tuesday',   title:'Peak Strength A', duration:'55–60 min', exercises:[
         { name:'Back Squat / Heavy Goblet', note:'Work up to 5-rep challenge set',   sets:'5 × 5' },
         { name:'Romanian Deadlift Heavy',   note:'Focus on hamstring tension',        sets:'4 × 6' },
         { name:'Rear-Foot Elevated Split Squat', note:'Heaviest phase weight',        sets:'4 × 5 ea' },
@@ -1628,7 +1633,7 @@
         { name:'Weighted Plank',            note:'Plate on back',                     sets:'3 × 40 sec' },
         { name:'Rotational Med Ball Throw', note:'Explosive hip rotation',            sets:'3 × 8 ea' },
       ]},
-      { day:'Wednesday', title:'Explosive Power', duration:'45–50 min', exercises:[
+      { day:'Thursday',  title:'Explosive Power', duration:'45–50 min', exercises:[
         { name:'Triple Broad Jump',      note:'3 consecutive jumps, max distance',    sets:'4 × 3' },
         { name:'Single-Leg Box Jump',    note:'Lead with strong leg first',           sets:'3 × 5 ea' },
         { name:'Sprint 10m × 6',         note:'Full rest between, max effort',        sets:'6 × 10m' },
@@ -1636,7 +1641,7 @@
         { name:'L-Sit Hold',             note:'Build to 3 × 15 sec',                 sets:'3 × 10 sec' },
         { name:'Dragon Flag Progression',note:'Scaled as needed',                     sets:'3 × 6' },
       ]},
-      { day:'Friday',    title:'Peak Strength B', duration:'55–60 min', exercises:[
+      { day:'Sat / Sun', title:'Peak Strength B', duration:'55–60 min', exercises:[
         { name:'Trap Bar Deadlift Heavy',note:'Max effort within solid form',         sets:'5 × 4' },
         { name:'Lateral Squat (Weighted)',note:'Control the descent',                 sets:'4 × 6 ea' },
         { name:'Nordic Hamstring Curl', note:'Eccentric focus — slow lower',          sets:'4 × 5' },
@@ -1646,31 +1651,117 @@
       ]},
     ],
     3: [
-      { day:'Monday',    title:'Maintenance A',   duration:'30–35 min', exercises:[
+      { day:'Tuesday',   title:'Maintenance A',   duration:'30–35 min', exercises:[
         { name:'Goblet Squat',           note:'Moderate weight — move well',          sets:'2 × 8' },
         { name:'Romanian Deadlift',      note:'Light, focus on feel',                 sets:'2 × 8' },
         { name:'Glute Bridge',           note:'Activation only',                      sets:'2 × 12' },
         { name:'Plank Hold',             note:'Quality over time',                    sets:'2 × 30 sec' },
       ]},
-      { day:'Wednesday', title:'Activation & Power', duration:'25–30 min', exercises:[
+      { day:'Thursday',  title:'Activation & Power', duration:'25–30 min', exercises:[
         { name:'Broad Jump',             note:'3 reps — feel the pop',                sets:'3 × 3' },
         { name:'Lateral Bound',          note:'Light and snappy',                     sets:'3 × 4 ea' },
         { name:'Side Plank',             note:'Short hold, sharp engagement',         sets:'2 × 20 sec ea' },
         { name:'Sprint Strides 20m × 4',note:'75–80% effort — stay fluid',           sets:'4 × 20m' },
       ]},
-      { day:'Friday',    title:'Feel Good Session', duration:'20–25 min', exercises:[
-        { name:'Bodyweight Squat',       note:'Fluid, full range',                    sets:'2 × 10' },
-        { name:'Single-Leg Glute Bridge',note:'Feel that activation',                 sets:'2 × 10 ea' },
-        { name:'Bird Dog',               note:'Control and breathe',                  sets:'2 × 8 ea' },
+      { day:'Sat / Sun', title:'Feel Good Session', duration:'20–25 min', exercises:[
+        { name:'Bodyweight Squat',            note:'Fluid, full range',               sets:'2 × 10' },
+        { name:'Single-Leg Glute Bridge',     note:'Feel that activation',            sets:'2 × 10 ea' },
+        { name:'Bird Dog',                    note:'Control and breathe',             sets:'2 × 8 ea' },
         { name:'Light Jog + Dynamic Stretch', note:'Leave feeling loose and ready',  sets:'10 min' },
+      ]},
+    ],
+    4: [
+      { day:'Tuesday',   title:'In-Season Lower Body',      duration:'35–40 min', exercises:[
+        { name:'Trap Bar Deadlift',        note:'Heavy but crisp — explosive intent',        sets:'3 × 5' },
+        { name:'Bulgarian Split Squat',    note:'Controlled, add load from summer',          sets:'3 × 6 ea' },
+        { name:'Single-Leg RDL',           note:'Balance and hamstring strength',            sets:'3 × 8 ea' },
+        { name:'Copenhagen Plank',         note:'Groin and adductor health',                sets:'3 × 20 sec ea' },
+        { name:'Pallof Press',             note:'Core anti-rotation, stay tall',             sets:'3 × 10 ea' },
+      ]},
+      { day:'Thursday',  title:'Power & Core Maintenance',  duration:'30–35 min', exercises:[
+        { name:'Broad Jump',               note:'Maintain explosiveness — full effort',      sets:'3 × 4' },
+        { name:'Lateral Bound',            note:'Reactive landing control',                  sets:'3 × 5 ea' },
+        { name:'Med Ball Rotational Throw',note:'Hip drive and rotation power',              sets:'3 × 6 ea' },
+        { name:'Dead Bug',                 note:'Deep core stability',                       sets:'3 × 10 ea' },
+        { name:'Side Plank + Hip Abduction',note:'Glute med activation',                    sets:'3 × 20 sec ea' },
+        { name:'Ab Wheel Rollout',         note:'Total core strength',                       sets:'3 × 8' },
+      ]},
+      { day:'Sat / Sun', title:'Weekend Full Body',          duration:'40–45 min', exercises:[
+        { name:'Back Squat or Goblet Squat',note:'Keep load challenging but fresh',         sets:'3 × 6' },
+        { name:'Romanian Deadlift',        note:'Hamstring focus, slow eccentric',           sets:'3 × 8' },
+        { name:'Step-Up with Knee Drive',  note:'Single-leg power and balance',             sets:'3 × 10 ea' },
+        { name:'Nordic Hamstring Curl',    note:'Injury prevention — do not skip',          sets:'3 × 5' },
+        { name:'Plank Variations',         note:'Mix front, side, and RKC plank',           sets:'3 × 35 sec' },
+        { name:'Glute Bridge March',       note:'Hip stability and activation',              sets:'3 × 12 ea' },
+      ]},
+    ],
+    5: [
+      { day:'Tuesday',   title:'Strength Rebuild A',        duration:'50–55 min', exercises:[
+        { name:'Back Squat',               note:'Rebuild from 70% — add 5 lb each week',    sets:'4 × 6' },
+        { name:'Romanian Deadlift',        note:'Load progression from fall baseline',       sets:'4 × 8' },
+        { name:'Walking Lunge (Weighted)', note:'Single-leg strength endurance',             sets:'3 × 10 ea' },
+        { name:'Box Jump',                 note:'Re-establish explosive power',              sets:'4 × 4' },
+        { name:'Hanging Knee Raise',       note:'Core strength from dead hang',              sets:'3 × 12' },
+        { name:'Lateral Band Walk',        note:'Hip activation — always warm up here',      sets:'3 × 15 ea' },
+      ]},
+      { day:'Thursday',  title:'Power & Athleticism',       duration:'45–50 min', exercises:[
+        { name:'Triple Broad Jump',        note:'Consecutive explosive jumps',               sets:'4 × 3' },
+        { name:'Single-Leg Box Jump',      note:'Reactive power each side',                 sets:'3 × 5 ea' },
+        { name:'Sprint 20m × 5',           note:'Max effort — full recovery between',        sets:'5 × 20m' },
+        { name:'Med Ball Slam',            note:'Full-body explosive chain',                 sets:'3 × 8' },
+        { name:'Copenhagen Plank',         note:'Groin strength — injury prevention',        sets:'3 × 25 sec ea' },
+        { name:'Russian Twist (Weighted)', note:'Rotational core power',                     sets:'3 × 12 ea' },
+      ]},
+      { day:'Sat / Sun', title:'Strength Rebuild B',        duration:'50–55 min', exercises:[
+        { name:'Trap Bar Deadlift',           note:'Primary posterior chain builder',        sets:'4 × 5' },
+        { name:'Bulgarian Split Squat (Heavy)',note:'Heavier than fall — test yourself',     sets:'4 × 6 ea' },
+        { name:'Nordic Hamstring Curl',       note:'Eccentric strength — protect your hamstrings', sets:'4 × 6' },
+        { name:'Lateral Squat',               note:'Hip mobility and adductor strength',     sets:'3 × 10 ea' },
+        { name:'Ab Wheel Rollout',            note:'Anti-extension core strength',           sets:'3 × 10' },
+        { name:'Bird Dog with Band',          note:'Glute and core activation',              sets:'3 × 10 ea' },
       ]},
     ],
   };
 
 
-  // Group sessions — populated from SHEET_GROUP_URL, no hardcoded fallback
+  // Fitness sessions — populated from SHEET_FITNESS_URL, no hardcoded fallback
   // Each entry: { focus, title, time, location, warmup[], main[] }
-  var GROUP_SESSIONS = {};
+  var FITNESS_SESSIONS = {};
+
+  // Chan Camp sessions — hardcoded from CSV; overridden by SHEET_CAMP_URL when set
+  // Each entry: { title, time, end_time, location }
+  var CAMP_SESSIONS = {
+    '2026-07-06': { title:'Chan Camp Week 1', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-07': { title:'Chan Camp Week 1', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-08': { title:'Chan Camp Week 1', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-09': { title:'Chan Camp Week 1', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-10': { title:'Chan Camp Week 1', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-13': { title:'Chan Camp Week 2', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-14': { title:'Chan Camp Week 2', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-15': { title:'Chan Camp Week 2', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-16': { title:'Chan Camp Week 2', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-17': { title:'Chan Camp Week 2', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-20': { title:'Chan Camp Week 3', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-21': { title:'Chan Camp Week 3', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-22': { title:'Chan Camp Week 3', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-23': { title:'Chan Camp Week 3', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-24': { title:'Chan Camp Week 3', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-27': { title:'Chan Camp Week 4', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-28': { title:'Chan Camp Week 4', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-29': { title:'Chan Camp Week 4', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-30': { title:'Chan Camp Week 4', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-07-31': { title:'Chan Camp Week 4', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-03': { title:'Chan Camp Week 5', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-04': { title:'Chan Camp Week 5', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-05': { title:'Chan Camp Week 5', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-06': { title:'Chan Camp Week 5', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-07': { title:'Chan Camp Week 5', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-10': { title:'Chan Camp Week 6', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-11': { title:'Chan Camp Week 6', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-12': { title:'Chan Camp Week 6', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-13': { title:'Chan Camp Week 6', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+    '2026-08-14': { title:'Chan Camp Week 6', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
+  };
 
   // ── CONSTANTS ──
   const DAYS_SHORT   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -1678,7 +1769,8 @@
   const MONTHS       = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const FOCUS_LABELS = { dribbling:'Dribbling', passing:'Passing', shooting:'Shooting', defending:'Defending', trapping:'Trapping/Clearing', scrimmage:'Scrimmage' };
-  const STRENGTH_DAYS = [1, 3, 5]; // Mon, Wed, Fri
+  const STRENGTH_DAYS = [2, 4, 6]; // Tue, Thu, Sat
+  var STRENGTH_SEASON_START = '2026-06-11';
 
   // ── STATE ──
   let rsvpData   = {};
@@ -1688,11 +1780,13 @@
   const today = new Date();
 
   function getPhaseForDate(d) {
-    const m = d.getMonth(), day = d.getDate();
-    if (m === 5 && day <= 27) return 0;
-    if ((m === 5 && day >= 28) || (m === 6 && day <= 25)) return 1;
-    if ((m === 6 && day >= 26) || (m === 7 && day <= 22)) return 2;
-    return 3;
+    const ts = d.getTime();
+    if (ts < new Date(2026, 6,  5).getTime()) return 0; // Foundation  Jun 11 – Jul 4
+    if (ts < new Date(2026, 6, 26).getTime()) return 1; // Build       Jul 5  – Jul 25
+    if (ts < new Date(2026, 7, 16).getTime()) return 2; // Power       Jul 26 – Aug 15
+    if (ts < new Date(2026, 7, 29).getTime()) return 3; // Taper       Aug 16 – Aug 28
+    if (ts < new Date(2027, 0,  1).getTime()) return 4; // Sustain     Aug 29 – Dec 31
+    return 5;                                            // Spring Build Jan 1+
   }
 
   function getWeekStart(d) {
@@ -1703,7 +1797,7 @@
   }
 
   const calMinWeekStart = getWeekStart(new Date(2026, 5, 1));  // week of Jun 1
-  const calMaxWeekStart = getWeekStart(new Date(2026, 7, 28)); // week of Aug 28
+  const calMaxWeekStart = getWeekStart(new Date(today.getFullYear() + 1, today.getMonth(), today.getDate()));
   let calWeekStart = getWeekStart(today);
 
   function fmtDate(d)  { return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate(); }
@@ -1756,9 +1850,9 @@
         body.appendChild(btn);
       }
 
-      if (STRENGTH_DAYS.includes(dow)) {
+      if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START) {
         const phase  = getPhaseForDate(day);
-        const wkIdx  = dow === 1 ? 0 : dow === 3 ? 1 : 2;
+        const wkIdx  = dow === 2 ? 0 : dow === 4 ? 1 : 2; // Tue=0, Thu=1, Sat=2
         const workout = WORKOUTS[phase][wkIdx];
         const sKey   = 'str-' + ds;
         const btn    = document.createElement('button');
@@ -1768,13 +1862,23 @@
         body.appendChild(btn);
       }
 
-      if (GROUP_SESSIONS[ds]) {
-        const g    = GROUP_SESSIONS[ds];
+      if (FITNESS_SESSIONS[ds]) {
+        const g    = FITNESS_SESSIONS[ds];
         const gKey = 'grp-' + ds;
         const btn  = document.createElement('button');
-        btn.className = 'wk-event type-group';
-        btn.innerHTML = g.title + '<span class="ev-time">👥 ' + g.time + '</span>';
-        btn.onclick = (function(k) { return function() { openPanel(k, 'group'); }; })(gKey);
+        btn.className = 'wk-event type-fitness';
+        btn.innerHTML = g.title + '<span class="ev-time">🏃 ' + g.time + '</span>';
+        btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
+        body.appendChild(btn);
+      }
+
+      if (CAMP_SESSIONS[ds]) {
+        const c     = CAMP_SESSIONS[ds];
+        const cKey  = 'camp-' + ds;
+        const btn   = document.createElement('button');
+        btn.className = 'wk-event type-camp';
+        btn.innerHTML = c.title + '<span class="ev-time">⛺ ' + c.time + '</span>';
+        btn.onclick = (function(k) { return function() { openPanel(k, 'camp'); }; })(cKey);
         body.appendChild(btn);
       }
 
@@ -1812,29 +1916,44 @@
       document.getElementById('panelTitle').textContent = s.title;
       document.getElementById('panelMeta').innerHTML    =
         '<span class="focus-pill focus-' + s.focus + '">' + FOCUS_LABELS[s.focus] + '</span>' +
-        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + s.time + ' – 6:30 PM</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + s.time + '</span>' +
         '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + s.location + '</span>';
       document.getElementById('panelPlan').innerHTML =
         '<div class="plan-block"><h4>Warm-Up</h4><ul>'    + s.warmup.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>' +
         '<div class="plan-block"><h4>Main Session</h4><ul>' + s.main.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
       rsvpSec.style.display = 'block';
       renderRsvp();
-    } else if (type === 'group') {
+    } else if (type === 'fitness') {
       const ds = key.slice(4);
-      const g  = GROUP_SESSIONS[ds];
+      const g  = FITNESS_SESSIONS[ds];
       const parts = ds.split('-');
       const y = +parts[0], mo = +parts[1], d = +parts[2];
       const dateObj2 = new Date(y, mo-1, d);
       document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
       document.getElementById('panelTitle').textContent = g.title;
       document.getElementById('panelMeta').innerHTML    =
-        '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">👥 Group</span>' +
+        '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">🏃 Fitness</span>' +
         '<span class="focus-pill focus-' + g.focus + '">' + (FOCUS_LABELS[g.focus] || g.focus) + '</span>' +
-        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + g.time + ' – 6:30 PM</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + g.time + '</span>' +
         '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + g.location + '</span>';
       document.getElementById('panelPlan').innerHTML =
         '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (g.warmup || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>' +
         '<div class="plan-block"><h4>Main Session</h4><ul>' + (g.main   || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>';
+      rsvpSec.style.display = 'block';
+      renderRsvp();
+    } else if (type === 'camp') {
+      const ds = key.slice(5);
+      const c  = CAMP_SESSIONS[ds];
+      const parts = ds.split('-');
+      const y = +parts[0], mo = +parts[1], d = +parts[2];
+      const dateObj2 = new Date(y, mo-1, d);
+      document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
+      document.getElementById('panelTitle').textContent = c.title;
+      document.getElementById('panelMeta').innerHTML    =
+        '<span style="background:#f3e8ff;color:#5b1a8b;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">⛺ Chan Camp</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + c.time + ' – ' + c.end_time + '</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + c.location + '</span>';
+      document.getElementById('panelPlan').innerHTML = '';
       rsvpSec.style.display = 'block';
       renderRsvp();
     } else {
@@ -1844,6 +1963,7 @@
       document.getElementById('panelTitle').textContent = workout.title;
       document.getElementById('panelMeta').innerHTML    =
         '<span class="tag fitness" style="font-size:0.72rem;padding:0.2rem 0.6rem">💪 Strength</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">🏠 At Home</span>' +
         '<span style="font-size:0.8rem;color:var(--mid)">⏱ ' + workout.duration + '</span>' +
         '<span style="font-size:0.8rem;color:var(--mid);font-style:italic">' + phaseInfo.label + ': ' + phaseInfo.tag + '</span>';
       document.getElementById('panelPlan').innerHTML =
@@ -1867,7 +1987,7 @@
   }
 
   function renderRsvp() {
-    if (activeType !== 'technical' && activeType !== 'group') return;
+    if (activeType !== 'technical' && activeType !== 'fitness' && activeType !== 'camp') return;
     const names = rsvpData[activeDate] || [];
     const list  = document.getElementById('rsvpList');
     if (!list) return;
@@ -1877,7 +1997,7 @@
   }
 
   function addRsvp() {
-    if (activeType !== 'technical' && activeType !== 'group') return;
+    if (activeType !== 'technical' && activeType !== 'fitness' && activeType !== 'camp') return;
     var input = document.getElementById('rsvpInput');
     var name  = input.value.trim();
     if (!name) return;
@@ -1991,7 +2111,7 @@
     titleEl.textContent = s.title;
     var metaDiv = document.createElement('div');
     metaDiv.className = 'tw-card-meta';
-    var sp1 = document.createElement('span'); sp1.textContent = s.time + ' – 6:30 PM';
+    var sp1 = document.createElement('span'); sp1.textContent = s.time;
     var sp2 = document.createElement('span'); sp2.textContent = s.location;
     metaDiv.appendChild(sp1); metaDiv.appendChild(sp2);
     var toggleSpan = document.createElement('span');
@@ -2139,21 +2259,23 @@
   }
 
   function loadStrengthFromSheet(rows) {
-    // Build a WORKOUTS-compatible structure from sheet rows
-    // Columns: phase (0-3), day (1=Mon,3=Wed,5=Fri), title, duration, exercises (no cooldown)
-    // exercises format: "Name|sets|note; Name2|sets2|note2"
-    var newWorkouts = {0:[[],[],[]], 1:[[],[],[]], 2:[[],[],[]], 3:[[],[],[]]};
+    // Columns: season_start, phase (0-5), phase_label, day (2=Tue,4=Thu,0=Sat/Sun),
+    //          day_label, title, duration, exercises (Name|sets|note separated by ;)
+    if (rows.length > 0 && rows[0].season_start) {
+      STRENGTH_SEASON_START = rows[0].season_start;
+    }
+    var newWorkouts = {0:[[],[],[]], 1:[[],[],[]], 2:[[],[],[]], 3:[[],[],[]], 4:[[],[],[]], 5:[[],[],[]]};
     rows.forEach(function(row) {
       var phase  = parseInt(row.phase) || 0;
-      var dow    = parseInt(row.day)   || 1;
-      var wkIdx  = dow === 1 ? 0 : dow === 3 ? 1 : 2;
+      var dow    = parseInt(row.day);           // 2=Tue, 4=Thu, 0=Sat/Sun
+      var wkIdx  = dow === 2 ? 0 : dow === 4 ? 1 : 2;
       var exList = (row.exercises || '').split(';').map(function(ex) {
         var parts = ex.trim().split('|');
         return { name: (parts[0]||'').trim(), sets: (parts[1]||'').trim(), note: (parts[2]||'').trim() };
       }).filter(function(e){ return e.name; });
       if (newWorkouts[phase]) {
         newWorkouts[phase][wkIdx] = {
-          day:       row.day_label || ['','Monday','','Wednesday','','Friday',''][dow] || 'Day',
+          day:       row.day_label || ['Sat / Sun','','Tuesday','','Thursday','','Saturday'][dow] || 'Day',
           title:     row.title    || '',
           duration:  row.duration || '',
           exercises: exList,
@@ -2161,23 +2283,35 @@
       }
     });
     // Only override WORKOUTS phases that have data
-    [0,1,2,3].forEach(function(p) {
+    [0,1,2,3,4,5].forEach(function(p) {
       if (newWorkouts[p].some(function(d){ return d && d.title; })) {
         WORKOUTS[p] = newWorkouts[p];
       }
     });
   }
 
-  function loadGroupFromSheet(rows) {
+  function loadFitnessFromSheet(rows) {
     rows.forEach(function(row) {
       if (!row.date) return;
-      GROUP_SESSIONS[row.date] = {
+      FITNESS_SESSIONS[row.date] = {
         focus:    row.focus    || 'scrimmage',
         title:    row.title    || 'Group Session',
         time:     row.time     || '5:00 PM',
         location: row.location || 'Harry Downes Field',
         warmup:   (row.warmup  || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
         main:     (row.main    || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
+      };
+    });
+  }
+
+  function loadCampFromSheet(rows) {
+    rows.forEach(function(row) {
+      if (!row.date) return;
+      CAMP_SESSIONS[row.date] = {
+        title:    row.title    || 'Chan Camp',
+        time:     row.time     || '8:00 AM',
+        end_time: row.end_time || '10:00 AM',
+        location: row.location || 'Downes Field',
       };
     });
   }
@@ -2196,11 +2330,17 @@
         if (res.ok) { loadStrengthFromSheet(parseCSV(await res.text())); loaded = true; }
       } catch(e) { console.warn('Could not load Strength sheet:', e); }
     }
-    if (SHEET_GROUP_URL) {
+    if (SHEET_FITNESS_URL) {
       try {
-        var res = await fetch(SHEET_GROUP_URL, { cache: 'no-store' });
-        if (res.ok) { loadGroupFromSheet(parseCSV(await res.text())); loaded = true; }
-      } catch(e) { console.warn('Could not load Group Sessions sheet:', e); }
+        var res = await fetch(SHEET_FITNESS_URL, { cache: 'no-store' });
+        if (res.ok) { loadFitnessFromSheet(parseCSV(await res.text())); loaded = true; }
+      } catch(e) { console.warn('Could not load Fitness sheet:', e); }
+    }
+    if (SHEET_CAMP_URL) {
+      try {
+        var res = await fetch(SHEET_CAMP_URL, { cache: 'no-store' });
+        if (res.ok) { loadCampFromSheet(parseCSV(await res.text())); loaded = true; }
+      } catch(e) { console.warn('Could not load Chan Camp sheet:', e); }
     }
     // Re-render everything with fresh data
     buildWeekCalendar();
