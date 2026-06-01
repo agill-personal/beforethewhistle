@@ -47,8 +47,27 @@
       text-decoration: none;
       letter-spacing: -0.01em;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 1.5rem;
+      flex-direction: column;
+      list-style: none;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+      padding: 0.25rem 0;
+      gap: 0;
+      z-index: 99;
+      min-width: 210px;
+    }
+    nav.nav-open .nav-links { display: flex; }
+    .nav-links li { border-bottom: 1px solid var(--border); }
+    .nav-links li:last-child { border-bottom: none; }
     .nav-links a {
+      display: block;
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 500;
@@ -56,10 +75,11 @@
       text-transform: uppercase;
       color: var(--mid);
       transition: color 0.2s;
+      padding: 0.75rem 1.25rem;
     }
     .nav-links a:hover { color: var(--accent); }
     .nav-burger {
-      display: none;
+      display: flex;
       flex-direction: column;
       gap: 5px;
       background: none;
@@ -223,6 +243,58 @@
     }
     .tw-rsvp-inline.open { display: block; }
     .tw-rsvp-inline .rsvp-input-row { margin-top: 0.5rem; }
+    .tw-card-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+    .tw-card-toggle .tw-chevron {
+      display: inline-block;
+      transition: transform 0.2s;
+      font-style: normal;
+    }
+    .tw-card.expanded .tw-chevron { transform: rotate(90deg); }
+    .tw-card-details {
+      display: none;
+      padding: 0.9rem 1.1rem 1rem calc(6px + 1.1rem);
+      border-top: 1px solid var(--border);
+      background: var(--off-white);
+    }
+    .tw-card-details.open { display: block; }
+    .tw-plan-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .tw-plan-heading + .tw-plan-heading,
+    .tw-plan-section + .tw-plan-heading { margin-top: 0.75rem; }
+    .tw-card-details ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tw-card-details ul:last-child { margin-bottom: 0; }
+    .tw-card-details ul li {
+      font-size: 0.82rem;
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-start;
+    }
+    .tw-card-details ul li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+    }
 
     .btn {
       display: inline-block;
@@ -961,24 +1033,16 @@
 
     @media (max-width: 768px) {
       nav { padding: 0 1.25rem; }
-      .nav-burger { display: flex; }
       .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
         left: 0; right: 0;
-        flex-direction: column;
-        background: var(--white);
-        border-bottom: 1px solid var(--border);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        min-width: unset;
         padding: 0.25rem 1.25rem 0.75rem;
-        gap: 0;
-        z-index: 99;
       }
-      nav.nav-open .nav-links { display: flex; }
-      .nav-links li { border-bottom: 1px solid var(--border); }
-      .nav-links li:last-child { border-bottom: none; }
-      .nav-links a { display: block; padding: 0.85rem 0; font-size: 0.9rem; letter-spacing: 0.03em; }
+      .nav-links a { padding: 0.85rem 0; font-size: 0.9rem; letter-spacing: 0.03em; }
       section { padding: 3rem 1.5rem; }
       .schedule-row { grid-template-columns: 90px 1fr; gap: 0.5rem; }
       .schedule-row .time,
@@ -1792,11 +1856,33 @@
     var sp1 = document.createElement('span'); sp1.textContent = s.time + ' – 6:30 PM';
     var sp2 = document.createElement('span'); sp2.textContent = s.location;
     metaDiv.appendChild(sp1); metaDiv.appendChild(sp2);
+    var toggleSpan = document.createElement('span');
+    toggleSpan.className = 'tw-card-toggle';
+    toggleSpan.innerHTML = '<i class="tw-chevron">&#9656;</i> Session details';
     contentDiv.appendChild(topDiv);
     contentDiv.appendChild(titleEl);
     contentDiv.appendChild(metaDiv);
+    contentDiv.appendChild(toggleSpan);
     mainDiv.appendChild(contentDiv);
     card.appendChild(mainDiv);
+
+    var detailsDiv = document.createElement('div');
+    detailsDiv.className = 'tw-card-details';
+    detailsDiv.id = 'twdetails-' + ds;
+    detailsDiv.innerHTML =
+      '<div class="tw-plan-heading">Warm-Up</div>' +
+      '<ul>' + s.warmup.map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul>' +
+      '<div class="tw-plan-heading">Main Session</div>' +
+      '<ul>' + s.main.map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul>';
+    card.appendChild(detailsDiv);
+    mainDiv.style.cursor = 'pointer';
+    mainDiv.onclick = (function(d2, c) {
+      return function() {
+        var det = document.getElementById('twdetails-' + d2);
+        var isOpen = det.classList.toggle('open');
+        c.classList.toggle('expanded', isOpen);
+      };
+    })(ds, card);
 
     var rsvpRow = document.createElement('div');
     rsvpRow.className = 'tw-rsvp-row';
