@@ -992,7 +992,7 @@
       overflow: hidden;
       margin-bottom: 1.25rem;
     }
-    .wk-day-col { border-right: 1px solid var(--border); }
+    .wk-day-col { border-right: 1px solid var(--border); display: flex; flex-direction: column; }
     .wk-day-col:last-child { border-right: none; }
     .wk-day-header {
       background: var(--black); color: var(--white);
@@ -1003,6 +1003,7 @@
     }
     .wk-day-header.today-header { background: var(--accent); }
     .wk-day-body {
+      flex: 1;
       min-height: 120px; padding: 0.4rem;
       display: flex; flex-direction: column; gap: 0.3rem;
       background: var(--white);
