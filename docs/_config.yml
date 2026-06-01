@@ -1,0 +1,15 @@
+title: My GitHub Pages Site
+description: A simple website hosted on GitHub Pages.
+baseurl: ""
+url: "https://your-custom-domain.com"  # Replace with your actual domain if using a custom domain
+theme: minima
+markdown: kramdown
+permalink: pretty
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - CNAME
+  - .nojekyll
