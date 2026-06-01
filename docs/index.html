@@ -1066,12 +1066,12 @@
     .wk-day-header { color: #fff; }
     .wk-day-header.today-header { color: #fff; }
 
-    /* Calendar grid cells stay white */
-    .cal-week-wrap { border-color: #c8c8c8; }
-    .wk-day-col { border-right-color: #e0ddd8; }
-    .wk-day-body { background: #fff; }
-    .wk-day-body.today-body { background: #edf7f0; }
-    .wk-empty-day { background: #f5f2ee; }
+    /* Calendar grid cells — warm off-white */
+    .cal-week-wrap { border-color: #c8c3ba; }
+    .wk-day-col { border-right-color: #d8d4cc; }
+    .wk-day-body { background: #f5f0e8; }
+    .wk-day-body.today-body { background: #e6f0e9; }
+    .wk-empty-day { background: #ede9e2; }
 
     /* Day-of-week headers — bigger and more readable */
     .wk-day-header { font-size: 0.78rem; padding: 0.65rem 0.25rem; }
@@ -1438,7 +1438,7 @@
   var SHEET_TECHNICAL_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=1948629274&single=true&output=csv';
   var SHEET_STRENGTH_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=131987885&single=true&output=csv';
   // Paste your Group Sessions sheet CSV URL here (File → Share → Publish to web → CSV, "Group Sessions" tab)
-  // Columns: date (YYYY-MM-DD), title, time, location, notes (items separated by ;)
+  // Columns: date (YYYY-MM-DD), focus, title, time, location, warmup, main  (warmup/main items separated by ;)
   var SHEET_GROUP_URL     = '';
 
   // ── FALLBACK DATA (used until Sheets URLs are set) ──
@@ -1625,7 +1625,7 @@
 
 
   // Group sessions — populated from SHEET_GROUP_URL, no hardcoded fallback
-  // Each entry: { title, time, location, notes[] }
+  // Each entry: { focus, title, time, location, warmup[], main[] }
   var GROUP_SESSIONS = {};
 
   // ── CONSTANTS ──
@@ -1770,12 +1770,13 @@
       document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
       document.getElementById('panelTitle').textContent = g.title;
       document.getElementById('panelMeta').innerHTML    =
-        '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">👥 Group Session</span>' +
-        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + g.time + '</span>' +
+        '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">👥 Group</span>' +
+        '<span class="focus-pill focus-' + g.focus + '">' + (FOCUS_LABELS[g.focus] || g.focus) + '</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + g.time + ' – 6:30 PM</span>' +
         '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + g.location + '</span>';
-      document.getElementById('panelPlan').innerHTML = g.notes && g.notes.length
-        ? '<div class="plan-block"><h4>Session Notes</h4><ul>' + g.notes.map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>'
-        : '';
+      document.getElementById('panelPlan').innerHTML =
+        '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (g.warmup || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>' +
+        '<div class="plan-block"><h4>Main Session</h4><ul>' + (g.main   || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>';
       rsvpSec.style.display = 'block';
       renderRsvp();
     } else {
@@ -2113,10 +2114,12 @@
     rows.forEach(function(row) {
       if (!row.date) return;
       GROUP_SESSIONS[row.date] = {
+        focus:    row.focus    || 'scrimmage',
         title:    row.title    || 'Group Session',
         time:     row.time     || '5:00 PM',
         location: row.location || 'Harry Downes Field',
-        notes:    (row.notes   || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
+        warmup:   (row.warmup  || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
+        main:     (row.main    || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
       };
     });
   }
