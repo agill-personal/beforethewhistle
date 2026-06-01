@@ -1666,6 +1666,7 @@
     var container = document.getElementById('twCards');
     var rangeEl   = document.getElementById('twWeekRange');
     if (!container) return;
+    container.innerHTML = '';
 
     var todayStr = toDateStr(today);
     var upcoming = Object.entries(SESSIONS)
