@@ -530,7 +530,7 @@
       font-family: var(--sans);
       font-size: 0.9rem;
       background: var(--white);
-      color: var(--black);
+      color: inherit;
       outline: none;
       transition: border-color 0.2s;
     }
@@ -571,7 +571,7 @@
     footer .footer-logo {
       font-family: var(--serif);
       font-size: 1rem;
-      color: var(--black);
+      color: var(--accent);
     }
 
     /* ── ANIMATIONS ── */
@@ -639,7 +639,7 @@
       color: var(--mid);
       margin-bottom: 0.3rem;
     }
-    .cal-cell.has-session .day-num { color: var(--black); }
+    .cal-cell.has-session .day-num { color: inherit; }
     .focus-pill {
       display: inline-block;
       font-size: 0.65rem;
@@ -1001,7 +1001,7 @@
     .wk-arrow {
       background: var(--off-white); border: 1px solid var(--border);
       border-radius: 2px; width: 36px; height: 36px;
-      font-size: 1rem; cursor: pointer; color: var(--black);
+      font-size: 1rem; cursor: pointer; color: inherit;
       transition: background 0.15s, border-color 0.15s;
       display: flex; align-items: center; justify-content: center;
     }
@@ -1009,7 +1009,7 @@
     .wk-arrow:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
     .wk-label {
       font-size: 0.85rem; font-weight: 600;
-      letter-spacing: 0.04em; color: var(--black);
+      letter-spacing: 0.04em; color: inherit;
     }
     .cal-week-wrap {
       display: grid;
@@ -1067,8 +1067,8 @@
     .wk-empty-day { min-height: 120px; background: var(--off-white); }
 
     @media (max-width: 768px) {
-      .cal-week-wrap { grid-template-columns: repeat(7,1fr); overflow-x: auto; min-width: 500px; }
-      .wk-cal-scroll { overflow-x: auto; }
+      .wk-cal-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .cal-week-wrap { min-width: 480px; }
       #thisweek { padding: 1.5rem 1.1rem 0.5rem; }
     }
 
@@ -1116,9 +1116,7 @@
     /* Day-of-week headers — bigger and more readable */
     .wk-day-header { font-size: 0.78rem; padding: 0.65rem 0.25rem; }
 
-    /* Week nav — inherit light body text instead of --black */
-    .wk-label,
-    .wk-arrow { color: inherit; }
+    /* Arrow hover needs dark text on light-green background */
 
     /* Form & RSVP inputs — light text on dark field */
     .form-group input,
@@ -1239,9 +1237,11 @@
       <button class="wk-arrow" id="wkNext" onclick="calNextWeek()">&#8594;</button>
     </div>
 
+    <div class="wk-cal-scroll">
     <div class="cal-week-wrap" id="calWeekWrap">
       <!-- 7 day columns rendered by JS -->
     </div>
+    </div><!-- /.wk-cal-scroll -->
 
     <!-- Detail panel (shared) -->
     <div class="day-panel" id="dayPanel" style="display:none">
@@ -1449,7 +1449,7 @@
             <div class="icon">📱</div>
             <div class="text">
               <strong>Phone</strong>
-              <span>(000) 000-0000</span><!-- TODO: replace with your phone number -->
+              <span>(516) 532-4496</span>
             </div>
           </div>
           <div class="contact-detail-item">
@@ -1499,20 +1499,22 @@
           <p style="font-size:0.875rem;color:var(--mid);font-weight:300;line-height:1.7;max-width:42ch">Get session reminders, training notes, and schedule updates sent straight to your inbox.</p>
         </div>
         <div class="newsletter-form-wrap">
-          <div id="nl-success" style="display:none;color:#1a4d28;font-weight:600;font-size:0.95rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px;margin-bottom:1rem">
+          <div data-fs-success style="color:#1a4d28;font-weight:600;font-size:0.95rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px;margin-bottom:1rem">
             ✓ You're on the list!
           </div>
-          <div id="nl-error" style="display:none;color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
+          <div data-fs-error style="color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
           <form id="newsletter-form">
             <div class="form-group" style="margin-bottom:0.75rem">
               <label for="nl-name">Name <span style="color:#c0392b">*</span></label>
-              <input type="text" id="nl-name" name="name" placeholder="Your name" required/>
+              <input type="text" id="nl-name" name="name" placeholder="Your name" data-fs-field required/>
+              <span data-fs-error="name" style="font-size:0.78rem;color:#c0392b"></span>
             </div>
             <div class="form-group" style="margin-bottom:1rem">
               <label for="nl-email">Email Address <span style="color:#c0392b">*</span></label>
-              <input type="email" id="nl-email" name="email" placeholder="your@email.com" required/>
+              <input type="email" id="nl-email" name="email" placeholder="your@email.com" data-fs-field required/>
+              <span data-fs-error="email" style="font-size:0.78rem;color:#c0392b"></span>
             </div>
-            <button type="submit" class="btn" style="width:100%">Join the List →</button>
+            <button type="submit" class="btn" style="width:100%" data-fs-submit-btn>Join the List →</button>
           </form>
         </div>
       </div>
@@ -1524,39 +1526,7 @@
     formspree('initForm', { formElement: '#contact-form', formId: 'xwvzdord' });
 
     // ── NEWSLETTER SIGNUP ──
-    // 1. Go to formspree.io → New Form → copy the form ID (e.g. "xabcdefg")
-    // 2. Replace the empty string below with that ID, then push to GitHub
-    var NEWSLETTER_FORM_ID = '';
-
-    (function() {
-      var form = document.getElementById('newsletter-form');
-      if (!form) return;
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var successEl = document.getElementById('nl-success');
-        var errorEl   = document.getElementById('nl-error');
-        if (!NEWSLETTER_FORM_ID) {
-          errorEl.textContent = 'Newsletter signup not configured yet.';
-          errorEl.style.display = 'block';
-          return;
-        }
-        var data = new FormData(form);
-        fetch('https://formspree.io/f/' + NEWSLETTER_FORM_ID, {
-          method: 'POST', body: data, headers: { 'Accept': 'application/json' }
-        }).then(function(res) {
-          if (res.ok) {
-            form.style.display = 'none';
-            successEl.style.display = 'block';
-          } else {
-            errorEl.textContent = 'Something went wrong — please try again.';
-            errorEl.style.display = 'block';
-          }
-        }).catch(function() {
-          errorEl.textContent = 'Could not connect — please try again.';
-          errorEl.style.display = 'block';
-        });
-      });
-    })();
+    formspree('initForm', { formElement: '#newsletter-form', formId: 'xzdwndwr' });
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
@@ -1994,6 +1964,13 @@
         body.appendChild(btn);
       }
 
+      if (dow === 3) {
+        const cp = document.createElement('div');
+        cp.className = 'wk-event type-captains';
+        cp.innerHTML = "Captain's Practice" + '<span class="ev-time">🏟 6:30 – 8:00 PM · Downes</span>';
+        body.appendChild(cp);
+      }
+
       if (SESSIONS[ds]) {
         const s   = SESSIONS[ds];
         const cnt = (rsvpData[ds] || []).length;
@@ -2025,13 +2002,6 @@
         btn.innerHTML = workout.title + '<span class="ev-time">💪 ' + evLabel + '</span>';
         btn.onclick = (function(k, p, w, d2) { return function() { openPanel(k, 'strength', d2, p, w); }; })(sKey, phase, wkIdx, new Date(day));
         body.appendChild(btn);
-      }
-
-      if (dow === 3) {
-        const cp = document.createElement('div');
-        cp.className = 'wk-event type-captains';
-        cp.innerHTML = "Captain's Practice" + '<span class="ev-time">🏟 6:30 – 8:00 PM · Downes</span>';
-        body.appendChild(cp);
       }
 
       if (dow === 6) {
