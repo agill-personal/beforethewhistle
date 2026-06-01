@@ -1015,6 +1015,7 @@
     .wk-event:hover { opacity: 0.85; transform: translateY(-1px); }
     .wk-event.type-technical { background: var(--accent-light); color: var(--accent); }
     .wk-event.type-strength  { background: #fde8c8; color: #7a3f00; }
+    .wk-event.type-group     { background: #dbeafe; color: #1d4ed8; }
     .wk-event .ev-time { font-weight: 400; opacity: 0.75; font-size: 0.6rem; display: block; margin-top: 1px; }
     .wk-milestone {
       font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
@@ -1436,6 +1437,9 @@
   // Paste your two published CSV URLs here once you have them from Google Sheets
   var SHEET_TECHNICAL_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=1948629274&single=true&output=csv';
   var SHEET_STRENGTH_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=131987885&single=true&output=csv';
+  // Paste your Group Sessions sheet CSV URL here (File → Share → Publish to web → CSV, "Group Sessions" tab)
+  // Columns: date (YYYY-MM-DD), title, time, location, notes (items separated by ;)
+  var SHEET_GROUP_URL     = '';
 
   // ── FALLBACK DATA (used until Sheets URLs are set) ──
   const SESSIONS = {
@@ -1620,6 +1624,10 @@
   };
 
 
+  // Group sessions — populated from SHEET_GROUP_URL, no hardcoded fallback
+  // Each entry: { title, time, location, notes[] }
+  var GROUP_SESSIONS = {};
+
   // ── CONSTANTS ──
   const DAYS_SHORT   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const DAYS_FULL    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -1710,6 +1718,16 @@
         body.appendChild(btn);
       }
 
+      if (GROUP_SESSIONS[ds]) {
+        const g    = GROUP_SESSIONS[ds];
+        const gKey = 'grp-' + ds;
+        const btn  = document.createElement('button');
+        btn.className = 'wk-event type-group';
+        btn.innerHTML = g.title + '<span class="ev-time">👥 ' + g.time + '</span>';
+        btn.onclick = (function(k) { return function() { openPanel(k, 'group'); }; })(gKey);
+        body.appendChild(btn);
+      }
+
       col.appendChild(body);
       wrap.appendChild(col);
     }
@@ -1743,6 +1761,23 @@
         '<div class="plan-block"><h4>Main Session</h4><ul>' + s.main.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
       rsvpSec.style.display = 'block';
       renderRsvp();
+    } else if (type === 'group') {
+      const ds = key.slice(4);
+      const g  = GROUP_SESSIONS[ds];
+      const parts = ds.split('-');
+      const y = +parts[0], mo = +parts[1], d = +parts[2];
+      const dateObj2 = new Date(y, mo-1, d);
+      document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
+      document.getElementById('panelTitle').textContent = g.title;
+      document.getElementById('panelMeta').innerHTML    =
+        '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">👥 Group Session</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + g.time + '</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + g.location + '</span>';
+      document.getElementById('panelPlan').innerHTML = g.notes && g.notes.length
+        ? '<div class="plan-block"><h4>Session Notes</h4><ul>' + g.notes.map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>'
+        : '';
+      rsvpSec.style.display = 'block';
+      renderRsvp();
     } else {
       const workout   = WORKOUTS[phase][wkIdx];
       const phaseInfo = PHASES[phase];
@@ -1773,7 +1808,7 @@
   }
 
   function renderRsvp() {
-    if (activeType !== 'technical') return;
+    if (activeType !== 'technical' && activeType !== 'group') return;
     const names = rsvpData[activeDate] || [];
     const list  = document.getElementById('rsvpList');
     if (!list) return;
@@ -1783,7 +1818,7 @@
   }
 
   function addRsvp() {
-    if (activeType !== 'technical') return;
+    if (activeType !== 'technical' && activeType !== 'group') return;
     var input = document.getElementById('rsvpInput');
     var name  = input.value.trim();
     if (!name) return;
@@ -2074,6 +2109,18 @@
     });
   }
 
+  function loadGroupFromSheet(rows) {
+    rows.forEach(function(row) {
+      if (!row.date) return;
+      GROUP_SESSIONS[row.date] = {
+        title:    row.title    || 'Group Session',
+        time:     row.time     || '5:00 PM',
+        location: row.location || 'Harry Downes Field',
+        notes:    (row.notes   || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
+      };
+    });
+  }
+
   async function loadFromSheets() {
     var loaded = false;
     if (SHEET_TECHNICAL_URL) {
@@ -2087,6 +2134,12 @@
         var res = await fetch(SHEET_STRENGTH_URL);
         if (res.ok) { loadStrengthFromSheet(parseCSV(await res.text())); loaded = true; }
       } catch(e) { console.warn('Could not load Strength sheet:', e); }
+    }
+    if (SHEET_GROUP_URL) {
+      try {
+        var res = await fetch(SHEET_GROUP_URL);
+        if (res.ok) { loadGroupFromSheet(parseCSV(await res.text())); loaded = true; }
+      } catch(e) { console.warn('Could not load Group Sessions sheet:', e); }
     }
     // Re-render everything with fresh data
     buildWeekCalendar();
