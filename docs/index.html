@@ -10,12 +10,14 @@
 
     :root {
       --black: #111111;
-      --white: #0e1f15;
-      --off-white: #152c1e;
+      --white: #0d1f14;
+      --off-white: #1f3d2e;
+      --surface-raised: #2a5c40;
+      --surface-hi: #2e5e42;
       --accent: #52c46e;
       --accent-light: #c4e8cc;
       --mid: #7faa8b;
-      --border: #1e3828;
+      --border: #3d6b52;
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'DM Sans', sans-serif;
       --logo: 'Barlow Condensed', Impact, sans-serif;
@@ -794,7 +796,7 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       cursor: pointer;
-      background: var(--white);
+      background: var(--off-white);
       color: var(--mid);
       transition: all 0.15s;
     }
@@ -1100,6 +1102,46 @@
 
     /* Day numbers in active calendar cells stay dark (on white cell bg) */
     .cal-cell.has-session .day-num { color: var(--black); }
+
+    /* Nav and dropdown must float above page bg */
+    nav { background: var(--surface-raised); }
+    .nav-links { background: var(--surface-raised); }
+
+    /* Panel header uses surface-raised, not --black */
+    .day-panel-header { background: var(--surface-raised); }
+
+    /* Every card/box gets an explicit background so it floats above page bg */
+    .tw-card,
+    .workout-card,
+    .drill-card,
+    .nutrition-card,
+    .day-panel,
+    .contact-wrap > *,
+    .gate-box { background: var(--off-white); }
+
+    /* Inner highlighted surfaces one step up from cards */
+    .tw-card-details,
+    .pillar,
+    .strength-note,
+    .rsvp-name,
+    .tw-empty { background: var(--surface-hi); }
+
+    /* Nutrition tip and strength intro pillars already off-white — push up */
+    .nutrition-tip { background: var(--surface-hi); color: var(--mid); }
+
+    /* Focus pills — all bumped lighter with brighter text */
+    .focus-dribbling  { background: #ffd9a0; color: #5c2d00; }
+    .focus-passing    { background: #b8e8c4; color: #1a4d28; }
+    .focus-shooting   { background: #ffbdbd; color: #6a0000; }
+    .focus-defending  { background: #ccceff; color: #15157a; }
+    .focus-trapping   { background: #bde8ff; color: #07385c; }
+    .focus-scrimmage  { background: #e0c8ff; color: #3d006b; }
+
+    /* Tag chips match */
+    .tag.fitness   { background: #ffd9a0; color: #5c2d00; }
+    .tag.technical { background: #b8e8c4; color: #1a4d28; }
+    .tag.scrimmage { background: #ffbdbd; color: #6a0000; }
+    .tag.mental    { background: #ccceff; color: #15157a; }
   </style>
 </head>
 <body>
