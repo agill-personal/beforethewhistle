@@ -10,12 +10,12 @@
 
     :root {
       --black: #111111;
-      --white: #f2ede4;
-      --off-white: #e7e1d6;
-      --accent: #2e6b3e;
-      --accent-light: #c8deca;
-      --mid: #6b6b6b;
-      --border: #cdc8be;
+      --white: #0e1f15;
+      --off-white: #152c1e;
+      --accent: #52c46e;
+      --accent-light: #c4e8cc;
+      --mid: #7faa8b;
+      --border: #1e3828;
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'DM Sans', sans-serif;
       --logo: 'Barlow Condensed', Impact, sans-serif;
@@ -26,7 +26,7 @@
     body {
       font-family: var(--sans);
       background: var(--white);
-      color: var(--black);
+      color: #dde8e1;
       font-size: 16px;
       line-height: 1.6;
     }
@@ -1055,6 +1055,50 @@
       .week-tabs { gap: 0.4rem; }
       .week-tab { flex: 1 1 auto; text-align: center; padding: 0.65rem 0.5rem; font-size: 0.75rem; }
     }
+
+    /* ── DARK THEME FIXES ── */
+
+    /* Header elements use --white as text colour — pin to literal white */
+    .schedule-row.header,
+    .cal-header-cell,
+    .day-panel-header,
+    .wk-day-header { color: #fff; }
+    .wk-day-header.today-header { color: #fff; }
+
+    /* Calendar grid cells stay white */
+    .cal-week-wrap { border-color: #c8c8c8; }
+    .wk-day-col { border-right-color: #e0ddd8; }
+    .wk-day-body { background: #fff; }
+    .wk-day-body.today-body { background: #edf7f0; }
+    .wk-empty-day { background: #f5f2ee; }
+
+    /* Day-of-week headers — bigger and more readable */
+    .wk-day-header { font-size: 0.78rem; padding: 0.65rem 0.25rem; }
+
+    /* Week nav — inherit light body text instead of --black */
+    .wk-label,
+    .wk-arrow { color: inherit; }
+
+    /* Form & RSVP inputs — light text on dark field */
+    .form-group input,
+    .form-group textarea,
+    .form-group select { color: inherit; }
+    .gate-box input,
+    .rsvp-input-row input { background: var(--off-white); color: inherit; }
+
+    /* Button hovers — lighter shade of the new brighter accent */
+    .btn:hover,
+    .rsvp-input-row button:hover { background: #3daa58; }
+
+    /* Nav logo hover visible on dark bg */
+    .nav-logo:hover { color: #fff; }
+
+    /* Card shadows more visible on dark bg */
+    .tw-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.55); }
+    .drill-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
+
+    /* Day numbers in active calendar cells stay dark (on white cell bg) */
+    .cal-cell.has-session .day-num { color: var(--black); }
   </style>
 </head>
 <body>
