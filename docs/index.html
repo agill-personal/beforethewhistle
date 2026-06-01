@@ -216,7 +216,7 @@
     }
     .tw-rsvp-btn {
       background: var(--accent-light);
-      color: var(--accent);
+      color: #1a4d28;
       border: none;
       border-radius: 20px;
       padding: 0.35rem 0.9rem;
@@ -845,7 +845,7 @@
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.03em;
-      color: var(--accent);
+      color: #1a4d28;
       background: var(--accent-light);
       padding: 0.2rem 0.5rem;
       border-radius: 2px;
@@ -1016,7 +1016,7 @@
       border: none; text-align: left; width: 100%;
     }
     .wk-event:hover { opacity: 0.85; transform: translateY(-1px); }
-    .wk-event.type-technical { background: var(--accent-light); color: var(--accent); }
+    .wk-event.type-technical { background: var(--accent-light); color: #1a4d28; }
     .wk-event.type-strength  { background: #fde8c8; color: #7a3f00; }
     .wk-event.type-group     { background: #dbeafe; color: #1d4ed8; }
     .wk-event .ev-time { font-weight: 400; opacity: 0.75; font-size: 0.6rem; display: block; margin-top: 1px; }
@@ -1069,12 +1069,12 @@
     .wk-day-header { color: #fff; }
     .wk-day-header.today-header { color: #fff; }
 
-    /* Calendar grid cells — warm off-white */
-    .cal-week-wrap { border-color: #c8c3ba; }
-    .wk-day-col { border-right-color: #d8d4cc; }
-    .wk-day-body { background: #f5f0e8; }
-    .wk-day-body.today-body { background: #e6f0e9; }
-    .wk-empty-day { background: #ede9e2; }
+    /* Calendar grid cells — match card green */
+    .cal-week-wrap { border-color: var(--border); }
+    .wk-day-col { border-right-color: var(--border); }
+    .wk-day-body { background: var(--off-white); }
+    .wk-day-body.today-body { background: var(--surface-hi); }
+    .wk-empty-day { background: var(--white); }
 
     /* Day-of-week headers — bigger and more readable */
     .wk-day-header { font-size: 0.78rem; padding: 0.65rem 0.25rem; }
@@ -1101,8 +1101,8 @@
     .tw-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.55); }
     .drill-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
 
-    /* Day numbers in active calendar cells stay dark (on white cell bg) */
-    .cal-cell.has-session .day-num { color: var(--black); }
+    /* Arrow hover needs dark text on light-green background */
+    .wk-arrow:hover { color: #1a4d28; }
 
     /* Nav and dropdown must float above page bg */
     nav { background: var(--surface-raised); }
@@ -1140,7 +1140,7 @@
 
     /* Tag chips match */
     .tag.fitness   { background: #ffd9a0; color: #5c2d00; }
-    .tag.technical { background: #b8e8c4; color: #1a4d28; }
+    .tag.technical { background: var(--accent-light); color: #1a4d28; }
     .tag.scrimmage { background: #ffbdbd; color: #6a0000; }
     .tag.mental    { background: #ccceff; color: #15157a; }
   </style>
@@ -1386,7 +1386,7 @@
     <p class="section-subtitle">Have a question about training, tryouts, or your development? Send a message and I'll get back to you.</p>
 
     <div style="max-width:560px">
-      <div data-fs-success style="color:var(--accent);font-weight:600;font-size:0.95rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px">
+      <div data-fs-success style="color:#1a4d28;font-weight:600;font-size:0.95rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px">
         ✓ Message sent! I'll be in touch soon.
       </div>
       <div data-fs-error style="color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
