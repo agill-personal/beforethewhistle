@@ -1482,7 +1482,7 @@
   var SHEET_STRENGTH_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=131987885&single=true&output=csv';
   // Paste your Group Sessions sheet CSV URL here (File → Share → Publish to web → CSV, "Group Sessions" tab)
   // Columns: date (YYYY-MM-DD), focus, title, time, location, warmup, main  (warmup/main items separated by ;)
-  var SHEET_GROUP_URL     = '';
+  var SHEET_GROUP_URL     = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=663801951&single=true&output=csv&t=' + Date.now();
 
   // ── FALLBACK DATA (used until Sheets URLs are set) ──
   const SESSIONS = {
@@ -2185,19 +2185,19 @@
     var loaded = false;
     if (SHEET_TECHNICAL_URL) {
       try {
-        var res = await fetch(SHEET_TECHNICAL_URL);
+        var res = await fetch(SHEET_TECHNICAL_URL, { cache: 'no-store' });
         if (res.ok) { loadTechnicalFromSheet(parseCSV(await res.text())); loaded = true; }
       } catch(e) { console.warn('Could not load Technical sheet:', e); }
     }
     if (SHEET_STRENGTH_URL) {
       try {
-        var res = await fetch(SHEET_STRENGTH_URL);
+        var res = await fetch(SHEET_STRENGTH_URL, { cache: 'no-store' });
         if (res.ok) { loadStrengthFromSheet(parseCSV(await res.text())); loaded = true; }
       } catch(e) { console.warn('Could not load Strength sheet:', e); }
     }
     if (SHEET_GROUP_URL) {
       try {
-        var res = await fetch(SHEET_GROUP_URL);
+        var res = await fetch(SHEET_GROUP_URL, { cache: 'no-store' });
         if (res.ok) { loadGroupFromSheet(parseCSV(await res.text())); loaded = true; }
       } catch(e) { console.warn('Could not load Group Sessions sheet:', e); }
     }
