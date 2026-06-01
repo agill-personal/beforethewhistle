@@ -1046,8 +1046,10 @@
     .wk-event:hover { opacity: 0.85; transform: translateY(-1px); }
     .wk-event.type-technical { background: var(--accent-light); color: #1a4d28; }
     .wk-event.type-strength  { background: #fde8c8; color: #7a3f00; }
-    .wk-event.type-fitness   { background: #dbeafe; color: #1d4ed8; }
-    .wk-event.type-camp      { background: #f3e8ff; color: #5b1a8b; }
+    .wk-event.type-fitness    { background: #dbeafe; color: #1d4ed8; }
+    .wk-event.type-camp       { background: #f3e8ff; color: #5b1a8b; }
+    .wk-event.type-captains   { background: #fef3c7; color: #92400e; cursor: default; }
+    .wk-event.type-captains:hover { opacity: 1; transform: none; }
     .wk-rest-day {
       font-size: 0.72rem; font-weight: 600;
       color: var(--mid); text-align: center;
@@ -2023,6 +2025,13 @@
         btn.innerHTML = workout.title + '<span class="ev-time">💪 ' + evLabel + '</span>';
         btn.onclick = (function(k, p, w, d2) { return function() { openPanel(k, 'strength', d2, p, w); }; })(sKey, phase, wkIdx, new Date(day));
         body.appendChild(btn);
+      }
+
+      if (dow === 3) {
+        const cp = document.createElement('div');
+        cp.className = 'wk-event type-captains';
+        cp.innerHTML = "Captain's Practice" + '<span class="ev-time">🏟 6:30 – 8:00 PM · Downes</span>';
+        body.appendChild(cp);
       }
 
       if (dow === 6) {
