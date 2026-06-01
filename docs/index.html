@@ -540,6 +540,25 @@
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
+    /* ── NEWSLETTER ── */
+    .newsletter-wrap {
+      margin-top: 3rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .newsletter-inner {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+      align-items: start;
+      padding: 2.5rem;
+    }
+    .newsletter-form-wrap { flex-shrink: 0; }
+    @media (max-width: 768px) {
+      .newsletter-inner { grid-template-columns: 1fr; }
+    }
+
     /* ── FOOTER ── */
     footer {
       padding: 2.5rem 4rem;
@@ -1403,38 +1422,139 @@
   <section id="contact">
     <div class="section-label">Get in Touch</div>
     <h2 class="section-title">Contact</h2>
-    <p class="section-subtitle">Have a question about training, tryouts, or your development? Send a message and I'll get back to you.</p>
+    <p class="section-subtitle">Have a question about training, tryouts, or your development? Reach out directly or use the form — I'll get back to you soon.</p>
 
-    <div style="max-width:560px">
-      <div data-fs-success style="color:#1a4d28;font-weight:600;font-size:0.95rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px">
-        ✓ Message sent! I'll be in touch soon.
+    <div class="contact-wrap">
+
+      <!-- Direct contact info -->
+      <div class="contact-info">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem">
+          <div style="width:52px;height:52px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">⚽</div>
+          <div>
+            <div style="font-weight:700;font-size:1.05rem">Aideen Gill</div>
+            <div style="font-size:0.82rem;color:var(--mid);margin-top:0.1rem">Head Coach · BeforeTheWhistle</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-item">
+            <div class="icon">✉️</div>
+            <div class="text">
+              <strong>Email</strong>
+              <span><a href="mailto:aideengill88@gmail.com" style="color:var(--accent);text-decoration:none">aideengill88@gmail.com</a></span>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="icon">📱</div>
+            <div class="text">
+              <strong>Phone</strong>
+              <span>(000) 000-0000</span><!-- TODO: replace with your phone number -->
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="icon">📍</div>
+            <div class="text">
+              <strong>Primary Field</strong>
+              <span>Harry Downes Field, Wellesley</span>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;font-size:0.875rem;color:var(--mid);font-weight:300;line-height:1.7">Feel free to reach out directly by email or phone, or use the contact form and I'll respond within 24 hours.</p>
       </div>
-      <div data-fs-error style="color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
 
-      <form id="contact-form">
-        <div class="form-group">
-          <label for="cname">Name <span style="color:#c0392b">*</span></label>
-          <input type="text" id="cname" name="name" placeholder="Your name" data-fs-field required/>
-          <span data-fs-error="name" style="font-size:0.78rem;color:#c0392b"></span>
+      <!-- Contact form -->
+      <div>
+        <div data-fs-success style="color:#1a4d28;font-weight:600;font-size:0.95rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px">
+          ✓ Message sent! I'll be in touch soon.
         </div>
-        <div class="form-group">
-          <label for="cemail">Email Address <span style="color:#c0392b">*</span></label>
-          <input type="email" id="cemail" name="email" placeholder="your@email.com" data-fs-field required/>
-          <span data-fs-error="email" style="font-size:0.78rem;color:#c0392b"></span>
+        <div data-fs-error style="color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="cname">Name <span style="color:#c0392b">*</span></label>
+            <input type="text" id="cname" name="name" placeholder="Your name" data-fs-field required/>
+            <span data-fs-error="name" style="font-size:0.78rem;color:#c0392b"></span>
+          </div>
+          <div class="form-group">
+            <label for="cemail">Email Address <span style="color:#c0392b">*</span></label>
+            <input type="email" id="cemail" name="email" placeholder="your@email.com" data-fs-field required/>
+            <span data-fs-error="email" style="font-size:0.78rem;color:#c0392b"></span>
+          </div>
+          <div class="form-group">
+            <label for="cmessage">Message <span style="color:#c0392b">*</span></label>
+            <textarea id="cmessage" name="message" placeholder="Ask about training, your goals, tryout prep — anything on your mind..." style="min-height:130px" data-fs-field required></textarea>
+            <span data-fs-error="message" style="font-size:0.78rem;color:#c0392b"></span>
+          </div>
+          <button type="submit" class="btn" data-fs-submit-btn>Send Message →</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Email list signup -->
+    <div class="newsletter-wrap">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <div class="section-label" style="margin-bottom:0.5rem">Stay in the Loop</div>
+          <h3 style="font-family:var(--serif);font-size:1.4rem;letter-spacing:-0.01em;margin-bottom:0.5rem">Join the Training Update List</h3>
+          <p style="font-size:0.875rem;color:var(--mid);font-weight:300;line-height:1.7;max-width:42ch">Get session reminders, training notes, and schedule updates sent straight to your inbox.</p>
         </div>
-        <div class="form-group">
-          <label for="cmessage">Message <span style="color:#c0392b">*</span></label>
-          <textarea id="cmessage" name="message" placeholder="Ask about training, your goals, tryout prep — anything on your mind..." style="min-height:130px" data-fs-field required></textarea>
-          <span data-fs-error="message" style="font-size:0.78rem;color:#c0392b"></span>
+        <div class="newsletter-form-wrap">
+          <div id="nl-success" style="display:none;color:#1a4d28;font-weight:600;font-size:0.95rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px;margin-bottom:1rem">
+            ✓ You're on the list!
+          </div>
+          <div id="nl-error" style="display:none;color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
+          <form id="newsletter-form">
+            <div class="form-group" style="margin-bottom:0.75rem">
+              <label for="nl-name">Name <span style="color:#c0392b">*</span></label>
+              <input type="text" id="nl-name" name="name" placeholder="Your name" required/>
+            </div>
+            <div class="form-group" style="margin-bottom:1rem">
+              <label for="nl-email">Email Address <span style="color:#c0392b">*</span></label>
+              <input type="email" id="nl-email" name="email" placeholder="your@email.com" required/>
+            </div>
+            <button type="submit" class="btn" style="width:100%">Join the List →</button>
+          </form>
         </div>
-        <button type="submit" class="btn" data-fs-submit-btn>Send Message →</button>
-      </form>
+      </div>
     </div>
   </section>
 
   <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '#contact-form', formId: 'xwvzdord' });
+
+    // ── NEWSLETTER SIGNUP ──
+    // 1. Go to formspree.io → New Form → copy the form ID (e.g. "xabcdefg")
+    // 2. Replace the empty string below with that ID, then push to GitHub
+    var NEWSLETTER_FORM_ID = '';
+
+    (function() {
+      var form = document.getElementById('newsletter-form');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var successEl = document.getElementById('nl-success');
+        var errorEl   = document.getElementById('nl-error');
+        if (!NEWSLETTER_FORM_ID) {
+          errorEl.textContent = 'Newsletter signup not configured yet.';
+          errorEl.style.display = 'block';
+          return;
+        }
+        var data = new FormData(form);
+        fetch('https://formspree.io/f/' + NEWSLETTER_FORM_ID, {
+          method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+        }).then(function(res) {
+          if (res.ok) {
+            form.style.display = 'none';
+            successEl.style.display = 'block';
+          } else {
+            errorEl.textContent = 'Something went wrong — please try again.';
+            errorEl.style.display = 'block';
+          }
+        }).catch(function() {
+          errorEl.textContent = 'Could not connect — please try again.';
+          errorEl.style.display = 'block';
+        });
+      });
+    })();
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
@@ -1862,6 +1982,16 @@
         body.appendChild(el);
       }
 
+      if (CAMP_SESSIONS[ds]) {
+        const c     = CAMP_SESSIONS[ds];
+        const cKey  = 'camp-' + ds;
+        const btn   = document.createElement('button');
+        btn.className = 'wk-event type-camp';
+        btn.innerHTML = c.title + '<span class="ev-time">⛺ ' + c.time + '</span>';
+        btn.onclick = (function(k) { return function() { openPanel(k, 'camp'); }; })(cKey);
+        body.appendChild(btn);
+      }
+
       if (SESSIONS[ds]) {
         const s   = SESSIONS[ds];
         const cnt = (rsvpData[ds] || []).length;
@@ -1869,6 +1999,16 @@
         btn.className = 'wk-event type-technical';
         btn.innerHTML = s.title + '<span class="ev-time">⚽ ' + s.time + (cnt > 0 ? ' · ' + cnt + ' going' : '') + '</span>';
         btn.onclick = function() { openPanel(ds, 'technical'); };
+        body.appendChild(btn);
+      }
+
+      if (FITNESS_SESSIONS[ds]) {
+        const g    = FITNESS_SESSIONS[ds];
+        const gKey = 'grp-' + ds;
+        const btn  = document.createElement('button');
+        btn.className = 'wk-event type-fitness';
+        btn.innerHTML = g.title + '<span class="ev-time">🏃 ' + g.time + '</span>';
+        btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
         body.appendChild(btn);
       }
 
@@ -1890,26 +2030,6 @@
         rest.className = 'wk-rest-day';
         rest.textContent = '🛌 Rest Day';
         body.appendChild(rest);
-      }
-
-      if (FITNESS_SESSIONS[ds]) {
-        const g    = FITNESS_SESSIONS[ds];
-        const gKey = 'grp-' + ds;
-        const btn  = document.createElement('button');
-        btn.className = 'wk-event type-fitness';
-        btn.innerHTML = g.title + '<span class="ev-time">🏃 ' + g.time + '</span>';
-        btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
-        body.appendChild(btn);
-      }
-
-      if (CAMP_SESSIONS[ds]) {
-        const c     = CAMP_SESSIONS[ds];
-        const cKey  = 'camp-' + ds;
-        const btn   = document.createElement('button');
-        btn.className = 'wk-event type-camp';
-        btn.innerHTML = c.title + '<span class="ev-time">⛺ ' + c.time + '</span>';
-        btn.onclick = (function(k) { return function() { openPanel(k, 'camp'); }; })(cKey);
-        body.appendChild(btn);
       }
 
       col.appendChild(body);
