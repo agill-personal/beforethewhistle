@@ -153,6 +153,10 @@
     .tw-card-accent.focus-defending  { background: #3a3aab; }
     .tw-card-accent.focus-trapping   { background: #0a7aab; }
     .tw-card-accent.focus-scrimmage  { background: #7a2aab; }
+    .tw-card-accent.focus-first_touch { background: #0d9488; }
+    .tw-card-accent.focus-one_v_one   { background: #ea580c; }
+    .tw-card-accent.focus-crossing    { background: #db2777; }
+    .tw-card-accent.focus-finishing   { background: #c0392b; }
     .tw-card-content {
       flex: 1;
       padding: 1rem 1.1rem;
@@ -633,6 +637,10 @@
     .focus-defending    { background: #e8e8fd; color: #2a2a8b; }
     .focus-trapping     { background: #e8f5fd; color: #0a4a6b; }
     .focus-scrimmage    { background: #f3e8fd; color: #5a0a8b; }
+    .focus-first_touch  { background: #ccfbf1; color: #0d5c4d; }
+    .focus-one_v_one    { background: #ffedd5; color: #7c2d12; }
+    .focus-crossing     { background: #fce7f3; color: #831843; }
+    .focus-finishing    { background: #fde8e8; color: #8b1a1a; }
     .milestone-tag {
       display: block;
       font-size: 0.62rem;
@@ -1021,6 +1029,12 @@
     .wk-event.type-strength  { background: #fde8c8; color: #7a3f00; }
     .wk-event.type-fitness   { background: #dbeafe; color: #1d4ed8; }
     .wk-event.type-camp      { background: #f3e8ff; color: #5b1a8b; }
+    .wk-rest-day {
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--mid); text-align: center;
+      padding: 0.5rem 0.25rem; letter-spacing: 0.03em;
+      opacity: 0.75;
+    }
     .wk-event .ev-time { font-weight: 400; opacity: 0.75; font-size: 0.6rem; display: block; margin-top: 1px; }
     .wk-milestone {
       font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
@@ -1139,6 +1153,10 @@
     .focus-defending  { background: #ccceff; color: #15157a; }
     .focus-trapping   { background: #bde8ff; color: #07385c; }
     .focus-scrimmage  { background: #e0c8ff; color: #3d006b; }
+    .focus-first_touch { background: #ccfbf1; color: #0d5c4d; }
+    .focus-one_v_one   { background: #ffedd5; color: #7c2d12; }
+    .focus-crossing    { background: #fce7f3; color: #831843; }
+    .focus-finishing   { background: #fde8e8; color: #8b1a1a; }
 
     /* Tag chips match */
     .tag.fitness   { background: #ffd9a0; color: #5c2d00; }
@@ -1768,8 +1786,12 @@
   const DAYS_FULL    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const MONTHS       = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const FOCUS_LABELS = { dribbling:'Dribbling', passing:'Passing', shooting:'Shooting', defending:'Defending', trapping:'Trapping/Clearing', scrimmage:'Scrimmage' };
-  const STRENGTH_DAYS = [2, 4, 6]; // Tue, Thu, Sat
+  const FOCUS_LABELS = {
+    dribbling:'Dribbling', passing:'Passing', shooting:'Shooting',
+    defending:'Defending', trapping:'Trapping/Clearing', scrimmage:'Scrimmage',
+    first_touch:'First Touch', one_v_one:'1v1', crossing:'Crossing', finishing:'Finishing',
+  };
+  const STRENGTH_DAYS = [2, 4, 0]; // Tue, Thu, Sun (floater)
   var STRENGTH_SEASON_START = '2026-06-11';
 
   // ── STATE ──
@@ -1852,14 +1874,22 @@
 
       if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START) {
         const phase  = getPhaseForDate(day);
-        const wkIdx  = dow === 2 ? 0 : dow === 4 ? 1 : 2; // Tue=0, Thu=1, Sat=2
+        const wkIdx  = dow === 2 ? 0 : dow === 4 ? 1 : 2; // Tue=0, Thu=1, Sun=2
         const workout = WORKOUTS[phase][wkIdx];
         const sKey   = 'str-' + ds;
         const btn    = document.createElement('button');
         btn.className = 'wk-event type-strength';
-        btn.innerHTML = workout.title + '<span class="ev-time">💪 ' + workout.duration + '</span>';
+        const evLabel = dow === 0 ? 'Sat or Sun' : workout.duration;
+        btn.innerHTML = workout.title + '<span class="ev-time">💪 ' + evLabel + '</span>';
         btn.onclick = (function(k, p, w, d2) { return function() { openPanel(k, 'strength', d2, p, w); }; })(sKey, phase, wkIdx, new Date(day));
         body.appendChild(btn);
+      }
+
+      if (dow === 6) {
+        const rest = document.createElement('div');
+        rest.className = 'wk-rest-day';
+        rest.textContent = '🛌 Rest Day';
+        body.appendChild(rest);
       }
 
       if (FITNESS_SESSIONS[ds]) {
@@ -1916,11 +1946,16 @@
       document.getElementById('panelTitle').textContent = s.title;
       document.getElementById('panelMeta').innerHTML    =
         '<span class="focus-pill focus-' + s.focus + '">' + FOCUS_LABELS[s.focus] + '</span>' +
-        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + s.time + '</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + s.time + (s.end_time ? ' – ' + s.end_time : '') + '</span>' +
         '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + s.location + '</span>';
-      document.getElementById('panelPlan').innerHTML =
-        '<div class="plan-block"><h4>Warm-Up</h4><ul>'    + s.warmup.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>' +
-        '<div class="plan-block"><h4>Main Session</h4><ul>' + s.main.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
+      if (s.skills && s.skills.length) {
+        document.getElementById('panelPlan').innerHTML =
+          '<div class="plan-block"><h4>Skills</h4><ul>' + s.skills.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
+      } else {
+        document.getElementById('panelPlan').innerHTML =
+          '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (s.warmup||[]).map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>' +
+          '<div class="plan-block"><h4>Main Session</h4><ul>' + (s.main  ||[]).map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
+      }
       rsvpSec.style.display = 'block';
       renderRsvp();
     } else if (type === 'fitness') {
@@ -2127,11 +2162,10 @@
     var detailsDiv = document.createElement('div');
     detailsDiv.className = 'tw-card-details';
     detailsDiv.id = 'twdetails-' + ds;
-    detailsDiv.innerHTML =
-      '<div class="tw-plan-heading">Warm-Up</div>' +
-      '<ul>' + s.warmup.map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul>' +
-      '<div class="tw-plan-heading">Main Session</div>' +
-      '<ul>' + s.main.map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul>';
+    detailsDiv.innerHTML = (s.skills && s.skills.length)
+      ? '<div class="tw-plan-heading">Skills</div><ul>' + s.skills.map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul>'
+      : '<div class="tw-plan-heading">Warm-Up</div><ul>' + (s.warmup||[]).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul>' +
+        '<div class="tw-plan-heading">Main Session</div><ul>' + (s.main||[]).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul>';
     card.appendChild(detailsDiv);
     mainDiv.style.cursor = 'pointer';
     mainDiv.onclick = (function(d2, c) {
@@ -2248,13 +2282,13 @@
         focus:    row.focus    || 'passing',
         title:    row.title    || '',
         time:     row.time     || '5:00 PM',
+        end_time: row.end_time || '',
         location: row.location || 'Harry Downes Field',
+        skills:   (row.skills  || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
         warmup:   (row.warmup  || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
         main:     (row.main    || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
-        cooldown: [],
       };
     });
-    // Merge into SESSIONS (sheet overrides fallback)
     Object.assign(SESSIONS, newSessions);
   }
 
