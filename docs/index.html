@@ -1173,78 +1173,42 @@
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="section-label">Get Involved</div>
-    <h2 class="section-title">Sign Up & Contact</h2>
-    <p class="section-subtitle">Questions? Want to register? Reach out below and we'll get back to you quickly.</p>
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-subtitle">Have a question about training, tryouts, or your development? Send a message and I'll get back to you.</p>
 
-    <div class="contact-wrap">
-      <div class="contact-info">
-        <p>This summer program is open to players preparing for Fall high school soccer tryouts. Spots are limited — reach out early to confirm your place.</p>
-        <div class="contact-detail">
-          <div class="contact-detail-item">
-            <div class="icon">📍</div>
-            <div class="text">
-              <strong>Location</strong>
-              <span>Community Park — Field 3</span>
-            </div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="icon">📅</div>
-            <div class="text">
-              <strong>Season</strong>
-              <span>June 7 – August 30, 2025</span>
-            </div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="icon">📧</div>
-            <div class="text">
-              <strong>Email</strong>
-              <span>aideengill88@gmail.com</span>
-            </div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="icon">👥</div>
-            <div class="text">
-              <strong>Open To</strong>
-              <span>Girls 14–16 yrs preparing for Fall tryouts</span>
-            </div>
-          </div>
-        </div>
+    <div style="max-width:560px">
+      <div data-fs-success style="display:none;color:var(--accent);font-weight:600;font-size:0.95rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px">
+        ✓ Message sent! I'll be in touch soon.
       </div>
-      <div class="contact-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" placeholder="Jane"/>
-          </div>
-          <div class="form-group">
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" placeholder="Smith"/>
-          </div>
+      <div data-fs-error style="display:none;color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
+
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="cname">Name <span style="color:#c0392b">*</span></label>
+          <input type="text" id="cname" name="name" placeholder="Your name" data-fs-field required/>
+          <span data-fs-error="name" style="font-size:0.78rem;color:#c0392b"></span>
         </div>
         <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="jane@email.com"/>
+          <label for="cemail">Email Address <span style="color:#c0392b">*</span></label>
+          <input type="email" id="cemail" name="email" placeholder="your@email.com" data-fs-field required/>
+          <span data-fs-error="email" style="font-size:0.78rem;color:#c0392b"></span>
         </div>
         <div class="form-group">
-          <label for="position">Primary Position</label>
-          <select id="position">
-            <option value="">Select a position...</option>
-            <option>Forward</option>
-            <option>Midfielder</option>
-            <option>Defender</option>
-            <option>Goalkeeper</option>
-            <option>Not Sure Yet</option>
-          </select>
+          <label for="cmessage">Message <span style="color:#c0392b">*</span></label>
+          <textarea id="cmessage" name="message" placeholder="Ask about training, your goals, tryout prep — anything on your mind..." style="min-height:130px" data-fs-field required></textarea>
+          <span data-fs-error="message" style="font-size:0.78rem;color:#c0392b"></span>
         </div>
-        <div class="form-group">
-          <label for="message">Anything else you'd like us to know?</label>
-          <textarea id="message" placeholder="Questions, scheduling conflicts, experience level..."></textarea>
-        </div>
-        <button class="btn" onclick="handleSubmit()">Send Registration →</button>
-      </div>
+        <button type="submit" class="btn" data-fs-submit-btn>Send Message →</button>
+      </form>
     </div>
   </section>
+
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'xwvzdord' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
   <!-- FOOTER -->
   <footer></svg>
@@ -1275,16 +1239,6 @@
   </script>
 
   <script>
-    function handleSubmit() {
-      const fname = document.getElementById('fname').value.trim();
-      const email = document.getElementById('email').value.trim();
-      if (!fname || !email) {
-        alert('Please fill in your name and email before submitting.');
-        return;
-      }
-      alert(`Thanks, ${fname}! We've received your registration and will be in touch at ${email} soon.`);
-    }
-
     // Fade in sections on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1302,7 +1256,8 @@
   </script>
 
   <script>
-  // ── TECHNICAL CALENDAR ──
+  
+  // ── DATA ──
   const SESSIONS = {
     '2026-06-01': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
     '2026-06-02': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
@@ -1376,34 +1331,137 @@
     '2026-08-24': { label: '🏆 Tryouts Start', cls: 'tryouts' },
   };
 
-  // ── STRENGTH SESSIONS (Mon/Wed/Fri) ──
-  // Assign a phase based on date ranges
-  function getPhaseForDate(dateObj) {
-    const m = dateObj.getMonth(), d = dateObj.getDate();
-    // Phase 1: June 1 – June 27
-    if (m === 5 && d <= 27) return 0;
-    // Phase 2: June 28 – July 25
-    if ((m === 5 && d >= 28) || (m === 6 && d <= 25)) return 1;
-    // Phase 3: July 26 – Aug 22
-    if ((m === 6 && d >= 26) || (m === 7 && d <= 22)) return 2;
-    // Taper: Aug 23+
+  const PHASES = [
+    { label:'Phase 1', sub:'Jun 1 – Jun 27',  tag:'Foundation', desc:'Bodyweight and light load. Master movement patterns.' },
+    { label:'Phase 2', sub:'Jun 28 – Jul 25', tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
+    { label:'Phase 3', sub:'Jul 26 – Aug 22', tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
+    { label:'Taper',   sub:'Aug 23 – Aug 28', tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
+  ];
+
+  const WORKOUTS = {
+    0: [
+      { day:'Monday',    title:'Lower Body A',    duration:'45–50 min', exercises:[
+        { name:'Goblet Squat',          note:'Full depth, chest up',                  sets:'3 × 12' },
+        { name:'Romanian Deadlift',     note:'Slow eccentric, feel the stretch',      sets:'3 × 10' },
+        { name:'Reverse Lunge',         note:'Alternate legs, controlled',            sets:'3 × 10 ea' },
+        { name:'Glute Bridge',          note:'Pause 2 sec at top',                    sets:'3 × 15' },
+        { name:'Dead Bug',              note:'Lower back stays flat',                 sets:'3 × 10 ea' },
+        { name:'Plank Hold',            note:'Shoulders over wrists',                 sets:'3 × 30 sec' },
+      ]},
+      { day:'Wednesday', title:'Core & Stability', duration:'35–40 min', exercises:[
+        { name:'Single-Leg Glute Bridge', note:'Control the drop',                    sets:'3 × 12 ea' },
+        { name:'Side Plank',            note:"Hips stacked, don't sag",              sets:'3 × 25 sec ea' },
+        { name:'Bird Dog',              note:'Opposite arm + leg, slow',              sets:'3 × 10 ea' },
+        { name:'Pallof Press (Band)',   note:'Anti-rotation — no twisting',           sets:'3 × 10 ea' },
+        { name:'Lateral Band Walk',     note:'Stay low, knees soft',                  sets:'3 × 15 ea' },
+        { name:'Hollow Body Hold',      note:'Lower back pressed down',               sets:'3 × 20 sec' },
+      ]},
+      { day:'Friday',    title:'Lower Body B',    duration:'45–50 min', exercises:[
+        { name:'Bulgarian Split Squat', note:'Back foot elevated, drop straight down', sets:'3 × 8 ea' },
+        { name:'Sumo Squat',            note:'Wide stance, toes out',                 sets:'3 × 12' },
+        { name:'Nordic Hamstring Curl', note:'Partner holds feet or use bench',       sets:'3 × 6' },
+        { name:'Step-Up',               note:'Drive through the heel on top',         sets:'3 × 10 ea' },
+        { name:'Copenhagen Plank',      note:'Adductor challenge',                    sets:'3 × 20 sec ea' },
+        { name:'Russian Twist',         note:'Controlled rotation',                   sets:'3 × 15 ea' },
+      ]},
+    ],
+    1: [
+      { day:'Monday',    title:'Lower Body A+',  duration:'50–55 min', exercises:[
+        { name:'Barbell / DB Squat',    note:'Add weight from Phase 1 baseline',      sets:'4 × 8' },
+        { name:'Romanian Deadlift',     note:'Increase load 10–15%',                  sets:'4 × 8' },
+        { name:'Walking Lunge',         note:'Add dumbbells',                         sets:'3 × 12 ea' },
+        { name:'Box Jump',              note:'Land soft, absorb with hips',           sets:'3 × 6' },
+        { name:'Plank to Push-Up',      note:'Controlled transitions',                sets:'3 × 8 ea' },
+        { name:'Dead Bug + Reach',      note:'Slow and deliberate',                   sets:'3 × 10 ea' },
+      ]},
+      { day:'Wednesday', title:'Power & Core',   duration:'40–45 min', exercises:[
+        { name:'Broad Jump',            note:'Max effort, stick the landing',         sets:'4 × 4' },
+        { name:'Lateral Bound',         note:'Stick each landing before rebounding',  sets:'3 × 6 ea' },
+        { name:'Medicine Ball Slam',    note:'Full hip extension overhead',           sets:'3 × 8' },
+        { name:'Side Plank + Row',      note:'Resistance band, stay square',          sets:'3 × 10 ea' },
+        { name:'V-Up',                  note:'Keep legs straight',                    sets:'3 × 12' },
+        { name:'Pallof Press Variation',note:'Add half-kneeling position',            sets:'3 × 10 ea' },
+      ]},
+      { day:'Friday',    title:'Lower Body B+',  duration:'50–55 min', exercises:[
+        { name:'Bulgarian Split Squat (Weighted)', note:'Dumbbells or barbell',       sets:'4 × 6 ea' },
+        { name:'Trap Bar / DB Deadlift',note:'Drive floor away, hips and shoulders rise together', sets:'4 × 6' },
+        { name:'Lateral Squat',         note:'Sit back into one hip',                 sets:'3 × 10 ea' },
+        { name:'Depth Drop to Jump',    note:'Step off, absorb, explode',             sets:'3 × 5' },
+        { name:'Copenhagen Plank',      note:'Longer hold for progression',           sets:'3 × 25 sec ea' },
+        { name:'Hanging Knee Raise',    note:'Control the swing',                     sets:'3 × 12' },
+      ]},
+    ],
+    2: [
+      { day:'Monday',    title:'Peak Strength A', duration:'55–60 min', exercises:[
+        { name:'Back Squat / Heavy Goblet', note:'Work up to 5-rep challenge set',   sets:'5 × 5' },
+        { name:'Romanian Deadlift Heavy',   note:'Focus on hamstring tension',        sets:'4 × 6' },
+        { name:'Rear-Foot Elevated Split Squat', note:'Heaviest phase weight',        sets:'4 × 5 ea' },
+        { name:'Depth Jump to Sprint',      note:'Land, explode, sprint 10m',         sets:'4 × 4' },
+        { name:'Weighted Plank',            note:'Plate on back',                     sets:'3 × 40 sec' },
+        { name:'Rotational Med Ball Throw', note:'Explosive hip rotation',            sets:'3 × 8 ea' },
+      ]},
+      { day:'Wednesday', title:'Explosive Power', duration:'45–50 min', exercises:[
+        { name:'Triple Broad Jump',      note:'3 consecutive jumps, max distance',    sets:'4 × 3' },
+        { name:'Single-Leg Box Jump',    note:'Lead with strong leg first',           sets:'3 × 5 ea' },
+        { name:'Sprint 10m × 6',         note:'Full rest between, max effort',        sets:'6 × 10m' },
+        { name:'Med Ball Rotational Throw', note:'Drive from ground up',              sets:'4 × 6 ea' },
+        { name:'L-Sit Hold',             note:'Build to 3 × 15 sec',                 sets:'3 × 10 sec' },
+        { name:'Dragon Flag Progression',note:'Scaled as needed',                     sets:'3 × 6' },
+      ]},
+      { day:'Friday',    title:'Peak Strength B', duration:'55–60 min', exercises:[
+        { name:'Trap Bar Deadlift Heavy',note:'Max effort within solid form',         sets:'5 × 4' },
+        { name:'Lateral Squat (Weighted)',note:'Control the descent',                 sets:'4 × 6 ea' },
+        { name:'Nordic Hamstring Curl', note:'Eccentric focus — slow lower',          sets:'4 × 5' },
+        { name:'Single-Leg Landing Drill',note:'Drop from box, freeze on landing',   sets:'3 × 6 ea' },
+        { name:'Ab Wheel Rollout',       note:"Brace hard — don't let hips drop",     sets:'3 × 8' },
+        { name:'Copenhagen Plank + Hip Abduction', note:'Add top leg lift',          sets:'3 × 30 sec ea' },
+      ]},
+    ],
+    3: [
+      { day:'Monday',    title:'Maintenance A',   duration:'30–35 min', exercises:[
+        { name:'Goblet Squat',           note:'Moderate weight — move well',          sets:'2 × 8' },
+        { name:'Romanian Deadlift',      note:'Light, focus on feel',                 sets:'2 × 8' },
+        { name:'Glute Bridge',           note:'Activation only',                      sets:'2 × 12' },
+        { name:'Plank Hold',             note:'Quality over time',                    sets:'2 × 30 sec' },
+      ]},
+      { day:'Wednesday', title:'Activation & Power', duration:'25–30 min', exercises:[
+        { name:'Broad Jump',             note:'3 reps — feel the pop',                sets:'3 × 3' },
+        { name:'Lateral Bound',          note:'Light and snappy',                     sets:'3 × 4 ea' },
+        { name:'Side Plank',             note:'Short hold, sharp engagement',         sets:'2 × 20 sec ea' },
+        { name:'Sprint Strides 20m × 4',note:'75–80% effort — stay fluid',           sets:'4 × 20m' },
+      ]},
+      { day:'Friday',    title:'Feel Good Session', duration:'20–25 min', exercises:[
+        { name:'Bodyweight Squat',       note:'Fluid, full range',                    sets:'2 × 10' },
+        { name:'Single-Leg Glute Bridge',note:'Feel that activation',                 sets:'2 × 10 ea' },
+        { name:'Bird Dog',               note:'Control and breathe',                  sets:'2 × 8 ea' },
+        { name:'Light Jog + Dynamic Stretch', note:'Leave feeling loose and ready',  sets:'10 min' },
+      ]},
+    ],
+  };
+
+  // ── CONSTANTS ──
+  const DAYS_SHORT   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const DAYS_FULL    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTHS       = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const FOCUS_LABELS = { dribbling:'Dribbling', passing:'Passing', shooting:'Shooting', defending:'Defending', trapping:'Trapping/Clearing', scrimmage:'Scrimmage' };
+  const STRENGTH_DAYS = [1, 3, 5]; // Mon, Wed, Fri
+
+  // ── STATE ──
+  let rsvpData   = {};
+  let activeDate = null;
+  let activeType = null;
+
+  const today = new Date();
+
+  function getPhaseForDate(d) {
+    const m = d.getMonth(), day = d.getDate();
+    if (m === 5 && day <= 27) return 0;
+    if ((m === 5 && day >= 28) || (m === 6 && day <= 25)) return 1;
+    if ((m === 6 && day >= 26) || (m === 7 && day <= 22)) return 2;
     return 3;
   }
 
-  const STRENGTH_DAYS = [1, 3, 5]; // Mon, Wed, Fri
-
-  // ── CALENDAR STATE ──
-  const DAYS_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const DAYS_FULL  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const MONTHS     = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const FOCUS_LABELS = { dribbling:'Dribbling', passing:'Passing', shooting:'Shooting', defending:'Defending', trapping:'Trapping/Clearing', scrimmage:'Scrimmage' };
-
-  let rsvpData   = {};
-  let activeDate = null;
-  let activeType = null; // 'technical' | 'strength'
-
-  // Start of current week (Sunday)
   function getWeekStart(d) {
     const s = new Date(d);
     s.setDate(d.getDate() - d.getDay());
@@ -1411,153 +1469,125 @@
     return s;
   }
 
-  const today = new Date();
   let calWeekStart = getWeekStart(today);
 
-  function fmtDate(d) { return `${MONTHS_SHORT[d.getMonth()]} ${d.getDate()}`; }
-  function dateStr(d) {
-    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-  }
+  function fmtDate(d)  { return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate(); }
+  function toDateStr(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
+  // ── WEEK CALENDAR ──
   function buildWeekCalendar() {
     const wrap = document.getElementById('calWeekWrap');
+    if (!wrap) return;
     const ws = calWeekStart;
     const we = new Date(ws); we.setDate(ws.getDate() + 6);
-
-    // Update label
-    document.getElementById('wkLabel').textContent = `${fmtDate(ws)} – ${fmtDate(we)}`;
-
+    document.getElementById('wkLabel').textContent = fmtDate(ws) + ' – ' + fmtDate(we);
     wrap.innerHTML = '';
 
     for (let i = 0; i < 7; i++) {
-      const day = new Date(ws); day.setDate(ws.getDate() + i);
-      const ds  = dateStr(day);
+      const day  = new Date(ws); day.setDate(ws.getDate() + i);
+      const ds   = toDateStr(day);
       const isToday = day.toDateString() === today.toDateString();
-      const dow = day.getDay(); // 0=Sun
+      const dow  = day.getDay();
 
-      const col = document.createElement('div');
+      const col  = document.createElement('div');
       col.className = 'wk-day-col';
 
-      // Header
       const hdr = document.createElement('div');
       hdr.className = 'wk-day-header' + (isToday ? ' today-header' : '');
-      hdr.innerHTML = `<div>${DAYS_SHORT[dow]}</div><div>${day.getDate()}</div>`;
+      hdr.innerHTML = '<div>' + DAYS_SHORT[dow] + '</div><div>' + day.getDate() + '</div>';
       col.appendChild(hdr);
 
-      // Body
       const body = document.createElement('div');
       body.className = 'wk-day-body' + (isToday ? ' today-body' : '');
 
-      // Milestone?
       if (MILESTONES[ds]) {
-        const ms = document.createElement('div');
-        ms.className = 'wk-milestone' + (MILESTONES[ds].cls ? ' ' + MILESTONES[ds].cls : '');
-        ms.textContent = MILESTONES[ds].label;
-        body.appendChild(ms);
+        const el = document.createElement('div');
+        el.className = 'wk-milestone' + (MILESTONES[ds].cls ? ' ' + MILESTONES[ds].cls : '');
+        el.textContent = MILESTONES[ds].label;
+        body.appendChild(el);
       }
 
-      // Technical session?
       if (SESSIONS[ds]) {
-        const s = SESSIONS[ds];
+        const s   = SESSIONS[ds];
+        const cnt = (rsvpData[ds] || []).length;
         const btn = document.createElement('button');
-        btn.className = `wk-event type-technical`;
-        const rsvpCnt = (rsvpData[ds] || []).length;
-        btn.innerHTML = `${s.title}<span class="ev-time">⚽ ${s.time}${rsvpCnt > 0 ? ' · ' + rsvpCnt + ' going' : ''}</span>`;
-        btn.onclick = () => openPanel(ds, 'technical');
+        btn.className = 'wk-event type-technical';
+        btn.innerHTML = s.title + '<span class="ev-time">⚽ ' + s.time + (cnt > 0 ? ' · ' + cnt + ' going' : '') + '</span>';
+        btn.onclick = function() { openPanel(ds, 'technical'); };
         body.appendChild(btn);
       }
 
-      // Strength session? (Mon/Wed/Fri only)
       if (STRENGTH_DAYS.includes(dow)) {
-        const phase = getPhaseForDate(day);
-        // dow 1=Mon→idx0, 3=Wed→idx1, 5=Fri→idx2
-        const wkIdx = dow === 1 ? 0 : dow === 3 ? 1 : 2;
+        const phase  = getPhaseForDate(day);
+        const wkIdx  = dow === 1 ? 0 : dow === 3 ? 1 : 2;
         const workout = WORKOUTS[phase][wkIdx];
-        const sKey = `str-${ds}`;
-        const btn = document.createElement('button');
+        const sKey   = 'str-' + ds;
+        const btn    = document.createElement('button');
         btn.className = 'wk-event type-strength';
-        btn.innerHTML = `${workout.title}<span class="ev-time">💪 ${workout.duration}</span>`;
-        btn.onclick = () => openPanel(sKey, 'strength', day, phase, wkIdx);
+        btn.innerHTML = workout.title + '<span class="ev-time">💪 ' + workout.duration + '</span>';
+        btn.onclick = (function(k, p, w, d2) { return function() { openPanel(k, 'strength', d2, p, w); }; })(sKey, phase, wkIdx, new Date(day));
         body.appendChild(btn);
       }
 
       col.appendChild(body);
       wrap.appendChild(col);
     }
-
-    // Close panel when navigating
     closePanel();
   }
 
-  function calPrevWeek() {
-    calWeekStart.setDate(calWeekStart.getDate() - 7);
-    buildWeekCalendar();
-  }
-  function calNextWeek() {
-    calWeekStart.setDate(calWeekStart.getDate() + 7);
-    buildWeekCalendar();
-  }
+  function calPrevWeek() { calWeekStart.setDate(calWeekStart.getDate() - 7); buildWeekCalendar(); }
+  function calNextWeek() { calWeekStart.setDate(calWeekStart.getDate() + 7); buildWeekCalendar(); }
 
-  // ── PANEL ──
+  // ── DETAIL PANEL ──
   function openPanel(key, type, dayObj, phase, wkIdx) {
     activeDate = key;
     activeType = type;
-
-    const panel = document.getElementById('dayPanel');
-    const rsvpSection = document.getElementById('panelRsvpSection');
+    const panel      = document.getElementById('dayPanel');
+    const rsvpSec    = document.getElementById('panelRsvpSection');
+    if (!panel) return;
 
     if (type === 'technical') {
-      const ds = key;
-      const s  = SESSIONS[ds];
-      const [y, mo, d] = ds.split('-');
-      const dateObj = new Date(+y, +mo-1, +d);
-      document.getElementById('panelDate').textContent =
-        `${DAYS_FULL[dateObj.getDay()]}, ${MONTHS[+mo-1]} ${+d}, ${y}`;
+      const s  = SESSIONS[key];
+      const parts = key.split('-');
+      const y = +parts[0], mo = +parts[1], d = +parts[2];
+      const dateObj2 = new Date(y, mo-1, d);
+      document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
       document.getElementById('panelTitle').textContent = s.title;
-      document.getElementById('panelMeta').innerHTML =
-        `<span class="focus-pill focus-${s.focus}">${FOCUS_LABELS[s.focus]}</span>
-         <span style="font-size:0.8rem;color:var(--mid)">⏰ ${s.time}</span>
-         <span style="font-size:0.8rem;color:var(--mid)">📍 ${s.location}</span>`;
-      document.getElementById('panelPlan').innerHTML = `
-        <div class="plan-block"><h4>Warm-Up</h4><ul>${s.warmup.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-        <div class="plan-block"><h4>Main Session</h4><ul>${s.main.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-        <div class="plan-block"><h4>Cool-Down</h4><ul>${s.cooldown.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
-      rsvpSection.style.display = 'block';
+      document.getElementById('panelMeta').innerHTML    =
+        '<span class="focus-pill focus-' + s.focus + '">' + FOCUS_LABELS[s.focus] + '</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + s.time + ' – 6:30 PM</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + s.location + '</span>';
+      document.getElementById('panelPlan').innerHTML =
+        '<div class="plan-block"><h4>Warm-Up</h4><ul>'    + s.warmup.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>' +
+        '<div class="plan-block"><h4>Main Session</h4><ul>' + s.main.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>' +
+        '<div class="plan-block"><h4>Cool-Down</h4><ul>'  + s.cooldown.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
+      rsvpSec.style.display = 'block';
       renderRsvp();
-
     } else {
-      // Strength
-      const workout = WORKOUTS[phase][wkIdx];
+      const workout   = WORKOUTS[phase][wkIdx];
       const phaseInfo = PHASES[phase];
-      document.getElementById('panelDate').textContent =
-        `${DAYS_FULL[dayObj.getDay()]}, ${MONTHS[dayObj.getMonth()]} ${dayObj.getDate()}, ${dayObj.getFullYear()}`;
+      document.getElementById('panelDate').textContent  = DAYS_FULL[dayObj.getDay()] + ', ' + MONTHS[dayObj.getMonth()] + ' ' + dayObj.getDate() + ', ' + dayObj.getFullYear();
       document.getElementById('panelTitle').textContent = workout.title;
-      document.getElementById('panelMeta').innerHTML =
-        `<span class="tag fitness" style="font-size:0.72rem;padding:0.2rem 0.6rem">💪 Strength</span>
-         <span style="font-size:0.8rem;color:var(--mid)">⏱ ${workout.duration}</span>
-         <span style="font-size:0.8rem;color:var(--mid);font-style:italic">${phaseInfo.label}: ${phaseInfo.tag}</span>`;
-      document.getElementById('panelPlan').innerHTML = `
-        <div class="plan-block">
-          <h4>Exercises</h4>
-          <ul style="gap:0.6rem">
-            ${workout.exercises.map(e => `
-              <li style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem">
-                <div>
-                  <div style="font-size:0.85rem;font-weight:600">${e.name}</div>
-                  <div style="font-size:0.72rem;color:var(--mid)">${e.note}</div>
-                </div>
-                <span class="ex-sets" style="flex-shrink:0">${e.sets}</span>
-              </li>`).join('')}
-          </ul>
-        </div>`;
-      rsvpSection.style.display = 'none';
+      document.getElementById('panelMeta').innerHTML    =
+        '<span class="tag fitness" style="font-size:0.72rem;padding:0.2rem 0.6rem">💪 Strength</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid)">⏱ ' + workout.duration + '</span>' +
+        '<span style="font-size:0.8rem;color:var(--mid);font-style:italic">' + phaseInfo.label + ': ' + phaseInfo.tag + '</span>';
+      document.getElementById('panelPlan').innerHTML =
+        '<div class="plan-block"><h4>Exercises</h4><ul style="gap:0.6rem">' +
+        workout.exercises.map(function(e) {
+          return '<li style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem">' +
+            '<div><div style="font-size:0.85rem;font-weight:600">' + e.name + '</div>' +
+            '<div style="font-size:0.72rem;color:var(--mid)">' + e.note + '</div></div>' +
+            '<span class="ex-sets" style="flex-shrink:0">' + e.sets + '</span></li>';
+        }).join('') + '</ul></div>';
+      rsvpSec.style.display = 'none';
     }
-
     panel.style.display = 'block';
   }
 
   function closePanel() {
-    document.getElementById('dayPanel').style.display = 'none';
+    var panel = document.getElementById('dayPanel');
+    if (panel) panel.style.display = 'none';
     activeDate = null;
     activeType = null;
   }
@@ -1566,117 +1596,202 @@
     if (activeType !== 'technical') return;
     const names = rsvpData[activeDate] || [];
     const list  = document.getElementById('rsvpList');
+    if (!list) return;
     list.innerHTML = names.length === 0
       ? '<span class="rsvp-empty">No one yet — be the first!</span>'
-      : names.map((n,i) => `<div class="rsvp-name"><span>${n}</span><button class="remove" onclick="removeRsvp(${i})">✕</button></div>`).join('');
+      : names.map(function(n,i){ return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="removeRsvp('+i+')">✕</button></div>'; }).join('');
   }
 
   function addRsvp() {
     if (activeType !== 'technical') return;
-    const input = document.getElementById('rsvpInput');
-    const name  = input.value.trim();
+    var input = document.getElementById('rsvpInput');
+    var name  = input.value.trim();
     if (!name) return;
     if (!rsvpData[activeDate]) rsvpData[activeDate] = [];
     if (!rsvpData[activeDate].includes(name)) rsvpData[activeDate].push(name);
     input.value = '';
     renderRsvp();
-    buildWeekCalendar(); // refresh counts
-    openPanel(activeDate, 'technical'); // keep panel open
+    var savedDate = activeDate;
+    buildWeekCalendar();
+    openPanel(savedDate, 'technical');
   }
 
   function removeRsvp(idx) {
     rsvpData[activeDate].splice(idx, 1);
+    var savedDate = activeDate;
     renderRsvp();
     buildWeekCalendar();
-    openPanel(activeDate, 'technical');
+    openPanel(savedDate, 'technical');
   }
 
   buildWeekCalendar();
 
+  // ── STRENGTH SECTION TABS (still used by Strength Plan section) ──
+  var activePhase = 0;
+  function renderTabs() {
+    var tabs = document.getElementById('weekTabs');
+    if (!tabs) return;
+    tabs.innerHTML = PHASES.map(function(p,i){
+      return '<div class="week-tab '+(i===activePhase?'active':'')+'" onclick="setPhase('+i+')">'+p.label+' <span style="font-weight:300;opacity:0.7">— '+p.tag+'</span></div>';
+    }).join('');
+  }
+  function renderWorkouts() {
+    var container = document.getElementById('workoutDays');
+    if (!container) return;
+    var days  = WORKOUTS[activePhase];
+    var phase = PHASES[activePhase];
+    container.innerHTML =
+      '<div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;"><strong style="color:var(--black)">'+phase.label+': '+phase.sub+'</strong> — '+phase.desc+'</div>' +
+      days.map(function(w){
+        return '<div class="workout-card">' +
+          '<div class="workout-card-header"><div class="day-label">'+w.day+'</div><h3>'+w.title+'</h3><div class="duration">⏱ '+w.duration+'</div></div>' +
+          '<ul class="exercise-list">' +
+          w.exercises.map(function(e){
+            return '<li class="exercise-item"><div><div class="ex-name">'+e.name+'</div><div class="ex-note">'+e.note+'</div></div><span class="ex-sets">'+e.sets+'</span></li>';
+          }).join('') +
+          '</ul></div>';
+      }).join('');
+  }
+  function setPhase(i) { activePhase = i; renderTabs(); renderWorkouts(); }
+  renderTabs();
+  renderWorkouts();
+
   // ── NEXT SESSION ──
   (function buildNextSession() {
-    const container = document.getElementById('twCards');
-    const rangeEl   = document.getElementById('twWeekRange');
+    var container = document.getElementById('twCards');
+    var rangeEl   = document.getElementById('twWeekRange');
+    if (!container) return;
 
-    // Find the next upcoming session (today or future)
-    const todayStr = dateStr(today);
-    const upcoming = Object.entries(SESSIONS)
-      .filter(([ds]) => ds >= todayStr)
-      .sort(([a],[b]) => a.localeCompare(b));
+    var todayStr = toDateStr(today);
+    var upcoming = Object.entries(SESSIONS)
+      .filter(function(e){ return e[0] >= todayStr; })
+      .sort(function(a,b){ return a[0].localeCompare(b[0]); });
 
     if (upcoming.length === 0) {
-      rangeEl.textContent = '';
-      container.innerHTML = `<div class="tw-empty"><div class="emoji">🏆</div><p>Season complete — great work this summer!</p></div>`;
+      if (rangeEl) rangeEl.textContent = '';
+      container.innerHTML = '<div class="tw-empty"><div class="emoji">🏆</div><p>Season complete — great work this summer!</p></div>';
       return;
     }
 
-    const [ds, s] = upcoming[0];
-    const [y, mo, d] = ds.split('-').map(Number);
-    const sessionDate = new Date(y, mo-1, d);
-    const isToday = sessionDate.toDateString() === today.toDateString();
-    const isTomorrow = (() => { const t = new Date(today); t.setDate(t.getDate()+1); return sessionDate.toDateString() === t.toDateString(); })();
+    var entry = upcoming[0];
+    var ds    = entry[0];
+    var s     = entry[1];
+    var parts = ds.split('-').map(Number);
+    var y = parts[0], mo = parts[1], d = parts[2];
+    var sessionDate = new Date(y, mo-1, d);
+    var isToday    = sessionDate.toDateString() === today.toDateString();
+    var tom        = new Date(today); tom.setDate(today.getDate()+1);
+    var isTomorrow = sessionDate.toDateString() === tom.toDateString();
 
-    const dayLabel = isToday ? '⚡ Today' : isTomorrow ? 'Tomorrow' : DAYS_FULL[sessionDate.getDay()];
-    rangeEl.textContent = `${MONTHS_SHORT[mo-1]} ${d}`;
+    var dayLabel = isToday ? '⚡ Today' : isTomorrow ? 'Tomorrow' : DAYS_FULL[sessionDate.getDay()];
+    if (rangeEl) rangeEl.textContent = MONTHS_SHORT[mo-1] + ' ' + d;
 
-    const names    = rsvpData[ds] || [];
-    const initials = names.slice(0,4).map(n=>n.trim().split(' ').map(p=>p[0]).join('').toUpperCase().slice(0,2));
+    var names    = rsvpData[ds] || [];
+    var initials = names.slice(0,4).map(function(n){ return n.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
 
-    container.innerHTML = `
-      <div class="tw-card" id="twcard-${ds}">
-        <div class="tw-card-main">
-          <div class="tw-card-accent focus-${s.focus}"></div>
-          <div class="tw-card-content">
-            <div class="tw-card-top">
-              <span class="tw-date-day ${isToday ? 'today' : ''}">${dayLabel} — ${DAYS_FULL[sessionDate.getDay()]}, ${MONTHS_SHORT[mo-1]} ${d}</span>
-              <span class="focus-pill focus-${s.focus}" style="font-size:0.62rem">${FOCUS_LABELS[s.focus]}</span>
-            </div>
-            <h3>${s.title}</h3>
-            <div class="tw-card-meta">
-              <span>🕔 ${s.time} – 6:30 PM</span>
-              <span>📍 ${s.location}</span>
-            </div>
-          </div>
-        </div>
-        <div class="tw-rsvp-row">
-          <div class="tw-rsvp-avatars" id="twav-${ds}">
-            ${initials.map(i=>`<div class="tw-avatar">${i}</div>`).join('')}
-          </div>
-          <span class="tw-rsvp-label" id="twlabel-${ds}">${names.length === 0 ? 'No RSVPs yet' : names.length + ' going'}</span>
-          <button class="tw-rsvp-btn" onclick="twToggleRsvp('${ds}')">+ RSVP</button>
-        </div>
-        <div class="tw-rsvp-inline" id="twinline-${ds}">
-          <div class="rsvp-input-row">
-            <input type="text" id="twinput-${ds}" placeholder="Your name..." maxlength="40"
-              onkeydown="if(event.key==='Enter') twAddRsvp('${ds}')"/>
-            <button onclick="twAddRsvp('${ds}')">+ RSVP</button>
-          </div>
-        </div>
-      </div>`;
+    var card = document.createElement('div');
+    card.className = 'tw-card';
+    card.id = 'twcard-' + ds;
+
+    var mainDiv = document.createElement('div');
+    mainDiv.className = 'tw-card-main';
+    var accentDiv = document.createElement('div');
+    accentDiv.className = 'tw-card-accent focus-' + s.focus;
+    mainDiv.appendChild(accentDiv);
+    var contentDiv = document.createElement('div');
+    contentDiv.className = 'tw-card-content';
+    var topDiv = document.createElement('div');
+    topDiv.className = 'tw-card-top';
+    var dateSpan = document.createElement('span');
+    dateSpan.className = 'tw-date-day' + (isToday ? ' today' : '');
+    dateSpan.textContent = dayLabel + ' — ' + DAYS_FULL[sessionDate.getDay()] + ', ' + MONTHS_SHORT[mo-1] + ' ' + d;
+    var focusSpan = document.createElement('span');
+    focusSpan.className = 'focus-pill focus-' + s.focus;
+    focusSpan.style.fontSize = '0.62rem';
+    focusSpan.textContent = FOCUS_LABELS[s.focus];
+    topDiv.appendChild(dateSpan);
+    topDiv.appendChild(focusSpan);
+    var titleEl = document.createElement('h3');
+    titleEl.textContent = s.title;
+    var metaDiv = document.createElement('div');
+    metaDiv.className = 'tw-card-meta';
+    var sp1 = document.createElement('span'); sp1.textContent = s.time + ' – 6:30 PM';
+    var sp2 = document.createElement('span'); sp2.textContent = s.location;
+    metaDiv.appendChild(sp1); metaDiv.appendChild(sp2);
+    contentDiv.appendChild(topDiv);
+    contentDiv.appendChild(titleEl);
+    contentDiv.appendChild(metaDiv);
+    mainDiv.appendChild(contentDiv);
+    card.appendChild(mainDiv);
+
+    var rsvpRow = document.createElement('div');
+    rsvpRow.className = 'tw-rsvp-row';
+    var avatarsDiv = document.createElement('div');
+    avatarsDiv.className = 'tw-rsvp-avatars';
+    avatarsDiv.id = 'twav-' + ds;
+    initials.forEach(function(ini) {
+      var av = document.createElement('div'); av.className = 'tw-avatar'; av.textContent = ini;
+      avatarsDiv.appendChild(av);
+    });
+    var labelSpan = document.createElement('span');
+    labelSpan.className = 'tw-rsvp-label';
+    labelSpan.id = 'twlabel-' + ds;
+    labelSpan.textContent = names.length === 0 ? 'No RSVPs yet' : names.length + ' going';
+    var rBtn = document.createElement('button');
+    rBtn.className = 'tw-rsvp-btn';
+    rBtn.textContent = '+ RSVP';
+    rBtn.onclick = (function(d2) { return function() { twToggleRsvp(d2); }; })(ds);
+    rsvpRow.appendChild(avatarsDiv);
+    rsvpRow.appendChild(labelSpan);
+    rsvpRow.appendChild(rBtn);
+    card.appendChild(rsvpRow);
+
+    var inlineDiv = document.createElement('div');
+    inlineDiv.className = 'tw-rsvp-inline';
+    inlineDiv.id = 'twinline-' + ds;
+    var inputRow = document.createElement('div');
+    inputRow.className = 'rsvp-input-row';
+    var nameInput = document.createElement('input');
+    nameInput.type = 'text'; nameInput.id = 'twinput-' + ds;
+    nameInput.placeholder = 'Your name...'; nameInput.maxLength = 40;
+    nameInput.onkeydown = (function(d2) { return function(e) { if (e.key === 'Enter') twAddRsvp(d2); }; })(ds);
+    var aBtn = document.createElement('button');
+    aBtn.textContent = '+ RSVP';
+    aBtn.onclick = (function(d2) { return function() { twAddRsvp(d2); }; })(ds);
+    inputRow.appendChild(nameInput); inputRow.appendChild(aBtn);
+    inlineDiv.appendChild(inputRow);
+    card.appendChild(inlineDiv);
+    container.appendChild(card);
   })();
 
   function twToggleRsvp(ds) {
-    const el = document.getElementById(`twinline-${ds}`);
+    var el = document.getElementById('twinline-'+ds);
+    if (!el) return;
     el.classList.toggle('open');
-    if (el.classList.contains('open')) setTimeout(()=>document.getElementById(`twinput-${ds}`)?.focus(), 50);
+    if (el.classList.contains('open')) {
+      setTimeout(function(){ var inp = document.getElementById('twinput-'+ds); if(inp) inp.focus(); }, 50);
+    }
   }
 
   function twAddRsvp(ds) {
-    const input = document.getElementById(`twinput-${ds}`);
-    const name  = input.value.trim();
+    var input = document.getElementById('twinput-'+ds);
+    if (!input) return;
+    var name = input.value.trim();
     if (!name) return;
     if (!rsvpData[ds]) rsvpData[ds] = [];
     if (!rsvpData[ds].includes(name)) rsvpData[ds].push(name);
     input.value = '';
-    const names    = rsvpData[ds];
-    const initials = names.slice(0,4).map(n=>n.trim().split(' ').map(p=>p[0]).join('').toUpperCase().slice(0,2));
-    const avEl = document.getElementById(`twav-${ds}`);
-    const lbEl = document.getElementById(`twlabel-${ds}`);
-    if (avEl) avEl.innerHTML = initials.map(i=>`<div class="tw-avatar">${i}</div>`).join('');
-    if (lbEl) lbEl.textContent = `${names.length} going`;
-    document.getElementById(`twinline-${ds}`).classList.remove('open');
+    var names    = rsvpData[ds];
+    var initials = names.slice(0,4).map(function(n){ return n.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
+    var avEl = document.getElementById('twav-'+ds);
+    var lbEl = document.getElementById('twlabel-'+ds);
+    if (avEl) avEl.innerHTML = initials.map(function(i){ return '<div class="tw-avatar">'+i+'</div>'; }).join('');
+    if (lbEl) lbEl.textContent = names.length + ' going';
+    var inlineEl = document.getElementById('twinline-'+ds);
+    if (inlineEl) inlineEl.classList.remove('open');
     if (activeDate === ds) renderRsvp();
   }
+  
   </script>
 
 
