@@ -979,6 +979,7 @@
       display: flex; align-items: center; justify-content: center;
     }
     .wk-arrow:hover { background: var(--accent-light); border-color: var(--accent); }
+    .wk-arrow:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
     .wk-label {
       font-size: 0.85rem; font-weight: 600;
       letter-spacing: 0.04em; color: var(--black);
@@ -1192,9 +1193,9 @@
 
     <!-- Week nav -->
     <div class="wk-nav">
-      <button class="wk-arrow" onclick="calPrevWeek()">&#8592;</button>
+      <button class="wk-arrow" id="wkPrev" onclick="calPrevWeek()">&#8592;</button>
       <span class="wk-label" id="wkLabel"></span>
-      <button class="wk-arrow" onclick="calNextWeek()">&#8594;</button>
+      <button class="wk-arrow" id="wkNext" onclick="calNextWeek()">&#8594;</button>
     </div>
 
     <div class="cal-week-wrap" id="calWeekWrap">
@@ -1700,6 +1701,8 @@
     return s;
   }
 
+  const calMinWeekStart = getWeekStart(new Date(2026, 5, 1));  // week of Jun 1
+  const calMaxWeekStart = getWeekStart(new Date(2026, 7, 28)); // week of Aug 28
   let calWeekStart = getWeekStart(today);
 
   function fmtDate(d)  { return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate(); }
@@ -1712,6 +1715,10 @@
     const ws = calWeekStart;
     const we = new Date(ws); we.setDate(ws.getDate() + 6);
     document.getElementById('wkLabel').textContent = fmtDate(ws) + ' – ' + fmtDate(we);
+    var prevBtn = document.getElementById('wkPrev');
+    var nextBtn = document.getElementById('wkNext');
+    if (prevBtn) prevBtn.disabled = ws.getTime() <= calMinWeekStart.getTime();
+    if (nextBtn) nextBtn.disabled = ws.getTime() >= calMaxWeekStart.getTime();
     wrap.innerHTML = '';
 
     for (let i = 0; i < 7; i++) {
@@ -1776,8 +1783,16 @@
     closePanel();
   }
 
-  function calPrevWeek() { calWeekStart.setDate(calWeekStart.getDate() - 7); buildWeekCalendar(); }
-  function calNextWeek() { calWeekStart.setDate(calWeekStart.getDate() + 7); buildWeekCalendar(); }
+  function calPrevWeek() {
+    var prev = new Date(calWeekStart);
+    prev.setDate(prev.getDate() - 7);
+    if (prev.getTime() >= calMinWeekStart.getTime()) { calWeekStart = prev; buildWeekCalendar(); }
+  }
+  function calNextWeek() {
+    var next = new Date(calWeekStart);
+    next.setDate(next.getDate() + 7);
+    if (next.getTime() <= calMaxWeekStart.getTime()) { calWeekStart = next; buildWeekCalendar(); }
+  }
 
   // ── DETAIL PANEL ──
   function openPanel(key, type, dayObj, phase, wkIdx) {
