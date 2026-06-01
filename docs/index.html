@@ -1,31 +1,1570 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Before the Whistle</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="assets/js/main.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Strong & Ready — Summer Soccer Training</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111111;
+      --white: #fafaf8;
+      --off-white: #f2f1ee;
+      --accent: #2e6b3e;
+      --accent-light: #d6ead9;
+      --mid: #6b6b6b;
+      --border: #dddbd6;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 5rem 4rem;
+      gap: 3rem;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--mid);
+      max-width: 38ch;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn:hover { background: #1f4e2c; transform: translateY(-1px); }
+    .hero-stat-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-self: center;
+    }
+    .stat-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      border-radius: 4px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .stat-card:nth-child(2) { animation-delay: 0.1s; }
+    .stat-card:nth-child(3) { animation-delay: 0.2s; }
+    .stat-card:nth-child(4) { animation-delay: 0.3s; }
+    .stat-card .number {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-card .label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--mid);
+      font-weight: 300;
+      font-size: 1rem;
+      max-width: 55ch;
+      margin-bottom: 3rem;
+    }
+
+    /* ── SCHEDULE ── */
+    .schedule-grid {
+      display: grid;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 110px 140px 1fr 160px;
+      align-items: center;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-row:hover { background: var(--off-white); }
+    .schedule-row.header {
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .schedule-row .date { font-weight: 600; font-size: 0.9rem; }
+    .schedule-row .time { font-size: 0.85rem; color: var(--mid); }
+    .schedule-row .session { font-size: 0.9rem; }
+    .schedule-row .session strong { font-weight: 600; display: block; }
+    .schedule-row .session span { font-size: 0.8rem; color: var(--mid); }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .tag.fitness { background: #fef3cd; color: #7a5800; }
+    .tag.technical { background: var(--accent-light); color: var(--accent); }
+    .tag.scrimmage { background: #fde8e8; color: #8b1a1a; }
+    .tag.mental { background: #e8e8fd; color: #2a2a8b; }
+
+    /* ── DRILLS ── */
+    .drills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .drill-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .drill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+    .drill-card-top {
+      background: var(--off-white);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .drill-icon {
+      width: 44px; height: 44px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .drill-card-top h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
+    .drill-card-top .drill-meta { font-size: 0.75rem; color: var(--mid); margin-top: 0.2rem; }
+    .drill-card-body { padding: 1.2rem 1.5rem; }
+    .drill-card-body p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+    .drill-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+    .drill-link:hover { text-decoration: underline; }
+
+    /* ── NUTRITION ── */
+    .nutrition-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .nutrition-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+    .nutrition-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .nutrition-card .sub {
+      font-size: 0.8rem;
+      color: var(--mid);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .nutrition-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .nutrition-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .nutrition-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .nutrition-tip {
+      margin-top: 2rem;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.875rem;
+      color: #1a4226;
+    }
+    .nutrition-tip strong { display: block; margin-bottom: 0.2rem; font-weight: 600; }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info p { font-size: 0.95rem; color: var(--mid); margin-bottom: 2rem; font-weight: 300; }
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-detail-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .contact-detail-item .icon {
+      width: 36px; height: 36px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-item .text strong { display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--mid); }
+    .contact-detail-item .text span { font-size: 0.9rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+    .form-group label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--mid); }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      background: var(--white);
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+    footer .footer-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--black);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    /* ── TECHNICAL CALENDAR ── */
+    .cal-wrap {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 2rem;
+      align-items: start;
+    }
+    .cal-wrap.panel-closed { grid-template-columns: 1fr; }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .cal-header-cell {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.6rem 0.25rem;
+    }
+    .cal-month-banner {
+      grid-column: 1 / -1;
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .cal-cell {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      min-height: 90px;
+      padding: 0.5rem;
+      background: var(--white);
+      cursor: default;
+      transition: background 0.15s;
+      position: relative;
+    }
+    .cal-cell:nth-child(7n) { border-right: none; }
+    .cal-cell.empty { background: var(--off-white); cursor: default; }
+    .cal-cell.has-session { cursor: pointer; }
+    .cal-cell.has-session:hover { background: #edf5ef; }
+    .cal-cell.active { background: var(--accent-light); border-color: var(--accent); }
+    .cal-cell .day-num {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--mid);
+      margin-bottom: 0.3rem;
+    }
+    .cal-cell.has-session .day-num { color: var(--black); }
+    .focus-pill {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.45rem;
+      border-radius: 2px;
+      margin-top: 0.2rem;
+    }
+    .focus-dribbling    { background: #fde8c8; color: #7a3f00; }
+    .focus-passing      { background: var(--accent-light); color: var(--accent); }
+    .focus-shooting     { background: #fde8e8; color: #8b1a1a; }
+    .focus-defending    { background: #e8e8fd; color: #2a2a8b; }
+    .focus-trapping     { background: #e8f5fd; color: #0a4a6b; }
+    .focus-scrimmage    { background: #f3e8fd; color: #5a0a8b; }
+    .milestone-tag {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--accent);
+      border-radius: 2px;
+      padding: 0.15rem 0.4rem;
+      margin-top: 0.3rem;
+    }
+    .milestone-tag.tryouts { background: #8b1a1a; }
+    .rsvp-count {
+      position: absolute;
+      bottom: 0.4rem; right: 0.5rem;
+      font-size: 0.65rem;
+      color: var(--mid);
+      font-weight: 500;
+    }
+
+    /* Side Panel */
+    .day-panel {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: sticky;
+      top: 76px;
+    }
+    .day-panel-header {
+      background: var(--black);
+      color: var(--white);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .day-panel-header h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+    .day-panel-header .close-btn {
+      background: none; border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.2rem; cursor: pointer;
+      line-height: 1; padding: 0;
+      transition: color 0.15s;
+    }
+    .day-panel-header .close-btn:hover { color: #fff; }
+    .day-panel-body { padding: 1.25rem 1.5rem; }
+    .day-panel-meta {
+      display: flex; gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .plan-block { margin-bottom: 1.25rem; }
+    .plan-block h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .plan-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .plan-block ul li {
+      font-size: 0.85rem;
+      display: flex; gap: 0.5rem; align-items: flex-start;
+    }
+    .plan-block ul li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    .rsvp-section { border-top: 1px solid var(--border); padding-top: 1.25rem; margin-top: 0.5rem; }
+    .rsvp-section h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.75rem;
+    }
+    .rsvp-list {
+      display: flex; flex-direction: column; gap: 0.4rem;
+      margin-bottom: 0.75rem;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+    .rsvp-name {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--off-white);
+      border-radius: 2px;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.82rem;
+    }
+    .rsvp-name .remove {
+      background: none; border: none;
+      color: var(--mid); cursor: pointer;
+      font-size: 0.75rem; padding: 0;
+      transition: color 0.15s;
+    }
+    .rsvp-name .remove:hover { color: #c0392b; }
+    .rsvp-input-row { display: flex; gap: 0.5rem; }
+    .rsvp-input-row input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.55rem 0.75rem;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .rsvp-input-row input:focus { border-color: var(--accent); }
+    .rsvp-input-row button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      padding: 0.55rem 0.9rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .rsvp-input-row button:hover { background: #1f4e2c; }
+    .rsvp-empty { font-size: 0.8rem; color: var(--mid); font-style: italic; }
+
+    /* ── STRENGTH PLAN ── */
+    .strength-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .strength-intro p { font-size: 0.95rem; color: var(--mid); font-weight: 300; line-height: 1.7; }
+    .strength-pillars {
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .pillar {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+    }
+    .pillar .pillar-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .pillar strong { font-size: 0.85rem; font-weight: 600; display: block; }
+    .pillar span { font-size: 0.78rem; color: var(--mid); }
+
+    .week-tabs {
+      display: flex; gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .week-tab {
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: var(--white);
+      color: var(--mid);
+      transition: all 0.15s;
+    }
+    .week-tab:hover { border-color: var(--accent); color: var(--accent); }
+    .week-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .workout-days {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .workout-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .workout-card-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .workout-card-header .day-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+    .workout-card-header h3 { font-size: 0.95rem; font-weight: 600; }
+    .workout-card-header .duration {
+      font-size: 0.75rem; color: var(--mid); margin-top: 0.2rem;
+    }
+    .exercise-list { list-style: none; padding: 0; }
+    .exercise-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+      padding: 0.7rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+    .exercise-item:last-child { border-bottom: none; }
+    .exercise-item .ex-name { font-size: 0.85rem; font-weight: 500; }
+    .exercise-item .ex-note { font-size: 0.72rem; color: var(--mid); }
+    .exercise-item .ex-sets {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .strength-note {
+      margin-top: 2rem;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 4px 4px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .strength-note-item strong { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.2rem; }
+    .strength-note-item span { font-size: 0.82rem; color: var(--mid); }
+
+    @media (max-width: 768px) {
+      .cal-wrap { grid-template-columns: 1fr !important; }
+      .day-panel { position: static; }
+      .strength-intro { grid-template-columns: 1fr; }
+      .workout-days { grid-template-columns: 1fr; }
+    }
+
+    /* ── PASSWORD GATE ── */
+    #gate {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gate-box {
+      text-align: center;
+      padding: 3rem 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      max-width: 360px;
+      width: 90%;
+      animation: fadeUp 0.6s ease both;
+    }
+    .gate-box .gate-logo {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .gate-box p {
+      font-size: 0.875rem;
+      color: var(--mid);
+      margin-bottom: 1.75rem;
+    }
+    .gate-box input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+      font-family: var(--sans);
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: 0.12em;
+      outline: none;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .gate-box input:focus { border-color: var(--accent); }
+    .gate-box input.error { border-color: #c0392b; animation: shake 0.3s ease; }
+    .gate-box .gate-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.85rem;
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .gate-box .gate-btn:hover { background: #1f4e2c; }
+    .gate-error {
+      font-size: 0.78rem;
+      color: #c0392b;
+      margin-top: 0.6rem;
+      min-height: 1rem;
+    }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
+        min-height: auto;
+        gap: 2rem;
+      }
+      section { padding: 3rem 1.5rem; }
+      .schedule-row { grid-template-columns: 90px 1fr; gap: 0.5rem; }
+      .schedule-row .time,
+      .schedule-row .tag { display: none; }
+      .drills-grid { grid-template-columns: 1fr; }
+      .nutrition-cols { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My GitHub Pages Site</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Homepage Section</h2>
-            <p>This is the main content area of the homepage. Here you can introduce your website and its purpose.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 My GitHub Pages Site</p>
-    </footer>
+
+  <!-- PASSWORD GATE -->
+  <div id="gate">
+    <div class="gate-box">
+      <div class="gate-logo">Strong &amp; Ready</div>
+      <p>Enter the access code to view this site.</p>
+      <input type="password" id="pin-input" placeholder="••••••••••••••" maxlength="30"
+        onkeydown="if(event.key==='Enter') checkPin()"/>
+      <button class="gate-btn" onclick="checkPin()">Enter</button>
+      <div class="gate-error" id="gate-error"></div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Strong &amp; Ready</a>
+    <ul class="nav-links">
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#technical">Technical</a></li>
+      <li><a href="#strength">Strength</a></li>
+      <li><a href="#drills">Drills</a></li>
+      <li><a href="#nutrition">Nutrition</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Train hard.<br><em>Show up ready.</em></h1>
+      <p>A focused summer program to build strength, sharpen skills, and walk into Fall tryouts with confidence.</p>
+      <a href="#schedule" class="btn">View the Schedule</a>
+    </div>
+    <div class="hero-stat-block">
+      <div class="stat-card">
+        <div class="number">12</div>
+        <div class="label">Training Sessions</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">15</div>
+        <div class="label">Athletes</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">3</div>
+        <div class="label">Months to Tryouts</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">100%</div>
+        <div class="label">Commitment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <section id="schedule">
+    <div class="section-label">Training Calendar</div>
+    <h2 class="section-title">Summer Schedule</h2>
+    <p class="section-subtitle">Sessions run every week through August. Wear cleats, bring water, and come ready to work.</p>
+
+    <div class="schedule-grid">
+      <div class="schedule-row header">
+        <span>Date</span>
+        <span>Time</span>
+        <span>Session</span>
+        <span>Focus</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Jun 7</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Kickoff & Assessment</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag fitness">Fitness</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Jun 14</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Passing & Receiving</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag technical">Technical</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Jun 21</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Dribbling Under Pressure</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag technical">Technical</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Jun 28</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Strength & Conditioning</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag fitness">Fitness</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Jul 12</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Shooting & Finishing</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag technical">Technical</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Jul 19</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Defensive Shape & Marking</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag technical">Technical</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Jul 26</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Scrimmage Day</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag scrimmage">Scrimmage</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Aug 2</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Set Pieces & Dead Balls</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag technical">Technical</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Aug 9</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Fitness Benchmarks</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag fitness">Fitness</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Aug 16</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Tryout Prep: Game Scenarios</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag mental">Mental</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Aug 23</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>Final Scrimmage</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag scrimmage">Scrimmage</span>
+      </div>
+      <div class="schedule-row">
+        <span class="date">Aug 30</span>
+        <span class="time">9:00 AM</span>
+        <div class="session"><strong>You're Ready — Last Session</strong><span>Field 3 — Community Park</span></div>
+        <span class="tag mental">Mental</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRILLS -->
+  <section id="drills">
+    <div class="section-label">Resource Library</div>
+    <h2 class="section-title">Drills & Training Resources</h2>
+    <p class="section-subtitle">Practice these on your own between sessions. Repetition is where improvement lives.</p>
+
+    <div class="drills-grid">
+      <div class="drill-card">
+        <div class="drill-card-top">
+          <div class="drill-icon">⚽</div>
+          <div>
+            <h3>Cone Dribbling Slalom</h3>
+            <div class="drill-meta">10 min · Solo · Ball control</div>
+          </div>
+        </div>
+        <div class="drill-card-body">
+          <p>Set up 8 cones in a straight line, 1 yard apart. Dribble through with your dominant foot, then weak foot. Focus on tight touches and keeping your head up.</p>
+          <a href="#" class="drill-link">Watch Demo →</a>
+        </div>
+      </div>
+      <div class="drill-card">
+        <div class="drill-card-top">
+          <div class="drill-icon">🎯</div>
+          <div>
+            <h3>Wall Passing — 1-Touch</h3>
+            <div class="drill-meta">15 min · Solo · First touch</div>
+          </div>
+        </div>
+        <div class="drill-card-body">
+          <p>Find a solid wall and practice one-touch passing at varying distances. Alternate feet. Start slow and build speed. 100 touches minimum per session.</p>
+          <a href="#" class="drill-link">Watch Demo →</a>
+        </div>
+      </div>
+      <div class="drill-card">
+        <div class="drill-card-top">
+          <div class="drill-icon">💪</div>
+          <div>
+            <h3>Lateral Band Walk</h3>
+            <div class="drill-meta">10 min · Solo · Strength</div>
+          </div>
+        </div>
+        <div class="drill-card-body">
+          <p>Use a resistance band above the knees. Stay low, take lateral steps for 20 yards each direction. Builds hip and glute strength critical for change-of-direction speed.</p>
+          <a href="#" class="drill-link">Watch Demo →</a>
+        </div>
+      </div>
+      <div class="drill-card">
+        <div class="drill-card-top">
+          <div class="drill-icon">🏃</div>
+          <div>
+            <h3>Sprint & Recover Intervals</h3>
+            <div class="drill-meta">20 min · Solo · Fitness</div>
+          </div>
+        </div>
+        <div class="drill-card-body">
+          <p>Sprint full field length, walk back. Repeat 8 times. Rest 2 min. Do 2 sets. Mirrors the high-intensity demands of a real match and builds match fitness fast.</p>
+          <a href="#" class="drill-link">Watch Demo →</a>
+        </div>
+      </div>
+      <div class="drill-card">
+        <div class="drill-card-top">
+          <div class="drill-icon">🦵</div>
+          <div>
+            <h3>Shooting on Target</h3>
+            <div class="drill-meta">20 min · Partner or Solo · Finishing</div>
+          </div>
+        </div>
+        <div class="drill-card-body">
+          <p>Place the ball 18 yards from goal. Aim for corners. 10 shots each foot. Add a dribble before the shot for added difficulty. Track how many you hit on frame.</p>
+          <a href="#" class="drill-link">Watch Demo →</a>
+        </div>
+      </div>
+      <div class="drill-card">
+        <div class="drill-card-top">
+          <div class="drill-icon">🧠</div>
+          <div>
+            <h3>Pressure Decisions Drill</h3>
+            <div class="drill-meta">15 min · 3+ players · Game IQ</div>
+          </div>
+        </div>
+        <div class="drill-card-body">
+          <p>2v1 in a small grid. The defender applies pressure while the two attackers must pass and move. Decision speed is the goal — not just technique.</p>
+          <a href="#" class="drill-link">Watch Demo →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUTRITION -->
+  <section id="nutrition">
+    <div class="section-label">Fuel Your Training</div>
+    <h2 class="section-title">Nutrition & Recovery</h2>
+    <p class="section-subtitle">What you eat and how you recover is half the work. These guidelines keep you performing at your best.</p>
+
+    <div class="nutrition-cols">
+      <div class="nutrition-card">
+        <div class="sub">Pre-Training</div>
+        <h3>Before You Train</h3>
+        <ul class="nutrition-list">
+          <li>Eat a balanced meal 2–3 hours before: rice, pasta, or oats with lean protein.</li>
+          <li>Have a small snack 30–60 min before if needed — banana or toast with peanut butter.</li>
+          <li>Hydrate throughout the day. Aim for at least 2 liters before a session.</li>
+          <li>Avoid high-fat, high-fiber foods right before training — they slow you down.</li>
+        </ul>
+        <div class="nutrition-tip">
+          <strong>Quick Pre-Game Meal</strong>
+          Pasta with chicken and a light tomato sauce, eaten 2.5 hrs before. Simple, effective, trusted by pros.
+        </div>
+      </div>
+      <div class="nutrition-card">
+        <div class="sub">Post-Training</div>
+        <h3>After You Train</h3>
+        <ul class="nutrition-list">
+          <li>Eat within 30–60 minutes of finishing — the "recovery window" is real.</li>
+          <li>Prioritize protein to repair muscle: eggs, chicken, Greek yogurt, or a protein shake.</li>
+          <li>Rehydrate with water and consider electrolytes after intense sessions.</li>
+          <li>Sleep 8–9 hours — most muscle repair happens while you sleep.</li>
+        </ul>
+        <div class="nutrition-tip">
+          <strong>Recovery Snack Idea</strong>
+          Greek yogurt + granola + berries. Hits protein, carbs, and antioxidants in one easy meal.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get Involved</div>
+    <h2 class="section-title">Sign Up & Contact</h2>
+    <p class="section-subtitle">Questions? Want to register? Reach out below and we'll get back to you quickly.</p>
+
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <p>This summer program is open to players preparing for Fall high school soccer tryouts. Spots are limited — reach out early to confirm your place.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-item">
+            <div class="icon">📍</div>
+            <div class="text">
+              <strong>Location</strong>
+              <span>Community Park — Field 3</span>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="icon">📅</div>
+            <div class="text">
+              <strong>Season</strong>
+              <span>June 7 – August 30, 2025</span>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="icon">📧</div>
+            <div class="text">
+              <strong>Email</strong>
+              <span>aideengill88@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="icon">👥</div>
+            <div class="text">
+              <strong>Open To</strong>
+              <span>Girls 14–16 yrs preparing for Fall tryouts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Jane"/>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Smith"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="jane@email.com"/>
+        </div>
+        <div class="form-group">
+          <label for="position">Primary Position</label>
+          <select id="position">
+            <option value="">Select a position...</option>
+            <option>Forward</option>
+            <option>Midfielder</option>
+            <option>Defender</option>
+            <option>Goalkeeper</option>
+            <option>Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Anything else you'd like us to know?</label>
+          <textarea id="message" placeholder="Questions, scheduling conflicts, experience level..."></textarea>
+        </div>
+        <button class="btn" onclick="handleSubmit()">Send Registration →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL TRAINING CALENDAR -->
+  <section id="technical">
+    <div class="section-label">Technical Training</div>
+    <h2 class="section-title">Technical Training Calendar</h2>
+    <p class="section-subtitle">Click any session day to see the full plan and add your name to the RSVP list.</p>
+
+    <div class="cal-wrap panel-closed" id="calWrap">
+      <div>
+        <div class="calendar-grid" id="calGrid"></div>
+      </div>
+      <div class="day-panel" id="dayPanel" style="display:none">
+        <div class="day-panel-header">
+          <div>
+            <div id="panelDate" style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.25rem"></div>
+            <h3 id="panelTitle"></h3>
+          </div>
+          <button class="close-btn" onclick="closePanel()">✕</button>
+        </div>
+        <div class="day-panel-body">
+          <div class="day-panel-meta" id="panelMeta"></div>
+          <div id="panelPlan"></div>
+          <div class="rsvp-section">
+            <h4>Who's Coming — RSVP</h4>
+            <div class="rsvp-list" id="rsvpList"></div>
+            <div class="rsvp-input-row">
+              <input type="text" id="rsvpInput" placeholder="Your name..." maxlength="40"
+                onkeydown="if(event.key==='Enter') addRsvp()"/>
+              <button onclick="addRsvp()">+ RSVP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTH TRAINING PLAN -->
+  <section id="strength">
+    <div class="section-label">Strength Training</div>
+    <h2 class="section-title">Strength Training Plan</h2>
+    <p class="section-subtitle">3 workouts per week focusing on lower body strength and core stability — the foundation of a powerful, injury-resistant player.</p>
+
+    <div class="strength-intro">
+      <p>This progressive plan runs June through August. Each phase builds on the last: we start with bodyweight foundations, then add load and power as tryouts approach. Rest days matter — don't skip them. If a session falls on a technical training day, do the strength work after a 4-hour gap or the following morning.</p>
+      <div class="strength-pillars">
+        <div class="pillar"><span class="pillar-icon">🦵</span><div><strong>Lower Body Strength</strong><span>Squats, lunges, single-leg work — for speed, shooting power, and stability</span></div></div>
+        <div class="pillar"><span class="pillar-icon">🧱</span><div><strong>Core Stability</strong><span>Planks, rotational work, anti-rotation — for balance, tackling, and ball striking</span></div></div>
+        <div class="pillar"><span class="pillar-icon">⚡</span><div><strong>Power & Explosiveness</strong><span>Plyometrics introduced in Phase 2 — for first-step quickness and jumping</span></div></div>
+      </div>
+    </div>
+
+    <div class="week-tabs" id="weekTabs"></div>
+    <div class="workout-days" id="workoutDays"></div>
+
+    <div class="strength-note">
+      <div class="strength-note-item"><strong>Rest Between Sets</strong><span>60–90 sec for strength sets; 2 min for heavier lifts in Phase 3</span></div>
+      <div class="strength-note-item"><strong>Warm-Up</strong><span>Always 5–8 min: leg swings, hip circles, glute bridges, and a light jog</span></div>
+      <div class="strength-note-item"><strong>Progression</strong><span>Add weight or reps each week only if last session felt controlled throughout</span></div>
+      <div class="strength-note-item"><strong>Form First</strong><span>Never sacrifice form for load. A clean bodyweight squat beats a sloppy weighted one.</span></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Strong &amp; Ready</span>
+    <span>Summer Soccer Training · 2025 · Built with care for your athletes</span>
+  </footer>
+
+  <script>
+    const CORRECT = 'summerskills2026';
+    function checkPin() {
+      const val = document.getElementById('pin-input').value;
+      const input = document.getElementById('pin-input');
+      const err = document.getElementById('gate-error');
+      if (val === CORRECT) {
+        document.getElementById('gate').style.display = 'none';
+        sessionStorage.setItem('sr_auth', '1');
+      } else {
+        input.classList.add('error');
+        err.textContent = 'Incorrect code — try again.';
+        setTimeout(() => input.classList.remove('error'), 400);
+      }
+    }
+    // Stay unlocked if already authenticated this session
+    if (sessionStorage.getItem('sr_auth') === '1') {
+      document.getElementById('gate').style.display = 'none';
+    }
+  </script>
+
+  <script>
+    function handleSubmit() {
+      const fname = document.getElementById('fname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!fname || !email) {
+        alert('Please fill in your name and email before submitting.');
+        return;
+      }
+      alert(`Thanks, ${fname}! We've received your registration and will be in touch at ${email} soon.`);
+    }
+
+    // Fade in sections on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.animation = 'fadeUp 0.6s ease both';
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('section').forEach(s => {
+      s.style.opacity = '0';
+      observer.observe(s);
+    });
+  </script>
+
+  <script>
+  // ── TECHNICAL CALENDAR ──
+  const SESSIONS = {
+    '2025-06-09': { focus:'passing', title:'Passing & Receiving', time:'9:00 AM', location:'Field 3', warmup:['Dynamic stretching 5 min','Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)','Long-range switching drill (10 min)','Receiving on the turn (10 min)','2v1 keep-away (10 min)'], cooldown:['Static stretching','Coaching review'] },
+    '2025-06-16': { focus:'dribbling', title:'Dribbling Under Pressure', time:'9:00 AM', location:'Field 3', warmup:['Juggling warm-up','Hip mobility circles'], main:['Cone slalom — both feet (10 min)','1v1 dribbling duels (15 min)','Rondo with dribbling escape (10 min)','Speed dribble to shot (10 min)'], cooldown:['Cool-down jog','Ball mastery free time'] },
+    '2025-06-23': { focus:'shooting', title:'Shooting & Finishing', time:'9:00 AM', location:'Field 3', warmup:['Dynamic leg swings','Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)','First-touch finish from crosses (10 min)','1v1 with GK (10 min)','Volley practice (10 min)'], cooldown:['Stretch & debrief','Goal-celebration energy 😄'] },
+    '2025-06-30': { focus:'defending', title:'Defensive Shape & Marking', time:'9:00 AM', location:'Field 3', warmup:['Agility ladder','Defensive stance drills'], main:['1v1 defending footwork (10 min)','Zonal marking shape — 4v4 (15 min)','Pressing triggers drill (10 min)','Transition defense (10 min)'], cooldown:['Stretching','Film review discussion'] },
+    '2025-07-07': { focus:'trapping', title:'Trapping & Clearing', time:'9:00 AM', location:'Field 3', warmup:['Aerial ball control warm-up','Partner chest trapping'], main:['Trap and turn under pressure (15 min)','Defensive clearing technique (10 min)','Headed clearances (10 min)','Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads','Coach feedback circle'] },
+    '2025-07-14': { focus:'passing', title:'Combination Play', time:'9:00 AM', location:'Field 3', warmup:['Rondo warm-up 5v2','Ball movement circuits'], main:['One-two wall pass patterns (10 min)','3-man overlap combinations (15 min)','Overlap into cross (10 min)','Positional small-sided game (10 min)'], cooldown:['Light jog','Group stretch'] },
+    '2025-07-21': { focus:'dribbling', title:'Speed Dribbling & Turns', time:'9:00 AM', location:'Field 3', warmup:['Dynamic stretching','Cone touch warm-up'], main:['Cruyff / step-over sequence (10 min)','Speed dribble breakaway drill (15 min)','Dribble out of pressure (10 min)','Full-field dribble scrimmage (10 min)'], cooldown:['Cooldown jog','Agility reflection'] },
+    '2025-07-28': { focus:'scrimmage', title:'Full Scrimmage', time:'9:00 AM', location:'Field 3', warmup:['Rondo','Team shape walk-through'], main:['Full 11v11 or 8v8 scrimmage (40 min)','Coaching breaks to apply technique','Positional feedback mid-game'], cooldown:['Full team stretch','What worked / what to improve'] },
+    '2025-08-04': { focus:'shooting', title:'Set Pieces & Dead Balls', time:'9:00 AM', location:'Field 3', warmup:['Free kick warm-up','Crossing warm-up'], main:['Corner kick attacking & defending (15 min)','Direct & indirect free kicks (15 min)','Penalty kicks under pressure (10 min)'], cooldown:['Light jog','Review set-piece roles'] },
+    '2025-08-11': { focus:'defending', title:'High Press & Recovery Runs', time:'9:00 AM', location:'Field 3', warmup:['Sprint ladders','Defensive posture drills'], main:['Counter-press trigger training (15 min)','Recovery run angles (10 min)','4-3-3 press shape (10 min)','Transition game (10 min)'], cooldown:['Stretch','Talk through tryout positioning'] },
+    '2025-08-18': { focus:'trapping', title:'Tryout Prep — Game Scenarios', time:'9:00 AM', location:'Field 3', warmup:['Full dynamic warm-up','Team visualization'], main:['Tryout-style 1v1 and 2v2 evaluations (20 min)','Position-specific scenarios (15 min)','Full game format (15 min)'], cooldown:['Mental prep talk','Questions & confidence building'] },
+  };
+
+  const MILESTONES = {
+    '2025-07-06': { label: '⛺ Camp Starts', cls: '' },
+    '2025-08-24': { label: '🏆 Tryouts Start', cls: 'tryouts' },
+  };
+
+  const FOCUS_LABELS = { dribbling:'Dribbling', passing:'Passing', shooting:'Shooting', defending:'Defending', trapping:'Trapping/Clearing', scrimmage:'Scrimmage' };
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  let rsvpData = {};
+  let activeDate = null;
+
+  function buildCalendar() {
+    const grid = document.getElementById('calGrid');
+    grid.innerHTML = '';
+    DAYS.forEach(d => {
+      const h = document.createElement('div');
+      h.className = 'cal-header-cell';
+      h.textContent = d;
+      grid.appendChild(h);
+    });
+
+    const startMonth = new Date(2025, 5, 1); // June 2025
+    const endMonth = new Date(2025, 8, 1);   // through Aug
+
+    for (let m = 5; m <= 7; m++) {
+      const banner = document.createElement('div');
+      banner.className = 'cal-month-banner';
+      banner.textContent = MONTHS[m] + ' 2025';
+      grid.appendChild(banner);
+
+      const firstDay = new Date(2025, m, 1).getDay();
+      const daysInMonth = new Date(2025, m + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-cell empty';
+        grid.appendChild(empty);
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = `2025-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const cell = document.createElement('div');
+        cell.className = 'cal-cell';
+        cell.dataset.date = dateStr;
+
+        const dayNum = document.createElement('div');
+        dayNum.className = 'day-num';
+        dayNum.textContent = d;
+        cell.appendChild(dayNum);
+
+        if (SESSIONS[dateStr]) {
+          cell.classList.add('has-session');
+          const s = SESSIONS[dateStr];
+          const pill = document.createElement('span');
+          pill.className = `focus-pill focus-${s.focus}`;
+          pill.textContent = FOCUS_LABELS[s.focus];
+          cell.appendChild(pill);
+          cell.onclick = () => openPanel(dateStr);
+
+          const cnt = document.createElement('span');
+          cnt.className = 'rsvp-count';
+          cnt.id = `cnt-${dateStr}`;
+          cnt.textContent = '';
+          cell.appendChild(cnt);
+        }
+
+        if (MILESTONES[dateStr]) {
+          const ms = MILESTONES[dateStr];
+          const tag = document.createElement('span');
+          tag.className = `milestone-tag ${ms.cls}`;
+          tag.textContent = ms.label;
+          cell.appendChild(tag);
+        }
+
+        grid.appendChild(cell);
+      }
+
+      const totalCells = firstDay + daysInMonth;
+      const remainder = (7 - (totalCells % 7)) % 7;
+      for (let i = 0; i < remainder; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-cell empty';
+        grid.appendChild(empty);
+      }
+    }
+  }
+
+  function openPanel(dateStr) {
+    activeDate = dateStr;
+    const s = SESSIONS[dateStr];
+    const [y, mo, d] = dateStr.split('-');
+    const dateObj = new Date(+y, +mo - 1, +d);
+    const dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][dateObj.getDay()];
+
+    document.getElementById('panelDate').textContent = `${dayName}, ${MONTHS[+mo-1]} ${+d}, ${y}`;
+    document.getElementById('panelTitle').textContent = s.title;
+
+    document.getElementById('panelMeta').innerHTML =
+      `<span class="focus-pill focus-${s.focus}">${FOCUS_LABELS[s.focus]}</span>
+       <span style="font-size:0.8rem;color:var(--mid)">⏰ ${s.time}</span>
+       <span style="font-size:0.8rem;color:var(--mid)">📍 ${s.location}</span>`;
+
+    document.getElementById('panelPlan').innerHTML = `
+      <div class="plan-block"><h4>Warm-Up</h4><ul>${s.warmup.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      <div class="plan-block"><h4>Main Session</h4><ul>${s.main.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      <div class="plan-block"><h4>Cool-Down</h4><ul>${s.cooldown.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+    `;
+
+    renderRsvp();
+    document.getElementById('dayPanel').style.display = 'block';
+    document.getElementById('calWrap').classList.remove('panel-closed');
+    document.querySelectorAll('.cal-cell.active').forEach(c => c.classList.remove('active'));
+    const cell = document.querySelector(`.cal-cell[data-date="${dateStr}"]`);
+    if (cell) cell.classList.add('active');
+  }
+
+  function closePanel() {
+    document.getElementById('dayPanel').style.display = 'none';
+    document.getElementById('calWrap').classList.add('panel-closed');
+    document.querySelectorAll('.cal-cell.active').forEach(c => c.classList.remove('active'));
+    activeDate = null;
+  }
+
+  function renderRsvp() {
+    const names = rsvpData[activeDate] || [];
+    const list = document.getElementById('rsvpList');
+    if (names.length === 0) {
+      list.innerHTML = '<span class="rsvp-empty">No one yet — be the first!</span>';
+    } else {
+      list.innerHTML = names.map((n, i) =>
+        `<div class="rsvp-name"><span>${n}</span><button class="remove" onclick="removeRsvp(${i})">✕</button></div>`
+      ).join('');
+    }
+    const cnt = document.getElementById(`cnt-${activeDate}`);
+    if (cnt) cnt.textContent = names.length > 0 ? `${names.length} going` : '';
+  }
+
+  function addRsvp() {
+    const input = document.getElementById('rsvpInput');
+    const name = input.value.trim();
+    if (!name) return;
+    if (!rsvpData[activeDate]) rsvpData[activeDate] = [];
+    if (rsvpData[activeDate].includes(name)) { input.value = ''; return; }
+    rsvpData[activeDate].push(name);
+    input.value = '';
+    renderRsvp();
+  }
+
+  function removeRsvp(idx) {
+    rsvpData[activeDate].splice(idx, 1);
+    renderRsvp();
+  }
+
+  buildCalendar();
+
+  // ── STRENGTH PLAN ──
+  const PHASES = [
+    { label:'Phase 1', sub:'Jun 2 – Jun 27', tag:'Foundation', desc:'Bodyweight and light load. Master movement patterns.' },
+    { label:'Phase 2', sub:'Jun 30 – Jul 25', tag:'Build', desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
+    { label:'Phase 3', sub:'Jul 28 – Aug 22', tag:'Power', desc:'Heavy strength + explosive work. Peak before tapering.' },
+    { label:'Taper', sub:'Aug 18 – Aug 23', tag:'Taper', desc:'Reduce volume. Stay sharp. Trust your training.' },
+  ];
+
+  const WORKOUTS = {
+    0: [
+      { day:'Monday', title:'Lower Body A', duration:'45–50 min', exercises:[
+        { name:'Goblet Squat', note:'Full depth, chest up', sets:'3 × 12' },
+        { name:'Romanian Deadlift', note:'Slow eccentric, feel the stretch', sets:'3 × 10' },
+        { name:'Reverse Lunge', note:'Alternate legs, controlled', sets:'3 × 10 ea' },
+        { name:'Glute Bridge', note:'Pause 2 sec at top', sets:'3 × 15' },
+        { name:'Dead Bug', note:'Lower back stays flat', sets:'3 × 10 ea' },
+        { name:'Plank Hold', note:'Shoulders over wrists', sets:'3 × 30 sec' },
+      ]},
+      { day:'Wednesday', title:'Core & Stability', duration:'35–40 min', exercises:[
+        { name:'Single-Leg Glute Bridge', note:'Control the drop', sets:'3 × 12 ea' },
+        { name:'Side Plank', note:'Hips stacked, don\'t sag', sets:'3 × 25 sec ea' },
+        { name:'Bird Dog', note:'Opposite arm + leg, slow', sets:'3 × 10 ea' },
+        { name:'Pallof Press (Band)', note:'Anti-rotation — no twisting', sets:'3 × 10 ea' },
+        { name:'Lateral Band Walk', note:'Stay low, knees soft', sets:'3 × 15 ea' },
+        { name:'Hollow Body Hold', note:'Lower back pressed down', sets:'3 × 20 sec' },
+      ]},
+      { day:'Friday', title:'Lower Body B', duration:'45–50 min', exercises:[
+        { name:'Bulgarian Split Squat', note:'Back foot elevated, drop straight down', sets:'3 × 8 ea' },
+        { name:'Sumo Squat', note:'Wide stance, toes out', sets:'3 × 12' },
+        { name:'Nordic Hamstring Curl', note:'Partner holds feet or use bench', sets:'3 × 6' },
+        { name:'Step-Up', note:'Drive through the heel on top', sets:'3 × 10 ea' },
+        { name:'Copenhagen Plank', note:'Adductor challenge', sets:'3 × 20 sec ea' },
+        { name:'Russian Twist', note:'Controlled rotation', sets:'3 × 15 ea' },
+      ]},
+    ],
+    1: [
+      { day:'Monday', title:'Lower Body A+', duration:'50–55 min', exercises:[
+        { name:'Barbell / DB Squat', note:'Add weight from Phase 1 baseline', sets:'4 × 8' },
+        { name:'Romanian Deadlift', note:'Increase load 10–15%', sets:'4 × 8' },
+        { name:'Walking Lunge', note:'Add dumbbells', sets:'3 × 12 ea' },
+        { name:'Box Jump', note:'Land soft, absorb with hips', sets:'3 × 6' },
+        { name:'Plank to Push-Up', note:'Controlled transitions', sets:'3 × 8 ea' },
+        { name:'Dead Bug + Reach', note:'Slow and deliberate', sets:'3 × 10 ea' },
+      ]},
+      { day:'Wednesday', title:'Power & Core', duration:'40–45 min', exercises:[
+        { name:'Broad Jump', note:'Max effort, stick the landing', sets:'4 × 4' },
+        { name:'Lateral Bound', note:'Stick each landing before rebounding', sets:'3 × 6 ea' },
+        { name:'Medicine Ball Slam', note:'Full hip extension overhead', sets:'3 × 8' },
+        { name:'Side Plank + Row', note:'Resistance band, stay square', sets:'3 × 10 ea' },
+        { name:'V-Up', note:'Keep legs straight', sets:'3 × 12' },
+        { name:'Pallof Press Variation', note:'Add half-kneeling position', sets:'3 × 10 ea' },
+      ]},
+      { day:'Friday', title:'Lower Body B+', duration:'50–55 min', exercises:[
+        { name:'Bulgarian Split Squat (Weighted)', note:'Dumbbells or barbell', sets:'4 × 6 ea' },
+        { name:'Trap Bar Deadlift / DB Deadlift', note:'Drive floor away, hips and shoulders rise together', sets:'4 × 6' },
+        { name:'Lateral Squat', note:'Sit back into one hip', sets:'3 × 10 ea' },
+        { name:'Depth Drop to Jump', note:'Step off, absorb, explode', sets:'3 × 5' },
+        { name:'Copenhagen Plank (Long Lever)', note:'Longer hold for progression', sets:'3 × 25 sec ea' },
+        { name:'Hanging Knee Raise', note:'Control the swing', sets:'3 × 12' },
+      ]},
+    ],
+    2: [
+      { day:'Monday', title:'Peak Strength A', duration:'55–60 min', exercises:[
+        { name:'Back Squat / Goblet Heavy', note:'Work up to 5-rep challenge set', sets:'5 × 5' },
+        { name:'Romanian Deadlift Heavy', note:'Focus on hamstring tension', sets:'4 × 6' },
+        { name:'Rear-Foot Elevated Split Squat', note:'Heaviest phase weight', sets:'4 × 5 ea' },
+        { name:'Depth Jump to Sprint', note:'Land, explode, sprint 10m', sets:'4 × 4' },
+        { name:'Weighted Plank', note:'Plate on back', sets:'3 × 40 sec' },
+        { name:'Rotational Med Ball Throw (Wall)', note:'Explosive hip rotation', sets:'3 × 8 ea' },
+      ]},
+      { day:'Wednesday', title:'Explosive Power', duration:'45–50 min', exercises:[
+        { name:'Triple Broad Jump', note:'3 consecutive jumps, max distance', sets:'4 × 3' },
+        { name:'Single-Leg Box Jump', note:'Lead with strong leg first', sets:'3 × 5 ea' },
+        { name:'Sprint 10m × 6', note:'Full rest between, max effort', sets:'6 × 10m' },
+        { name:'Med Ball Rotational Throw', note:'Drive from ground up', sets:'4 × 6 ea' },
+        { name:'L-Sit Hold (Parallel Bars or Floor)', note:'Build to 3 × 15 sec', sets:'3 × 10 sec' },
+        { name:'Dragon Flag Progression', note:'Scaled as needed', sets:'3 × 6' },
+      ]},
+      { day:'Friday', title:'Peak Strength B', duration:'55–60 min', exercises:[
+        { name:'Trap Bar Deadlift Heavy', note:'Max effort within solid form', sets:'5 × 4' },
+        { name:'Lateral Squat (Weighted)', note:'Control the descent', sets:'4 × 6 ea' },
+        { name:'Nordic Hamstring Curl', note:'Eccentric focus — slow lower', sets:'4 × 5' },
+        { name:'Single-Leg Landing Drill', note:'Drop from box, freeze on landing', sets:'3 × 6 ea' },
+        { name:'Ab Wheel Rollout', note:'Brace hard — don\'t let hips drop', sets:'3 × 8' },
+        { name:'Copenhagen Plank + Hip Abduction', note:'Add top leg lift', sets:'3 × 30 sec ea' },
+      ]},
+    ],
+    3: [
+      { day:'Monday', title:'Maintenance A', duration:'30–35 min', exercises:[
+        { name:'Goblet Squat', note:'Moderate weight — move well', sets:'2 × 8' },
+        { name:'Romanian Deadlift', note:'Light, focus on feel', sets:'2 × 8' },
+        { name:'Glute Bridge', note:'Activation only', sets:'2 × 12' },
+        { name:'Plank Hold', note:'Quality over time', sets:'2 × 30 sec' },
+      ]},
+      { day:'Wednesday', title:'Activation & Power', duration:'25–30 min', exercises:[
+        { name:'Broad Jump', note:'3 reps — feel the pop', sets:'3 × 3' },
+        { name:'Lateral Bound', note:'Light and snappy', sets:'3 × 4 ea' },
+        { name:'Side Plank', note:'Short hold, sharp engagement', sets:'2 × 20 sec ea' },
+        { name:'Sprint Strides 20m × 4', note:'75–80% effort — stay fluid', sets:'4 × 20m' },
+      ]},
+      { day:'Friday', title:'Feel Good Session', duration:'20–25 min', exercises:[
+        { name:'Bodyweight Squat', note:'Fluid, full range', sets:'2 × 10' },
+        { name:'Single-Leg Glute Bridge', note:'Feel that activation', sets:'2 × 10 ea' },
+        { name:'Bird Dog', note:'Control and breathe', sets:'2 × 8 ea' },
+        { name:'Light Jog + Dynamic Stretch', note:'Leave feeling loose and ready', sets:'10 min' },
+      ]},
+    ],
+  };
+
+  let activePhase = 0;
+
+  function renderTabs() {
+    const tabs = document.getElementById('weekTabs');
+    tabs.innerHTML = PHASES.map((p, i) =>
+      `<div class="week-tab ${i === activePhase ? 'active' : ''}" onclick="setPhase(${i})">${p.label} <span style="font-weight:300;opacity:0.7">— ${p.tag}</span></div>`
+    ).join('');
+  }
+
+  function renderWorkouts() {
+    const container = document.getElementById('workoutDays');
+    const days = WORKOUTS[activePhase];
+    const phase = PHASES[activePhase];
+    container.innerHTML = `
+      <div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;">
+        <strong style="color:var(--black)">${phase.label}: ${phase.sub}</strong> — ${phase.desc}
+      </div>
+      ${days.map(w => `
+        <div class="workout-card">
+          <div class="workout-card-header">
+            <div class="day-label">${w.day}</div>
+            <h3>${w.title}</h3>
+            <div class="duration">⏱ ${w.duration}</div>
+          </div>
+          <ul class="exercise-list">
+            ${w.exercises.map(e => `
+              <li class="exercise-item">
+                <div>
+                  <div class="ex-name">${e.name}</div>
+                  <div class="ex-note">${e.note}</div>
+                </div>
+                <span class="ex-sets">${e.sets}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `).join('')}
+    `;
+  }
+
+  function setPhase(i) {
+    activePhase = i;
+    renderTabs();
+    renderWorkouts();
+  }
+
+  renderTabs();
+  renderWorkouts();
+  </script>
+
+
 </body>
 </html>
