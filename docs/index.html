@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Strong & Ready — Summer Soccer Training</title>
+  <title>Summer Skills</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1256,8 +1256,12 @@
   </script>
 
   <script>
-  
-  // ── DATA ──
+  // ── GOOGLE SHEETS CONFIG ──
+  // Paste your two published CSV URLs here once you have them from Google Sheets
+  var SHEET_TECHNICAL_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=1948629274&single=true&output=csv';
+  var SHEET_STRENGTH_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=131987885&single=true&output=csv';
+
+  // ── FALLBACK DATA (used until Sheets URLs are set) ──
   const SESSIONS = {
     '2026-06-01': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
     '2026-06-02': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
@@ -1439,6 +1443,7 @@
     ],
   };
 
+
   // ── CONSTANTS ──
   const DAYS_SHORT   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const DAYS_FULL    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -1559,8 +1564,7 @@
         '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + s.location + '</span>';
       document.getElementById('panelPlan').innerHTML =
         '<div class="plan-block"><h4>Warm-Up</h4><ul>'    + s.warmup.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>' +
-        '<div class="plan-block"><h4>Main Session</h4><ul>' + s.main.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>' +
-        '<div class="plan-block"><h4>Cool-Down</h4><ul>'  + s.cooldown.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
+        '<div class="plan-block"><h4>Main Session</h4><ul>' + s.main.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
       rsvpSec.style.display = 'block';
       renderRsvp();
     } else {
@@ -1625,6 +1629,7 @@
   }
 
   buildWeekCalendar();
+  buildNextSession();
 
   // ── STRENGTH SECTION TABS (still used by Strength Plan section) ──
   var activePhase = 0;
@@ -1657,7 +1662,7 @@
   renderWorkouts();
 
   // ── NEXT SESSION ──
-  (function buildNextSession() {
+  function buildNextSession() {
     var container = document.getElementById('twCards');
     var rangeEl   = document.getElementById('twWeekRange');
     if (!container) return;
@@ -1762,7 +1767,7 @@
     inlineDiv.appendChild(inputRow);
     card.appendChild(inlineDiv);
     container.appendChild(card);
-  })();
+  }
 
   function twToggleRsvp(ds) {
     var el = document.getElementById('twinline-'+ds);
@@ -1792,6 +1797,107 @@
     if (activeDate === ds) renderRsvp();
   }
   
+  
+
+  // ── SHEET LOADER ──
+  // Parses a CSV row, handling quoted fields
+  function parseCSVRow(row) {
+    var result = [], cur = '', inQ = false;
+    for (var i = 0; i < row.length; i++) {
+      var c = row[i];
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { result.push(cur.trim()); cur = ''; }
+      else { cur += c; }
+    }
+    result.push(cur.trim());
+    return result;
+  }
+
+  function parseCSV(text) {
+    var lines = text.trim().split('\n');
+    var headers = parseCSVRow(lines[0]).map(function(h){ return h.replace(/^"+|"+$/g,'').trim().toLowerCase(); });
+    var rows = [];
+    for (var i = 1; i < lines.length; i++) {
+      if (!lines[i].trim()) continue;
+      var cols = parseCSVRow(lines[i]);
+      var obj = {};
+      headers.forEach(function(h, idx){ obj[h] = (cols[idx] || '').replace(/^"+|"+$/g,'').trim(); });
+      rows.push(obj);
+    }
+    return rows;
+  }
+
+  function loadTechnicalFromSheet(rows) {
+    var newSessions = {};
+    rows.forEach(function(row) {
+      if (!row.date) return;
+      newSessions[row.date] = {
+        focus:    row.focus    || 'passing',
+        title:    row.title    || '',
+        time:     row.time     || '5:00 PM',
+        location: row.location || 'Harry Downes Field',
+        warmup:   (row.warmup  || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
+        main:     (row.main    || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
+        cooldown: [],
+      };
+    });
+    // Merge into SESSIONS (sheet overrides fallback)
+    Object.assign(SESSIONS, newSessions);
+  }
+
+  function loadStrengthFromSheet(rows) {
+    // Build a WORKOUTS-compatible structure from sheet rows
+    // Columns: phase (0-3), day (1=Mon,3=Wed,5=Fri), title, duration, exercises (no cooldown)
+    // exercises format: "Name|sets|note; Name2|sets2|note2"
+    var newWorkouts = {0:[[],[],[]], 1:[[],[],[]], 2:[[],[],[]], 3:[[],[],[]]};
+    rows.forEach(function(row) {
+      var phase  = parseInt(row.phase) || 0;
+      var dow    = parseInt(row.day)   || 1;
+      var wkIdx  = dow === 1 ? 0 : dow === 3 ? 1 : 2;
+      var exList = (row.exercises || '').split(';').map(function(ex) {
+        var parts = ex.trim().split('|');
+        return { name: (parts[0]||'').trim(), sets: (parts[1]||'').trim(), note: (parts[2]||'').trim() };
+      }).filter(function(e){ return e.name; });
+      if (newWorkouts[phase]) {
+        newWorkouts[phase][wkIdx] = {
+          day:       row.day_label || ['','Monday','','Wednesday','','Friday',''][dow] || 'Day',
+          title:     row.title    || '',
+          duration:  row.duration || '',
+          exercises: exList,
+        };
+      }
+    });
+    // Only override WORKOUTS phases that have data
+    [0,1,2,3].forEach(function(p) {
+      if (newWorkouts[p].some(function(d){ return d && d.title; })) {
+        WORKOUTS[p] = newWorkouts[p];
+      }
+    });
+  }
+
+  async function loadFromSheets() {
+    var loaded = false;
+    if (SHEET_TECHNICAL_URL) {
+      try {
+        var res = await fetch(SHEET_TECHNICAL_URL);
+        if (res.ok) { loadTechnicalFromSheet(parseCSV(await res.text())); loaded = true; }
+      } catch(e) { console.warn('Could not load Technical sheet:', e); }
+    }
+    if (SHEET_STRENGTH_URL) {
+      try {
+        var res = await fetch(SHEET_STRENGTH_URL);
+        if (res.ok) { loadStrengthFromSheet(parseCSV(await res.text())); loaded = true; }
+      } catch(e) { console.warn('Could not load Strength sheet:', e); }
+    }
+    // Re-render everything with fresh data
+    buildWeekCalendar();
+    buildNextSession();
+    renderTabs();
+    renderWorkouts();
+  }
+
+  loadFromSheets();
+
   </script>
 
 
