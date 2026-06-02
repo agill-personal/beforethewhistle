@@ -1,4 +1,4 @@
-﻿// â”€â”€ PASSWORD GATE â”€â”€
+// \u2500\u2500 PASSWORD GATE \u2500\u2500
 const CORRECT     = 'summerskills2026';
 const MAX_TRIES   = 5;
 const LOCKOUT_MS  = 60000; // 1 minute
@@ -18,7 +18,7 @@ function tickLockout() {
   var remaining = Math.ceil((gateLockUntil - Date.now()) / 1000);
   var err = document.getElementById('gate-error');
   if (remaining > 0) {
-    if (err) err.textContent = 'Too many attempts â€” try again in ' + remaining + ' second' + (remaining !== 1 ? 's' : '') + '.';
+    if (err) err.textContent = 'Too many attempts \u2014 try again in ' + remaining + ' second' + (remaining !== 1 ? 's' : '') + '.';
     gateCountdown = setTimeout(tickLockout, 1000);
   } else {
     clearTimeout(gateCountdown);
@@ -61,7 +61,7 @@ function checkPin() {
       tickLockout();
     } else {
       var left = MAX_TRIES - gateAttempts;
-      if (err) err.textContent = 'Incorrect code â€” ' + left + ' attempt' + (left !== 1 ? 's' : '') + ' remaining.';
+      if (err) err.textContent = 'Incorrect code \u2014 ' + left + ' attempt' + (left !== 1 ? 's' : '') + ' remaining.';
     }
   }
 }
@@ -78,181 +78,181 @@ function initGate() {
   }
 }
 
-// â”€â”€ GOOGLE SHEETS CONFIG â”€â”€
+// \u2500\u2500 GOOGLE SHEETS CONFIG \u2500\u2500
 var SHEET_TECHNICAL_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=1759698843&single=true&output=csv';
 var SHEET_STRENGTH_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=877909294&single=true&output=csv';
 var SHEET_FITNESS_URL   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=663801951&single=true&output=csv';
 var SHEET_CAMP_URL      = '';
 
-// â”€â”€ FALLBACK DATA â”€â”€
+// \u2500\u2500 FALLBACK DATA \u2500\u2500
 var SESSIONS = {};
 
 const MILESTONES = {
-  '2026-08-24': { label: 'ðŸ† Tryouts Start', cls: 'tryouts' },
+  '2026-08-24': { label: '\uD83C\uDFC6 Tryouts Start', cls: 'tryouts' },
 };
 
 const PHASES = [
-  { label:'Phase 1',   sub:'Jun 11 â€“ Jul 4',   tag:'Foundation',  desc:'Bodyweight and light load. Master movement patterns.' },
-  { label:'Phase 2',   sub:'Jul 5 â€“ Jul 25',   tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
-  { label:'Phase 3',   sub:'Jul 26 â€“ Aug 15',  tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
-  { label:'Taper',     sub:'Aug 16 â€“ Aug 28',  tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
+  { label:'Phase 1',   sub:'Jun 11 \u2013 Jul 4',   tag:'Foundation',  desc:'Bodyweight and light load. Master movement patterns.' },
+  { label:'Phase 2',   sub:'Jul 5 \u2013 Jul 25',   tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
+  { label:'Phase 3',   sub:'Jul 26 \u2013 Aug 15',  tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
+  { label:'Taper',     sub:'Aug 16 \u2013 Aug 28',  tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
   { label:'In-Season', sub:'Aug 29 onwards',   tag:'Sustain',     desc:'Maintain strength through the season. Quality over volume.' },
   { label:'Spring',    sub:'Spring 2027',       tag:'Spring Build',desc:'Rebuild and progress entering spring season.' },
 ];
 
 const WORKOUTS = {
   0: [
-    { day:'Tuesday',   title:'Lower Body A',    duration:'45â€“50 min', exercises:[
-      { name:'Goblet Squat',          note:'Full depth, chest up',                  sets:'3 Ã— 12' },
-      { name:'Romanian Deadlift',     note:'Slow eccentric, feel the stretch',      sets:'3 Ã— 10' },
-      { name:'Reverse Lunge',         note:'Alternate legs, controlled',            sets:'3 Ã— 10 ea' },
-      { name:'Glute Bridge',          note:'Pause 2 sec at top',                    sets:'3 Ã— 15' },
-      { name:'Dead Bug',              note:'Lower back stays flat',                 sets:'3 Ã— 10 ea' },
-      { name:'Plank Hold',            note:'Shoulders over wrists',                 sets:'3 Ã— 30 sec' },
+    { day:'Tuesday',   title:'Lower Body A',    duration:'45\u201350 min', exercises:[
+      { name:'Goblet Squat',          note:'Full depth, chest up',                  sets:'3 \u00D7 12' },
+      { name:'Romanian Deadlift',     note:'Slow eccentric, feel the stretch',      sets:'3 \u00D7 10' },
+      { name:'Reverse Lunge',         note:'Alternate legs, controlled',            sets:'3 \u00D7 10 ea' },
+      { name:'Glute Bridge',          note:'Pause 2 sec at top',                    sets:'3 \u00D7 15' },
+      { name:'Dead Bug',              note:'Lower back stays flat',                 sets:'3 \u00D7 10 ea' },
+      { name:'Plank Hold',            note:'Shoulders over wrists',                 sets:'3 \u00D7 30 sec' },
     ]},
-    { day:'Thursday',  title:'Core & Stability', duration:'35â€“40 min', exercises:[
-      { name:'Single-Leg Glute Bridge', note:'Control the drop',                    sets:'3 Ã— 12 ea' },
-      { name:'Side Plank',            note:"Hips stacked, don't sag",              sets:'3 Ã— 25 sec ea' },
-      { name:'Bird Dog',              note:'Opposite arm + leg, slow',              sets:'3 Ã— 10 ea' },
-      { name:'Pallof Press (Band)',   note:'Anti-rotation â€” no twisting',           sets:'3 Ã— 10 ea' },
-      { name:'Lateral Band Walk',     note:'Stay low, knees soft',                  sets:'3 Ã— 15 ea' },
-      { name:'Hollow Body Hold',      note:'Lower back pressed down',               sets:'3 Ã— 20 sec' },
+    { day:'Thursday',  title:'Core & Stability', duration:'35\u201340 min', exercises:[
+      { name:'Single-Leg Glute Bridge', note:'Control the drop',                    sets:'3 \u00D7 12 ea' },
+      { name:'Side Plank',            note:"Hips stacked, don't sag",              sets:'3 \u00D7 25 sec ea' },
+      { name:'Bird Dog',              note:'Opposite arm + leg, slow',              sets:'3 \u00D7 10 ea' },
+      { name:'Pallof Press (Band)',   note:'Anti-rotation \u2014 no twisting',           sets:'3 \u00D7 10 ea' },
+      { name:'Lateral Band Walk',     note:'Stay low, knees soft',                  sets:'3 \u00D7 15 ea' },
+      { name:'Hollow Body Hold',      note:'Lower back pressed down',               sets:'3 \u00D7 20 sec' },
     ]},
-    { day:'Sat / Sun', title:'Lower Body B',    duration:'45â€“50 min', exercises:[
-      { name:'Bulgarian Split Squat', note:'Back foot elevated, drop straight down', sets:'3 Ã— 8 ea' },
-      { name:'Sumo Squat',            note:'Wide stance, toes out',                 sets:'3 Ã— 12' },
-      { name:'Nordic Hamstring Curl', note:'Partner holds feet or use bench',       sets:'3 Ã— 6' },
-      { name:'Step-Up',               note:'Drive through the heel on top',         sets:'3 Ã— 10 ea' },
-      { name:'Copenhagen Plank',      note:'Adductor challenge',                    sets:'3 Ã— 20 sec ea' },
-      { name:'Russian Twist',         note:'Controlled rotation',                   sets:'3 Ã— 15 ea' },
+    { day:'Sat / Sun', title:'Lower Body B',    duration:'45\u201350 min', exercises:[
+      { name:'Bulgarian Split Squat', note:'Back foot elevated, drop straight down', sets:'3 \u00D7 8 ea' },
+      { name:'Sumo Squat',            note:'Wide stance, toes out',                 sets:'3 \u00D7 12' },
+      { name:'Nordic Hamstring Curl', note:'Partner holds feet or use bench',       sets:'3 \u00D7 6' },
+      { name:'Step-Up',               note:'Drive through the heel on top',         sets:'3 \u00D7 10 ea' },
+      { name:'Copenhagen Plank',      note:'Adductor challenge',                    sets:'3 \u00D7 20 sec ea' },
+      { name:'Russian Twist',         note:'Controlled rotation',                   sets:'3 \u00D7 15 ea' },
     ]},
   ],
   1: [
-    { day:'Tuesday',   title:'Lower Body A+',  duration:'50â€“55 min', exercises:[
-      { name:'Barbell / DB Squat',    note:'Add weight from Phase 1 baseline',      sets:'4 Ã— 8' },
-      { name:'Romanian Deadlift',     note:'Increase load 10â€“15%',                  sets:'4 Ã— 8' },
-      { name:'Walking Lunge',         note:'Add dumbbells',                         sets:'3 Ã— 12 ea' },
-      { name:'Box Jump',              note:'Land soft, absorb with hips',           sets:'3 Ã— 6' },
-      { name:'Plank to Push-Up',      note:'Controlled transitions',                sets:'3 Ã— 8 ea' },
-      { name:'Dead Bug + Reach',      note:'Slow and deliberate',                   sets:'3 Ã— 10 ea' },
+    { day:'Tuesday',   title:'Lower Body A+',  duration:'50\u201355 min', exercises:[
+      { name:'Barbell / DB Squat',    note:'Add weight from Phase 1 baseline',      sets:'4 \u00D7 8' },
+      { name:'Romanian Deadlift',     note:'Increase load 10\u201315%',                  sets:'4 \u00D7 8' },
+      { name:'Walking Lunge',         note:'Add dumbbells',                         sets:'3 \u00D7 12 ea' },
+      { name:'Box Jump',              note:'Land soft, absorb with hips',           sets:'3 \u00D7 6' },
+      { name:'Plank to Push-Up',      note:'Controlled transitions',                sets:'3 \u00D7 8 ea' },
+      { name:'Dead Bug + Reach',      note:'Slow and deliberate',                   sets:'3 \u00D7 10 ea' },
     ]},
-    { day:'Thursday',  title:'Power & Core',   duration:'40â€“45 min', exercises:[
-      { name:'Broad Jump',            note:'Max effort, stick the landing',         sets:'4 Ã— 4' },
-      { name:'Lateral Bound',         note:'Stick each landing before rebounding',  sets:'3 Ã— 6 ea' },
-      { name:'Medicine Ball Slam',    note:'Full hip extension overhead',           sets:'3 Ã— 8' },
-      { name:'Side Plank + Row',      note:'Resistance band, stay square',          sets:'3 Ã— 10 ea' },
-      { name:'V-Up',                  note:'Keep legs straight',                    sets:'3 Ã— 12' },
-      { name:'Pallof Press Variation',note:'Add half-kneeling position',            sets:'3 Ã— 10 ea' },
+    { day:'Thursday',  title:'Power & Core',   duration:'40\u201345 min', exercises:[
+      { name:'Broad Jump',            note:'Max effort, stick the landing',         sets:'4 \u00D7 4' },
+      { name:'Lateral Bound',         note:'Stick each landing before rebounding',  sets:'3 \u00D7 6 ea' },
+      { name:'Medicine Ball Slam',    note:'Full hip extension overhead',           sets:'3 \u00D7 8' },
+      { name:'Side Plank + Row',      note:'Resistance band, stay square',          sets:'3 \u00D7 10 ea' },
+      { name:'V-Up',                  note:'Keep legs straight',                    sets:'3 \u00D7 12' },
+      { name:'Pallof Press Variation',note:'Add half-kneeling position',            sets:'3 \u00D7 10 ea' },
     ]},
-    { day:'Sat / Sun', title:'Lower Body B+',  duration:'50â€“55 min', exercises:[
-      { name:'Bulgarian Split Squat (Weighted)', note:'Dumbbells or barbell',       sets:'4 Ã— 6 ea' },
-      { name:'Trap Bar / DB Deadlift',note:'Drive floor away, hips and shoulders rise together', sets:'4 Ã— 6' },
-      { name:'Lateral Squat',         note:'Sit back into one hip',                 sets:'3 Ã— 10 ea' },
-      { name:'Depth Drop to Jump',    note:'Step off, absorb, explode',             sets:'3 Ã— 5' },
-      { name:'Copenhagen Plank',      note:'Longer hold for progression',           sets:'3 Ã— 25 sec ea' },
-      { name:'Hanging Knee Raise',    note:'Control the swing',                     sets:'3 Ã— 12' },
+    { day:'Sat / Sun', title:'Lower Body B+',  duration:'50\u201355 min', exercises:[
+      { name:'Bulgarian Split Squat (Weighted)', note:'Dumbbells or barbell',       sets:'4 \u00D7 6 ea' },
+      { name:'Trap Bar / DB Deadlift',note:'Drive floor away, hips and shoulders rise together', sets:'4 \u00D7 6' },
+      { name:'Lateral Squat',         note:'Sit back into one hip',                 sets:'3 \u00D7 10 ea' },
+      { name:'Depth Drop to Jump',    note:'Step off, absorb, explode',             sets:'3 \u00D7 5' },
+      { name:'Copenhagen Plank',      note:'Longer hold for progression',           sets:'3 \u00D7 25 sec ea' },
+      { name:'Hanging Knee Raise',    note:'Control the swing',                     sets:'3 \u00D7 12' },
     ]},
   ],
   2: [
-    { day:'Tuesday',   title:'Peak Strength A', duration:'55â€“60 min', exercises:[
-      { name:'Back Squat / Heavy Goblet', note:'Work up to 5-rep challenge set',   sets:'5 Ã— 5' },
-      { name:'Romanian Deadlift Heavy',   note:'Focus on hamstring tension',        sets:'4 Ã— 6' },
-      { name:'Rear-Foot Elevated Split Squat', note:'Heaviest phase weight',        sets:'4 Ã— 5 ea' },
-      { name:'Depth Jump to Sprint',      note:'Land, explode, sprint 10m',         sets:'4 Ã— 4' },
-      { name:'Weighted Plank',            note:'Plate on back',                     sets:'3 Ã— 40 sec' },
-      { name:'Rotational Med Ball Throw', note:'Explosive hip rotation',            sets:'3 Ã— 8 ea' },
+    { day:'Tuesday',   title:'Peak Strength A', duration:'55\u201360 min', exercises:[
+      { name:'Back Squat / Heavy Goblet', note:'Work up to 5-rep challenge set',   sets:'5 \u00D7 5' },
+      { name:'Romanian Deadlift Heavy',   note:'Focus on hamstring tension',        sets:'4 \u00D7 6' },
+      { name:'Rear-Foot Elevated Split Squat', note:'Heaviest phase weight',        sets:'4 \u00D7 5 ea' },
+      { name:'Depth Jump to Sprint',      note:'Land, explode, sprint 10m',         sets:'4 \u00D7 4' },
+      { name:'Weighted Plank',            note:'Plate on back',                     sets:'3 \u00D7 40 sec' },
+      { name:'Rotational Med Ball Throw', note:'Explosive hip rotation',            sets:'3 \u00D7 8 ea' },
     ]},
-    { day:'Thursday',  title:'Explosive Power', duration:'45â€“50 min', exercises:[
-      { name:'Triple Broad Jump',      note:'3 consecutive jumps, max distance',    sets:'4 Ã— 3' },
-      { name:'Single-Leg Box Jump',    note:'Lead with strong leg first',           sets:'3 Ã— 5 ea' },
-      { name:'Sprint 10m Ã— 6',         note:'Full rest between, max effort',        sets:'6 Ã— 10m' },
-      { name:'Med Ball Rotational Throw', note:'Drive from ground up',              sets:'4 Ã— 6 ea' },
-      { name:'L-Sit Hold',             note:'Build to 3 Ã— 15 sec',                 sets:'3 Ã— 10 sec' },
-      { name:'Dragon Flag Progression',note:'Scaled as needed',                     sets:'3 Ã— 6' },
+    { day:'Thursday',  title:'Explosive Power', duration:'45\u201350 min', exercises:[
+      { name:'Triple Broad Jump',      note:'3 consecutive jumps, max distance',    sets:'4 \u00D7 3' },
+      { name:'Single-Leg Box Jump',    note:'Lead with strong leg first',           sets:'3 \u00D7 5 ea' },
+      { name:'Sprint 10m \u00D7 6',         note:'Full rest between, max effort',        sets:'6 \u00D7 10m' },
+      { name:'Med Ball Rotational Throw', note:'Drive from ground up',              sets:'4 \u00D7 6 ea' },
+      { name:'L-Sit Hold',             note:'Build to 3 \u00D7 15 sec',                 sets:'3 \u00D7 10 sec' },
+      { name:'Dragon Flag Progression',note:'Scaled as needed',                     sets:'3 \u00D7 6' },
     ]},
-    { day:'Sat / Sun', title:'Peak Strength B', duration:'55â€“60 min', exercises:[
-      { name:'Trap Bar Deadlift Heavy',note:'Max effort within solid form',         sets:'5 Ã— 4' },
-      { name:'Lateral Squat (Weighted)',note:'Control the descent',                 sets:'4 Ã— 6 ea' },
-      { name:'Nordic Hamstring Curl', note:'Eccentric focus â€” slow lower',          sets:'4 Ã— 5' },
-      { name:'Single-Leg Landing Drill',note:'Drop from box, freeze on landing',   sets:'3 Ã— 6 ea' },
-      { name:'Ab Wheel Rollout',       note:"Brace hard â€” don't let hips drop",     sets:'3 Ã— 8' },
-      { name:'Copenhagen Plank + Hip Abduction', note:'Add top leg lift',          sets:'3 Ã— 30 sec ea' },
+    { day:'Sat / Sun', title:'Peak Strength B', duration:'55\u201360 min', exercises:[
+      { name:'Trap Bar Deadlift Heavy',note:'Max effort within solid form',         sets:'5 \u00D7 4' },
+      { name:'Lateral Squat (Weighted)',note:'Control the descent',                 sets:'4 \u00D7 6 ea' },
+      { name:'Nordic Hamstring Curl', note:'Eccentric focus \u2014 slow lower',          sets:'4 \u00D7 5' },
+      { name:'Single-Leg Landing Drill',note:'Drop from box, freeze on landing',   sets:'3 \u00D7 6 ea' },
+      { name:'Ab Wheel Rollout',       note:"Brace hard \u2014 don't let hips drop",     sets:'3 \u00D7 8' },
+      { name:'Copenhagen Plank + Hip Abduction', note:'Add top leg lift',          sets:'3 \u00D7 30 sec ea' },
     ]},
   ],
   3: [
-    { day:'Tuesday',   title:'Maintenance A',   duration:'30â€“35 min', exercises:[
-      { name:'Goblet Squat',           note:'Moderate weight â€” move well',          sets:'2 Ã— 8' },
-      { name:'Romanian Deadlift',      note:'Light, focus on feel',                 sets:'2 Ã— 8' },
-      { name:'Glute Bridge',           note:'Activation only',                      sets:'2 Ã— 12' },
-      { name:'Plank Hold',             note:'Quality over time',                    sets:'2 Ã— 30 sec' },
+    { day:'Tuesday',   title:'Maintenance A',   duration:'30\u201335 min', exercises:[
+      { name:'Goblet Squat',           note:'Moderate weight \u2014 move well',          sets:'2 \u00D7 8' },
+      { name:'Romanian Deadlift',      note:'Light, focus on feel',                 sets:'2 \u00D7 8' },
+      { name:'Glute Bridge',           note:'Activation only',                      sets:'2 \u00D7 12' },
+      { name:'Plank Hold',             note:'Quality over time',                    sets:'2 \u00D7 30 sec' },
     ]},
-    { day:'Thursday',  title:'Activation & Power', duration:'25â€“30 min', exercises:[
-      { name:'Broad Jump',             note:'3 reps â€” feel the pop',                sets:'3 Ã— 3' },
-      { name:'Lateral Bound',          note:'Light and snappy',                     sets:'3 Ã— 4 ea' },
-      { name:'Side Plank',             note:'Short hold, sharp engagement',         sets:'2 Ã— 20 sec ea' },
-      { name:'Sprint Strides 20m Ã— 4',note:'75â€“80% effort â€” stay fluid',           sets:'4 Ã— 20m' },
+    { day:'Thursday',  title:'Activation & Power', duration:'25\u201330 min', exercises:[
+      { name:'Broad Jump',             note:'3 reps \u2014 feel the pop',                sets:'3 \u00D7 3' },
+      { name:'Lateral Bound',          note:'Light and snappy',                     sets:'3 \u00D7 4 ea' },
+      { name:'Side Plank',             note:'Short hold, sharp engagement',         sets:'2 \u00D7 20 sec ea' },
+      { name:'Sprint Strides 20m \u00D7 4',note:'75\u201380% effort \u2014 stay fluid',           sets:'4 \u00D7 20m' },
     ]},
-    { day:'Sat / Sun', title:'Feel Good Session', duration:'20â€“25 min', exercises:[
-      { name:'Bodyweight Squat',            note:'Fluid, full range',               sets:'2 Ã— 10' },
-      { name:'Single-Leg Glute Bridge',     note:'Feel that activation',            sets:'2 Ã— 10 ea' },
-      { name:'Bird Dog',                    note:'Control and breathe',             sets:'2 Ã— 8 ea' },
+    { day:'Sat / Sun', title:'Feel Good Session', duration:'20\u201325 min', exercises:[
+      { name:'Bodyweight Squat',            note:'Fluid, full range',               sets:'2 \u00D7 10' },
+      { name:'Single-Leg Glute Bridge',     note:'Feel that activation',            sets:'2 \u00D7 10 ea' },
+      { name:'Bird Dog',                    note:'Control and breathe',             sets:'2 \u00D7 8 ea' },
       { name:'Light Jog + Dynamic Stretch', note:'Leave feeling loose and ready',  sets:'10 min' },
     ]},
   ],
   4: [
-    { day:'Tuesday',   title:'In-Season Lower Body',      duration:'35â€“40 min', exercises:[
-      { name:'Trap Bar Deadlift',        note:'Heavy but crisp â€” explosive intent',        sets:'3 Ã— 5' },
-      { name:'Bulgarian Split Squat',    note:'Controlled, add load from summer',          sets:'3 Ã— 6 ea' },
-      { name:'Single-Leg RDL',           note:'Balance and hamstring strength',            sets:'3 Ã— 8 ea' },
-      { name:'Copenhagen Plank',         note:'Groin and adductor health',                sets:'3 Ã— 20 sec ea' },
-      { name:'Pallof Press',             note:'Core anti-rotation, stay tall',             sets:'3 Ã— 10 ea' },
+    { day:'Tuesday',   title:'In-Season Lower Body',      duration:'35\u201340 min', exercises:[
+      { name:'Trap Bar Deadlift',        note:'Heavy but crisp \u2014 explosive intent',        sets:'3 \u00D7 5' },
+      { name:'Bulgarian Split Squat',    note:'Controlled, add load from summer',          sets:'3 \u00D7 6 ea' },
+      { name:'Single-Leg RDL',           note:'Balance and hamstring strength',            sets:'3 \u00D7 8 ea' },
+      { name:'Copenhagen Plank',         note:'Groin and adductor health',                sets:'3 \u00D7 20 sec ea' },
+      { name:'Pallof Press',             note:'Core anti-rotation, stay tall',             sets:'3 \u00D7 10 ea' },
     ]},
-    { day:'Thursday',  title:'Power & Core Maintenance',  duration:'30â€“35 min', exercises:[
-      { name:'Broad Jump',               note:'Maintain explosiveness â€” full effort',      sets:'3 Ã— 4' },
-      { name:'Lateral Bound',            note:'Reactive landing control',                  sets:'3 Ã— 5 ea' },
-      { name:'Med Ball Rotational Throw',note:'Hip drive and rotation power',              sets:'3 Ã— 6 ea' },
-      { name:'Dead Bug',                 note:'Deep core stability',                       sets:'3 Ã— 10 ea' },
-      { name:'Side Plank + Hip Abduction',note:'Glute med activation',                    sets:'3 Ã— 20 sec ea' },
-      { name:'Ab Wheel Rollout',         note:'Total core strength',                       sets:'3 Ã— 8' },
+    { day:'Thursday',  title:'Power & Core Maintenance',  duration:'30\u201335 min', exercises:[
+      { name:'Broad Jump',               note:'Maintain explosiveness \u2014 full effort',      sets:'3 \u00D7 4' },
+      { name:'Lateral Bound',            note:'Reactive landing control',                  sets:'3 \u00D7 5 ea' },
+      { name:'Med Ball Rotational Throw',note:'Hip drive and rotation power',              sets:'3 \u00D7 6 ea' },
+      { name:'Dead Bug',                 note:'Deep core stability',                       sets:'3 \u00D7 10 ea' },
+      { name:'Side Plank + Hip Abduction',note:'Glute med activation',                    sets:'3 \u00D7 20 sec ea' },
+      { name:'Ab Wheel Rollout',         note:'Total core strength',                       sets:'3 \u00D7 8' },
     ]},
-    { day:'Sat / Sun', title:'Weekend Full Body',          duration:'40â€“45 min', exercises:[
-      { name:'Back Squat or Goblet Squat',note:'Keep load challenging but fresh',         sets:'3 Ã— 6' },
-      { name:'Romanian Deadlift',        note:'Hamstring focus, slow eccentric',           sets:'3 Ã— 8' },
-      { name:'Step-Up with Knee Drive',  note:'Single-leg power and balance',             sets:'3 Ã— 10 ea' },
-      { name:'Nordic Hamstring Curl',    note:'Injury prevention â€” do not skip',          sets:'3 Ã— 5' },
-      { name:'Plank Variations',         note:'Mix front, side, and RKC plank',           sets:'3 Ã— 35 sec' },
-      { name:'Glute Bridge March',       note:'Hip stability and activation',              sets:'3 Ã— 12 ea' },
+    { day:'Sat / Sun', title:'Weekend Full Body',          duration:'40\u201345 min', exercises:[
+      { name:'Back Squat or Goblet Squat',note:'Keep load challenging but fresh',         sets:'3 \u00D7 6' },
+      { name:'Romanian Deadlift',        note:'Hamstring focus, slow eccentric',           sets:'3 \u00D7 8' },
+      { name:'Step-Up with Knee Drive',  note:'Single-leg power and balance',             sets:'3 \u00D7 10 ea' },
+      { name:'Nordic Hamstring Curl',    note:'Injury prevention \u2014 do not skip',          sets:'3 \u00D7 5' },
+      { name:'Plank Variations',         note:'Mix front, side, and RKC plank',           sets:'3 \u00D7 35 sec' },
+      { name:'Glute Bridge March',       note:'Hip stability and activation',              sets:'3 \u00D7 12 ea' },
     ]},
   ],
   5: [
-    { day:'Tuesday',   title:'Strength Rebuild A',        duration:'50â€“55 min', exercises:[
-      { name:'Back Squat',               note:'Rebuild from 70% â€” add 5 lb each week',    sets:'4 Ã— 6' },
-      { name:'Romanian Deadlift',        note:'Load progression from fall baseline',       sets:'4 Ã— 8' },
-      { name:'Walking Lunge (Weighted)', note:'Single-leg strength endurance',             sets:'3 Ã— 10 ea' },
-      { name:'Box Jump',                 note:'Re-establish explosive power',              sets:'4 Ã— 4' },
-      { name:'Hanging Knee Raise',       note:'Core strength from dead hang',              sets:'3 Ã— 12' },
-      { name:'Lateral Band Walk',        note:'Hip activation â€” always warm up here',      sets:'3 Ã— 15 ea' },
+    { day:'Tuesday',   title:'Strength Rebuild A',        duration:'50\u201355 min', exercises:[
+      { name:'Back Squat',               note:'Rebuild from 70% \u2014 add 5 lb each week',    sets:'4 \u00D7 6' },
+      { name:'Romanian Deadlift',        note:'Load progression from fall baseline',       sets:'4 \u00D7 8' },
+      { name:'Walking Lunge (Weighted)', note:'Single-leg strength endurance',             sets:'3 \u00D7 10 ea' },
+      { name:'Box Jump',                 note:'Re-establish explosive power',              sets:'4 \u00D7 4' },
+      { name:'Hanging Knee Raise',       note:'Core strength from dead hang',              sets:'3 \u00D7 12' },
+      { name:'Lateral Band Walk',        note:'Hip activation \u2014 always warm up here',      sets:'3 \u00D7 15 ea' },
     ]},
-    { day:'Thursday',  title:'Power & Athleticism',       duration:'45â€“50 min', exercises:[
-      { name:'Triple Broad Jump',        note:'Consecutive explosive jumps',               sets:'4 Ã— 3' },
-      { name:'Single-Leg Box Jump',      note:'Reactive power each side',                 sets:'3 Ã— 5 ea' },
-      { name:'Sprint 20m Ã— 5',           note:'Max effort â€” full recovery between',        sets:'5 Ã— 20m' },
-      { name:'Med Ball Slam',            note:'Full-body explosive chain',                 sets:'3 Ã— 8' },
-      { name:'Copenhagen Plank',         note:'Groin strength â€” injury prevention',        sets:'3 Ã— 25 sec ea' },
-      { name:'Russian Twist (Weighted)', note:'Rotational core power',                     sets:'3 Ã— 12 ea' },
+    { day:'Thursday',  title:'Power & Athleticism',       duration:'45\u201350 min', exercises:[
+      { name:'Triple Broad Jump',        note:'Consecutive explosive jumps',               sets:'4 \u00D7 3' },
+      { name:'Single-Leg Box Jump',      note:'Reactive power each side',                 sets:'3 \u00D7 5 ea' },
+      { name:'Sprint 20m \u00D7 5',           note:'Max effort \u2014 full recovery between',        sets:'5 \u00D7 20m' },
+      { name:'Med Ball Slam',            note:'Full-body explosive chain',                 sets:'3 \u00D7 8' },
+      { name:'Copenhagen Plank',         note:'Groin strength \u2014 injury prevention',        sets:'3 \u00D7 25 sec ea' },
+      { name:'Russian Twist (Weighted)', note:'Rotational core power',                     sets:'3 \u00D7 12 ea' },
     ]},
-    { day:'Sat / Sun', title:'Strength Rebuild B',        duration:'50â€“55 min', exercises:[
-      { name:'Trap Bar Deadlift',           note:'Primary posterior chain builder',        sets:'4 Ã— 5' },
-      { name:'Bulgarian Split Squat (Heavy)',note:'Heavier than fall â€” test yourself',     sets:'4 Ã— 6 ea' },
-      { name:'Nordic Hamstring Curl',       note:'Eccentric strength â€” protect your hamstrings', sets:'4 Ã— 6' },
-      { name:'Lateral Squat',               note:'Hip mobility and adductor strength',     sets:'3 Ã— 10 ea' },
-      { name:'Ab Wheel Rollout',            note:'Anti-extension core strength',           sets:'3 Ã— 10' },
-      { name:'Bird Dog with Band',          note:'Glute and core activation',              sets:'3 Ã— 10 ea' },
+    { day:'Sat / Sun', title:'Strength Rebuild B',        duration:'50\u201355 min', exercises:[
+      { name:'Trap Bar Deadlift',           note:'Primary posterior chain builder',        sets:'4 \u00D7 5' },
+      { name:'Bulgarian Split Squat (Heavy)',note:'Heavier than fall \u2014 test yourself',     sets:'4 \u00D7 6 ea' },
+      { name:'Nordic Hamstring Curl',       note:'Eccentric strength \u2014 protect your hamstrings', sets:'4 \u00D7 6' },
+      { name:'Lateral Squat',               note:'Hip mobility and adductor strength',     sets:'3 \u00D7 10 ea' },
+      { name:'Ab Wheel Rollout',            note:'Anti-extension core strength',           sets:'3 \u00D7 10' },
+      { name:'Bird Dog with Band',          note:'Glute and core activation',              sets:'3 \u00D7 10 ea' },
     ]},
   ],
 };
 
-// Fitness sessions â€” populated from SHEET_FITNESS_URL
+// Fitness sessions \u2014 populated from SHEET_FITNESS_URL
 var FITNESS_SESSIONS = {};
 
 // Chan Camp sessions
@@ -289,7 +289,7 @@ var CAMP_SESSIONS = {
   '2026-08-14': { title:'Chan Camp Week 6', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
 };
 
-// â”€â”€ CONSTANTS â”€â”€
+// \u2500\u2500 CONSTANTS \u2500\u2500
 const DAYS_SHORT   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const DAYS_FULL    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS       = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -302,7 +302,7 @@ const FOCUS_LABELS = {
 const STRENGTH_DAYS = [2, 4, 0]; // Tue, Thu, Sun (floater)
 var STRENGTH_SEASON_START = '2026-06-11';
 
-// â”€â”€ STATE â”€â”€
+// \u2500\u2500 STATE \u2500\u2500
 let rsvpData   = {};
 let activeDate = null;
 let activeType = null;
@@ -333,13 +333,13 @@ let calWeekStart = getWeekStart(today);
 function fmtDate(d)  { return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate(); }
 function toDateStr(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
-// â”€â”€ WEEK CALENDAR â”€â”€
+// \u2500\u2500 WEEK CALENDAR \u2500\u2500
 function buildWeekCalendar() {
   const wrap = document.getElementById('calWeekWrap');
   if (!wrap) return;
   const ws = calWeekStart;
   const we = new Date(ws); we.setDate(ws.getDate() + 6);
-  document.getElementById('wkLabel').textContent = fmtDate(ws) + ' â€“ ' + fmtDate(we);
+  document.getElementById('wkLabel').textContent = fmtDate(ws) + ' \u2013 ' + fmtDate(we);
   var prevBtn = document.getElementById('wkPrev');
   var nextBtn = document.getElementById('wkNext');
   if (prevBtn) prevBtn.disabled = ws.getTime() <= calMinWeekStart.getTime();
@@ -423,7 +423,7 @@ function buildWeekCalendar() {
     if (dow === 6) {
       const rest = document.createElement('div');
       rest.className = 'wk-rest-day';
-      rest.textContent = 'ðŸ›Œ Rest Day';
+      rest.textContent = '\uD83D\uDECC Rest Day';
       body.appendChild(rest);
     }
 
@@ -444,7 +444,7 @@ function calNextWeek() {
   if (next.getTime() <= calMaxWeekStart.getTime()) { calWeekStart = next; buildWeekCalendar(); }
 }
 
-// â”€â”€ DETAIL PANEL â”€â”€
+// \u2500\u2500 DETAIL PANEL \u2500\u2500
 function openPanel(key, type, dayObj, phase, wkIdx) {
   activeDate = key;
   activeType = type;
@@ -542,8 +542,8 @@ function renderRsvp() {
   const list  = document.getElementById('rsvpList');
   if (!list) return;
   list.innerHTML = names.length === 0
-    ? '<span class="rsvp-empty">No one yet â€” be the first!</span>'
-    : names.map(function(n,i){ return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="removeRsvp('+i+')">âœ•</button></div>'; }).join('');
+    ? '<span class="rsvp-empty">No one yet \u2014 be the first!</span>'
+    : names.map(function(n,i){ return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="removeRsvp('+i+')">\u2715</button></div>'; }).join('');
 }
 
 function addRsvp() {
@@ -568,7 +568,7 @@ function removeRsvp(idx) {
   openPanel(savedDate, 'technical');
 }
 
-// â”€â”€ NEXT SESSION â”€â”€
+// \u2500\u2500 NEXT SESSION \u2500\u2500
 function buildNextSession() {
   var container = document.getElementById('twCards');
   var rangeEl   = document.getElementById('twWeekRange');
@@ -625,7 +625,7 @@ function buildNextSession() {
   dateSpan.className = 'tw-date-day' + (isToday ? ' today' : '');
   var dateSuffix = MONTHS_SHORT[mo-1] + ' ' + d;
   dateSpan.textContent = (isToday || isTomorrow)
-    ? dayLabel + ' â€” ' + DAYS_FULL[sessionDate.getDay()] + ', ' + dateSuffix
+    ? dayLabel + ' \u2014 ' + DAYS_FULL[sessionDate.getDay()] + ', ' + dateSuffix
     : dayLabel + ', ' + dateSuffix;
   var focusSpan = document.createElement('span');
   focusSpan.className = 'focus-pill focus-' + s.focus;
@@ -735,13 +735,13 @@ function twAddRsvp(ds) {
   if (activeDate === ds) renderRsvp();
 }
 
-// â”€â”€ STRENGTH SECTION â”€â”€
+// \u2500\u2500 STRENGTH SECTION \u2500\u2500
 var activePhase = 0;
 function renderTabs() {
   var tabs = document.getElementById('weekTabs');
   if (!tabs) return;
   tabs.innerHTML = PHASES.map(function(p,i){
-    return '<div class="week-tab '+(i===activePhase?'active':'')+'" onclick="setPhase('+i+')">'+p.label+' <span style="font-weight:300;opacity:0.7">â€” '+p.tag+'</span></div>';
+    return '<div class="week-tab '+(i===activePhase?'active':'')+'" onclick="setPhase('+i+')">'+p.label+' <span style="font-weight:300;opacity:0.7">\u2014 '+p.tag+'</span></div>';
   }).join('');
 }
 function renderWorkouts() {
@@ -750,10 +750,10 @@ function renderWorkouts() {
   var days  = WORKOUTS[activePhase];
   var phase = PHASES[activePhase];
   container.innerHTML =
-    '<div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;"><strong style="color:inherit">'+phase.label+': '+phase.sub+'</strong> â€” '+phase.desc+'</div>' +
+    '<div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;"><strong style="color:inherit">'+phase.label+': '+phase.sub+'</strong> \u2014 '+phase.desc+'</div>' +
     days.map(function(w){
       return '<div class="workout-card">' +
-        '<div class="workout-card-header"><div class="day-label">'+w.day+'</div><h3>'+w.title+'</h3><div class="duration">â± '+w.duration+'</div></div>' +
+        '<div class="workout-card-header"><div class="day-label">'+w.day+'</div><h3>'+w.title+'</h3><div class="duration">\u23F1 '+w.duration+'</div></div>' +
         '<ul class="exercise-list">' +
         w.exercises.map(function(e){
           return '<li class="exercise-item"><div><div class="ex-name">'+e.name+'</div><div class="ex-note">'+e.note+'</div></div><span class="ex-sets">'+e.sets+'</span></li>';
@@ -763,7 +763,7 @@ function renderWorkouts() {
 }
 function setPhase(i) { activePhase = i; renderTabs(); renderWorkouts(); }
 
-// â”€â”€ SHEET LOADER â”€â”€
+// \u2500\u2500 SHEET LOADER \u2500\u2500
 function parseCSVRow(row) {
   var result = [], cur = '', inQ = false;
   for (var i = 0; i < row.length; i++) {
@@ -904,7 +904,7 @@ async function loadFromSheets() {
   renderWorkouts();
 }
 
-// â”€â”€ NAV â”€â”€
+// \u2500\u2500 NAV \u2500\u2500
 function toggleNav() {
   document.getElementById('mainNav').classList.toggle('nav-open');
 }
@@ -916,7 +916,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// â”€â”€ SCROLL FADE â”€â”€
+// \u2500\u2500 SCROLL FADE \u2500\u2500
 function initScrollFade() {
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
