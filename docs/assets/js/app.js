@@ -380,7 +380,7 @@ function buildWeekCalendar() {
       body.appendChild(btn);
     }
 
-    if (dow === 3) {
+    if (dow === 3 && day < new Date('2026-08-24')) {
       const cp = document.createElement('div');
       cp.className = 'wk-event type-captains';
       cp.innerHTML = "Captain's Practice" + '<span class="ev-time">\uD83C\uDFDF 6:30 \u2013 8:00 PM \u00B7 Downes</span>';
