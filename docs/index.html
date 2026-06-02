@@ -1349,6 +1349,17 @@
             <span data-fs-error="email" style="font-size:0.78rem;color:#c0392b"></span>
           </div>
           <div class="form-group">
+            <label for="ctopic">Topic <span style="color:#c0392b">*</span></label>
+            <select id="ctopic" name="topic" data-fs-field required>
+              <option value="" disabled selected>Select a topic…</option>
+              <option value="Skills Training">Skills Training</option>
+              <option value="Strength/Speed">Strength / Speed</option>
+              <option value="Nutrition">Nutrition</option>
+              <option value="Website Bug">Website Bug</option>
+            </select>
+            <span data-fs-error="topic" style="font-size:0.78rem;color:#c0392b"></span>
+          </div>
+          <div class="form-group">
             <label for="cmessage">Message <span style="color:#c0392b">*</span></label>
             <textarea id="cmessage" name="message" placeholder="Ask about training, your goals, tryout prep — anything on your mind..." style="min-height:130px" data-fs-field required></textarea>
             <span data-fs-error="message" style="font-size:0.78rem;color:#c0392b"></span>
