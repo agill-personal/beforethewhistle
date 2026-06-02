@@ -1,5 +1,5 @@
 // \u2500\u2500 PASSWORD GATE \u2500\u2500
-const CORRECT     = 'summerskills2026';
+const CORRECT     = 'summer2026';
 const MAX_TRIES   = 5;
 const LOCKOUT_MS  = 60000; // 1 minute
 
