@@ -52,24 +52,71 @@
   <!-- TECHNICAL TRAINING -->
   <section id="technical-focus">
     <div class="section-label">Technical Training</div>
-    <h2 class="section-title">Technical Skills</h2>
-    <p class="section-subtitle">Mon–Fri sessions at Harry Downes Field, 5:00–6:30 PM. Each session targets a core technical focus area to build a well-rounded player by tryout time.</p>
+    <h2 class="section-title">Themes</h2>
 
-    <div class="focus-areas">
-      <span class="focus-area-pill focus-passing">Passing</span>
-      <span class="focus-area-pill focus-first_touch">First Touch</span>
-      <span class="focus-area-pill focus-one_v_one">1v1</span>
-      <span class="focus-area-pill focus-shooting">Finishing</span>
-      <span class="focus-area-pill focus-crossing">Crossing</span>
-      <span class="focus-area-pill focus-defending">Defending</span>
-      <span class="focus-area-pill focus-dribbling">Dribbling</span>
-      <span class="focus-area-pill focus-trapping">Trapping/Clearing</span>
+    <div class="themes-grid">
+      <div class="theme-card">
+        <span class="focus-area-pill focus-passing">Passing</span>
+        <p class="theme-card-desc">Short and long passing, weight of pass, finding teammates in tight spaces, combination play, and moving off the ball after distributing.</p>
+      </div>
+      <div class="theme-card">
+        <span class="focus-area-pill focus-first_touch">First Touch</span>
+        <p class="theme-card-desc">Controlling the ball under pressure, using the first touch to set up the next action, and receiving in difficult positions and tight spaces.</p>
+      </div>
+      <div class="theme-card">
+        <span class="focus-area-pill focus-one_v_one">1v1</span>
+        <p class="theme-card-desc">Attacking and defending one-on-one situations, using feints and changes of pace going forward, and staying compact and patient to win the ball defensively.</p>
+      </div>
+      <div class="theme-card">
+        <span class="focus-area-pill focus-finishing">Finishing</span>
+        <p class="theme-card-desc">Shooting technique from various angles and distances, composure and decision-making in the box, and converting chances in game-like situations.</p>
+      </div>
+      <div class="theme-card">
+        <span class="focus-area-pill focus-crossing">Crossing</span>
+        <p class="theme-card-desc">Delivering balls from wide positions with accuracy and pace, timing runs to meet the cross, and near and far post delivery options.</p>
+      </div>
+      <div class="theme-card">
+        <span class="focus-area-pill focus-defending">Defending</span>
+        <p class="theme-card-desc">Defensive body shape and positioning, jockeying and forcing play away from danger, pressing triggers, and winning the ball cleanly.</p>
+      </div>
+      <div class="theme-card">
+        <span class="focus-area-pill focus-dribbling">Dribbling</span>
+        <p class="theme-card-desc">Ball mastery at speed, changes of direction and pace, and using fakes and feints to take defenders on and create space in tight areas.</p>
+      </div>
+      <div class="theme-card">
+        <span class="focus-area-pill focus-trapping">Trapping/Clearing</span>
+        <p class="theme-card-desc">Winning aerial duels, controlling long balls out of the air, and clearing confidently under pressure from wide and central positions.</p>
+      </div>
     </div>
 
     <div class="section-label" style="margin-bottom:1rem">Upcoming Sessions</div>
     <div class="tech-sessions-list" id="techSessionsList">
       <div class="tw-empty" style="border:1px dashed var(--border);border-radius:4px;padding:2rem;text-align:center;color:var(--mid)">
         Loading sessions...
+      </div>
+    </div>
+
+    <!-- Detail panel -->
+    <div class="day-panel" id="dayPanel" style="display:none;margin-top:1.5rem">
+      <div class="day-panel-header">
+        <div>
+          <div id="panelDate" style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.25rem"></div>
+          <h3 id="panelTitle"></h3>
+        </div>
+        <button class="close-btn" onclick="closePanel()">&#x2715;</button>
+      </div>
+      <div class="day-panel-body">
+        <div class="day-panel-meta" id="panelMeta"></div>
+        <div id="panelPlan"></div>
+        <div class="rsvp-section" id="panelRsvpSection">
+          <h4>Who's Coming — RSVP</h4>
+          <div class="rsvp-list" id="rsvpList"></div>
+          <div class="rsvp-input-row">
+            <input type="text" id="rsvpInput" placeholder="Your name..." maxlength="40"
+              onkeydown="if(event.key==='Enter') addRsvp()"/>
+            <button onclick="addRsvp()">+ RSVP</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -104,11 +151,27 @@
         var parts = ds.split('-').map(Number);
         var d = new Date(parts[0], parts[1]-1, parts[2]);
         var dayStr = DAYS_SHORT[d.getDay()] + ', ' + MONTHS_SHORT[parts[1]-1] + ' ' + parts[2];
-        return '<div class="tech-session-row">' +
-          '<span class="tech-session-date">' + dayStr + '</span>' +
-          '<span class="focus-pill focus-' + s.focus + '" style="font-size:0.62rem">' + (FOCUS_LABELS[s.focus] || s.focus) + '</span>' +
-          '<span class="tech-session-title">' + s.title + '</span>' +
-          '<span class="tech-session-time">⏰ ' + s.time + '</span>' +
+
+        var detailHtml = '';
+        if (s.skills && s.skills.length) {
+          detailHtml = '<div class="plan-block"><h4>Skills</h4><ul>' +
+            s.skills.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul></div>';
+        } else {
+          var warmupItems = (s.warmup || []).map(function(x){ return '<li>' + x + '</li>'; }).join('');
+          var mainItems   = (s.main   || []).map(function(x){ return '<li>' + x + '</li>'; }).join('');
+          if (warmupItems) detailHtml += '<div class="plan-block"><h4>Warm-Up</h4><ul>' + warmupItems + '</ul></div>';
+          if (mainItems)   detailHtml += '<div class="plan-block"><h4>Main Session</h4><ul>' + mainItems + '</ul></div>';
+        }
+
+        return '<div class="tech-session-row" onclick="this.classList.toggle(\'open\')">' +
+          '<div class="tech-session-row-header">' +
+            '<span class="tech-session-date">' + dayStr + '</span>' +
+            '<span class="focus-pill focus-' + s.focus + '" style="font-size:0.62rem">' + (FOCUS_LABELS[s.focus] || s.focus) + '</span>' +
+            '<span class="tech-session-title">' + s.title + '</span>' +
+            '<span class="tech-session-time">' + s.time + '</span>' +
+            '<span class="tech-session-chevron">&#9660;</span>' +
+          '</div>' +
+          (detailHtml ? '<div class="tech-session-detail">' + detailHtml + '</div>' : '') +
           '</div>';
       }).join('');
     }

@@ -1184,20 +1184,36 @@
     .faq-item.open .faq-answer { display: block; }
 
     /* ── TECHNICAL PAGE ── */
-    .focus-areas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 3rem;
-    }
     .focus-area-pill {
-      padding: 0.5rem 1.1rem;
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
       border-radius: 99px;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+    }
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .theme-card {
       border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.1rem 1.25rem;
+      background: var(--off-white);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .theme-card-desc {
+      font-size: 0.85rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.6;
     }
     .tech-sessions-list {
       display: flex;
@@ -1205,16 +1221,20 @@
       gap: 0.75rem;
     }
     .tech-session-row {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--off-white);
+      cursor: pointer;
+      transition: background 0.15s;
+      overflow: hidden;
+    }
+    .tech-session-row:hover { background: var(--surface-hi); }
+    .tech-session-row-header {
       display: flex;
       align-items: center;
       gap: 1.25rem;
       padding: 0.9rem 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      background: var(--off-white);
-      transition: background 0.15s;
     }
-    .tech-session-row:hover { background: var(--surface-hi); }
     .tech-session-date {
       font-size: 0.72rem;
       font-weight: 700;
@@ -1232,3 +1252,21 @@
       font-size: 0.78rem;
       color: var(--mid);
     }
+    .tech-session-chevron {
+      font-size: 0.75rem;
+      color: var(--mid);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .tech-session-row.open .tech-session-chevron { transform: rotate(180deg); }
+    .tech-session-detail {
+      display: none;
+      padding: 0 1.25rem 1.1rem;
+      border-top: 1px solid var(--border);
+    }
+    .tech-session-row.open .tech-session-detail { display: block; }
+    .tech-session-detail .plan-block { margin-top: 0.85rem; }
+    .tech-session-detail .plan-block h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.4rem; }
+    .tech-session-detail .plan-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+    .tech-session-detail .plan-block li { font-size: 0.85rem; font-weight: 300; line-height: 1.5; padding-left: 1rem; position: relative; }
+    .tech-session-detail .plan-block li::before { content: '–'; position: absolute; left: 0; color: var(--mid); }
