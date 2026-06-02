@@ -2165,7 +2165,10 @@
     topDiv.className = 'tw-card-top';
     var dateSpan = document.createElement('span');
     dateSpan.className = 'tw-date-day' + (isToday ? ' today' : '');
-    dateSpan.textContent = dayLabel + ' — ' + DAYS_FULL[sessionDate.getDay()] + ', ' + MONTHS_SHORT[mo-1] + ' ' + d;
+    var dateSuffix = MONTHS_SHORT[mo-1] + ' ' + d;
+    dateSpan.textContent = (isToday || isTomorrow)
+      ? dayLabel + ' — ' + DAYS_FULL[sessionDate.getDay()] + ', ' + dateSuffix
+      : dayLabel + ', ' + dateSuffix;
     var focusSpan = document.createElement('span');
     focusSpan.className = 'focus-pill focus-' + s.focus;
     focusSpan.style.fontSize = '0.62rem';
