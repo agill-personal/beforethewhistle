@@ -1,4 +1,4 @@
-﻿// â”€â”€ PASSWORD GATE â”€â”€
+// â”€â”€ PASSWORD GATE â”€â”€
 const CORRECT     = 'summerskills2026';
 const MAX_TRIES   = 5;
 const LOCKOUT_MS  = 60000; // 1 minute
@@ -375,7 +375,7 @@ function buildWeekCalendar() {
       const cKey  = 'camp-' + ds;
       const btn   = document.createElement('button');
       btn.className = 'wk-event type-camp';
-      btn.innerHTML = c.title + '<span class="ev-time">â›º ' + c.time + '</span>';
+      btn.innerHTML = c.title + '<span class="ev-time">\u26FA ' + c.time + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'camp'); }; })(cKey);
       body.appendChild(btn);
     }
@@ -383,7 +383,7 @@ function buildWeekCalendar() {
     if (dow === 3) {
       const cp = document.createElement('div');
       cp.className = 'wk-event type-captains';
-      cp.innerHTML = "Captain's Practice" + '<span class="ev-time">ðŸŸ 6:30 â€“ 8:00 PM Â· Downes</span>';
+      cp.innerHTML = "Captain's Practice" + '<span class="ev-time">\uD83C\uDFDF 6:30 \u2013 8:00 PM \u00B7 Downes</span>';
       body.appendChild(cp);
     }
 
@@ -392,7 +392,7 @@ function buildWeekCalendar() {
       const cnt = (rsvpData[ds] || []).length;
       const btn = document.createElement('button');
       btn.className = 'wk-event type-technical';
-      btn.innerHTML = s.title + '<span class="ev-time">âš½ ' + s.time + (cnt > 0 ? ' Â· ' + cnt + ' going' : '') + '</span>';
+      btn.innerHTML = s.title + '<span class="ev-time">\u26BD ' + s.time + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
       btn.onclick = function() { openPanel(ds, 'technical'); };
       body.appendChild(btn);
     }
@@ -402,7 +402,7 @@ function buildWeekCalendar() {
       const gKey = 'grp-' + ds;
       const btn  = document.createElement('button');
       btn.className = 'wk-event type-fitness';
-      btn.innerHTML = g.title + '<span class="ev-time">ðŸƒ ' + g.time + '</span>';
+      btn.innerHTML = g.title + '<span class="ev-time">\uD83C\uDFC3 ' + g.time + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
       body.appendChild(btn);
     }
@@ -415,7 +415,7 @@ function buildWeekCalendar() {
       const btn    = document.createElement('button');
       btn.className = 'wk-event type-strength';
       const evLabel = dow === 0 ? 'Sat or Sun' : workout.duration;
-      btn.innerHTML = workout.title + '<span class="ev-time">ðŸ’ª ' + evLabel + '</span>';
+      btn.innerHTML = workout.title + '<span class="ev-time">\uD83D\uDCAA ' + evLabel + '</span>';
       btn.onclick = (function(k, p, w, d2) { return function() { openPanel(k, 'strength', d2, p, w); }; })(sKey, phase, wkIdx, new Date(day));
       body.appendChild(btn);
     }
@@ -461,8 +461,8 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelTitle').textContent = s.title;
     document.getElementById('panelMeta').innerHTML    =
       '<span class="focus-pill focus-' + s.focus + '">' + FOCUS_LABELS[s.focus] + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">â° ' + s.time + (s.end_time ? ' â€“ ' + s.end_time : '') + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">ðŸ“ ' + s.location + '</span>';
+      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + s.time + (s.end_time ? ' \u2013 ' + s.end_time : '') + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\uD83D\uDCCD ' + s.location + '</span>';
     if (s.skills && s.skills.length) {
       document.getElementById('panelPlan').innerHTML =
         '<div class="plan-block"><h4>Skills</h4><ul>' + s.skills.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
@@ -482,10 +482,10 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
     document.getElementById('panelTitle').textContent = g.title;
     document.getElementById('panelMeta').innerHTML    =
-      '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">ðŸƒ Fitness</span>' +
+      '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">\uD83C\uDFC3 Fitness</span>' +
       '<span class="focus-pill focus-' + g.focus + '">' + (FOCUS_LABELS[g.focus] || g.focus) + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">â° ' + g.time + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">ðŸ“ ' + g.location + '</span>';
+      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + g.time + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\uD83D\uDCCD ' + g.location + '</span>';
     document.getElementById('panelPlan').innerHTML =
       '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (g.warmup || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>' +
       '<div class="plan-block"><h4>Main Session</h4><ul>' + (g.main   || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>';
@@ -500,9 +500,9 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
     document.getElementById('panelTitle').textContent = c.title;
     document.getElementById('panelMeta').innerHTML    =
-      '<span style="background:#f3e8ff;color:#5b1a8b;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">â›º Chan Camp</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">â° ' + c.time + ' â€“ ' + c.end_time + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">ðŸ“ ' + c.location + '</span>';
+      '<span style="background:#f3e8ff;color:#5b1a8b;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">\u26FA Chan Camp</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + c.time + ' \u2013 ' + c.end_time + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\uD83D\uDCCD ' + c.location + '</span>';
     document.getElementById('panelPlan').innerHTML = '';
     rsvpSec.style.display = 'block';
     renderRsvp();
@@ -512,9 +512,9 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelDate').textContent  = DAYS_FULL[dayObj.getDay()] + ', ' + MONTHS[dayObj.getMonth()] + ' ' + dayObj.getDate() + ', ' + dayObj.getFullYear();
     document.getElementById('panelTitle').textContent = workout.title;
     document.getElementById('panelMeta').innerHTML    =
-      '<span class="tag fitness" style="font-size:0.72rem;padding:0.2rem 0.6rem">ðŸ’ª Strength</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">ðŸ  At Home</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">â± ' + workout.duration + '</span>' +
+      '<span class="tag fitness" style="font-size:0.72rem;padding:0.2rem 0.6rem">\uD83D\uDCAA Strength</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\uD83C\uDFE0 At Home</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\u23F1 ' + workout.duration + '</span>' +
       '<span style="font-size:0.8rem;color:var(--mid);font-style:italic">' + phaseInfo.label + ': ' + phaseInfo.tag + '</span>';
     document.getElementById('panelPlan').innerHTML =
       '<div class="plan-block"><h4>Exercises</h4><ul style="gap:0.6rem">' +
@@ -575,6 +575,12 @@ function buildNextSession() {
   if (!container) return;
   container.innerHTML = '';
 
+  if (Object.keys(SESSIONS).length === 0) {
+    if (rangeEl) rangeEl.textContent = '';
+    container.innerHTML = '<div class="tw-empty"><p style="color:var(--mid);font-weight:300">Loading session data\u2026</p></div>';
+    return;
+  }
+
   var todayStr = toDateStr(today);
   var upcoming = Object.entries(SESSIONS)
     .filter(function(e){ return e[0] >= todayStr; })
@@ -582,7 +588,7 @@ function buildNextSession() {
 
   if (upcoming.length === 0) {
     if (rangeEl) rangeEl.textContent = '';
-    container.innerHTML = '<div class="tw-empty"><div class="emoji">ðŸ†</div><p>Season complete â€” great work this summer!</p></div>';
+    container.innerHTML = '<div class="tw-empty"><div class="emoji">\uD83C\uDFC6</div><p>Season complete \u2013 great work this summer!</p></div>';
     return;
   }
 
@@ -596,7 +602,7 @@ function buildNextSession() {
   var tom        = new Date(today); tom.setDate(today.getDate()+1);
   var isTomorrow = sessionDate.toDateString() === tom.toDateString();
 
-  var dayLabel = isToday ? 'âš¡ Today' : isTomorrow ? 'Tomorrow' : DAYS_FULL[sessionDate.getDay()];
+  var dayLabel = isToday ? '\u26A1 Today' : isTomorrow ? 'Tomorrow' : DAYS_FULL[sessionDate.getDay()];
   if (rangeEl) rangeEl.textContent = MONTHS_SHORT[mo-1] + ' ' + d;
 
   var names    = rsvpData[ds] || [];
