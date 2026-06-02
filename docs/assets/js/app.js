@@ -871,31 +871,32 @@ function loadCampFromSheet(rows) {
 }
 
 async function loadFromSheets() {
-  var loaded = false;
-  if (SHEET_TECHNICAL_URL) {
-    try {
-      var res = await fetch(SHEET_TECHNICAL_URL + '&t=' + Date.now(), { cache: 'no-store' });
-      if (res.ok) { loadTechnicalFromSheet(parseCSV(await res.text())); loaded = true; }
-    } catch(e) { console.warn('Could not load Technical sheet:', e); }
-  }
-  if (SHEET_STRENGTH_URL) {
-    try {
-      var res = await fetch(SHEET_STRENGTH_URL, { cache: 'no-store' });
-      if (res.ok) { loadStrengthFromSheet(parseCSV(await res.text())); loaded = true; }
-    } catch(e) { console.warn('Could not load Strength sheet:', e); }
-  }
-  if (SHEET_FITNESS_URL) {
-    try {
-      var res = await fetch(SHEET_FITNESS_URL, { cache: 'no-store' });
-      if (res.ok) { loadFitnessFromSheet(parseCSV(await res.text())); loaded = true; }
-    } catch(e) { console.warn('Could not load Fitness sheet:', e); }
-  }
-  if (SHEET_CAMP_URL) {
-    try {
-      var res = await fetch(SHEET_CAMP_URL, { cache: 'no-store' });
-      if (res.ok) { loadCampFromSheet(parseCSV(await res.text())); loaded = true; }
-    } catch(e) { console.warn('Could not load Chan Camp sheet:', e); }
-  }
+  var fetches = [];
+  if (SHEET_TECHNICAL_URL) fetches.push(
+    fetch(SHEET_TECHNICAL_URL)
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(t) { if (t) loadTechnicalFromSheet(parseCSV(t)); })
+      .catch(function(e) { console.warn('Could not load Technical sheet:', e); })
+  );
+  if (SHEET_STRENGTH_URL) fetches.push(
+    fetch(SHEET_STRENGTH_URL)
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(t) { if (t) loadStrengthFromSheet(parseCSV(t)); })
+      .catch(function(e) { console.warn('Could not load Strength sheet:', e); })
+  );
+  if (SHEET_FITNESS_URL) fetches.push(
+    fetch(SHEET_FITNESS_URL)
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(t) { if (t) loadFitnessFromSheet(parseCSV(t)); })
+      .catch(function(e) { console.warn('Could not load Fitness sheet:', e); })
+  );
+  if (SHEET_CAMP_URL) fetches.push(
+    fetch(SHEET_CAMP_URL)
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(t) { if (t) loadCampFromSheet(parseCSV(t)); })
+      .catch(function(e) { console.warn('Could not load Camp sheet:', e); })
+  );
+  await Promise.all(fetches);
   // Re-render everything with fresh data (page-specific init guards with getElementById)
   buildWeekCalendar();
   buildNextSession();
