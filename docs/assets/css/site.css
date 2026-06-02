@@ -1026,6 +1026,8 @@
         padding-right: 1.5rem;
       }
       .cal-week-wrap { grid-template-columns: repeat(7, 72px); width: max-content; }
+      .wk-event { font-size: 0.6rem; padding: 0.25rem 0.3rem; overflow: hidden; word-break: break-word; }
+      .wk-event .ev-time { display: none; }
       #thisweek { padding: 1.5rem 1.1rem 0.5rem; }
     }
 
