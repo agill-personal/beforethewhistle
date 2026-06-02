@@ -337,6 +337,9 @@
       letter-spacing: -0.01em;
       margin-bottom: 1rem;
     }
+    @media (min-width: 769px) {
+      .section-title { letter-spacing: 0.01em; line-height: 1.2; }
+    }
     .section-subtitle {
       color: var(--mid);
       font-weight: 300;
