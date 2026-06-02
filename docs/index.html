@@ -2083,7 +2083,7 @@
     var days  = WORKOUTS[activePhase];
     var phase = PHASES[activePhase];
     container.innerHTML =
-      '<div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;"><strong style="color:var(--black)">'+phase.label+': '+phase.sub+'</strong> — '+phase.desc+'</div>' +
+      '<div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;"><strong style="color:inherit">'+phase.label+': '+phase.sub+'</strong> — '+phase.desc+'</div>' +
       days.map(function(w){
         return '<div class="workout-card">' +
           '<div class="workout-card-header"><div class="day-label">'+w.day+'</div><h3>'+w.title+'</h3><div class="duration">⏱ '+w.duration+'</div></div>' +
