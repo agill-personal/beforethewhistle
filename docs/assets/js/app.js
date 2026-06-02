@@ -1,4 +1,4 @@
-// ── PASSWORD GATE ──
+﻿// â”€â”€ PASSWORD GATE â”€â”€
 const CORRECT     = 'summerskills2026';
 const MAX_TRIES   = 5;
 const LOCKOUT_MS  = 60000; // 1 minute
@@ -18,7 +18,7 @@ function tickLockout() {
   var remaining = Math.ceil((gateLockUntil - Date.now()) / 1000);
   var err = document.getElementById('gate-error');
   if (remaining > 0) {
-    if (err) err.textContent = 'Too many attempts — try again in ' + remaining + ' second' + (remaining !== 1 ? 's' : '') + '.';
+    if (err) err.textContent = 'Too many attempts â€” try again in ' + remaining + ' second' + (remaining !== 1 ? 's' : '') + '.';
     gateCountdown = setTimeout(tickLockout, 1000);
   } else {
     clearTimeout(gateCountdown);
@@ -61,7 +61,7 @@ function checkPin() {
       tickLockout();
     } else {
       var left = MAX_TRIES - gateAttempts;
-      if (err) err.textContent = 'Incorrect code — ' + left + ' attempt' + (left !== 1 ? 's' : '') + ' remaining.';
+      if (err) err.textContent = 'Incorrect code â€” ' + left + ' attempt' + (left !== 1 ? 's' : '') + ' remaining.';
     }
   }
 }
@@ -78,247 +78,181 @@ function initGate() {
   }
 }
 
-// ── GOOGLE SHEETS CONFIG ──
+// â”€â”€ GOOGLE SHEETS CONFIG â”€â”€
 var SHEET_TECHNICAL_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=1759698843&single=true&output=csv';
 var SHEET_STRENGTH_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=877909294&single=true&output=csv';
 var SHEET_FITNESS_URL   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=663801951&single=true&output=csv';
 var SHEET_CAMP_URL      = '';
 
-// ── FALLBACK DATA ──
-const SESSIONS = {
-  '2026-06-01': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-06-02': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-06-03': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-06-04': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-06-05': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-06-08': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-06-09': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-06-10': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-06-11': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-06-12': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-06-15': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-06-16': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-06-17': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-06-18': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-06-19': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-06-22': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-06-23': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-06-24': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-06-25': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-06-26': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-06-29': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-06-30': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-07-01': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-07-02': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-07-03': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-07-06': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-07-07': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-07-08': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-07-09': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-07-10': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-07-13': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-07-14': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-07-15': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-07-16': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-07-17': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-07-20': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-07-21': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-07-22': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-07-23': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-07-24': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-07-27': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-07-28': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-07-29': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-07-30': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-07-31': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-08-03': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-08-04': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-08-05': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-08-06': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-08-07': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-08-10': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-08-11': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-08-12': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-08-13': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-08-14': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-08-17': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-08-18': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-08-19': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-08-20': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-08-21': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-  '2026-08-24': { focus:'passing', title:'Passing & Receiving', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic stretching 5 min', 'Jogging with the ball'], main:['Triangle passing — groups of 3 (15 min)', 'Long-range switching drill (10 min)', 'Receiving on the turn (10 min)', '2v1 keep-away (10 min)'], cooldown:['Static stretching', 'Coaching review'] },
-  '2026-08-25': { focus:'dribbling', title:'Dribbling Under Pressure', time:'5:00 PM', location:'Harry Downes Field', warmup:['Juggling warm-up', 'Hip mobility circles'], main:['Cone slalom — both feet (10 min)', '1v1 dribbling duels (15 min)', 'Rondo with dribbling escape (10 min)', 'Speed dribble to shot (10 min)'], cooldown:['Cool-down jog', 'Ball mastery free time'] },
-  '2026-08-26': { focus:'shooting', title:'Shooting & Finishing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Dynamic leg swings', 'Light jog + high knees'], main:['Placed shots from 18 yds — both feet (15 min)', 'First-touch finish from crosses (10 min)', '1v1 with GK (10 min)', 'Volley practice (10 min)'], cooldown:['Stretch & debrief', 'Goal-celebration energy 😄'] },
-  '2026-08-27': { focus:'defending', title:'Defensive Shape & Marking', time:'5:00 PM', location:'Harry Downes Field', warmup:['Agility ladder', 'Defensive stance drills'], main:['1v1 defending footwork (10 min)', 'Zonal marking shape — 4v4 (15 min)', 'Pressing triggers drill (10 min)', 'Transition defense (10 min)'], cooldown:['Stretching', 'Film review discussion'] },
-  '2026-08-28': { focus:'trapping', title:'Trapping & Clearing', time:'5:00 PM', location:'Harry Downes Field', warmup:['Aerial ball control warm-up', 'Partner chest trapping'], main:['Trap and turn under pressure (15 min)', 'Defensive clearing technique (10 min)', 'Headed clearances (10 min)', 'Small-sided game: trap before you pass (10 min)'], cooldown:['Foam roll calves & quads', 'Coach feedback circle'] },
-};
+// â”€â”€ FALLBACK DATA â”€â”€
+var SESSIONS = {};
 
 const MILESTONES = {
-  '2026-08-24': { label: '🏆 Tryouts Start', cls: 'tryouts' },
+  '2026-08-24': { label: 'ðŸ† Tryouts Start', cls: 'tryouts' },
 };
 
 const PHASES = [
-  { label:'Phase 1',   sub:'Jun 11 – Jul 4',   tag:'Foundation',  desc:'Bodyweight and light load. Master movement patterns.' },
-  { label:'Phase 2',   sub:'Jul 5 – Jul 25',   tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
-  { label:'Phase 3',   sub:'Jul 26 – Aug 15',  tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
-  { label:'Taper',     sub:'Aug 16 – Aug 28',  tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
+  { label:'Phase 1',   sub:'Jun 11 â€“ Jul 4',   tag:'Foundation',  desc:'Bodyweight and light load. Master movement patterns.' },
+  { label:'Phase 2',   sub:'Jul 5 â€“ Jul 25',   tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
+  { label:'Phase 3',   sub:'Jul 26 â€“ Aug 15',  tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
+  { label:'Taper',     sub:'Aug 16 â€“ Aug 28',  tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
   { label:'In-Season', sub:'Aug 29 onwards',   tag:'Sustain',     desc:'Maintain strength through the season. Quality over volume.' },
   { label:'Spring',    sub:'Spring 2027',       tag:'Spring Build',desc:'Rebuild and progress entering spring season.' },
 ];
 
 const WORKOUTS = {
   0: [
-    { day:'Tuesday',   title:'Lower Body A',    duration:'45–50 min', exercises:[
-      { name:'Goblet Squat',          note:'Full depth, chest up',                  sets:'3 × 12' },
-      { name:'Romanian Deadlift',     note:'Slow eccentric, feel the stretch',      sets:'3 × 10' },
-      { name:'Reverse Lunge',         note:'Alternate legs, controlled',            sets:'3 × 10 ea' },
-      { name:'Glute Bridge',          note:'Pause 2 sec at top',                    sets:'3 × 15' },
-      { name:'Dead Bug',              note:'Lower back stays flat',                 sets:'3 × 10 ea' },
-      { name:'Plank Hold',            note:'Shoulders over wrists',                 sets:'3 × 30 sec' },
+    { day:'Tuesday',   title:'Lower Body A',    duration:'45â€“50 min', exercises:[
+      { name:'Goblet Squat',          note:'Full depth, chest up',                  sets:'3 Ã— 12' },
+      { name:'Romanian Deadlift',     note:'Slow eccentric, feel the stretch',      sets:'3 Ã— 10' },
+      { name:'Reverse Lunge',         note:'Alternate legs, controlled',            sets:'3 Ã— 10 ea' },
+      { name:'Glute Bridge',          note:'Pause 2 sec at top',                    sets:'3 Ã— 15' },
+      { name:'Dead Bug',              note:'Lower back stays flat',                 sets:'3 Ã— 10 ea' },
+      { name:'Plank Hold',            note:'Shoulders over wrists',                 sets:'3 Ã— 30 sec' },
     ]},
-    { day:'Thursday',  title:'Core & Stability', duration:'35–40 min', exercises:[
-      { name:'Single-Leg Glute Bridge', note:'Control the drop',                    sets:'3 × 12 ea' },
-      { name:'Side Plank',            note:"Hips stacked, don't sag",              sets:'3 × 25 sec ea' },
-      { name:'Bird Dog',              note:'Opposite arm + leg, slow',              sets:'3 × 10 ea' },
-      { name:'Pallof Press (Band)',   note:'Anti-rotation — no twisting',           sets:'3 × 10 ea' },
-      { name:'Lateral Band Walk',     note:'Stay low, knees soft',                  sets:'3 × 15 ea' },
-      { name:'Hollow Body Hold',      note:'Lower back pressed down',               sets:'3 × 20 sec' },
+    { day:'Thursday',  title:'Core & Stability', duration:'35â€“40 min', exercises:[
+      { name:'Single-Leg Glute Bridge', note:'Control the drop',                    sets:'3 Ã— 12 ea' },
+      { name:'Side Plank',            note:"Hips stacked, don't sag",              sets:'3 Ã— 25 sec ea' },
+      { name:'Bird Dog',              note:'Opposite arm + leg, slow',              sets:'3 Ã— 10 ea' },
+      { name:'Pallof Press (Band)',   note:'Anti-rotation â€” no twisting',           sets:'3 Ã— 10 ea' },
+      { name:'Lateral Band Walk',     note:'Stay low, knees soft',                  sets:'3 Ã— 15 ea' },
+      { name:'Hollow Body Hold',      note:'Lower back pressed down',               sets:'3 Ã— 20 sec' },
     ]},
-    { day:'Sat / Sun', title:'Lower Body B',    duration:'45–50 min', exercises:[
-      { name:'Bulgarian Split Squat', note:'Back foot elevated, drop straight down', sets:'3 × 8 ea' },
-      { name:'Sumo Squat',            note:'Wide stance, toes out',                 sets:'3 × 12' },
-      { name:'Nordic Hamstring Curl', note:'Partner holds feet or use bench',       sets:'3 × 6' },
-      { name:'Step-Up',               note:'Drive through the heel on top',         sets:'3 × 10 ea' },
-      { name:'Copenhagen Plank',      note:'Adductor challenge',                    sets:'3 × 20 sec ea' },
-      { name:'Russian Twist',         note:'Controlled rotation',                   sets:'3 × 15 ea' },
+    { day:'Sat / Sun', title:'Lower Body B',    duration:'45â€“50 min', exercises:[
+      { name:'Bulgarian Split Squat', note:'Back foot elevated, drop straight down', sets:'3 Ã— 8 ea' },
+      { name:'Sumo Squat',            note:'Wide stance, toes out',                 sets:'3 Ã— 12' },
+      { name:'Nordic Hamstring Curl', note:'Partner holds feet or use bench',       sets:'3 Ã— 6' },
+      { name:'Step-Up',               note:'Drive through the heel on top',         sets:'3 Ã— 10 ea' },
+      { name:'Copenhagen Plank',      note:'Adductor challenge',                    sets:'3 Ã— 20 sec ea' },
+      { name:'Russian Twist',         note:'Controlled rotation',                   sets:'3 Ã— 15 ea' },
     ]},
   ],
   1: [
-    { day:'Tuesday',   title:'Lower Body A+',  duration:'50–55 min', exercises:[
-      { name:'Barbell / DB Squat',    note:'Add weight from Phase 1 baseline',      sets:'4 × 8' },
-      { name:'Romanian Deadlift',     note:'Increase load 10–15%',                  sets:'4 × 8' },
-      { name:'Walking Lunge',         note:'Add dumbbells',                         sets:'3 × 12 ea' },
-      { name:'Box Jump',              note:'Land soft, absorb with hips',           sets:'3 × 6' },
-      { name:'Plank to Push-Up',      note:'Controlled transitions',                sets:'3 × 8 ea' },
-      { name:'Dead Bug + Reach',      note:'Slow and deliberate',                   sets:'3 × 10 ea' },
+    { day:'Tuesday',   title:'Lower Body A+',  duration:'50â€“55 min', exercises:[
+      { name:'Barbell / DB Squat',    note:'Add weight from Phase 1 baseline',      sets:'4 Ã— 8' },
+      { name:'Romanian Deadlift',     note:'Increase load 10â€“15%',                  sets:'4 Ã— 8' },
+      { name:'Walking Lunge',         note:'Add dumbbells',                         sets:'3 Ã— 12 ea' },
+      { name:'Box Jump',              note:'Land soft, absorb with hips',           sets:'3 Ã— 6' },
+      { name:'Plank to Push-Up',      note:'Controlled transitions',                sets:'3 Ã— 8 ea' },
+      { name:'Dead Bug + Reach',      note:'Slow and deliberate',                   sets:'3 Ã— 10 ea' },
     ]},
-    { day:'Thursday',  title:'Power & Core',   duration:'40–45 min', exercises:[
-      { name:'Broad Jump',            note:'Max effort, stick the landing',         sets:'4 × 4' },
-      { name:'Lateral Bound',         note:'Stick each landing before rebounding',  sets:'3 × 6 ea' },
-      { name:'Medicine Ball Slam',    note:'Full hip extension overhead',           sets:'3 × 8' },
-      { name:'Side Plank + Row',      note:'Resistance band, stay square',          sets:'3 × 10 ea' },
-      { name:'V-Up',                  note:'Keep legs straight',                    sets:'3 × 12' },
-      { name:'Pallof Press Variation',note:'Add half-kneeling position',            sets:'3 × 10 ea' },
+    { day:'Thursday',  title:'Power & Core',   duration:'40â€“45 min', exercises:[
+      { name:'Broad Jump',            note:'Max effort, stick the landing',         sets:'4 Ã— 4' },
+      { name:'Lateral Bound',         note:'Stick each landing before rebounding',  sets:'3 Ã— 6 ea' },
+      { name:'Medicine Ball Slam',    note:'Full hip extension overhead',           sets:'3 Ã— 8' },
+      { name:'Side Plank + Row',      note:'Resistance band, stay square',          sets:'3 Ã— 10 ea' },
+      { name:'V-Up',                  note:'Keep legs straight',                    sets:'3 Ã— 12' },
+      { name:'Pallof Press Variation',note:'Add half-kneeling position',            sets:'3 Ã— 10 ea' },
     ]},
-    { day:'Sat / Sun', title:'Lower Body B+',  duration:'50–55 min', exercises:[
-      { name:'Bulgarian Split Squat (Weighted)', note:'Dumbbells or barbell',       sets:'4 × 6 ea' },
-      { name:'Trap Bar / DB Deadlift',note:'Drive floor away, hips and shoulders rise together', sets:'4 × 6' },
-      { name:'Lateral Squat',         note:'Sit back into one hip',                 sets:'3 × 10 ea' },
-      { name:'Depth Drop to Jump',    note:'Step off, absorb, explode',             sets:'3 × 5' },
-      { name:'Copenhagen Plank',      note:'Longer hold for progression',           sets:'3 × 25 sec ea' },
-      { name:'Hanging Knee Raise',    note:'Control the swing',                     sets:'3 × 12' },
+    { day:'Sat / Sun', title:'Lower Body B+',  duration:'50â€“55 min', exercises:[
+      { name:'Bulgarian Split Squat (Weighted)', note:'Dumbbells or barbell',       sets:'4 Ã— 6 ea' },
+      { name:'Trap Bar / DB Deadlift',note:'Drive floor away, hips and shoulders rise together', sets:'4 Ã— 6' },
+      { name:'Lateral Squat',         note:'Sit back into one hip',                 sets:'3 Ã— 10 ea' },
+      { name:'Depth Drop to Jump',    note:'Step off, absorb, explode',             sets:'3 Ã— 5' },
+      { name:'Copenhagen Plank',      note:'Longer hold for progression',           sets:'3 Ã— 25 sec ea' },
+      { name:'Hanging Knee Raise',    note:'Control the swing',                     sets:'3 Ã— 12' },
     ]},
   ],
   2: [
-    { day:'Tuesday',   title:'Peak Strength A', duration:'55–60 min', exercises:[
-      { name:'Back Squat / Heavy Goblet', note:'Work up to 5-rep challenge set',   sets:'5 × 5' },
-      { name:'Romanian Deadlift Heavy',   note:'Focus on hamstring tension',        sets:'4 × 6' },
-      { name:'Rear-Foot Elevated Split Squat', note:'Heaviest phase weight',        sets:'4 × 5 ea' },
-      { name:'Depth Jump to Sprint',      note:'Land, explode, sprint 10m',         sets:'4 × 4' },
-      { name:'Weighted Plank',            note:'Plate on back',                     sets:'3 × 40 sec' },
-      { name:'Rotational Med Ball Throw', note:'Explosive hip rotation',            sets:'3 × 8 ea' },
+    { day:'Tuesday',   title:'Peak Strength A', duration:'55â€“60 min', exercises:[
+      { name:'Back Squat / Heavy Goblet', note:'Work up to 5-rep challenge set',   sets:'5 Ã— 5' },
+      { name:'Romanian Deadlift Heavy',   note:'Focus on hamstring tension',        sets:'4 Ã— 6' },
+      { name:'Rear-Foot Elevated Split Squat', note:'Heaviest phase weight',        sets:'4 Ã— 5 ea' },
+      { name:'Depth Jump to Sprint',      note:'Land, explode, sprint 10m',         sets:'4 Ã— 4' },
+      { name:'Weighted Plank',            note:'Plate on back',                     sets:'3 Ã— 40 sec' },
+      { name:'Rotational Med Ball Throw', note:'Explosive hip rotation',            sets:'3 Ã— 8 ea' },
     ]},
-    { day:'Thursday',  title:'Explosive Power', duration:'45–50 min', exercises:[
-      { name:'Triple Broad Jump',      note:'3 consecutive jumps, max distance',    sets:'4 × 3' },
-      { name:'Single-Leg Box Jump',    note:'Lead with strong leg first',           sets:'3 × 5 ea' },
-      { name:'Sprint 10m × 6',         note:'Full rest between, max effort',        sets:'6 × 10m' },
-      { name:'Med Ball Rotational Throw', note:'Drive from ground up',              sets:'4 × 6 ea' },
-      { name:'L-Sit Hold',             note:'Build to 3 × 15 sec',                 sets:'3 × 10 sec' },
-      { name:'Dragon Flag Progression',note:'Scaled as needed',                     sets:'3 × 6' },
+    { day:'Thursday',  title:'Explosive Power', duration:'45â€“50 min', exercises:[
+      { name:'Triple Broad Jump',      note:'3 consecutive jumps, max distance',    sets:'4 Ã— 3' },
+      { name:'Single-Leg Box Jump',    note:'Lead with strong leg first',           sets:'3 Ã— 5 ea' },
+      { name:'Sprint 10m Ã— 6',         note:'Full rest between, max effort',        sets:'6 Ã— 10m' },
+      { name:'Med Ball Rotational Throw', note:'Drive from ground up',              sets:'4 Ã— 6 ea' },
+      { name:'L-Sit Hold',             note:'Build to 3 Ã— 15 sec',                 sets:'3 Ã— 10 sec' },
+      { name:'Dragon Flag Progression',note:'Scaled as needed',                     sets:'3 Ã— 6' },
     ]},
-    { day:'Sat / Sun', title:'Peak Strength B', duration:'55–60 min', exercises:[
-      { name:'Trap Bar Deadlift Heavy',note:'Max effort within solid form',         sets:'5 × 4' },
-      { name:'Lateral Squat (Weighted)',note:'Control the descent',                 sets:'4 × 6 ea' },
-      { name:'Nordic Hamstring Curl', note:'Eccentric focus — slow lower',          sets:'4 × 5' },
-      { name:'Single-Leg Landing Drill',note:'Drop from box, freeze on landing',   sets:'3 × 6 ea' },
-      { name:'Ab Wheel Rollout',       note:"Brace hard — don't let hips drop",     sets:'3 × 8' },
-      { name:'Copenhagen Plank + Hip Abduction', note:'Add top leg lift',          sets:'3 × 30 sec ea' },
+    { day:'Sat / Sun', title:'Peak Strength B', duration:'55â€“60 min', exercises:[
+      { name:'Trap Bar Deadlift Heavy',note:'Max effort within solid form',         sets:'5 Ã— 4' },
+      { name:'Lateral Squat (Weighted)',note:'Control the descent',                 sets:'4 Ã— 6 ea' },
+      { name:'Nordic Hamstring Curl', note:'Eccentric focus â€” slow lower',          sets:'4 Ã— 5' },
+      { name:'Single-Leg Landing Drill',note:'Drop from box, freeze on landing',   sets:'3 Ã— 6 ea' },
+      { name:'Ab Wheel Rollout',       note:"Brace hard â€” don't let hips drop",     sets:'3 Ã— 8' },
+      { name:'Copenhagen Plank + Hip Abduction', note:'Add top leg lift',          sets:'3 Ã— 30 sec ea' },
     ]},
   ],
   3: [
-    { day:'Tuesday',   title:'Maintenance A',   duration:'30–35 min', exercises:[
-      { name:'Goblet Squat',           note:'Moderate weight — move well',          sets:'2 × 8' },
-      { name:'Romanian Deadlift',      note:'Light, focus on feel',                 sets:'2 × 8' },
-      { name:'Glute Bridge',           note:'Activation only',                      sets:'2 × 12' },
-      { name:'Plank Hold',             note:'Quality over time',                    sets:'2 × 30 sec' },
+    { day:'Tuesday',   title:'Maintenance A',   duration:'30â€“35 min', exercises:[
+      { name:'Goblet Squat',           note:'Moderate weight â€” move well',          sets:'2 Ã— 8' },
+      { name:'Romanian Deadlift',      note:'Light, focus on feel',                 sets:'2 Ã— 8' },
+      { name:'Glute Bridge',           note:'Activation only',                      sets:'2 Ã— 12' },
+      { name:'Plank Hold',             note:'Quality over time',                    sets:'2 Ã— 30 sec' },
     ]},
-    { day:'Thursday',  title:'Activation & Power', duration:'25–30 min', exercises:[
-      { name:'Broad Jump',             note:'3 reps — feel the pop',                sets:'3 × 3' },
-      { name:'Lateral Bound',          note:'Light and snappy',                     sets:'3 × 4 ea' },
-      { name:'Side Plank',             note:'Short hold, sharp engagement',         sets:'2 × 20 sec ea' },
-      { name:'Sprint Strides 20m × 4',note:'75–80% effort — stay fluid',           sets:'4 × 20m' },
+    { day:'Thursday',  title:'Activation & Power', duration:'25â€“30 min', exercises:[
+      { name:'Broad Jump',             note:'3 reps â€” feel the pop',                sets:'3 Ã— 3' },
+      { name:'Lateral Bound',          note:'Light and snappy',                     sets:'3 Ã— 4 ea' },
+      { name:'Side Plank',             note:'Short hold, sharp engagement',         sets:'2 Ã— 20 sec ea' },
+      { name:'Sprint Strides 20m Ã— 4',note:'75â€“80% effort â€” stay fluid',           sets:'4 Ã— 20m' },
     ]},
-    { day:'Sat / Sun', title:'Feel Good Session', duration:'20–25 min', exercises:[
-      { name:'Bodyweight Squat',            note:'Fluid, full range',               sets:'2 × 10' },
-      { name:'Single-Leg Glute Bridge',     note:'Feel that activation',            sets:'2 × 10 ea' },
-      { name:'Bird Dog',                    note:'Control and breathe',             sets:'2 × 8 ea' },
+    { day:'Sat / Sun', title:'Feel Good Session', duration:'20â€“25 min', exercises:[
+      { name:'Bodyweight Squat',            note:'Fluid, full range',               sets:'2 Ã— 10' },
+      { name:'Single-Leg Glute Bridge',     note:'Feel that activation',            sets:'2 Ã— 10 ea' },
+      { name:'Bird Dog',                    note:'Control and breathe',             sets:'2 Ã— 8 ea' },
       { name:'Light Jog + Dynamic Stretch', note:'Leave feeling loose and ready',  sets:'10 min' },
     ]},
   ],
   4: [
-    { day:'Tuesday',   title:'In-Season Lower Body',      duration:'35–40 min', exercises:[
-      { name:'Trap Bar Deadlift',        note:'Heavy but crisp — explosive intent',        sets:'3 × 5' },
-      { name:'Bulgarian Split Squat',    note:'Controlled, add load from summer',          sets:'3 × 6 ea' },
-      { name:'Single-Leg RDL',           note:'Balance and hamstring strength',            sets:'3 × 8 ea' },
-      { name:'Copenhagen Plank',         note:'Groin and adductor health',                sets:'3 × 20 sec ea' },
-      { name:'Pallof Press',             note:'Core anti-rotation, stay tall',             sets:'3 × 10 ea' },
+    { day:'Tuesday',   title:'In-Season Lower Body',      duration:'35â€“40 min', exercises:[
+      { name:'Trap Bar Deadlift',        note:'Heavy but crisp â€” explosive intent',        sets:'3 Ã— 5' },
+      { name:'Bulgarian Split Squat',    note:'Controlled, add load from summer',          sets:'3 Ã— 6 ea' },
+      { name:'Single-Leg RDL',           note:'Balance and hamstring strength',            sets:'3 Ã— 8 ea' },
+      { name:'Copenhagen Plank',         note:'Groin and adductor health',                sets:'3 Ã— 20 sec ea' },
+      { name:'Pallof Press',             note:'Core anti-rotation, stay tall',             sets:'3 Ã— 10 ea' },
     ]},
-    { day:'Thursday',  title:'Power & Core Maintenance',  duration:'30–35 min', exercises:[
-      { name:'Broad Jump',               note:'Maintain explosiveness — full effort',      sets:'3 × 4' },
-      { name:'Lateral Bound',            note:'Reactive landing control',                  sets:'3 × 5 ea' },
-      { name:'Med Ball Rotational Throw',note:'Hip drive and rotation power',              sets:'3 × 6 ea' },
-      { name:'Dead Bug',                 note:'Deep core stability',                       sets:'3 × 10 ea' },
-      { name:'Side Plank + Hip Abduction',note:'Glute med activation',                    sets:'3 × 20 sec ea' },
-      { name:'Ab Wheel Rollout',         note:'Total core strength',                       sets:'3 × 8' },
+    { day:'Thursday',  title:'Power & Core Maintenance',  duration:'30â€“35 min', exercises:[
+      { name:'Broad Jump',               note:'Maintain explosiveness â€” full effort',      sets:'3 Ã— 4' },
+      { name:'Lateral Bound',            note:'Reactive landing control',                  sets:'3 Ã— 5 ea' },
+      { name:'Med Ball Rotational Throw',note:'Hip drive and rotation power',              sets:'3 Ã— 6 ea' },
+      { name:'Dead Bug',                 note:'Deep core stability',                       sets:'3 Ã— 10 ea' },
+      { name:'Side Plank + Hip Abduction',note:'Glute med activation',                    sets:'3 Ã— 20 sec ea' },
+      { name:'Ab Wheel Rollout',         note:'Total core strength',                       sets:'3 Ã— 8' },
     ]},
-    { day:'Sat / Sun', title:'Weekend Full Body',          duration:'40–45 min', exercises:[
-      { name:'Back Squat or Goblet Squat',note:'Keep load challenging but fresh',         sets:'3 × 6' },
-      { name:'Romanian Deadlift',        note:'Hamstring focus, slow eccentric',           sets:'3 × 8' },
-      { name:'Step-Up with Knee Drive',  note:'Single-leg power and balance',             sets:'3 × 10 ea' },
-      { name:'Nordic Hamstring Curl',    note:'Injury prevention — do not skip',          sets:'3 × 5' },
-      { name:'Plank Variations',         note:'Mix front, side, and RKC plank',           sets:'3 × 35 sec' },
-      { name:'Glute Bridge March',       note:'Hip stability and activation',              sets:'3 × 12 ea' },
+    { day:'Sat / Sun', title:'Weekend Full Body',          duration:'40â€“45 min', exercises:[
+      { name:'Back Squat or Goblet Squat',note:'Keep load challenging but fresh',         sets:'3 Ã— 6' },
+      { name:'Romanian Deadlift',        note:'Hamstring focus, slow eccentric',           sets:'3 Ã— 8' },
+      { name:'Step-Up with Knee Drive',  note:'Single-leg power and balance',             sets:'3 Ã— 10 ea' },
+      { name:'Nordic Hamstring Curl',    note:'Injury prevention â€” do not skip',          sets:'3 Ã— 5' },
+      { name:'Plank Variations',         note:'Mix front, side, and RKC plank',           sets:'3 Ã— 35 sec' },
+      { name:'Glute Bridge March',       note:'Hip stability and activation',              sets:'3 Ã— 12 ea' },
     ]},
   ],
   5: [
-    { day:'Tuesday',   title:'Strength Rebuild A',        duration:'50–55 min', exercises:[
-      { name:'Back Squat',               note:'Rebuild from 70% — add 5 lb each week',    sets:'4 × 6' },
-      { name:'Romanian Deadlift',        note:'Load progression from fall baseline',       sets:'4 × 8' },
-      { name:'Walking Lunge (Weighted)', note:'Single-leg strength endurance',             sets:'3 × 10 ea' },
-      { name:'Box Jump',                 note:'Re-establish explosive power',              sets:'4 × 4' },
-      { name:'Hanging Knee Raise',       note:'Core strength from dead hang',              sets:'3 × 12' },
-      { name:'Lateral Band Walk',        note:'Hip activation — always warm up here',      sets:'3 × 15 ea' },
+    { day:'Tuesday',   title:'Strength Rebuild A',        duration:'50â€“55 min', exercises:[
+      { name:'Back Squat',               note:'Rebuild from 70% â€” add 5 lb each week',    sets:'4 Ã— 6' },
+      { name:'Romanian Deadlift',        note:'Load progression from fall baseline',       sets:'4 Ã— 8' },
+      { name:'Walking Lunge (Weighted)', note:'Single-leg strength endurance',             sets:'3 Ã— 10 ea' },
+      { name:'Box Jump',                 note:'Re-establish explosive power',              sets:'4 Ã— 4' },
+      { name:'Hanging Knee Raise',       note:'Core strength from dead hang',              sets:'3 Ã— 12' },
+      { name:'Lateral Band Walk',        note:'Hip activation â€” always warm up here',      sets:'3 Ã— 15 ea' },
     ]},
-    { day:'Thursday',  title:'Power & Athleticism',       duration:'45–50 min', exercises:[
-      { name:'Triple Broad Jump',        note:'Consecutive explosive jumps',               sets:'4 × 3' },
-      { name:'Single-Leg Box Jump',      note:'Reactive power each side',                 sets:'3 × 5 ea' },
-      { name:'Sprint 20m × 5',           note:'Max effort — full recovery between',        sets:'5 × 20m' },
-      { name:'Med Ball Slam',            note:'Full-body explosive chain',                 sets:'3 × 8' },
-      { name:'Copenhagen Plank',         note:'Groin strength — injury prevention',        sets:'3 × 25 sec ea' },
-      { name:'Russian Twist (Weighted)', note:'Rotational core power',                     sets:'3 × 12 ea' },
+    { day:'Thursday',  title:'Power & Athleticism',       duration:'45â€“50 min', exercises:[
+      { name:'Triple Broad Jump',        note:'Consecutive explosive jumps',               sets:'4 Ã— 3' },
+      { name:'Single-Leg Box Jump',      note:'Reactive power each side',                 sets:'3 Ã— 5 ea' },
+      { name:'Sprint 20m Ã— 5',           note:'Max effort â€” full recovery between',        sets:'5 Ã— 20m' },
+      { name:'Med Ball Slam',            note:'Full-body explosive chain',                 sets:'3 Ã— 8' },
+      { name:'Copenhagen Plank',         note:'Groin strength â€” injury prevention',        sets:'3 Ã— 25 sec ea' },
+      { name:'Russian Twist (Weighted)', note:'Rotational core power',                     sets:'3 Ã— 12 ea' },
     ]},
-    { day:'Sat / Sun', title:'Strength Rebuild B',        duration:'50–55 min', exercises:[
-      { name:'Trap Bar Deadlift',           note:'Primary posterior chain builder',        sets:'4 × 5' },
-      { name:'Bulgarian Split Squat (Heavy)',note:'Heavier than fall — test yourself',     sets:'4 × 6 ea' },
-      { name:'Nordic Hamstring Curl',       note:'Eccentric strength — protect your hamstrings', sets:'4 × 6' },
-      { name:'Lateral Squat',               note:'Hip mobility and adductor strength',     sets:'3 × 10 ea' },
-      { name:'Ab Wheel Rollout',            note:'Anti-extension core strength',           sets:'3 × 10' },
-      { name:'Bird Dog with Band',          note:'Glute and core activation',              sets:'3 × 10 ea' },
+    { day:'Sat / Sun', title:'Strength Rebuild B',        duration:'50â€“55 min', exercises:[
+      { name:'Trap Bar Deadlift',           note:'Primary posterior chain builder',        sets:'4 Ã— 5' },
+      { name:'Bulgarian Split Squat (Heavy)',note:'Heavier than fall â€” test yourself',     sets:'4 Ã— 6 ea' },
+      { name:'Nordic Hamstring Curl',       note:'Eccentric strength â€” protect your hamstrings', sets:'4 Ã— 6' },
+      { name:'Lateral Squat',               note:'Hip mobility and adductor strength',     sets:'3 Ã— 10 ea' },
+      { name:'Ab Wheel Rollout',            note:'Anti-extension core strength',           sets:'3 Ã— 10' },
+      { name:'Bird Dog with Band',          note:'Glute and core activation',              sets:'3 Ã— 10 ea' },
     ]},
   ],
 };
 
-// Fitness sessions — populated from SHEET_FITNESS_URL
+// Fitness sessions â€” populated from SHEET_FITNESS_URL
 var FITNESS_SESSIONS = {};
 
 // Chan Camp sessions
@@ -355,7 +289,7 @@ var CAMP_SESSIONS = {
   '2026-08-14': { title:'Chan Camp Week 6', time:'8:00 AM', end_time:'10:00 AM', location:'Downes Field' },
 };
 
-// ── CONSTANTS ──
+// â”€â”€ CONSTANTS â”€â”€
 const DAYS_SHORT   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const DAYS_FULL    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS       = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -368,7 +302,7 @@ const FOCUS_LABELS = {
 const STRENGTH_DAYS = [2, 4, 0]; // Tue, Thu, Sun (floater)
 var STRENGTH_SEASON_START = '2026-06-11';
 
-// ── STATE ──
+// â”€â”€ STATE â”€â”€
 let rsvpData   = {};
 let activeDate = null;
 let activeType = null;
@@ -399,13 +333,13 @@ let calWeekStart = getWeekStart(today);
 function fmtDate(d)  { return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate(); }
 function toDateStr(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
-// ── WEEK CALENDAR ──
+// â”€â”€ WEEK CALENDAR â”€â”€
 function buildWeekCalendar() {
   const wrap = document.getElementById('calWeekWrap');
   if (!wrap) return;
   const ws = calWeekStart;
   const we = new Date(ws); we.setDate(ws.getDate() + 6);
-  document.getElementById('wkLabel').textContent = fmtDate(ws) + ' – ' + fmtDate(we);
+  document.getElementById('wkLabel').textContent = fmtDate(ws) + ' â€“ ' + fmtDate(we);
   var prevBtn = document.getElementById('wkPrev');
   var nextBtn = document.getElementById('wkNext');
   if (prevBtn) prevBtn.disabled = ws.getTime() <= calMinWeekStart.getTime();
@@ -441,7 +375,7 @@ function buildWeekCalendar() {
       const cKey  = 'camp-' + ds;
       const btn   = document.createElement('button');
       btn.className = 'wk-event type-camp';
-      btn.innerHTML = c.title + '<span class="ev-time">⛺ ' + c.time + '</span>';
+      btn.innerHTML = c.title + '<span class="ev-time">â›º ' + c.time + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'camp'); }; })(cKey);
       body.appendChild(btn);
     }
@@ -449,7 +383,7 @@ function buildWeekCalendar() {
     if (dow === 3) {
       const cp = document.createElement('div');
       cp.className = 'wk-event type-captains';
-      cp.innerHTML = "Captain's Practice" + '<span class="ev-time">🏟 6:30 – 8:00 PM · Downes</span>';
+      cp.innerHTML = "Captain's Practice" + '<span class="ev-time">ðŸŸ 6:30 â€“ 8:00 PM Â· Downes</span>';
       body.appendChild(cp);
     }
 
@@ -458,7 +392,7 @@ function buildWeekCalendar() {
       const cnt = (rsvpData[ds] || []).length;
       const btn = document.createElement('button');
       btn.className = 'wk-event type-technical';
-      btn.innerHTML = s.title + '<span class="ev-time">⚽ ' + s.time + (cnt > 0 ? ' · ' + cnt + ' going' : '') + '</span>';
+      btn.innerHTML = s.title + '<span class="ev-time">âš½ ' + s.time + (cnt > 0 ? ' Â· ' + cnt + ' going' : '') + '</span>';
       btn.onclick = function() { openPanel(ds, 'technical'); };
       body.appendChild(btn);
     }
@@ -468,7 +402,7 @@ function buildWeekCalendar() {
       const gKey = 'grp-' + ds;
       const btn  = document.createElement('button');
       btn.className = 'wk-event type-fitness';
-      btn.innerHTML = g.title + '<span class="ev-time">🏃 ' + g.time + '</span>';
+      btn.innerHTML = g.title + '<span class="ev-time">ðŸƒ ' + g.time + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
       body.appendChild(btn);
     }
@@ -481,7 +415,7 @@ function buildWeekCalendar() {
       const btn    = document.createElement('button');
       btn.className = 'wk-event type-strength';
       const evLabel = dow === 0 ? 'Sat or Sun' : workout.duration;
-      btn.innerHTML = workout.title + '<span class="ev-time">💪 ' + evLabel + '</span>';
+      btn.innerHTML = workout.title + '<span class="ev-time">ðŸ’ª ' + evLabel + '</span>';
       btn.onclick = (function(k, p, w, d2) { return function() { openPanel(k, 'strength', d2, p, w); }; })(sKey, phase, wkIdx, new Date(day));
       body.appendChild(btn);
     }
@@ -489,7 +423,7 @@ function buildWeekCalendar() {
     if (dow === 6) {
       const rest = document.createElement('div');
       rest.className = 'wk-rest-day';
-      rest.textContent = '🛌 Rest Day';
+      rest.textContent = 'ðŸ›Œ Rest Day';
       body.appendChild(rest);
     }
 
@@ -510,7 +444,7 @@ function calNextWeek() {
   if (next.getTime() <= calMaxWeekStart.getTime()) { calWeekStart = next; buildWeekCalendar(); }
 }
 
-// ── DETAIL PANEL ──
+// â”€â”€ DETAIL PANEL â”€â”€
 function openPanel(key, type, dayObj, phase, wkIdx) {
   activeDate = key;
   activeType = type;
@@ -527,8 +461,8 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelTitle').textContent = s.title;
     document.getElementById('panelMeta').innerHTML    =
       '<span class="focus-pill focus-' + s.focus + '">' + FOCUS_LABELS[s.focus] + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + s.time + (s.end_time ? ' – ' + s.end_time : '') + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + s.location + '</span>';
+      '<span style="font-size:0.8rem;color:var(--mid)">â° ' + s.time + (s.end_time ? ' â€“ ' + s.end_time : '') + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">ðŸ“ ' + s.location + '</span>';
     if (s.skills && s.skills.length) {
       document.getElementById('panelPlan').innerHTML =
         '<div class="plan-block"><h4>Skills</h4><ul>' + s.skills.map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
@@ -548,10 +482,10 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
     document.getElementById('panelTitle').textContent = g.title;
     document.getElementById('panelMeta').innerHTML    =
-      '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">🏃 Fitness</span>' +
+      '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">ðŸƒ Fitness</span>' +
       '<span class="focus-pill focus-' + g.focus + '">' + (FOCUS_LABELS[g.focus] || g.focus) + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + g.time + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + g.location + '</span>';
+      '<span style="font-size:0.8rem;color:var(--mid)">â° ' + g.time + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">ðŸ“ ' + g.location + '</span>';
     document.getElementById('panelPlan').innerHTML =
       '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (g.warmup || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>' +
       '<div class="plan-block"><h4>Main Session</h4><ul>' + (g.main   || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>';
@@ -566,9 +500,9 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelDate').textContent  = DAYS_FULL[dateObj2.getDay()] + ', ' + MONTHS[mo-1] + ' ' + d + ', ' + y;
     document.getElementById('panelTitle').textContent = c.title;
     document.getElementById('panelMeta').innerHTML    =
-      '<span style="background:#f3e8ff;color:#5b1a8b;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">⛺ Chan Camp</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">⏰ ' + c.time + ' – ' + c.end_time + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">📍 ' + c.location + '</span>';
+      '<span style="background:#f3e8ff;color:#5b1a8b;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">â›º Chan Camp</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">â° ' + c.time + ' â€“ ' + c.end_time + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">ðŸ“ ' + c.location + '</span>';
     document.getElementById('panelPlan').innerHTML = '';
     rsvpSec.style.display = 'block';
     renderRsvp();
@@ -578,9 +512,9 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelDate').textContent  = DAYS_FULL[dayObj.getDay()] + ', ' + MONTHS[dayObj.getMonth()] + ' ' + dayObj.getDate() + ', ' + dayObj.getFullYear();
     document.getElementById('panelTitle').textContent = workout.title;
     document.getElementById('panelMeta').innerHTML    =
-      '<span class="tag fitness" style="font-size:0.72rem;padding:0.2rem 0.6rem">💪 Strength</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">🏠 At Home</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">⏱ ' + workout.duration + '</span>' +
+      '<span class="tag fitness" style="font-size:0.72rem;padding:0.2rem 0.6rem">ðŸ’ª Strength</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">ðŸ  At Home</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">â± ' + workout.duration + '</span>' +
       '<span style="font-size:0.8rem;color:var(--mid);font-style:italic">' + phaseInfo.label + ': ' + phaseInfo.tag + '</span>';
     document.getElementById('panelPlan').innerHTML =
       '<div class="plan-block"><h4>Exercises</h4><ul style="gap:0.6rem">' +
@@ -608,8 +542,8 @@ function renderRsvp() {
   const list  = document.getElementById('rsvpList');
   if (!list) return;
   list.innerHTML = names.length === 0
-    ? '<span class="rsvp-empty">No one yet — be the first!</span>'
-    : names.map(function(n,i){ return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="removeRsvp('+i+')">✕</button></div>'; }).join('');
+    ? '<span class="rsvp-empty">No one yet â€” be the first!</span>'
+    : names.map(function(n,i){ return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="removeRsvp('+i+')">âœ•</button></div>'; }).join('');
 }
 
 function addRsvp() {
@@ -634,7 +568,7 @@ function removeRsvp(idx) {
   openPanel(savedDate, 'technical');
 }
 
-// ── NEXT SESSION ──
+// â”€â”€ NEXT SESSION â”€â”€
 function buildNextSession() {
   var container = document.getElementById('twCards');
   var rangeEl   = document.getElementById('twWeekRange');
@@ -648,7 +582,7 @@ function buildNextSession() {
 
   if (upcoming.length === 0) {
     if (rangeEl) rangeEl.textContent = '';
-    container.innerHTML = '<div class="tw-empty"><div class="emoji">🏆</div><p>Season complete — great work this summer!</p></div>';
+    container.innerHTML = '<div class="tw-empty"><div class="emoji">ðŸ†</div><p>Season complete â€” great work this summer!</p></div>';
     return;
   }
 
@@ -662,7 +596,7 @@ function buildNextSession() {
   var tom        = new Date(today); tom.setDate(today.getDate()+1);
   var isTomorrow = sessionDate.toDateString() === tom.toDateString();
 
-  var dayLabel = isToday ? '⚡ Today' : isTomorrow ? 'Tomorrow' : DAYS_FULL[sessionDate.getDay()];
+  var dayLabel = isToday ? 'âš¡ Today' : isTomorrow ? 'Tomorrow' : DAYS_FULL[sessionDate.getDay()];
   if (rangeEl) rangeEl.textContent = MONTHS_SHORT[mo-1] + ' ' + d;
 
   var names    = rsvpData[ds] || [];
@@ -685,7 +619,7 @@ function buildNextSession() {
   dateSpan.className = 'tw-date-day' + (isToday ? ' today' : '');
   var dateSuffix = MONTHS_SHORT[mo-1] + ' ' + d;
   dateSpan.textContent = (isToday || isTomorrow)
-    ? dayLabel + ' — ' + DAYS_FULL[sessionDate.getDay()] + ', ' + dateSuffix
+    ? dayLabel + ' â€” ' + DAYS_FULL[sessionDate.getDay()] + ', ' + dateSuffix
     : dayLabel + ', ' + dateSuffix;
   var focusSpan = document.createElement('span');
   focusSpan.className = 'focus-pill focus-' + s.focus;
@@ -795,13 +729,13 @@ function twAddRsvp(ds) {
   if (activeDate === ds) renderRsvp();
 }
 
-// ── STRENGTH SECTION ──
+// â”€â”€ STRENGTH SECTION â”€â”€
 var activePhase = 0;
 function renderTabs() {
   var tabs = document.getElementById('weekTabs');
   if (!tabs) return;
   tabs.innerHTML = PHASES.map(function(p,i){
-    return '<div class="week-tab '+(i===activePhase?'active':'')+'" onclick="setPhase('+i+')">'+p.label+' <span style="font-weight:300;opacity:0.7">— '+p.tag+'</span></div>';
+    return '<div class="week-tab '+(i===activePhase?'active':'')+'" onclick="setPhase('+i+')">'+p.label+' <span style="font-weight:300;opacity:0.7">â€” '+p.tag+'</span></div>';
   }).join('');
 }
 function renderWorkouts() {
@@ -810,10 +744,10 @@ function renderWorkouts() {
   var days  = WORKOUTS[activePhase];
   var phase = PHASES[activePhase];
   container.innerHTML =
-    '<div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;"><strong style="color:inherit">'+phase.label+': '+phase.sub+'</strong> — '+phase.desc+'</div>' +
+    '<div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;"><strong style="color:inherit">'+phase.label+': '+phase.sub+'</strong> â€” '+phase.desc+'</div>' +
     days.map(function(w){
       return '<div class="workout-card">' +
-        '<div class="workout-card-header"><div class="day-label">'+w.day+'</div><h3>'+w.title+'</h3><div class="duration">⏱ '+w.duration+'</div></div>' +
+        '<div class="workout-card-header"><div class="day-label">'+w.day+'</div><h3>'+w.title+'</h3><div class="duration">â± '+w.duration+'</div></div>' +
         '<ul class="exercise-list">' +
         w.exercises.map(function(e){
           return '<li class="exercise-item"><div><div class="ex-name">'+e.name+'</div><div class="ex-note">'+e.note+'</div></div><span class="ex-sets">'+e.sets+'</span></li>';
@@ -823,7 +757,7 @@ function renderWorkouts() {
 }
 function setPhase(i) { activePhase = i; renderTabs(); renderWorkouts(); }
 
-// ── SHEET LOADER ──
+// â”€â”€ SHEET LOADER â”€â”€
 function parseCSVRow(row) {
   var result = [], cur = '', inQ = false;
   for (var i = 0; i < row.length; i++) {
@@ -934,7 +868,7 @@ async function loadFromSheets() {
   var loaded = false;
   if (SHEET_TECHNICAL_URL) {
     try {
-      var res = await fetch(SHEET_TECHNICAL_URL, { cache: 'no-store' });
+      var res = await fetch(SHEET_TECHNICAL_URL + '&t=' + Date.now(), { cache: 'no-store' });
       if (res.ok) { loadTechnicalFromSheet(parseCSV(await res.text())); loaded = true; }
     } catch(e) { console.warn('Could not load Technical sheet:', e); }
   }
@@ -963,7 +897,7 @@ async function loadFromSheets() {
   renderWorkouts();
 }
 
-// ── NAV ──
+// â”€â”€ NAV â”€â”€
 function toggleNav() {
   document.getElementById('mainNav').classList.toggle('nav-open');
 }
@@ -975,7 +909,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// ── SCROLL FADE ──
+// â”€â”€ SCROLL FADE â”€â”€
 function initScrollFade() {
   const observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
