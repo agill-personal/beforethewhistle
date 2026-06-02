@@ -10,14 +10,14 @@
 
     :root {
       --black: #111111;
-      --white: #0d1f14;
-      --off-white: #1f3d2e;
-      --surface-raised: #2a5c40;
-      --surface-hi: #2e5e42;
-      --accent: #52c46e;
-      --accent-light: #c4e8cc;
-      --mid: #7faa8b;
-      --border: #3d6b52;
+      --white: #0d1421;
+      --off-white: #152840;
+      --surface-raised: #1e3e64;
+      --surface-hi: #254878;
+      --accent: #4aaae0;
+      --accent-light: #c4def8;
+      --mid: #7aaecb;
+      --border: #2a4e7a;
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'DM Sans', sans-serif;
       --logo: 'Barlow Condensed', Impact, sans-serif;
@@ -28,7 +28,7 @@
     body {
       font-family: var(--sans);
       background: var(--white);
-      color: #dde8e1;
+      color: #d8e6f5;
       font-size: 16px;
       line-height: 1.6;
     }
@@ -220,7 +220,7 @@
     }
     .tw-rsvp-btn {
       background: var(--accent-light);
-      color: #1a4d28;
+      color: #1a3d64;
       border: none;
       border-radius: 20px;
       padding: 0.35rem 0.9rem;
@@ -318,7 +318,7 @@
       border: none;
       cursor: pointer;
     }
-    .btn:hover { background: #1f4e2c; transform: translateY(-1px); }
+    .btn:hover { background: #1a3d64; transform: translateY(-1px); }
 
     @media (max-width: 768px) {
       #thisweek { padding: 1.5rem 1.1rem; }
@@ -486,7 +486,7 @@
       padding: 1rem 1.25rem;
       border-radius: 0 4px 4px 0;
       font-size: 0.875rem;
-      color: #1a4226;
+      color: #1a3d64;
     }
     .nutrition-tip strong { display: block; margin-bottom: 0.2rem; font-weight: 600; }
 
@@ -784,7 +784,7 @@
       white-space: nowrap;
       transition: background 0.2s;
     }
-    .rsvp-input-row button:hover { background: #1f4e2c; }
+    .rsvp-input-row button:hover { background: #1a3d64; }
     .rsvp-empty { font-size: 0.8rem; color: var(--mid); font-style: italic; }
 
     /* ── STRENGTH PLAN ── */
@@ -872,7 +872,7 @@
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.03em;
-      color: #1a4d28;
+      color: #1a3d64;
       background: var(--accent-light);
       padding: 0.2rem 0.5rem;
       border-radius: 2px;
@@ -932,7 +932,7 @@
       color: var(--accent);
       line-height: 1;
     }
-    .nav-logo:hover { color: #1f4e2c; }
+    .nav-logo:hover { color: #1a3d64; }
     .gate-box p {
       font-size: 0.875rem;
       color: var(--mid);
@@ -979,7 +979,7 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .gate-box .gate-btn:hover { background: #1f4e2c; }
+    .gate-box .gate-btn:hover { background: #1a3d64; }
     .gate-error {
       font-size: 0.78rem;
       color: #c0392b;
@@ -1044,11 +1044,11 @@
       border: none; text-align: left; width: 100%;
     }
     .wk-event:hover { opacity: 0.85; transform: translateY(-1px); }
-    .wk-event.type-technical { background: var(--accent-light); color: #1a4d28; }
-    .wk-event.type-strength  { background: #fde8c8; color: #7a3f00; }
-    .wk-event.type-fitness    { background: #dbeafe; color: #1d4ed8; }
-    .wk-event.type-camp       { background: #f3e8ff; color: #5b1a8b; }
-    .wk-event.type-captains   { background: #fef3c7; color: #92400e; cursor: default; }
+    .wk-event.type-technical { background: #bbf7d0; color: #14532d; }
+    .wk-event.type-strength  { background: #fee2e2; color: #7f1d1d; }
+    .wk-event.type-fitness    { background: #ede9fe; color: #4c1d95; }
+    .wk-event.type-camp       { background: #fef9c3; color: #1a3d64; }
+    .wk-event.type-captains   { background: #fef9c3; color: #1a3d64; cursor: default; }
     .wk-event.type-captains:hover { opacity: 1; transform: none; }
     .wk-rest-day {
       font-size: 0.72rem; font-weight: 600;
@@ -1127,7 +1127,7 @@
 
     /* Button hovers — lighter shade of the new brighter accent */
     .btn:hover,
-    .rsvp-input-row button:hover { background: #3daa58; }
+    .rsvp-input-row button:hover { background: #2d7fbe; }
 
     /* Nav logo hover visible on dark bg */
     .nav-logo:hover { color: #fff; }
@@ -1137,7 +1137,7 @@
     .drill-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
 
     /* Arrow hover needs dark text on light-green background */
-    .wk-arrow:hover { color: #1a4d28; }
+    .wk-arrow:hover { color: #1a3d64; }
 
     /* Nav and dropdown must float above page bg */
     nav { background: var(--surface-raised); }
@@ -1186,7 +1186,7 @@
 
     /* Tag chips match */
     .tag.fitness   { background: #ffd9a0; color: #5c2d00; }
-    .tag.technical { background: var(--accent-light); color: #1a4d28; }
+    .tag.technical { background: #bbf7d0; color: #14532d; }
     .tag.scrimmage { background: #ffbdbd; color: #6a0000; }
     .tag.mental    { background: #ccceff; color: #15157a; }
   </style>
@@ -1466,7 +1466,7 @@
 
       <!-- Contact form -->
       <div>
-        <div data-fs-success style="color:#1a4d28;font-weight:600;font-size:0.95rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px">
+        <div data-fs-success style="color:#1a3d64;font-weight:600;font-size:0.95rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px">
           ✓ Message sent! I'll be in touch soon.
         </div>
         <div data-fs-error style="color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
@@ -1500,7 +1500,7 @@
           <p style="font-size:0.875rem;color:var(--mid);font-weight:300;line-height:1.7;max-width:42ch">Get session reminders, training notes, and schedule updates sent straight to your inbox.</p>
         </div>
         <div class="newsletter-form-wrap">
-          <div data-fs-success style="color:#1a4d28;font-weight:600;font-size:0.95rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px;margin-bottom:1rem">
+          <div data-fs-success style="color:#1a3d64;font-weight:600;font-size:0.95rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px;margin-bottom:1rem">
             ✓ You're on the list!
           </div>
           <div data-fs-error style="color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
