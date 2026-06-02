@@ -484,7 +484,7 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelMeta').innerHTML    =
       '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">\uD83C\uDFC3 Fitness</span>' +
       '<span class="focus-pill focus-' + g.focus + '">' + (FOCUS_LABELS[g.focus] || g.focus) + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + g.time + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + g.time + (g.end_time ? ' \u2013 ' + g.end_time : '') + '</span>' +
       '<span style="font-size:0.8rem;color:var(--mid)">\uD83D\uDCCD ' + g.location + '</span>';
     document.getElementById('panelPlan').innerHTML =
       '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (g.warmup || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>' +
@@ -850,6 +850,7 @@ function loadFitnessFromSheet(rows) {
       focus:    row.focus    || 'scrimmage',
       title:    row.title    || 'Group Session',
       time:     row.time     || '5:00 PM',
+      end_time: row.end_time || '',
       location: row.location || 'Harry Downes Field',
       warmup:   (row.warmup  || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
       main:     (row.main    || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
