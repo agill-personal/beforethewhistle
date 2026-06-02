@@ -333,8 +333,8 @@
     .section-title {
       font-family: var(--serif);
       font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
       margin-bottom: 1rem;
     }
     .section-subtitle {

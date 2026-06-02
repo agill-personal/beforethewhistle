@@ -504,8 +504,7 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
       '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + c.time + ' \u2013 ' + c.end_time + '</span>' +
       '<span style="font-size:0.8rem;color:var(--mid)">\uD83D\uDCCD ' + c.location + '</span>';
     document.getElementById('panelPlan').innerHTML = '';
-    rsvpSec.style.display = 'block';
-    renderRsvp();
+    rsvpSec.style.display = 'none';
   } else {
     const workout   = WORKOUTS[phase][wkIdx];
     const phaseInfo = PHASES[phase];
