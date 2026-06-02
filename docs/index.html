@@ -397,49 +397,6 @@
     .tag.scrimmage { background: #fde8e8; color: #8b1a1a; }
     .tag.mental { background: #e8e8fd; color: #2a2a8b; }
 
-    /* ── DRILLS ── */
-    .drills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .drill-card {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .drill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
-    .drill-card-top {
-      background: var(--off-white);
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .drill-icon {
-      width: 44px; height: 44px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .drill-card-top h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
-    .drill-card-top .drill-meta { font-size: 0.75rem; color: var(--mid); margin-top: 0.2rem; }
-    .drill-card-body { padding: 1.2rem 1.5rem; }
-    .drill-card-body p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
-    .drill-link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-    }
-    .drill-link:hover { text-decoration: underline; }
 
     /* ── NUTRITION ── */
     .nutrition-cols {
@@ -1088,7 +1045,6 @@
       .schedule-row { grid-template-columns: 90px 1fr; gap: 0.5rem; }
       .schedule-row .time,
       .schedule-row .tag { display: none; }
-      .drills-grid { grid-template-columns: 1fr; }
       .nutrition-cols { grid-template-columns: 1fr; }
       .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
@@ -1134,7 +1090,6 @@
 
     /* Card shadows more visible on dark bg */
     .tw-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.55); }
-    .drill-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
 
     /* Arrow hover needs dark text on light-green background */
     .wk-arrow:hover { color: #1a3d64; }
@@ -1149,7 +1104,6 @@
     /* Every card/box gets an explicit background so it floats above page bg */
     .tw-card,
     .workout-card,
-    .drill-card,
     .nutrition-card,
     .day-panel,
     .gate-box { background: var(--off-white); }
@@ -1213,7 +1167,6 @@
       <li><a href="#technical">Technical</a></li>
       <li><a href="#strength">Strength</a></li>
       <li><a href="#nutrition">Nutrition</a></li>
-      <li><a href="#drills">Drills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="nav-burger" id="navBurger" onclick="toggleNav()" aria-label="Menu">
@@ -1340,92 +1293,6 @@
   </section>
 
   <!-- DRILLS -->
-  <section id="drills">
-    <div class="section-label">Resource Library</div>
-    <h2 class="section-title">Drills & Training Resources</h2>
-    <p class="section-subtitle">Practice these on your own between sessions. Repetition is where improvement lives.</p>
-
-    <div class="drills-grid">
-      <div class="drill-card">
-        <div class="drill-card-top">
-          <div class="drill-icon">⚽</div>
-          <div>
-            <h3>Cone Dribbling Slalom</h3>
-            <div class="drill-meta">10 min · Solo · Ball control</div>
-          </div>
-        </div>
-        <div class="drill-card-body">
-          <p>Set up 8 cones in a straight line, 1 yard apart. Dribble through with your dominant foot, then weak foot. Focus on tight touches and keeping your head up.</p>
-          <a href="#" class="drill-link">Watch Demo →</a>
-        </div>
-      </div>
-      <div class="drill-card">
-        <div class="drill-card-top">
-          <div class="drill-icon">🎯</div>
-          <div>
-            <h3>Wall Passing — 1-Touch</h3>
-            <div class="drill-meta">15 min · Solo · First touch</div>
-          </div>
-        </div>
-        <div class="drill-card-body">
-          <p>Find a solid wall and practice one-touch passing at varying distances. Alternate feet. Start slow and build speed. 100 touches minimum per session.</p>
-          <a href="#" class="drill-link">Watch Demo →</a>
-        </div>
-      </div>
-      <div class="drill-card">
-        <div class="drill-card-top">
-          <div class="drill-icon">💪</div>
-          <div>
-            <h3>Lateral Band Walk</h3>
-            <div class="drill-meta">10 min · Solo · Strength</div>
-          </div>
-        </div>
-        <div class="drill-card-body">
-          <p>Use a resistance band above the knees. Stay low, take lateral steps for 20 yards each direction. Builds hip and glute strength critical for change-of-direction speed.</p>
-          <a href="#" class="drill-link">Watch Demo →</a>
-        </div>
-      </div>
-      <div class="drill-card">
-        <div class="drill-card-top">
-          <div class="drill-icon">🏃</div>
-          <div>
-            <h3>Sprint & Recover Intervals</h3>
-            <div class="drill-meta">20 min · Solo · Fitness</div>
-          </div>
-        </div>
-        <div class="drill-card-body">
-          <p>Sprint full field length, walk back. Repeat 8 times. Rest 2 min. Do 2 sets. Mirrors the high-intensity demands of a real match and builds match fitness fast.</p>
-          <a href="#" class="drill-link">Watch Demo →</a>
-        </div>
-      </div>
-      <div class="drill-card">
-        <div class="drill-card-top">
-          <div class="drill-icon">🦵</div>
-          <div>
-            <h3>Shooting on Target</h3>
-            <div class="drill-meta">20 min · Partner or Solo · Finishing</div>
-          </div>
-        </div>
-        <div class="drill-card-body">
-          <p>Place the ball 18 yards from goal. Aim for corners. 10 shots each foot. Add a dribble before the shot for added difficulty. Track how many you hit on frame.</p>
-          <a href="#" class="drill-link">Watch Demo →</a>
-        </div>
-      </div>
-      <div class="drill-card">
-        <div class="drill-card-top">
-          <div class="drill-icon">🧠</div>
-          <div>
-            <h3>Pressure Decisions Drill</h3>
-            <div class="drill-meta">15 min · 3+ players · Game IQ</div>
-          </div>
-        </div>
-        <div class="drill-card-body">
-          <p>2v1 in a small grid. The defender applies pressure while the two attackers must pass and move. Decision speed is the goal — not just technique.</p>
-          <a href="#" class="drill-link">Watch Demo →</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- CONTACT -->
   <section id="contact">
