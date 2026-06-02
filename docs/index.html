@@ -1048,7 +1048,7 @@
     .wk-event.type-strength  { background: #fee2e2; color: #7f1d1d; }
     .wk-event.type-fitness    { background: #ede9fe; color: #4c1d95; }
     .wk-event.type-camp       { background: #fef9c3; color: #1a3d64; }
-    .wk-event.type-captains   { background: #fef9c3; color: #1a3d64; cursor: default; }
+    .wk-event.type-captains   { background: #7f1d1d; color: #fecaca; cursor: default; }
     .wk-event.type-captains:hover { opacity: 1; transform: none; }
     .wk-rest-day {
       font-size: 0.72rem; font-weight: 600;
@@ -1451,13 +1451,6 @@
             <div class="text">
               <strong>Phone</strong>
               <span>(516) 532-4496</span>
-            </div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="icon">📍</div>
-            <div class="text">
-              <strong>Primary Field</strong>
-              <span>Harry Downes Field, Wellesley</span>
             </div>
           </div>
         </div>
@@ -2395,6 +2388,8 @@
         main:     (row.main    || '').split(';').map(function(s){ return s.trim(); }).filter(Boolean),
       };
     });
+    // Replace all sessions — don't merge, so old fallback dates don't linger
+    Object.keys(SESSIONS).forEach(function(k){ delete SESSIONS[k]; });
     Object.assign(SESSIONS, newSessions);
   }
 
