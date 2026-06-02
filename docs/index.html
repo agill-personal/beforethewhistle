@@ -2352,16 +2352,22 @@
     var result = [], cur = '', inQ = false;
     for (var i = 0; i < row.length; i++) {
       var c = row[i];
-      if (c === '"') { inQ = !inQ; }
-      else if (c === ',' && !inQ) { result.push(cur.trim()); cur = ''; }
-      else { cur += c; }
+      if (c === '\r') { continue; } // strip carriage returns
+      if (c === '"') {
+        if (inQ && row[i + 1] === '"') { cur += '"'; i++; } // escaped quote ""
+        else { inQ = !inQ; }
+      } else if (c === ',' && !inQ) {
+        result.push(cur.trim()); cur = '';
+      } else {
+        cur += c;
+      }
     }
     result.push(cur.trim());
     return result;
   }
 
   function parseCSV(text) {
-    var lines = text.trim().split('\n');
+    var lines = text.trim().split(/\r?\n/); // handle both \n and \r\n
     var headers = parseCSVRow(lines[0]).map(function(h){ return h.replace(/^"+|"+$/g,'').trim().toLowerCase(); });
     var rows = [];
     for (var i = 1; i < lines.length; i++) {
