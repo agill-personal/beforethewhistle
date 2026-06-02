@@ -9,18 +9,6 @@
 </head>
 <body>
 
-  <!-- PASSWORD GATE -->
-  <div id="gate">
-    <div class="gate-box">
-      <div class="gate-logo">Welcome</div>
-      <p>Enter the access code to view this site.</p>
-      <input type="password" id="pin-input" placeholder="" maxlength="30"
-        onkeydown="if(event.key==='Enter') checkPin()"/>
-      <button class="gate-btn" onclick="checkPin()">Enter</button>
-      <div class="gate-error" id="gate-error"></div>
-    </div>
-  </div>
-
   <!-- NAV -->
   <nav id="mainNav">
     <a href="index.html" class="nav-logo">BeforeTheWhistle</a>
@@ -101,12 +89,12 @@
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          Why is there a password required to get into the site?
+          Is this website accessible to anyone?
           <i class="faq-chevron">&#9656;</i>
         </div>
         <div class="faq-answer">
-          <p>The password is simply there to keep the site limited to participating players.</p>
-          <p>The calendar includes session times, dates, and locations for easy access, and the password helps ensure that information stays within the intended group.</p>
+          <p>We're working to add password protection to the website.</p>
+          <p>The calendar includes session times, dates, and locations for easy access, and a password helps ensure that information stays within the intended group.</p>
         </div>
       </div>
 
@@ -143,7 +131,6 @@
 
   <script src="assets/js/app.js"></script>
   <script>
-    initGate();
     initScrollFade();
 
     function toggleFaq(questionEl) {
