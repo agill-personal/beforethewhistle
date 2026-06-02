@@ -1542,25 +1542,77 @@
   </script>
 
   <script>
-    const CORRECT = 'summerskills2026';
+    const CORRECT     = 'summerskills2026';
+    const MAX_TRIES   = 5;
+    const LOCKOUT_MS  = 60000; // 1 minute
+
+    var gateAttempts   = parseInt(sessionStorage.getItem('sr_attempts')  || '0');
+    var gateLockUntil  = parseInt(sessionStorage.getItem('sr_lockout')   || '0');
+    var gateCountdown  = null;
+
+    function setGateLocked(locked) {
+      var input = document.getElementById('pin-input');
+      var btn   = document.querySelector('.gate-btn');
+      input.disabled = locked;
+      btn.disabled   = locked;
+    }
+
+    function tickLockout() {
+      var remaining = Math.ceil((gateLockUntil - Date.now()) / 1000);
+      var err = document.getElementById('gate-error');
+      if (remaining > 0) {
+        err.textContent = 'Too many attempts — try again in ' + remaining + ' second' + (remaining !== 1 ? 's' : '') + '.';
+        gateCountdown = setTimeout(tickLockout, 1000);
+      } else {
+        clearTimeout(gateCountdown);
+        sessionStorage.removeItem('sr_lockout');
+        sessionStorage.setItem('sr_attempts', '0');
+        gateAttempts  = 0;
+        gateLockUntil = 0;
+        err.textContent = '';
+        setGateLocked(false);
+        document.getElementById('pin-input').focus();
+      }
+    }
+
     function checkPin() {
-      const val = document.getElementById('pin-input').value;
-      const input = document.getElementById('pin-input');
-      const err = document.getElementById('gate-error');
+      if (Date.now() < gateLockUntil) return;
+      var input = document.getElementById('pin-input');
+      var err   = document.getElementById('gate-error');
+      var val   = input.value;
+
       if (val === CORRECT) {
         document.getElementById('gate').style.display = 'none';
         sessionStorage.setItem('sr_auth', '1');
+        sessionStorage.removeItem('sr_attempts');
+        sessionStorage.removeItem('sr_lockout');
       } else {
+        gateAttempts++;
+        sessionStorage.setItem('sr_attempts', gateAttempts);
         input.classList.add('error');
-        err.textContent = 'Incorrect code — try again.';
-        setTimeout(() => input.classList.remove('error'), 400);
+        setTimeout(function(){ input.classList.remove('error'); }, 400);
+
+        if (gateAttempts >= MAX_TRIES) {
+          gateLockUntil = Date.now() + LOCKOUT_MS;
+          sessionStorage.setItem('sr_lockout', gateLockUntil);
+          input.value = '';
+          setGateLocked(true);
+          tickLockout();
+        } else {
+          var left = MAX_TRIES - gateAttempts;
+          err.textContent = 'Incorrect code — ' + left + ' attempt' + (left !== 1 ? 's' : '') + ' remaining.';
+        }
       }
     }
-    // Stay unlocked if already authenticated this session
+
+    // On page load: check auth, then check lockout
     if (sessionStorage.getItem('sr_auth') === '1') {
       document.getElementById('gate').style.display = 'none';
+    } else if (Date.now() < gateLockUntil) {
+      setGateLocked(true);
+      tickLockout();
     } else {
-      setTimeout(() => document.getElementById('pin-input').focus(), 100);
+      setTimeout(function(){ document.getElementById('pin-input').focus(); }, 100);
     }
   </script>
 
