@@ -1,42 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeforeTheWhistle — Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/site.css"/>
 </head>
 <body>
-    <header>
-        <h1>Contact Us</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Get in Touch</h2>
-            <form action="#" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Your Website Name. All rights reserved.</p>
-    </footer>
-    <script src="assets/js/main.js"></script>
+
+  <!-- PASSWORD GATE -->
+  <div id="gate">
+    <div class="gate-box">
+      <div class="gate-logo">BeforeTheWhistle</div>
+      <p>Enter the access code to view this site.</p>
+      <input type="password" id="pin-input" placeholder="" maxlength="30"
+        onkeydown="if(event.key==='Enter') checkPin()"/>
+      <button class="gate-btn" onclick="checkPin()">Enter</button>
+      <div class="gate-error" id="gate-error"></div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">BeforeTheWhistle</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="technical.html">Technical</a></li>
+      <li><a href="strength.html">Strength</a></li>
+      <li><a href="nutrition.html">Nutrition</a></li>
+      <li><a href="contact.html" class="nav-active">Contact</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-subtitle">Have a question about training, tryouts, or your development? Reach out directly or use the form — I'll get back to you soon.</p>
+
+    <div class="contact-wrap">
+
+      <!-- Direct contact info -->
+      <div class="contact-info">
+        <div style="font-weight:700;font-size:1.15rem;margin-bottom:1.75rem">Aideen Gill</div>
+        <div class="contact-detail">
+          <div class="contact-detail-item">
+            <div class="icon">✉️</div>
+            <div class="text">
+              <strong>Email</strong>
+              <span><a href="mailto:aideengill88@gmail.com" style="color:var(--accent);text-decoration:none">aideengill88@gmail.com</a></span>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="icon">📱</div>
+            <div class="text">
+              <strong>Phone</strong>
+              <span>(516) 532-4496</span>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;font-size:0.875rem;color:var(--mid);font-weight:300;line-height:1.7">Feel free to reach out directly by email or phone, or use the contact form and I'll respond within 24 hours.</p>
+      </div>
+
+      <!-- Contact form -->
+      <div>
+        <div data-fs-success style="color:#1a3d64;font-weight:600;font-size:0.95rem;margin-bottom:1rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px">
+          ✓ Message sent! I'll be in touch soon.
+        </div>
+        <div data-fs-error style="color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="cname">Name <span style="color:#c0392b">*</span></label>
+            <input type="text" id="cname" name="name" placeholder="Your name" data-fs-field required/>
+            <span data-fs-error="name" style="font-size:0.78rem;color:#c0392b"></span>
+          </div>
+          <div class="form-group">
+            <label for="cemail">Email Address <span style="color:#c0392b">*</span></label>
+            <input type="email" id="cemail" name="email" placeholder="your@email.com" data-fs-field required/>
+            <span data-fs-error="email" style="font-size:0.78rem;color:#c0392b"></span>
+          </div>
+          <div class="form-group">
+            <label for="ctopic">Topic <span style="color:#c0392b">*</span></label>
+            <select id="ctopic" name="topic" data-fs-field required>
+              <option value="" disabled selected>Select a topic…</option>
+              <option value="Skills Training">Skills Training</option>
+              <option value="Strength/Speed">Strength / Speed</option>
+              <option value="Nutrition">Nutrition</option>
+              <option value="Website Bug">Website Bug</option>
+            </select>
+            <span data-fs-error="topic" style="font-size:0.78rem;color:#c0392b"></span>
+          </div>
+          <div class="form-group">
+            <label for="cmessage">Message <span style="color:#c0392b">*</span></label>
+            <textarea id="cmessage" name="message" placeholder="Ask about training, your goals, tryout prep — anything on your mind..." style="min-height:130px" data-fs-field required></textarea>
+            <span data-fs-error="message" style="font-size:0.78rem;color:#c0392b"></span>
+          </div>
+          <button type="submit" class="btn" data-fs-submit-btn>Send Message →</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Email list signup -->
+    <div class="newsletter-wrap">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <div class="section-label" style="margin-bottom:0.5rem">Stay in the Loop</div>
+          <h3 style="font-family:var(--serif);font-size:1.4rem;letter-spacing:-0.01em;margin-bottom:0.5rem">Join the Training Update List</h3>
+          <p style="font-size:0.875rem;color:var(--mid);font-weight:300;line-height:1.7;max-width:42ch">Get session reminders, training notes, and schedule updates sent straight to your inbox.</p>
+        </div>
+        <div class="newsletter-form-wrap">
+          <div data-fs-success style="color:#1a3d64;font-weight:600;font-size:0.95rem;padding:0.75rem 1rem;background:var(--accent-light);border-radius:4px;margin-bottom:1rem">
+            ✓ You're on the list!
+          </div>
+          <div data-fs-error style="color:#c0392b;font-size:0.85rem;margin-bottom:1rem"></div>
+          <form id="newsletter-form">
+            <div class="form-group" style="margin-bottom:0.75rem">
+              <label for="nl-name">Name <span style="color:#c0392b">*</span></label>
+              <input type="text" id="nl-name" name="name" placeholder="Your name" data-fs-field required/>
+              <span data-fs-error="name" style="font-size:0.78rem;color:#c0392b"></span>
+            </div>
+            <div class="form-group" style="margin-bottom:1rem">
+              <label for="nl-email">Email Address <span style="color:#c0392b">*</span></label>
+              <input type="email" id="nl-email" name="email" placeholder="your@email.com" data-fs-field required/>
+              <span data-fs-error="email" style="font-size:0.78rem;color:#c0392b"></span>
+            </div>
+            <button type="submit" class="btn" style="width:100%" data-fs-submit-btn>Join the List →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span style="font-family:var(--logo);font-size:1.1rem;letter-spacing:0.04em;color:var(--accent)">BeforeTheWhistle</span>
+    <span>Summer Soccer Training · 2026 · Built with care for your athletes</span>
+  </footer>
+
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'xwvzdord' });
+    formspree('initForm', { formElement: '#newsletter-form', formId: 'xzdwndwr' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    initGate();
+    initScrollFade();
+  </script>
+
 </body>
 </html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeforeTheWhistle — Technical</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/site.css"/>
+</head>
+<body>
+
+  <!-- PASSWORD GATE -->
+  <div id="gate">
+    <div class="gate-box">
+      <div class="gate-logo">BeforeTheWhistle</div>
+      <p>Enter the access code to view this site.</p>
+      <input type="password" id="pin-input" placeholder="" maxlength="30"
+        onkeydown="if(event.key==='Enter') checkPin()"/>
+      <button class="gate-btn" onclick="checkPin()">Enter</button>
+      <div class="gate-error" id="gate-error"></div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">BeforeTheWhistle</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="technical.html" class="nav-active">Technical</a></li>
+      <li><a href="strength.html">Strength</a></li>
+      <li><a href="nutrition.html">Nutrition</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- TECHNICAL TRAINING -->
+  <section id="technical-focus">
+    <div class="section-label">Technical Training</div>
+    <h2 class="section-title">Technical Skills</h2>
+    <p class="section-subtitle">Mon–Fri sessions at Harry Downes Field, 5:00–6:30 PM. Each session targets a core technical focus area to build a well-rounded player by tryout time.</p>
+
+    <div class="focus-areas">
+      <span class="focus-area-pill focus-passing">Passing</span>
+      <span class="focus-area-pill focus-first_touch">First Touch</span>
+      <span class="focus-area-pill focus-one_v_one">1v1</span>
+      <span class="focus-area-pill focus-shooting">Finishing</span>
+      <span class="focus-area-pill focus-crossing">Crossing</span>
+      <span class="focus-area-pill focus-defending">Defending</span>
+      <span class="focus-area-pill focus-dribbling">Dribbling</span>
+      <span class="focus-area-pill focus-trapping">Trapping/Clearing</span>
+    </div>
+
+    <div class="section-label" style="margin-bottom:1rem">Upcoming Sessions</div>
+    <div class="tech-sessions-list" id="techSessionsList">
+      <div class="tw-empty" style="border:1px dashed var(--border);border-radius:4px;padding:2rem;text-align:center;color:var(--mid)">
+        Loading sessions...
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span style="font-family:var(--logo);font-size:1.1rem;letter-spacing:0.04em;color:var(--accent)">BeforeTheWhistle</span>
+    <span>Summer Soccer Training · 2026 · Built with care for your athletes</span>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    initGate();
+
+    function renderTechSessions() {
+      var list = document.getElementById('techSessionsList');
+      if (!list) return;
+      var todayStr = toDateStr(today);
+      var upcoming = Object.entries(SESSIONS)
+        .filter(function(e){ return e[0] >= todayStr; })
+        .sort(function(a,b){ return a[0].localeCompare(b[0]); })
+        .slice(0, 20);
+
+      if (upcoming.length === 0) {
+        list.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--mid)">Season complete — great work this summer!</div>';
+        return;
+      }
+
+      list.innerHTML = upcoming.map(function(entry) {
+        var ds = entry[0];
+        var s  = entry[1];
+        var parts = ds.split('-').map(Number);
+        var d = new Date(parts[0], parts[1]-1, parts[2]);
+        var dayStr = DAYS_SHORT[d.getDay()] + ', ' + MONTHS_SHORT[parts[1]-1] + ' ' + parts[2];
+        return '<div class="tech-session-row">' +
+          '<span class="tech-session-date">' + dayStr + '</span>' +
+          '<span class="focus-pill focus-' + s.focus + '" style="font-size:0.62rem">' + (FOCUS_LABELS[s.focus] || s.focus) + '</span>' +
+          '<span class="tech-session-title">' + s.title + '</span>' +
+          '<span class="tech-session-time">⏰ ' + s.time + '</span>' +
+          '</div>';
+      }).join('');
+    }
+
+    renderTechSessions();
+    loadFromSheets().then(function() {
+      renderTechSessions();
+    });
+    initScrollFade();
+  </script>
+
+</body>
+</html>

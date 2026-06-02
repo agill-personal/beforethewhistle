@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeforeTheWhistle — Strength</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/site.css"/>
+</head>
+<body>
+
+  <!-- PASSWORD GATE -->
+  <div id="gate">
+    <div class="gate-box">
+      <div class="gate-logo">BeforeTheWhistle</div>
+      <p>Enter the access code to view this site.</p>
+      <input type="password" id="pin-input" placeholder="" maxlength="30"
+        onkeydown="if(event.key==='Enter') checkPin()"/>
+      <button class="gate-btn" onclick="checkPin()">Enter</button>
+      <div class="gate-error" id="gate-error"></div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">BeforeTheWhistle</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="technical.html">Technical</a></li>
+      <li><a href="strength.html" class="nav-active">Strength</a></li>
+      <li><a href="nutrition.html">Nutrition</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- STRENGTH TRAINING PLAN -->
+  <section id="strength">
+    <div class="section-label">Strength Training</div>
+    <h2 class="section-title">Strength Training Plan</h2>
+    <p class="section-subtitle">3 workouts per week focusing on lower body strength and core stability — the foundation of a powerful, injury-resistant player.</p>
+
+    <div class="strength-intro">
+      <p>This progressive plan runs June through August. Each phase builds on the last: we start with bodyweight foundations, then add load and power as tryouts approach. Rest days matter — don't skip them. If a session falls on a technical training day, do the strength work after a 4-hour gap or the following morning.</p>
+      <div class="strength-pillars">
+        <div class="pillar"><span class="pillar-icon">🦵</span><div><strong>Lower Body Strength</strong><span>Squats, lunges, single-leg work — for speed, shooting power, and stability</span></div></div>
+        <div class="pillar"><span class="pillar-icon">🧱</span><div><strong>Core Stability</strong><span>Planks, rotational work, anti-rotation — for balance, tackling, and ball striking</span></div></div>
+        <div class="pillar"><span class="pillar-icon">⚡</span><div><strong>Power & Explosiveness</strong><span>Plyometrics introduced in Phase 2 — for first-step quickness and jumping</span></div></div>
+      </div>
+    </div>
+
+    <div class="week-tabs" id="weekTabs"></div>
+    <div class="workout-days" id="workoutDays"></div>
+
+    <div class="strength-note">
+      <div class="strength-note-item"><strong>Rest Between Sets</strong><span>60–90 sec for strength sets; 2 min for heavier lifts in Phase 3</span></div>
+      <div class="strength-note-item"><strong>Warm-Up</strong><span>Always 5–8 min: leg swings, hip circles, glute bridges, and a light jog</span></div>
+      <div class="strength-note-item"><strong>Progression</strong><span>Add weight or reps each week only if last session felt controlled throughout</span></div>
+      <div class="strength-note-item"><strong>Form First</strong><span>Never sacrifice form for load. A clean bodyweight squat beats a sloppy weighted one.</span></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span style="font-family:var(--logo);font-size:1.1rem;letter-spacing:0.04em;color:var(--accent)">BeforeTheWhistle</span>
+    <span>Summer Soccer Training · 2026 · Built with care for your athletes</span>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    initGate();
+    renderTabs();
+    renderWorkouts();
+    loadFromSheets().then(function() {
+      renderTabs();
+      renderWorkouts();
+    });
+    initScrollFade();
+  </script>
+
+</body>
+</html>

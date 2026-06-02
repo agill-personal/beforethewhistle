@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeforeTheWhistle — FAQs</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/site.css"/>
+</head>
+<body>
+
+  <!-- PASSWORD GATE -->
+  <div id="gate">
+    <div class="gate-box">
+      <div class="gate-logo">BeforeTheWhistle</div>
+      <p>Enter the access code to view this site.</p>
+      <input type="password" id="pin-input" placeholder="" maxlength="30"
+        onkeydown="if(event.key==='Enter') checkPin()"/>
+      <button class="gate-btn" onclick="checkPin()">Enter</button>
+      <div class="gate-error" id="gate-error"></div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">BeforeTheWhistle</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="technical.html">Technical</a></li>
+      <li><a href="strength.html">Strength</a></li>
+      <li><a href="nutrition.html">Nutrition</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="faqs.html" class="nav-active">FAQs</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- FAQs -->
+  <section id="faqs">
+    <div class="section-label">Frequently Asked Questions</div>
+    <h2 class="section-title">FAQs</h2>
+    <p class="section-subtitle">Common questions about the BeforeTheWhistle program, training sessions, and tryout prep.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What is BeforeTheWhistle and who is it for?
+          <i class="faq-chevron">&#9656;</i>
+        </div>
+        <div class="faq-answer">
+          BeforeTheWhistle is a summer soccer training program designed for 15-year-old girls preparing for fall high school varsity tryouts. Sessions run Monday through Friday, 5:00–6:30 PM at Harry Downes Field from June 1 through August 28, 2026. The program covers technical skills, strength training, and nutrition to give players the best possible foundation heading into tryout season.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Do I need to attend every session?
+          <i class="faq-chevron">&#9656;</i>
+        </div>
+        <div class="faq-answer">
+          Consistency is the single biggest factor in improvement, so attending as many sessions as possible is strongly encouraged. That said, life happens — if you miss a session, don't stress. Just show up the next day ready to work. The RSVP feature on the Home page lets you let the coach know whether you'll be there, which helps with planning.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What should I bring to each session?
+          <i class="faq-chevron">&#9656;</i>
+        </div>
+        <div class="faq-answer">
+          Bring your cleats, shin guards, a ball (size 5), and at least a full water bottle — ideally two. Wear training clothes you can move freely in. Sessions are outdoors at Harry Downes Field, so dress for the weather. Sunscreen on hot days is a smart call. A light snack for after training (see the Nutrition page for ideas) is also recommended.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How does the strength training work alongside technical sessions?
+          <i class="faq-chevron">&#9656;</i>
+        </div>
+        <div class="faq-answer">
+          Strength training is scheduled Tuesday, Thursday, and one day on the weekend (Saturday or Sunday — your choice). These are home workouts that take 25–60 minutes depending on the phase. If a strength day falls on the same day as a technical session, do the strength work either before (morning) with at least a 4-hour gap before training, or the following morning. Never do heavy strength work immediately before or after a full technical session — recovery matters.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What happens if it rains or a session is cancelled?
+          <i class="faq-chevron">&#9656;</i>
+        </div>
+        <div class="faq-answer">
+          Session cancellations or location changes will be communicated via the email list. Sign up on the Contact page to make sure you receive any updates. Light rain generally means training continues — serious lightning or field conditions will result in a cancellation. Keep an eye on your email on days with uncertain weather.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How should I think about nutrition on training days?
+          <i class="faq-chevron">&#9656;</i>
+        </div>
+        <div class="faq-answer">
+          The full guidance is on the Nutrition page, but the short version: eat a proper meal 2–3 hours before training, stay hydrated all day, and eat a protein-and-carb snack within 30–60 minutes of finishing. Sleep 8–9 hours — most adaptation and muscle repair happens while you sleep, not during the session itself. If you train hard but sleep poorly and eat badly, you're leaving a huge amount of your potential on the table.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What are the Chan Camp sessions on the calendar?
+          <i class="faq-chevron">&#9656;</i>
+        </div>
+        <div class="faq-answer">
+          Chan Camp runs 8:00–10:00 AM at Downes Field from July 6 through August 14. These are separate morning sessions that appear on the Training Calendar alongside the regular 5:00 PM technical sessions. On camp days you'll have two sessions — manage your energy accordingly: hydrate well between sessions, eat a proper meal in between, and communicate with the coach if you feel overly fatigued.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span style="font-family:var(--logo);font-size:1.1rem;letter-spacing:0.04em;color:var(--accent)">BeforeTheWhistle</span>
+    <span>Summer Soccer Training · 2026 · Built with care for your athletes</span>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    initGate();
+    initScrollFade();
+
+    function toggleFaq(questionEl) {
+      var item = questionEl.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

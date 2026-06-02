@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeforeTheWhistle — Nutrition</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/site.css"/>
+</head>
+<body>
+
+  <!-- PASSWORD GATE -->
+  <div id="gate">
+    <div class="gate-box">
+      <div class="gate-logo">BeforeTheWhistle</div>
+      <p>Enter the access code to view this site.</p>
+      <input type="password" id="pin-input" placeholder="" maxlength="30"
+        onkeydown="if(event.key==='Enter') checkPin()"/>
+      <button class="gate-btn" onclick="checkPin()">Enter</button>
+      <div class="gate-error" id="gate-error"></div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">BeforeTheWhistle</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="technical.html">Technical</a></li>
+      <li><a href="strength.html">Strength</a></li>
+      <li><a href="nutrition.html" class="nav-active">Nutrition</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- NUTRITION -->
+  <section id="nutrition">
+    <div class="section-label">Fuel Your Training</div>
+    <h2 class="section-title">Nutrition & Recovery</h2>
+    <p class="section-subtitle">What you eat and how you recover is half the work. These guidelines keep you performing at your best.</p>
+
+    <div class="nutrition-cols">
+      <div class="nutrition-card">
+        <div class="sub">Pre-Training</div>
+        <h3>Before You Train</h3>
+        <ul class="nutrition-list">
+          <li>Eat a balanced meal 2–3 hours before: rice, pasta, or oats with lean protein.</li>
+          <li>Have a small snack 30–60 min before if needed — banana or toast with peanut butter.</li>
+          <li>Hydrate throughout the day. Aim for at least 2 liters before a session.</li>
+          <li>Avoid high-fat, high-fiber foods right before training — they slow you down.</li>
+        </ul>
+        <div class="nutrition-tip">
+          <strong>Quick Pre-Game Meal</strong>
+          Pasta with chicken and a light tomato sauce, eaten 2.5 hrs before. Simple, effective, trusted by pros.
+        </div>
+      </div>
+      <div class="nutrition-card">
+        <div class="sub">Post-Training</div>
+        <h3>After You Train</h3>
+        <ul class="nutrition-list">
+          <li>Eat within 30–60 minutes of finishing — the "recovery window" is real.</li>
+          <li>Prioritize protein to repair muscle: eggs, chicken, Greek yogurt, or a protein shake.</li>
+          <li>Rehydrate with water and consider electrolytes after intense sessions.</li>
+          <li>Sleep 8–9 hours — most muscle repair happens while you sleep.</li>
+        </ul>
+        <div class="nutrition-tip">
+          <strong>Recovery Snack Idea</strong>
+          Greek yogurt + granola + berries. Hits protein, carbs, and antioxidants in one easy meal.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span style="font-family:var(--logo);font-size:1.1rem;letter-spacing:0.04em;color:var(--accent)">BeforeTheWhistle</span>
+    <span>Summer Soccer Training · 2026 · Built with care for your athletes</span>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    initGate();
+    initScrollFade();
+  </script>
+
+</body>
+</html>
