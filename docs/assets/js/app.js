@@ -1,4 +1,4 @@
-// â”€â”€ PASSWORD GATE â”€â”€
+﻿// â”€â”€ PASSWORD GATE â”€â”€
 const CORRECT     = 'summerskills2026';
 const MAX_TRIES   = 5;
 const LOCKOUT_MS  = 60000; // 1 minute
