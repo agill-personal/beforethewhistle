@@ -589,7 +589,7 @@ function addRsvp() {
   renderRsvp();
   var savedDate = activeDate;
   var savedType = activeType;
-  buildWeekCalendar();
+  twRefreshCard(savedDate);
   openPanel(savedDate, savedType);
 }
 
@@ -599,7 +599,7 @@ function removeRsvp(idx) {
   var savedDate = activeDate;
   var savedType = activeType;
   renderRsvp();
-  buildWeekCalendar();
+  twRefreshCard(savedDate);
   openPanel(savedDate, savedType);
 }
 
@@ -789,6 +789,7 @@ function twRefreshCard(ds) {
   if (namesEl) namesEl.innerHTML = names.map(function(n,i){
     return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="twRemoveRsvp(\''+ds+'\','+i+')">✕</button></div>';
   }).join('');
+  buildWeekCalendar();
 }
 
 // \u2500\u2500 STRENGTH SECTION \u2500\u2500
