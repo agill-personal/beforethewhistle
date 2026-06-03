@@ -301,7 +301,7 @@ const FOCUS_LABELS = {
 };
 const STRENGTH_DAYS = [2, 4, 0]; // Tue, Thu, Sun (floater)
 var STRENGTH_SEASON_START = '2026-06-11';
-const STRENGTH_SKIP_DATES = new Set(['2026-06-14']);
+const STRENGTH_SKIP_DATES = new Set(['2026-06-14', '2026-06-28']);
 
 // \u2500\u2500 STATE \u2500\u2500
 let rsvpData   = {};
