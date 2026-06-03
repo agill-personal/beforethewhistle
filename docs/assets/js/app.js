@@ -333,8 +333,38 @@ let rsvpData = (function() {
   try { var s = localStorage.getItem('btw_rsvp'); return s ? JSON.parse(s) : {}; } catch(e) { return {}; }
 })();
 
+var btw_db = null;
+var _fbLocalWrite = false;
+
 function saveRsvp() {
   try { localStorage.setItem('btw_rsvp', JSON.stringify(rsvpData)); } catch(e) {}
+  if (btw_db) {
+    _fbLocalWrite = true;
+    btw_db.ref('rsvps').set(rsvpData).catch(function(e) {
+      console.warn('Firebase write failed:', e);
+      _fbLocalWrite = false;
+    });
+  }
+}
+
+function initFirebase(config) {
+  try {
+    if (!window.firebase) return;
+    firebase.initializeApp(config);
+    btw_db = firebase.database();
+    btw_db.ref('rsvps').on('value', function(snapshot) {
+      if (_fbLocalWrite) { _fbLocalWrite = false; return; }
+      var remote = snapshot.val() || {};
+      Object.keys(rsvpData).forEach(function(k) { delete rsvpData[k]; });
+      Object.assign(rsvpData, remote);
+      try { localStorage.setItem('btw_rsvp', JSON.stringify(rsvpData)); } catch(e) {}
+      renderRsvp();
+      buildWeekCalendar();
+      buildNextSession();
+    });
+  } catch(e) {
+    console.warn('Firebase init failed:', e);
+  }
 }
 let activeDate = null;
 let activeType = null;
