@@ -301,6 +301,7 @@ const FOCUS_LABELS = {
 };
 const STRENGTH_DAYS = [2, 4, 0]; // Tue, Thu, Sun (floater)
 var STRENGTH_SEASON_START = '2026-06-11';
+const STRENGTH_SKIP_DATES = new Set(['2026-06-14']);
 
 // \u2500\u2500 STATE \u2500\u2500
 let rsvpData   = {};
@@ -407,7 +408,7 @@ function buildWeekCalendar() {
       body.appendChild(btn);
     }
 
-    if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START) {
+    if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START && !STRENGTH_SKIP_DATES.has(ds)) {
       const phase  = getPhaseForDate(day);
       const wkIdx  = dow === 2 ? 0 : dow === 4 ? 1 : 2;
       const workout = WORKOUTS[phase][wkIdx];
