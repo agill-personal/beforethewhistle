@@ -340,6 +340,7 @@ function saveRsvp() {
   try { localStorage.setItem('btw_rsvp', JSON.stringify(rsvpData)); } catch(e) {}
   if (btw_db) {
     _fbLocalWrite = true;
+    setTimeout(function() { _fbLocalWrite = false; }, 5000);
     btw_db.ref('rsvps').set(rsvpData).catch(function(e) {
       console.warn('Firebase write failed:', e);
       _fbLocalWrite = false;
