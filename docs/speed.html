@@ -34,7 +34,6 @@
       <p style="font-size:1rem;color:var(--mid);font-weight:300;line-height:1.75">Speed is not just something you have, it is something you train.</p>
       <p style="font-size:1rem;color:var(--mid);font-weight:300;line-height:1.75">These sessions and resources focus on helping players run better, faster, and more efficiently through improved sprint mechanics, acceleration work, and soccer specific conditioning. Early summer sessions will introduce key warm up routines and movement patterns that translate directly into game speed.</p>
       <p style="font-size:1rem;color:var(--mid);font-weight:300;line-height:1.75">We will also be working with Coach Bearett, a former Division I track athlete, to help players clean up their mechanics and unlock a new level of speed they can actually use on the field.</p>
-      <p style="font-size:1rem;color:var(--mid);font-weight:300;line-height:1.75">Speed work will take place at the end of each technical training session, so players can build this into their routine without needing a separate visit.</p>
     </div>
   </section>
 
@@ -46,7 +45,6 @@
         <div class="pillar"><span class="pillar-icon">⚡</span><div><strong>First-Step Quickness</strong><span>Explosive acceleration off the mark, the difference between winning and losing the ball</span></div></div>
         <div class="pillar"><span class="pillar-icon">🔁</span><div><strong>Change of Direction</strong><span>Agility and body control to cut, accelerate, and recover in tight spaces</span></div></div>
         <div class="pillar"><span class="pillar-icon">🫁</span><div><strong>Match Conditioning</strong><span>The ability to maintain intensity and quality of movement for the full 90 minutes</span></div></div>
-        <div class="pillar"><span class="pillar-icon">📅</span><div><strong>When to Do This</strong><span>Speed work takes place at the end of each technical training session, no extra visit needed</span></div></div>
       </div>
     </div>
 
@@ -95,61 +93,188 @@
     <div style="margin-top:3rem">
       <div class="section-label" style="margin-bottom:0.75rem">Conditioning Sessions</div>
       <h3 style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-0.02em;margin-bottom:0.75rem">Build Match Fitness Progressively</h3>
-      <p style="color:var(--mid);font-weight:300;font-size:1rem;max-width:58ch;margin-bottom:2rem">These sessions are designed to be done independently, 2–3 times per week on days you're not doing technical or strength training. Each takes 20–30 minutes and builds on the previous week.</p>
+      <p style="color:var(--mid);font-weight:300;font-size:1rem;max-width:58ch;margin-bottom:2rem">These sessions are designed to be done 2–3 times per week, whether that's at the end of a technical session or independently if you're traveling or unable to make it. Each takes 20–30 minutes and builds on the previous week. We are planning to bake this conditioning work into the end of each technical session, so players attending regularly will have this covered.</p>
 
-      <div class="workout-days" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
+      <div class="cond-phases">
 
-        <div class="workout-card">
-          <div class="workout-card-header">
-            <div class="day-label">Phase 1 · Weeks 1–2</div>
-            <h3>Aerobic Base</h3>
-            <div class="duration">⏱ 20–25 min</div>
+        <!-- PHASE 1 -->
+        <div class="cond-phase-card" onclick="togglePhase(this)">
+          <div class="cond-phase-header">
+            <div>
+              <div class="cond-phase-tag">Phase 1 · Weeks 1–3</div>
+              <div class="cond-phase-title">Aerobic Base</div>
+              <div class="cond-phase-meta">20–25 min &middot; 2–3× per week</div>
+            </div>
+            <i class="cond-phase-chevron">&#9656;</i>
           </div>
-          <ul class="exercise-list">
-            <li class="exercise-item"><div><div class="ex-name">Steady jog</div><div class="ex-note">Comfortable pace, you should be able to hold a conversation</div></div><span class="ex-sets">15 min</span></li>
-            <li class="exercise-item"><div><div class="ex-name">Strides</div><div class="ex-note">80% effort, smooth and relaxed, not all-out sprints</div></div><span class="ex-sets">4 × 80m</span></li>
-            <li class="exercise-item"><div><div class="ex-name">Walk recovery</div><div class="ex-note">Full recovery between strides</div></div><span class="ex-sets">60 sec ea</span></li>
-          </ul>
+          <div class="cond-phase-body">
+            <p class="cond-phase-goal">Build the aerobic engine before adding intensity. These sessions are lower-key but essential — your body is learning to run efficiently for extended periods and recover between efforts. Don't rush past this phase; the fitness gains in Phase 3 and 4 depend on the foundation built here.</p>
+            <div class="cond-sessions">
+              <div class="cond-session">
+                <div class="cond-session-hd">
+                  <div class="cond-session-label">Session A</div>
+                  <div class="cond-session-name">Steady State Run</div>
+                </div>
+                <div class="cond-session-body">
+                  <ul class="exercise-list">
+                    <li class="exercise-item"><div><div class="ex-name">Easy warm-up jog</div></div><span class="ex-sets">5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Steady run</div><div class="ex-note">Comfortable pace — you should be able to hold a conversation</div></div><span class="ex-sets">15–20 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Strides</div><div class="ex-note">Build to 80% effort, stay smooth and relaxed</div></div><span class="ex-sets">4 × 80m</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Walk recovery between strides</div></div><span class="ex-sets">60 sec</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy cool-down jog</div></div><span class="ex-sets">5 min</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="cond-session">
+                <div class="cond-session-hd">
+                  <div class="cond-session-label">Session B</div>
+                  <div class="cond-session-name">Aerobic Tempo</div>
+                </div>
+                <div class="cond-session-body">
+                  <ul class="exercise-list">
+                    <li class="exercise-item"><div><div class="ex-name">Easy warm-up jog</div></div><span class="ex-sets">5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Comfortably hard run</div><div class="ex-note">You can say a few words but not a full sentence</div></div><span class="ex-sets">3 × 5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy jog recovery between reps</div></div><span class="ex-sets">90 sec</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy cool-down jog</div></div><span class="ex-sets">5 min</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="workout-card">
-          <div class="workout-card-header">
-            <div class="day-label">Phase 2 · Weeks 3–4</div>
-            <h3>Interval Introduction</h3>
-            <div class="duration">⏱ 25 min</div>
+        <!-- PHASE 2 -->
+        <div class="cond-phase-card" onclick="togglePhase(this)">
+          <div class="cond-phase-header">
+            <div>
+              <div class="cond-phase-tag">Phase 2 · Weeks 4–6</div>
+              <div class="cond-phase-title">Interval Introduction</div>
+              <div class="cond-phase-meta">25 min &middot; 2–3× per week</div>
+            </div>
+            <i class="cond-phase-chevron">&#9656;</i>
           </div>
-          <ul class="exercise-list">
-            <li class="exercise-item"><div><div class="ex-name">Warm-up jog</div><div class="ex-note">Easy pace</div></div><span class="ex-sets">5 min</span></li>
-            <li class="exercise-item"><div><div class="ex-name">30 sec on / 30 sec off</div><div class="ex-note">Hard effort run, then walk or slow jog</div></div><span class="ex-sets">8 rounds</span></li>
-            <li class="exercise-item"><div><div class="ex-name">Cool-down jog</div><div class="ex-note">Easy pace, let heart rate come down</div></div><span class="ex-sets">5 min</span></li>
-          </ul>
+          <div class="cond-phase-body">
+            <p class="cond-phase-goal">Start mixing short bursts of intensity with recovery. Your body learns to clear lactate faster, which translates directly to recovering quicker between sprints in a match. The intervals are challenging but manageable — effort should be high, not all-out.</p>
+            <div class="cond-sessions">
+              <div class="cond-session">
+                <div class="cond-session-hd">
+                  <div class="cond-session-label">Session A</div>
+                  <div class="cond-session-name">30/30 Intervals</div>
+                </div>
+                <div class="cond-session-body">
+                  <ul class="exercise-list">
+                    <li class="exercise-item"><div><div class="ex-name">Easy warm-up jog</div></div><span class="ex-sets">5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Hard effort run</div><div class="ex-note">Then walk or slow jog for 30 sec</div></div><span class="ex-sets">30 sec on/off × 10</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy cool-down jog</div></div><span class="ex-sets">5 min</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="cond-session">
+                <div class="cond-session-hd">
+                  <div class="cond-session-label">Session B</div>
+                  <div class="cond-session-name">Shuttle Repeats</div>
+                </div>
+                <div class="cond-session-body">
+                  <ul class="exercise-list">
+                    <li class="exercise-item"><div><div class="ex-name">Easy warm-up jog</div></div><span class="ex-sets">5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">5-10-5 shuttle</div><div class="ex-note">3 cones 5 yds apart — sprint to near end, far end, back to start</div></div><span class="ex-sets">8 rounds</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Walk recovery between rounds</div></div><span class="ex-sets">90 sec</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy cool-down jog</div></div><span class="ex-sets">5 min</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="workout-card">
-          <div class="workout-card-header">
-            <div class="day-label">Phase 3 · Weeks 5–6</div>
-            <h3>High-Intensity Intervals</h3>
-            <div class="duration">⏱ 25–30 min</div>
+        <!-- PHASE 3 -->
+        <div class="cond-phase-card" onclick="togglePhase(this)">
+          <div class="cond-phase-header">
+            <div>
+              <div class="cond-phase-tag">Phase 3 · Weeks 7–9</div>
+              <div class="cond-phase-title">High-Intensity Intervals</div>
+              <div class="cond-phase-meta">25–30 min &middot; 2–3× per week</div>
+            </div>
+            <i class="cond-phase-chevron">&#9656;</i>
           </div>
-          <ul class="exercise-list">
-            <li class="exercise-item"><div><div class="ex-name">Warm-up jog</div><div class="ex-note">Easy pace</div></div><span class="ex-sets">5 min</span></li>
-            <li class="exercise-item"><div><div class="ex-name">40 sec on / 20 sec off</div><div class="ex-note">Near-max effort. This should be hard</div></div><span class="ex-sets">10 rounds</span></li>
-            <li class="exercise-item"><div><div class="ex-name">Active rest between sets</div><div class="ex-note">Slow walk, 2 min between each group of 5</div></div><span class="ex-sets">2 × 5</span></li>
-            <li class="exercise-item"><div><div class="ex-name">Cool-down</div><div class="ex-note">Jog + static stretch</div></div><span class="ex-sets">5 min</span></li>
-          </ul>
+          <div class="cond-phase-body">
+            <p class="cond-phase-goal">Higher effort, shorter rest. This is where your fitness ceiling rises. Sessions should feel genuinely hard by the end. Quality over quantity — if your form is breaking down, stop and rest rather than grinding through sloppy reps.</p>
+            <div class="cond-sessions">
+              <div class="cond-session">
+                <div class="cond-session-hd">
+                  <div class="cond-session-label">Session A</div>
+                  <div class="cond-session-name">40/20 Intervals</div>
+                </div>
+                <div class="cond-session-body">
+                  <ul class="exercise-list">
+                    <li class="exercise-item"><div><div class="ex-name">Easy warm-up jog</div></div><span class="ex-sets">5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Near-max effort / 20 sec rest</div><div class="ex-note">2 sets of 5 with 2 min full rest between sets</div></div><span class="ex-sets">40 sec on/off × 10</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy cool-down + static stretch</div></div><span class="ex-sets">5–7 min</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="cond-session">
+                <div class="cond-session-hd">
+                  <div class="cond-session-label">Session B</div>
+                  <div class="cond-session-name">Sprint Repeats</div>
+                </div>
+                <div class="cond-session-body">
+                  <ul class="exercise-list">
+                    <li class="exercise-item"><div><div class="ex-name">Easy warm-up jog + leg swings</div></div><span class="ex-sets">5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Full-speed sprint, walk back</div><div class="ex-note">Absolute max effort — don't rush the rest</div></div><span class="ex-sets">6 × 30m</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Walk recovery between sprints</div></div><span class="ex-sets">90 sec</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Acceleration runs</div><div class="ex-note">Build smoothly from a jog to a sprint over 30m</div></div><span class="ex-sets">4 × 30m</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy cool-down jog</div></div><span class="ex-sets">5 min</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="workout-card">
-          <div class="workout-card-header">
-            <div class="day-label">Any Phase · Optional Add-On</div>
-            <h3>Sprint Repeats</h3>
-            <div class="duration">⏱ 15 min</div>
+        <!-- PHASE 4 -->
+        <div class="cond-phase-card" onclick="togglePhase(this)">
+          <div class="cond-phase-header">
+            <div>
+              <div class="cond-phase-tag">Phase 4 · Weeks 10–12</div>
+              <div class="cond-phase-title">Match Simulation</div>
+              <div class="cond-phase-meta">25–30 min &middot; 2–3× per week</div>
+            </div>
+            <i class="cond-phase-chevron">&#9656;</i>
           </div>
-          <ul class="exercise-list">
-            <li class="exercise-item"><div><div class="ex-name">Full-speed sprint</div><div class="ex-note">Absolute max effort. If you're not working hard, slow down and go again</div></div><span class="ex-sets">6 × 30m</span></li>
-            <li class="exercise-item"><div><div class="ex-name">Full recovery walk back</div><div class="ex-note">Don't rush the rest. Speed work requires it</div></div><span class="ex-sets">90 sec ea</span></li>
-            <li class="exercise-item"><div><div class="ex-name">Accelerations</div><div class="ex-note">Build from a jog to a sprint over 30m, focus on smooth mechanics</div></div><span class="ex-sets">4 × 30m</span></li>
-          </ul>
+          <div class="cond-phase-body">
+            <p class="cond-phase-goal">Replicate the demands of a real match. Variable intensity, direction changes, sustained effort over 25–30 minutes. By this point, the fitness built across the summer should carry over into games — less fading, more quality in the second half.</p>
+            <div class="cond-sessions">
+              <div class="cond-session">
+                <div class="cond-session-hd">
+                  <div class="cond-session-label">Session A</div>
+                  <div class="cond-session-name">Fartlek Run</div>
+                </div>
+                <div class="cond-session-body">
+                  <ul class="exercise-list">
+                    <li class="exercise-item"><div><div class="ex-name">Easy warm-up jog</div></div><span class="ex-sets">5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Fartlek run</div><div class="ex-note">Alternate between easy jog and hard effort every 60–90 sec based on feel — no set rest</div></div><span class="ex-sets">20 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy cool-down jog</div></div><span class="ex-sets">5 min</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="cond-session">
+                <div class="cond-session-hd">
+                  <div class="cond-session-label">Session B</div>
+                  <div class="cond-session-name">Match Tempo Circuit</div>
+                </div>
+                <div class="cond-session-body">
+                  <ul class="exercise-list">
+                    <li class="exercise-item"><div><div class="ex-name">Dynamic warm-up</div><div class="ex-note">Jog + leg swings + high knees</div></div><span class="ex-sets">5 min</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Match tempo run</div><div class="ex-note">Sprint 60s → jog 30s → sprint 45s → jog 30s → sprint 30s → rest 90s</div></div><span class="ex-sets">3 rounds</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">T-drill agility</div><div class="ex-note">4 cones in a T — sprint forward, shuffle left, shuffle right, backpedal to start</div></div><span class="ex-sets">6 reps</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Rest between T-drill reps</div></div><span class="ex-sets">45 sec</span></li>
+                    <li class="exercise-item"><div><div class="ex-name">Easy cool-down jog</div></div><span class="ex-sets">5 min</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -174,6 +299,10 @@
   <script src="assets/js/app.js"></script>
   <script>
     initScrollFade();
+
+    function togglePhase(card) {
+      card.classList.toggle('open');
+    }
   </script>
 
 </body>

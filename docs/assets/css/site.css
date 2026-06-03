@@ -1110,6 +1110,7 @@
     .tw-card,
     .workout-card,
     .nutrition-card,
+    .cond-phase-card,
     .day-panel,
     .gate-box { background: var(--off-white); }
     .contact-info { background: transparent; }
@@ -1126,6 +1127,7 @@
     .pillar,
     .strength-note,
     .rsvp-name,
+    .cond-session,
     .tw-empty { background: var(--surface-hi); }
 
     /* Nutrition tip and strength intro pillars already off-white — push up */
@@ -1274,3 +1276,93 @@
     .tech-session-detail .plan-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
     .tech-session-detail .plan-block li { font-size: 0.85rem; font-weight: 300; line-height: 1.5; padding-left: 1rem; position: relative; }
     .tech-session-detail .plan-block li::before { content: '–'; position: absolute; left: 0; color: var(--mid); }
+
+    /* ── CONDITIONING PHASE CARDS (speed.html) ── */
+    .cond-phases {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 72ch;
+    }
+    .cond-phase-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .cond-phase-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .cond-phase-header:hover { background: var(--surface-hi); }
+    .cond-phase-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .cond-phase-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+    .cond-phase-meta {
+      font-size: 0.8rem;
+      color: var(--mid);
+      font-weight: 300;
+    }
+    .cond-phase-chevron {
+      font-style: normal;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      transition: transform 0.2s;
+    }
+    .cond-phase-card.open .cond-phase-chevron { transform: rotate(90deg); }
+    .cond-phase-body {
+      display: none;
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .cond-phase-card.open .cond-phase-body { display: block; }
+    .cond-phase-goal {
+      font-size: 0.875rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .cond-sessions {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .cond-session {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .cond-session-hd {
+      padding: 0.65rem 0.9rem 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cond-session-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.1rem;
+    }
+    .cond-session-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .cond-session-body { padding: 0.25rem 0; }
