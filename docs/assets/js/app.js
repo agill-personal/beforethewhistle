@@ -304,7 +304,13 @@ var STRENGTH_SEASON_START = '2026-06-11';
 const STRENGTH_SKIP_DATES = new Set(['2026-06-14', '2026-06-28']);
 
 // \u2500\u2500 STATE \u2500\u2500
-let rsvpData   = {};
+let rsvpData = (function() {
+  try { var s = localStorage.getItem('btw_rsvp'); return s ? JSON.parse(s) : {}; } catch(e) { return {}; }
+})();
+
+function saveRsvp() {
+  try { localStorage.setItem('btw_rsvp', JSON.stringify(rsvpData)); } catch(e) {}
+}
 let activeDate = null;
 let activeType = null;
 
@@ -553,6 +559,7 @@ function addRsvp() {
   if (!name) return;
   if (!rsvpData[activeDate]) rsvpData[activeDate] = [];
   if (!rsvpData[activeDate].includes(name)) rsvpData[activeDate].push(name);
+  saveRsvp();
   input.value = '';
   renderRsvp();
   var savedDate = activeDate;
@@ -562,6 +569,7 @@ function addRsvp() {
 
 function removeRsvp(idx) {
   rsvpData[activeDate].splice(idx, 1);
+  saveRsvp();
   var savedDate = activeDate;
   renderRsvp();
   buildWeekCalendar();
@@ -723,6 +731,7 @@ function twAddRsvp(ds) {
   if (!name) return;
   if (!rsvpData[ds]) rsvpData[ds] = [];
   if (!rsvpData[ds].includes(name)) rsvpData[ds].push(name);
+  saveRsvp();
   input.value = '';
   var names    = rsvpData[ds];
   var initials = names.slice(0,4).map(function(n){ return n.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
