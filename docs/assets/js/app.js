@@ -79,13 +79,34 @@ function initGate() {
 }
 
 // \u2500\u2500 GOOGLE SHEETS CONFIG \u2500\u2500
-var SHEET_TECHNICAL_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=1759698843&single=true&output=csv';
-var SHEET_STRENGTH_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=877909294&single=true&output=csv';
-var SHEET_FITNESS_URL   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUoihq4lYEUCsNuG6XM71SkFwgp14HxopKslxu0H52NSYUGXWOXfPhA1klhCETCUKi5ci5u286W3hS/pub?gid=663801951&single=true&output=csv';
+var SHEET_TECHNICAL_URL = '';
+var SHEET_STRENGTH_URL  = '';
+var SHEET_FITNESS_URL   = '';
 var SHEET_CAMP_URL      = '';
 
 // \u2500\u2500 FALLBACK DATA \u2500\u2500
-var SESSIONS = {};
+var SESSIONS = {
+  '2026-06-04': { focus:'first_touch', title:'First Touch & Receiving', time:'6:30 PM', end_time:'8:00 PM', location:'Park School', skills:['Receiving to feet and turning to face goal','Directional first touch to set up a pass or dribble','Receiving on the back foot and playing away from pressure','Settling a driven pass with a soft inside-of-foot touch','Checking off a defender to create space before receiving','Body shape and foot orientation before the ball arrives'], warmup:[], main:[] },
+  '2026-06-05': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Park School', skills:['Wall pass: give and go to break the defensive line','Third-man run: timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass'], warmup:[], main:[] },
+  '2026-06-07': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Step-over, scissors, or Cruyff turn to beat a defender','Committing the defender before attempting a move','Jockeying: staying goal-side and on feet under pressure','Forcing the attacker onto their weak foot','Winning the ball back with a clean tackle when the moment is right','Dribbling with purpose, head up, exploit space after the move'], warmup:[], main:[] },
+  '2026-06-09': { focus:'first_touch', title:'First Touch & Receiving', time:'6:30 PM', end_time:'8:00 PM', location:'Park School', skills:['Chest control and immediate lay-off or turn','Thigh control from a lofted ball and playing under pressure','Half-volley control on a bouncing ball','Heading down to a teammate or into space','Catching a dropping ball on the instep and moving forward','Winning the second ball after an aerial contest'], warmup:[], main:[] },
+  '2026-06-12': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Placed finish into the far corner under pressure','One-touch finish from a cut-back or low cross','Closing down a shooter to force a rushed attempt','Shot power vs. placement: choosing the right technique','Finishing with the weaker foot from a realistic position','Block tackle or interception to prevent a shot on goal'], warmup:[], main:[] },
+  '2026-06-15': { focus:'first_touch', title:'First Touch & Receiving', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Shielding the ball on the first touch to protect possession','Fake receive: letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space'], warmup:[], main:[] },
+  '2026-06-16': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Overlap trigger: passing and running beyond to receive','Underlap combination: cutting inside as the overlap goes outside','Cross-field pass to change the point of attack','Backfoot pass to a runner arriving late','Third-man combination to break through a defensive block','Two-touch play in tight spaces under pressure'], warmup:[], main:[] },
+  '2026-06-18': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Holding up play with back to goal under physical pressure','Shielding the ball and drawing a foul','Flicking on or laying off from a back-to-goal position','Spinning off a marker into space behind the defense','Fronting a striker: physical positioning to prevent the turn','Timing a tackle when a forward tries to spin'], warmup:[], main:[] },
+  '2026-06-19': { focus:'crossing', title:'Crossing & Aerial Duels', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Early cross delivery before the fullback can close','Near-post run: attacking the first zone of the cross','Far-post run: late arrival to attack the back stick','Defending a cross: calling, attacking the ball early','Near-post flick-on to redirect for a far-post finish','Tracking a far-post runner as a centerback'], warmup:[], main:[] },
+  '2026-06-21': { focus:'first_touch', title:'First Touch & Receiving', time:'4:30 PM', end_time:'6:00 PM', location:'Downes', skills:['Check-run and receive: creating space off a defender','Receiving on the half-turn to face forward immediately','Timing the run so the first touch is already in motion','Curved run to stay onside while receiving over the top','Combining movement with a wall pass to arrive in space','First touch into the channel to accelerate beyond the line'], warmup:[], main:[] },
+  '2026-06-22': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['GK 1v1: reading the goalkeeper\'s position','Chip finish when GK is off the line','Driven low finish across the body past a GK','Recovery run to deny a through ball before the finish','Composure in front of goal: slowing the moment down','Decision-making: shoot vs. square vs. hold up'], warmup:[], main:[] },
+  '2026-06-23': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Rondo: maintaining possession under a high press','Identifying and passing to the free player','Weight of pass when playing into a striker\'s feet','Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward'], warmup:[], main:[] },
+  '2026-06-25': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Second ball instinct: reacting to rebounds and saves','Box presence: positioning to arrive at the right moment','Clearing a rebound under pressure from a forward','Anticipating GK distribution and winning the first touch','Volley finish from a loose ball in the box','Heading technique in aerial duels inside the penalty area'], warmup:[], main:[] },
+  '2026-06-26': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Rondo: maintaining possession under a high press','Identifying and passing to the free player','Weight of pass when playing into a striker\'s feet','Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward'], warmup:[], main:[] },
+  '2026-06-28': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'4:30 PM', end_time:'6:00 PM', location:'Downes', skills:['Second ball instinct: reacting to rebounds and saves','Box presence: positioning to arrive at the right moment','Clearing a rebound under pressure from a forward','Anticipating GK distribution and winning the first touch','Volley finish from a loose ball in the box','Heading technique in aerial duels inside the penalty area'], warmup:[], main:[] },
+  '2026-06-29': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Wall pass: give and go to break the defensive line','Third-man run: timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass'], warmup:[], main:[] },
+  '2026-06-30': { focus:'crossing', title:'Crossing & Aerial Duels', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Getting to the byline and delivering a low cut-back','Late run from midfield to meet the cut-back and shoot','Holding a defensive line as runners attack the cut-back','First-time finish from a low cut-back across the box','Disguising cross direction to delay the defensive shift','Covering the cut-back channel as a defending fullback'], warmup:[], main:[] },
+  '2026-07-02': { focus:'first_touch', title:'First Touch & Receiving', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Shoulder check before receiving to identify pressure','Half-turn technique: opening the body to receive facing forward','Using peripheral vision to choose touch direction before contact','Receiving between lines and instantly playing forward','First touch away from pressure in a congested midfield','Controlling the tempo of the game through a composed first touch'], warmup:[], main:[] },
+  '2026-07-03': { focus:'crossing', title:'Crossing & Aerial Duels', time:'6:00 PM', end_time:'7:30 PM', location:'Downes', skills:['Attacking a corner kick delivery: near post and far post runs','Zonal marking on set pieces: attacking the ball at highest point','Man-marking assignment on corners: staying with the runner','Heading technique for both attacking and defensive headers','Second ball reaction after a cleared set piece','Goalkeeper distribution from a set piece clearance'], warmup:[], main:[] },
+  '2026-07-05': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'4:30 PM', end_time:'6:00 PM', location:'Downes', skills:['Pressing trigger: when and how to press the ball','Escape from a press: one-touch away from pressure','Ball protection on the dribble in a high-pressure situation','Coordinated pressing as a pair to cut off passing lanes','Winning the ball back high up the pitch from the front','Countering immediately after winning possession in the press'], warmup:[], main:[] },
+};
 
 const MILESTONES = {
   '2026-08-24': { label: '\uD83C\uDFC6 Tryouts Start', cls: 'tryouts' },
@@ -252,8 +273,12 @@ const WORKOUTS = {
   ],
 };
 
-// Fitness sessions \u2014 populated from SHEET_FITNESS_URL
-var FITNESS_SESSIONS = {};
+var FITNESS_SESSIONS = {
+  '2026-06-08': { focus:'strength',  title:'Strength Training Intro',                  time:'5:00 PM', end_time:'6:30 PM', location:'Park School',     warmup:['Band exercises'],         main:['Intro to strength training! Learn how to build lower body and core strength with proper form and volume, led by Coach Kat! Please bring sneakers and weights.'] },
+  '2026-06-11': { focus:'sprinting', title:'Sprint Mechanics and Conditioning Intro',   time:'6:30 PM', end_time:'8:00 PM', location:'Park School',     warmup:['A/B-skips and runs'],     main:['Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats.'] },
+  '2026-06-14': { focus:'climbing',  title:'Harvard Stadium Steps',                     time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium', warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'] },
+  '2026-06-28': { focus:'climbing',  title:'Harvard Stadium Steps',                     time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium', warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'] },
+};
 
 // Chan Camp sessions
 var CAMP_SESSIONS = {
@@ -543,7 +568,7 @@ function closePanel() {
 }
 
 function renderRsvp() {
-  if (activeType !== 'technical' && activeType !== 'fitness' && activeType !== 'camp') return;
+  if (activeType !== 'technical' && activeType !== 'fitness') return;
   const names = rsvpData[activeDate] || [];
   const list  = document.getElementById('rsvpList');
   if (!list) return;
@@ -553,7 +578,7 @@ function renderRsvp() {
 }
 
 function addRsvp() {
-  if (activeType !== 'technical' && activeType !== 'fitness' && activeType !== 'camp') return;
+  if (activeType !== 'technical' && activeType !== 'fitness') return;
   var input = document.getElementById('rsvpInput');
   var name  = input.value.trim();
   if (!name) return;
@@ -563,17 +588,19 @@ function addRsvp() {
   input.value = '';
   renderRsvp();
   var savedDate = activeDate;
+  var savedType = activeType;
   buildWeekCalendar();
-  openPanel(savedDate, 'technical');
+  openPanel(savedDate, savedType);
 }
 
 function removeRsvp(idx) {
   rsvpData[activeDate].splice(idx, 1);
   saveRsvp();
   var savedDate = activeDate;
+  var savedType = activeType;
   renderRsvp();
   buildWeekCalendar();
-  openPanel(savedDate, 'technical');
+  openPanel(savedDate, savedType);
 }
 
 // \u2500\u2500 NEXT SESSION \u2500\u2500
@@ -700,6 +727,12 @@ function buildNextSession() {
   var inlineDiv = document.createElement('div');
   inlineDiv.className = 'tw-rsvp-inline';
   inlineDiv.id = 'twinline-' + ds;
+  var namesDiv = document.createElement('div');
+  namesDiv.id = 'twnames-' + ds;
+  namesDiv.innerHTML = names.map(function(n,i){
+    return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="twRemoveRsvp(\''+ds+'\','+i+')">✕</button></div>';
+  }).join('');
+  inlineDiv.appendChild(namesDiv);
   var inputRow = document.createElement('div');
   inputRow.className = 'rsvp-input-row';
   var nameInput = document.createElement('input');
@@ -733,15 +766,29 @@ function twAddRsvp(ds) {
   if (!rsvpData[ds].includes(name)) rsvpData[ds].push(name);
   saveRsvp();
   input.value = '';
-  var names    = rsvpData[ds];
+  twRefreshCard(ds);
+  if (activeDate === ds) renderRsvp();
+}
+
+function twRemoveRsvp(ds, idx) {
+  if (!rsvpData[ds]) return;
+  rsvpData[ds].splice(idx, 1);
+  saveRsvp();
+  twRefreshCard(ds);
+  if (activeDate === ds) renderRsvp();
+}
+
+function twRefreshCard(ds) {
+  var names    = rsvpData[ds] || [];
   var initials = names.slice(0,4).map(function(n){ return n.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
   var avEl = document.getElementById('twav-'+ds);
   var lbEl = document.getElementById('twlabel-'+ds);
   if (avEl) avEl.innerHTML = initials.map(function(i){ return '<div class="tw-avatar">'+i+'</div>'; }).join('');
-  if (lbEl) lbEl.textContent = names.length + ' going';
-  var inlineEl = document.getElementById('twinline-'+ds);
-  if (inlineEl) inlineEl.classList.remove('open');
-  if (activeDate === ds) renderRsvp();
+  if (lbEl) lbEl.textContent = names.length === 0 ? 'No RSVPs yet' : names.length + ' going';
+  var namesEl = document.getElementById('twnames-'+ds);
+  if (namesEl) namesEl.innerHTML = names.map(function(n,i){
+    return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="twRemoveRsvp(\''+ds+'\','+i+')">✕</button></div>';
+  }).join('');
 }
 
 // \u2500\u2500 STRENGTH SECTION \u2500\u2500
@@ -880,38 +927,60 @@ function loadCampFromSheet(rows) {
   });
 }
 
-async function loadFromSheets() {
-  var fetches = [];
-  if (SHEET_TECHNICAL_URL) fetches.push(
-    fetch(SHEET_TECHNICAL_URL)
-      .then(function(r) { return r.ok ? r.text() : null; })
-      .then(function(t) { if (t) loadTechnicalFromSheet(parseCSV(t)); })
-      .catch(function(e) { console.warn('Could not load Technical sheet:', e); })
-  );
-  if (SHEET_STRENGTH_URL) fetches.push(
-    fetch(SHEET_STRENGTH_URL)
-      .then(function(r) { return r.ok ? r.text() : null; })
-      .then(function(t) { if (t) loadStrengthFromSheet(parseCSV(t)); })
-      .catch(function(e) { console.warn('Could not load Strength sheet:', e); })
-  );
-  if (SHEET_FITNESS_URL) fetches.push(
-    fetch(SHEET_FITNESS_URL)
-      .then(function(r) { return r.ok ? r.text() : null; })
-      .then(function(t) { if (t) loadFitnessFromSheet(parseCSV(t)); })
-      .catch(function(e) { console.warn('Could not load Fitness sheet:', e); })
-  );
-  if (SHEET_CAMP_URL) fetches.push(
-    fetch(SHEET_CAMP_URL)
-      .then(function(r) { return r.ok ? r.text() : null; })
-      .then(function(t) { if (t) loadCampFromSheet(parseCSV(t)); })
-      .catch(function(e) { console.warn('Could not load Camp sheet:', e); })
-  );
-  await Promise.all(fetches);
-  // Re-render everything with fresh data (page-specific init guards with getElementById)
+function sheetFetch(url, timeoutMs) {
+  var controller = new AbortController();
+  var timer = setTimeout(function() { controller.abort(); }, timeoutMs);
+  return fetch(url, { signal: controller.signal })
+    .then(function(r) { clearTimeout(timer); return r; })
+    .catch(function(e) { clearTimeout(timer); throw e; });
+}
+
+function rerender() {
   buildWeekCalendar();
   buildNextSession();
   renderTabs();
   renderWorkouts();
+}
+
+async function loadFromSheets() {
+  // Seed from cache immediately so returning visitors see data before the network responds
+  var cache = {};
+  try { var raw = localStorage.getItem('btw_sheet_cache'); if (raw) cache = JSON.parse(raw); } catch(e) {}
+  if (cache.technical) { try { loadTechnicalFromSheet(parseCSV(cache.technical)); } catch(e) {} }
+  if (cache.strength)  { try { loadStrengthFromSheet(parseCSV(cache.strength));  } catch(e) {} }
+  if (cache.fitness)   { try { loadFitnessFromSheet(parseCSV(cache.fitness));    } catch(e) {} }
+  if (cache.technical || cache.strength || cache.fitness) rerender();
+
+  // Fetch fresh data with an 8-second timeout per request
+  var newCache = Object.assign({}, cache);
+  var fetches = [];
+  if (SHEET_TECHNICAL_URL) fetches.push(
+    sheetFetch(SHEET_TECHNICAL_URL, 8000)
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(t) { if (t) { newCache.technical = t; loadTechnicalFromSheet(parseCSV(t)); } })
+      .catch(function(e) { console.warn('Could not load Technical sheet:', e); })
+  );
+  if (SHEET_STRENGTH_URL) fetches.push(
+    sheetFetch(SHEET_STRENGTH_URL, 8000)
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(t) { if (t) { newCache.strength = t; loadStrengthFromSheet(parseCSV(t)); } })
+      .catch(function(e) { console.warn('Could not load Strength sheet:', e); })
+  );
+  if (SHEET_FITNESS_URL) fetches.push(
+    sheetFetch(SHEET_FITNESS_URL, 8000)
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(t) { if (t) { newCache.fitness = t; loadFitnessFromSheet(parseCSV(t)); } })
+      .catch(function(e) { console.warn('Could not load Fitness sheet:', e); })
+  );
+  if (SHEET_CAMP_URL) fetches.push(
+    sheetFetch(SHEET_CAMP_URL, 8000)
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(t) { if (t) { newCache.camp = t; loadCampFromSheet(parseCSV(t)); } })
+      .catch(function(e) { console.warn('Could not load Camp sheet:', e); })
+  );
+  await Promise.all(fetches);
+  try { localStorage.setItem('btw_sheet_cache', JSON.stringify(newCache)); } catch(e) {}
+  rerender();
 }
 
 // \u2500\u2500 NAV \u2500\u2500
