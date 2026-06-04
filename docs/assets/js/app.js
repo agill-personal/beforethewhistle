@@ -1015,6 +1015,111 @@ async function loadFromSheets() {
   rerender();
 }
 
+// \u2500\u2500 ICS EXPORT \u2500\u2500
+function generateICS() {
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function parseTime12(t) {
+    if (!t) return null;
+    var m = t.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+    if (!m) return null;
+    var h = parseInt(m[1]), mn = parseInt(m[2]), ap = m[3].toUpperCase();
+    if (ap === 'PM' && h !== 12) h += 12;
+    if (ap === 'AM' && h === 12) h = 0;
+    return {h: h, m: mn};
+  }
+
+  function toDateCompact(ds) { return ds.replace(/-/g, ''); }
+
+  function toDateTime(ds, timeStr) {
+    var t = parseTime12(timeStr);
+    if (!t) return null;
+    return toDateCompact(ds) + 'T' + pad(t.h) + pad(t.m) + '00';
+  }
+
+  function nextDayCompact(ds) {
+    var d = new Date(ds + 'T12:00:00');
+    d.setDate(d.getDate() + 1);
+    return d.getFullYear() + pad(d.getMonth()+1) + pad(d.getDate());
+  }
+
+  function esc(s) {
+    return String(s || '').replace(/\\/g, '\\\\').replace(/,/g, '\\,').replace(/;/g, '\\;').replace(/\n/g, '\\n');
+  }
+
+  function fold(line) {
+    var out = '';
+    while (line.length > 75) { out += line.slice(0, 75) + '\r\n '; line = line.slice(75); }
+    return out + line;
+  }
+
+  function vevent(uid, dtstart, dtend, summary, location, description) {
+    var parts = ['BEGIN:VEVENT', 'UID:' + uid + '@btw2026', dtstart, dtend, fold('SUMMARY:' + esc(summary))];
+    if (location) parts.push(fold('LOCATION:' + esc(location)));
+    if (description) parts.push(fold('DESCRIPTION:' + esc(description)));
+    parts.push('END:VEVENT');
+    return parts.join('\r\n');
+  }
+
+  var events = [];
+
+  // Technical sessions
+  Object.keys(SESSIONS).sort().forEach(function(ds) {
+    var s = SESSIONS[ds];
+    var dtS = toDateTime(ds, s.time), dtE = toDateTime(ds, s.end_time);
+    if (!dtS) return;
+    events.push(vevent('tech-' + ds, 'DTSTART:' + dtS, 'DTEND:' + (dtE || dtS), s.title, s.location,
+      s.skills && s.skills.length ? 'Skills:\n' + s.skills.join('\n') : ''));
+  });
+
+  // Fitness / group sessions
+  Object.keys(FITNESS_SESSIONS).sort().forEach(function(ds) {
+    var g = FITNESS_SESSIONS[ds];
+    var dtS = toDateTime(ds, g.time), dtE = toDateTime(ds, g.end_time);
+    if (!dtS) return;
+    events.push(vevent('fit-' + ds, 'DTSTART:' + dtS, 'DTEND:' + (dtE || dtS), g.title, g.location,
+      (g.main || []).join('\n')));
+  });
+
+  // Strength workouts (all-day, Jun 11 \u2013 Aug 28)
+  var strEnd = new Date(2026, 7, 28);
+  for (var sd = new Date(2026, 5, 11); sd <= strEnd; sd.setDate(sd.getDate() + 1)) {
+    var dow = sd.getDay();
+    var ds = sd.getFullYear() + '-' + pad(sd.getMonth()+1) + '-' + pad(sd.getDate());
+    if (!STRENGTH_DAYS.includes(dow) || STRENGTH_SKIP_DATES.has(ds)) continue;
+    var phase = getPhaseForDate(sd);
+    var wkIdx = dow === 2 ? 0 : dow === 4 ? 1 : 2;
+    var wo = WORKOUTS[phase] && WORKOUTS[phase][wkIdx];
+    if (!wo || !wo.title) continue;
+    var desc = (wo.duration || '') + (wo.exercises ? '\n' + wo.exercises.map(function(e){ return e.sets + ' ' + e.name; }).join('\n') : '');
+    events.push(vevent('str-' + ds,
+      'DTSTART;VALUE=DATE:' + toDateCompact(ds),
+      'DTEND;VALUE=DATE:' + nextDayCompact(ds),
+      'Strength: ' + wo.title, 'At Home', desc));
+  }
+
+  // Chan Camp sessions
+  Object.keys(CAMP_SESSIONS).sort().forEach(function(ds) {
+    var c = CAMP_SESSIONS[ds];
+    var dtS = toDateTime(ds, c.time), dtE = toDateTime(ds, c.end_time);
+    if (!dtS) return;
+    events.push(vevent('camp-' + ds, 'DTSTART:' + dtS, 'DTEND:' + (dtE || dtS), c.title, c.location, ''));
+  });
+
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BeforeTheWhistle//Summer 2026//EN',
+    'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:BeforeTheWhistle Summer 2026',
+    events.join('\r\n'), 'END:VCALENDAR'].join('\r\n');
+}
+
+function downloadICS() {
+  var blob = new Blob([generateICS()], {type: 'text/calendar;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'BeforeTheWhistle-Summer2026.ics';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
 // \u2500\u2500 NAV \u2500\u2500
 function toggleNav() {
   document.getElementById('mainNav').classList.toggle('nav-open');

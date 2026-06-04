@@ -1,0 +1,167 @@
+import datetime, re
+
+CRLF = '\r\n'
+
+def pad(n): return str(n).zfill(2)
+
+def dt(ds, ts):
+    m = re.match(r'(\d{1,2}):(\d{2})\s*(AM|PM)', ts, re.I)
+    h, mn, ap = int(m.group(1)), int(m.group(2)), m.group(3).upper()
+    if ap == 'PM' and h != 12: h += 12
+    if ap == 'AM' and h == 12: h = 0
+    return ds.replace('-','') + 'T' + pad(h) + pad(mn) + '00'
+
+def next_day(ds):
+    d = datetime.date.fromisoformat(ds) + datetime.timedelta(days=1)
+    return d.strftime('%Y%m%d')
+
+def esc(s):
+    return str(s or '').replace('\\','\\\\').replace(',','\\,').replace(';','\\;').replace('\n','\\n')
+
+def fold(line):
+    out = ''
+    while len(line) > 75:
+        out += line[:75] + CRLF + ' '
+        line = line[75:]
+    return out + line
+
+def vevent(uid, dtstart, dtend, summary, location='', description=''):
+    parts = ['BEGIN:VEVENT', 'UID:'+uid+'@btw2026', dtstart, dtend,
+             fold('SUMMARY:'+esc(summary))]
+    if location:    parts.append(fold('LOCATION:'+esc(location)))
+    if description: parts.append(fold('DESCRIPTION:'+esc(description)))
+    parts.append('END:VEVENT')
+    return CRLF.join(parts)
+
+events = []
+
+# TECHNICAL SESSIONS
+technical = [
+  ('2026-06-04','First Touch & Receiving','6:30 PM','8:00 PM','Park School',
+   ['Receiving to feet and turning to face goal','Directional first touch to set up a pass or dribble','Receiving on the back foot and playing away from pressure','Settling a driven pass with a soft inside-of-foot touch','Checking off a defender to create space before receiving','Body shape and foot orientation before the ball arrives']),
+  ('2026-06-05','Passing & Combination Play','6:00 PM','7:30 PM','Park School',
+   ['Wall pass: give and go to break the defensive line','Third-man run: timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass']),
+  ('2026-06-07','1v1 Attacking vs. Defending','4:30 PM','6:00 PM','Park School',
+   ['Step-over, scissors, or Cruyff turn to beat a defender','Committing the defender before attempting a move','Jockeying: staying goal-side and on feet under pressure','Forcing the attacker onto their weak foot','Winning the ball back with a clean tackle when the moment is right','Dribbling with purpose, head up, exploit space after the move']),
+  ('2026-06-09','First Touch & Receiving','6:30 PM','8:00 PM','Park School',
+   ['Chest control and immediate lay-off or turn','Thigh control from a lofted ball and playing under pressure','Half-volley control on a bouncing ball','Heading down to a teammate or into space','Catching a dropping ball on the instep and moving forward','Winning the second ball after an aerial contest']),
+  ('2026-06-12','Finishing vs. Defensive Pressure','4:30 PM','6:00 PM','Park School',
+   ['Placed finish into the far corner under pressure','One-touch finish from a cut-back or low cross','Closing down a shooter to force a rushed attempt','Shot power vs. placement: choosing the right technique','Finishing with the weaker foot from a realistic position','Block tackle or interception to prevent a shot on goal']),
+  ('2026-06-15','First Touch & Receiving','6:00 PM','7:30 PM','Downes',
+   ['Shielding the ball on the first touch to protect possession','Fake receive: letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space']),
+  ('2026-06-16','Passing & Combination Play','6:00 PM','7:30 PM','Downes',
+   ['Overlap trigger: passing and running beyond to receive','Underlap combination: cutting inside as the overlap goes outside','Cross-field pass to change the point of attack','Backfoot pass to a runner arriving late','Third-man combination to break through a defensive block','Two-touch play in tight spaces under pressure']),
+  ('2026-06-18','1v1 Attacking vs. Defending','6:00 PM','7:30 PM','Downes',
+   ['Holding up play with back to goal under physical pressure','Shielding the ball and drawing a foul','Flicking on or laying off from a back-to-goal position','Spinning off a marker into space behind the defense','Fronting a striker: physical positioning to prevent the turn','Timing a tackle when a forward tries to spin']),
+  ('2026-06-19','Crossing & Aerial Duels','6:00 PM','7:30 PM','Downes',
+   ['Early cross delivery before the fullback can close','Near-post run: attacking the first zone of the cross','Far-post run: late arrival to attack the back stick','Defending a cross: calling, attacking the ball early','Near-post flick-on to redirect for a far-post finish','Tracking a far-post runner as a centerback']),
+  ('2026-06-21','First Touch & Receiving','4:30 PM','6:00 PM','Downes',
+   ['Check-run and receive: creating space off a defender','Receiving on the half-turn to face forward immediately','Timing the run so the first touch is already in motion','Curved run to stay onside while receiving over the top','Combining movement with a wall pass to arrive in space','First touch into the channel to accelerate beyond the line']),
+  ('2026-06-22','Finishing vs. Defensive Pressure','6:00 PM','7:30 PM','Downes',
+   ["GK 1v1: reading the goalkeeper's position",'Chip finish when GK is off the line','Driven low finish across the body past a GK','Recovery run to deny a through ball before the finish','Composure in front of goal: slowing the moment down','Decision-making: shoot vs. square vs. hold up']),
+  ('2026-06-23','Passing & Combination Play','6:00 PM','7:30 PM','Downes',
+   ['Rondo: maintaining possession under a high press','Identifying and passing to the free player',"Weight of pass when playing into a striker's feet",'Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward']),
+  ('2026-06-25','Finishing vs. Defensive Pressure','6:00 PM','7:30 PM','Downes',
+   ['Second ball instinct: reacting to rebounds and saves','Box presence: positioning to arrive at the right moment','Clearing a rebound under pressure from a forward','Anticipating GK distribution and winning the first touch','Volley finish from a loose ball in the box','Heading technique in aerial duels inside the penalty area']),
+  ('2026-06-26','Passing & Combination Play','6:00 PM','7:30 PM','Downes',
+   ['Rondo: maintaining possession under a high press','Identifying and passing to the free player',"Weight of pass when playing into a striker's feet",'Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward']),
+  ('2026-06-28','Finishing vs. Defensive Pressure','4:30 PM','6:00 PM','Downes',
+   ['Second ball instinct: reacting to rebounds and saves','Box presence: positioning to arrive at the right moment','Clearing a rebound under pressure from a forward','Anticipating GK distribution and winning the first touch','Volley finish from a loose ball in the box','Heading technique in aerial duels inside the penalty area']),
+  ('2026-06-29','Passing & Combination Play','6:00 PM','7:30 PM','Downes',
+   ['Wall pass: give and go to break the defensive line','Third-man run: timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass']),
+  ('2026-06-30','Crossing & Aerial Duels','6:00 PM','7:30 PM','Downes',
+   ['Getting to the byline and delivering a low cut-back','Late run from midfield to meet the cut-back and shoot','Holding a defensive line as runners attack the cut-back','First-time finish from a low cut-back across the box','Disguising cross direction to delay the defensive shift','Covering the cut-back channel as a defending fullback']),
+  ('2026-07-02','First Touch & Receiving','6:00 PM','7:30 PM','Downes',
+   ['Shoulder check before receiving to identify pressure','Half-turn technique: opening the body to receive facing forward','Using peripheral vision to choose touch direction before contact','Receiving between lines and instantly playing forward','First touch away from pressure in a congested midfield','Controlling the tempo of the game through a composed first touch']),
+  ('2026-07-03','Crossing & Aerial Duels','6:00 PM','7:30 PM','Downes',
+   ['Attacking a corner kick delivery: near post and far post runs','Zonal marking on set pieces: attacking the ball at highest point','Man-marking assignment on corners: staying with the runner','Heading technique for both attacking and defensive headers','Second ball reaction after a cleared set piece','Goalkeeper distribution from a set piece clearance']),
+  ('2026-07-05','1v1 Attacking vs. Defending','4:30 PM','6:00 PM','Downes',
+   ['Pressing trigger: when and how to press the ball','Escape from a press: one-touch away from pressure','Ball protection on the dribble in a high-pressure situation','Coordinated pressing as a pair to cut off passing lanes','Winning the ball back high up the pitch from the front','Countering immediately after winning possession in the press']),
+]
+for ds, title, start, end, loc, skills in technical:
+    desc = 'Skills:\n' + '\n'.join(skills)
+    events.append(vevent('tech-'+ds, 'DTSTART:'+dt(ds,start), 'DTEND:'+dt(ds,end), title, loc, desc))
+
+# FITNESS / GROUP SESSIONS
+fitness = [
+  ('2026-06-08','Strength Training Intro','5:00 PM','6:30 PM','Park School',
+   'Intro to strength training! Learn how to build lower body and core strength with proper form and volume, led by Coach Kat! Please bring sneakers and weights.'),
+  ('2026-06-11','Sprint Mechanics and Conditioning Intro','6:30 PM','8:00 PM','Park School',
+   'Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats.'),
+  ('2026-06-14','Harvard Stadium Steps','4:30 PM','6:00 PM','Harvard Stadium',
+   'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'),
+  ('2026-06-28','Harvard Stadium Steps','4:30 PM','6:00 PM','Harvard Stadium',
+   'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'),
+]
+for ds, title, start, end, loc, desc in fitness:
+    events.append(vevent('fit-'+ds, 'DTSTART:'+dt(ds,start), 'DTEND:'+dt(ds,end), title, loc, desc))
+
+# STRENGTH WORKOUTS (all-day events)
+STRENGTH_DAYS = {0, 2, 4}  # Sun=0, Tue=2, Thu=4 (JS weekday)
+SKIP = {'2026-06-14', '2026-06-28'}
+workouts = {
+    0: [(2,'Lower Body A','45-50 min'), (4,'Core & Stability','35-40 min'), (0,'Lower Body B','45-50 min')],
+    1: [(2,'Lower Body A+','50-55 min'), (4,'Power & Core','40-45 min'), (0,'Lower Body B+','50-55 min')],
+    2: [(2,'Peak Strength A','55-60 min'), (4,'Explosive Power','45-50 min'), (0,'Peak Strength B','55-60 min')],
+    3: [(2,'Maintenance A','30-35 min'), (4,'Activation & Power','25-30 min'), (0,'Feel Good Session','20-25 min')],
+}
+def get_phase(d):
+    if d < datetime.date(2026,7,5):  return 0
+    if d < datetime.date(2026,7,26): return 1
+    if d < datetime.date(2026,8,16): return 2
+    return 3
+
+cur = datetime.date(2026,6,11)
+while cur <= datetime.date(2026,8,28):
+    # JS weekday: Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6
+    js_dow = cur.isoweekday() % 7
+    ds = cur.isoformat()
+    if js_dow in STRENGTH_DAYS and ds not in SKIP:
+        phase = get_phase(cur)
+        wk_idx = {2:0, 4:1, 0:2}[js_dow]
+        wo_list = workouts.get(phase, [])
+        wo = next((w for w in wo_list if w[0] == js_dow), None)
+        if wo:
+            _, title, duration = wo
+            dc = ds.replace('-','')
+            events.append(vevent('str-'+ds,
+                'DTSTART;VALUE=DATE:'+dc,
+                'DTEND;VALUE=DATE:'+next_day(ds),
+                'Strength: '+title, 'At Home', duration))
+    cur += datetime.timedelta(days=1)
+
+# CHAN CAMP
+camp_weeks = [
+    ('2026-07-06','2026-07-10','Chan Camp Week 1'),
+    ('2026-07-13','2026-07-17','Chan Camp Week 2'),
+    ('2026-07-20','2026-07-24','Chan Camp Week 3'),
+    ('2026-07-27','2026-07-31','Chan Camp Week 4'),
+    ('2026-08-03','2026-08-07','Chan Camp Week 5'),
+    ('2026-08-10','2026-08-14','Chan Camp Week 6'),
+]
+for wk_start, wk_end, label in camp_weeks:
+    d = datetime.date.fromisoformat(wk_start)
+    while d <= datetime.date.fromisoformat(wk_end):
+        ds = d.isoformat()
+        events.append(vevent('camp-'+ds,
+            'DTSTART:'+dt(ds,'8:00 AM'),
+            'DTEND:'+dt(ds,'10:00 AM'),
+            label, 'Downes', ''))
+        d += datetime.timedelta(days=1)
+
+header = CRLF.join([
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//BeforeTheWhistle//Summer 2026//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'X-WR-CALNAME:BeforeTheWhistle Summer 2026',
+    'REFRESH-INTERVAL;VALUE=DURATION:PT12H',
+    'X-PUBLISHED-TTL:PT12H',
+])
+ics = header + CRLF + CRLF.join(events) + CRLF + 'END:VCALENDAR' + CRLF
+
+with open('docs/calendar.ics', 'w', newline='') as f:
+    f.write(ics)
+
+print(f'Done: {len(events)} events written to docs/calendar.ics')

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BeforeTheWhistle — Home</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/css/site.css?v=20260603"/>
+  <link rel="stylesheet" href="assets/css/site.css?v=20260605"/>
 </head>
 <body>
 
@@ -45,6 +45,10 @@
       <button class="wk-arrow" id="wkPrev" onclick="calPrevWeek()">&#8592;</button>
       <span class="wk-label" id="wkLabel"></span>
       <button class="wk-arrow" id="wkNext" onclick="calNextWeek()">&#8594;</button>
+      <div style="margin-left:auto;display:flex;gap:0.5rem;align-items:center">
+        <a href="webcal://agill-personal.github.io/beforethewhistle/calendar.ics" style="font-size:0.75rem;font-weight:600;letter-spacing:0.04em;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:3px;padding:0.3rem 0.75rem;text-decoration:none;white-space:nowrap">Subscribe</a>
+        <button onclick="downloadICS()" style="font-size:0.75rem;font-weight:600;letter-spacing:0.04em;color:var(--mid);background:none;border:1px solid var(--border);border-radius:3px;padding:0.3rem 0.75rem;cursor:pointer;font-family:var(--sans);white-space:nowrap">Download .ics</button>
+      </div>
     </div>
 
     <div class="wk-cal-scroll">
@@ -96,7 +100,7 @@
     <span>Summer Soccer Training · 2026 · Built with care for your athletes</span>
   </footer>
 
-  <script src="assets/js/app.js?v=20260603"></script>
+  <script src="assets/js/app.js?v=20260605"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
   <script>
