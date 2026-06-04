@@ -438,7 +438,7 @@ function buildWeekCalendar() {
       const cKey  = 'camp-' + ds;
       const btn   = document.createElement('button');
       btn.className = 'wk-event type-camp';
-      btn.innerHTML = c.title + '<span class="ev-time">\u26FA ' + c.time + '</span>';
+      btn.innerHTML = c.title + '<span class="ev-time">\u26FA ' + c.time + ' \u00B7 ' + c.location + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'camp'); }; })(cKey);
       body.appendChild(btn);
     }
@@ -455,7 +455,7 @@ function buildWeekCalendar() {
       const cnt = (rsvpData[ds] || []).length;
       const btn = document.createElement('button');
       btn.className = 'wk-event type-technical';
-      btn.innerHTML = s.title + '<span class="ev-time">\u26BD ' + s.time + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
+      btn.innerHTML = s.title + '<span class="ev-time">\u26BD ' + s.time + ' \u00B7 ' + s.location + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
       btn.onclick = function() { openPanel(ds, 'technical'); };
       body.appendChild(btn);
     }
@@ -465,7 +465,7 @@ function buildWeekCalendar() {
       const gKey = 'grp-' + ds;
       const btn  = document.createElement('button');
       btn.className = 'wk-event type-fitness';
-      btn.innerHTML = g.title + '<span class="ev-time">\uD83C\uDFC3 ' + g.time + '</span>';
+      btn.innerHTML = g.title + '<span class="ev-time">\uD83C\uDFC3 ' + g.time + ' \u00B7 ' + g.location + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
       body.appendChild(btn);
     }
