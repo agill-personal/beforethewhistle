@@ -20,10 +20,10 @@ DESCRIPTION:Skills:\nReceiving to feet and turning to face goal\nDirectiona
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-05@btw2026
-DTSTART:20260605T180000
-DTEND:20260605T193000
+DTSTART:20260605T153000
+DTEND:20260605T170000
 SUMMARY:Passing & Combination Play
-LOCATION:Park School
+LOCATION:Cypress Field
 DESCRIPTION:Skills:\nWall pass: give and go to break the defensive line\nTh
  ird-man run: timing a late run to receive after a combination\nWeight and a
  ccuracy of short passes under pressure\nOne-touch passing to maintain speed
@@ -56,10 +56,10 @@ DESCRIPTION:Skills:\nChest control and immediate lay-off or turn\nThigh con
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-12@btw2026
-DTSTART:20260612T163000
-DTEND:20260612T180000
+DTSTART:20260612T153000
+DTEND:20260612T170000
 SUMMARY:Finishing vs. Defensive Pressure
-LOCATION:Park School
+LOCATION:Cypress Field
 DESCRIPTION:Skills:\nPlaced finish into the far corner under pressure\nOne-
  touch finish from a cut-back or low cross\nClosing down a shooter to force 
  a rushed attempt\nShot power vs. placement: choosing the right technique\nF
@@ -71,7 +71,7 @@ UID:tech-2026-06-15@btw2026
 DTSTART:20260615T180000
 DTEND:20260615T193000
 SUMMARY:First Touch & Receiving
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nShielding the ball on the first touch to protect posse
  ssion\nFake receive: letting the ball run to lose a tight marker\nScanning 
  before the ball arrives to choose touch direction\nOne-touch layoff when re
@@ -83,7 +83,7 @@ UID:tech-2026-06-16@btw2026
 DTSTART:20260616T180000
 DTEND:20260616T193000
 SUMMARY:Passing & Combination Play
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nOverlap trigger: passing and running beyond to receive
  \nUnderlap combination: cutting inside as the overlap goes outside\nCross-f
  ield pass to change the point of attack\nBackfoot pass to a runner arriving
@@ -95,7 +95,7 @@ UID:tech-2026-06-18@btw2026
 DTSTART:20260618T180000
 DTEND:20260618T193000
 SUMMARY:1v1 Attacking vs. Defending
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nHolding up play with back to goal under physical press
  ure\nShielding the ball and drawing a foul\nFlicking on or laying off from 
  a back-to-goal position\nSpinning off a marker into space behind the defens
@@ -104,10 +104,10 @@ DESCRIPTION:Skills:\nHolding up play with back to goal under physical press
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-19@btw2026
-DTSTART:20260619T180000
-DTEND:20260619T193000
+DTSTART:20260619T153000
+DTEND:20260619T170000
 SUMMARY:Crossing & Aerial Duels
-LOCATION:Downes
+LOCATION:Cypress Field
 DESCRIPTION:Skills:\nEarly cross delivery before the fullback can close\nNe
  ar-post run: attacking the first zone of the cross\nFar-post run: late arri
  val to attack the back stick\nDefending a cross: calling\, attacking the ba
@@ -119,7 +119,7 @@ UID:tech-2026-06-21@btw2026
 DTSTART:20260621T163000
 DTEND:20260621T180000
 SUMMARY:First Touch & Receiving
-LOCATION:Downes
+LOCATION:Park School
 DESCRIPTION:Skills:\nCheck-run and receive: creating space off a defender\n
  Receiving on the half-turn to face forward immediately\nTiming the run so t
  he first touch is already in motion\nCurved run to stay onside while receiv
@@ -131,7 +131,7 @@ UID:tech-2026-06-22@btw2026
 DTSTART:20260622T180000
 DTEND:20260622T193000
 SUMMARY:Finishing vs. Defensive Pressure
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nGK 1v1: reading the goalkeeper's position\nChip finish
   when GK is off the line\nDriven low finish across the body past a GK\nReco
  very run to deny a through ball before the finish\nComposure in front of go
@@ -142,7 +142,7 @@ UID:tech-2026-06-23@btw2026
 DTSTART:20260623T180000
 DTEND:20260623T193000
 SUMMARY:Passing & Combination Play
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nRondo: maintaining possession under a high press\nIden
  tifying and passing to the free player\nWeight of pass when playing into a 
  striker's feet\nQuick combination in the final third to create a shooting o
@@ -154,7 +154,7 @@ UID:tech-2026-06-25@btw2026
 DTSTART:20260625T180000
 DTEND:20260625T193000
 SUMMARY:Finishing vs. Defensive Pressure
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nSecond ball instinct: reacting to rebounds and saves\n
  Box presence: positioning to arrive at the right moment\nClearing a rebound
   under pressure from a forward\nAnticipating GK distribution and winning th
@@ -163,10 +163,10 @@ DESCRIPTION:Skills:\nSecond ball instinct: reacting to rebounds and saves\n
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-26@btw2026
-DTSTART:20260626T180000
-DTEND:20260626T193000
+DTSTART:20260626T080000
+DTEND:20260626T100000
 SUMMARY:Passing & Combination Play
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nRondo: maintaining possession under a high press\nIden
  tifying and passing to the free player\nWeight of pass when playing into a 
  striker's feet\nQuick combination in the final third to create a shooting o
@@ -178,7 +178,7 @@ UID:tech-2026-06-28@btw2026
 DTSTART:20260628T163000
 DTEND:20260628T180000
 SUMMARY:Finishing vs. Defensive Pressure
-LOCATION:Downes
+LOCATION:Park School
 DESCRIPTION:Skills:\nSecond ball instinct: reacting to rebounds and saves\n
  Box presence: positioning to arrive at the right moment\nClearing a rebound
   under pressure from a forward\nAnticipating GK distribution and winning th
@@ -190,7 +190,7 @@ UID:tech-2026-06-29@btw2026
 DTSTART:20260629T180000
 DTEND:20260629T193000
 SUMMARY:Passing & Combination Play
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nWall pass: give and go to break the defensive line\nTh
  ird-man run: timing a late run to receive after a combination\nWeight and a
  ccuracy of short passes under pressure\nOne-touch passing to maintain speed
@@ -202,7 +202,7 @@ UID:tech-2026-06-30@btw2026
 DTSTART:20260630T180000
 DTEND:20260630T193000
 SUMMARY:Crossing & Aerial Duels
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nGetting to the byline and delivering a low cut-back\nL
  ate run from midfield to meet the cut-back and shoot\nHolding a defensive l
  ine as runners attack the cut-back\nFirst-time finish from a low cut-back a
@@ -214,7 +214,7 @@ UID:tech-2026-07-02@btw2026
 DTSTART:20260702T180000
 DTEND:20260702T193000
 SUMMARY:First Touch & Receiving
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nShoulder check before receiving to identify pressure\n
  Half-turn technique: opening the body to receive facing forward\nUsing peri
  pheral vision to choose touch direction before contact\nReceiving between l
@@ -224,10 +224,10 @@ DESCRIPTION:Skills:\nShoulder check before receiving to identify pressure\n
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-07-03@btw2026
-DTSTART:20260703T180000
-DTEND:20260703T193000
+DTSTART:20260703T080000
+DTEND:20260703T100000
 SUMMARY:Crossing & Aerial Duels
-LOCATION:Downes
+LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nAttacking a corner kick delivery: near post and far po
  st runs\nZonal marking on set pieces: attacking the ball at highest point\n
  Man-marking assignment on corners: staying with the runner\nHeading techniq
@@ -239,7 +239,7 @@ UID:tech-2026-07-05@btw2026
 DTSTART:20260705T163000
 DTEND:20260705T180000
 SUMMARY:1v1 Attacking vs. Defending
-LOCATION:Downes
+LOCATION:Park School
 DESCRIPTION:Skills:\nPressing trigger: when and how to press the ball\nEsca
  pe from a press: one-touch away from pressure\nBall protection on the dribb
  le in a high-pressure situation\nCoordinated pressing as a pair to cut off 
@@ -251,7 +251,7 @@ UID:fit-2026-06-08@btw2026
 DTSTART:20260608T170000
 DTEND:20260608T183000
 SUMMARY:Strength Training Intro
-LOCATION:Park School
+LOCATION:Harry Downes Field
 DESCRIPTION:Intro to strength training! Learn how to build lower body and c
  ore strength with proper form and volume\, led by Coach Kat! Please bring s
  neakers and weights.
@@ -261,7 +261,7 @@ UID:fit-2026-06-11@btw2026
 DTSTART:20260611T183000
 DTEND:20260611T200000
 SUMMARY:Sprint Mechanics and Conditioning Intro
-LOCATION:Park School
+LOCATION:Harry Downes Field
 DESCRIPTION:Intro to sprinting mechanics and conditioning! Learn how to bui
  ld sprinting form to accelerate quickly and maintain speed on the field\, l
  ed by Coach Bearett! Please bring cleats.
