@@ -649,7 +649,20 @@ function buildNextSession() {
 
   var todayStr = toDateStr(today);
   var upcoming = Object.entries(SESSIONS)
-    .filter(function(e){ return e[0] >= todayStr; })
+    .filter(function(e) {
+      var ds = e[0];
+      if (ds > todayStr) return true;
+      if (ds < todayStr) return false;
+      // Same day: only include if the session hasn't ended yet
+      var endStr = e[1].end_time || e[1].time;
+      if (!endStr) return true;
+      var m = endStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      if (!m) return true;
+      var h = parseInt(m[1]), mn = parseInt(m[2]);
+      if (/PM/i.test(m[3]) && h !== 12) h += 12;
+      if (/AM/i.test(m[3]) && h === 12) h = 0;
+      return today < new Date(today.getFullYear(), today.getMonth(), today.getDate(), h, mn, 0);
+    })
     .sort(function(a,b){ return a[0].localeCompare(b[0]); });
 
   if (upcoming.length === 0) {
