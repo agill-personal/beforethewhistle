@@ -1111,6 +1111,7 @@
     .workout-card,
     .nutrition-card,
     .cond-phase-card,
+    .drill-card,
     .day-panel,
     .gate-box { background: var(--off-white); }
     .contact-info { background: transparent; }
@@ -1366,3 +1367,127 @@
       font-weight: 600;
     }
     .cond-session-body { padding: 0.25rem 0; }
+
+    /* ── DRILL CARDS (solo.html) ── */
+    .drill-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 72ch;
+    }
+    .drill-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .drill-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .drill-card-header:hover { background: var(--surface-hi); }
+    .drill-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .drill-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+    .drill-summary {
+      font-size: 0.8rem;
+      color: var(--mid);
+      font-weight: 300;
+    }
+    .drill-chevron {
+      font-style: normal;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      transition: transform 0.2s;
+    }
+    .drill-card.open .drill-chevron { transform: rotate(90deg); }
+    .drill-card-body {
+      display: none;
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .drill-card.open .drill-card-body { display: block; }
+    .drill-setup-img {
+      max-width: 180px;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .drill-stage { margin-bottom: 1.5rem; }
+    .drill-stage:last-child { margin-bottom: 0; }
+    .drill-stage-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+    .drill-stage-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .drill-stage-meta {
+      font-size: 0.78rem;
+      color: var(--mid);
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+    .drill-stage ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .drill-stage ul li {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--mid);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.55;
+    }
+    .drill-stage ul li::before {
+      content: '\2013';
+      position: absolute;
+      left: 0;
+      color: var(--mid);
+    }
+    .drill-num-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .drill-cat {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+    .drill-cat-solo    { background: #dbeafe; color: #1e40af; }
+    .drill-cat-partner { background: #d1fae5; color: #065f46; }
+    .drill-cat-group   { background: #ede9fe; color: #4c1d95; }
