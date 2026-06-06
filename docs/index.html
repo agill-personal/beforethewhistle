@@ -75,7 +75,8 @@
           <div class="rsvp-list" id="rsvpList"></div>
           <div class="rsvp-locked-msg" id="rsvpLockedMsg" style="display:none">This session has passed — RSVPs are locked.</div>
           <div class="rsvp-form" id="rsvpFormEl">
-            <input type="text" id="rsvpInput" placeholder="Your name..." maxlength="40"
+            <div class="rsvp-form-heading">My Response</div>
+            <input type="text" id="rsvpInput" class="rsvp-comment-input" placeholder="Your name..." maxlength="40"
               onkeydown="if(event.key==='Enter') document.getElementById('rsvpComment').focus()"/>
             <div class="rsvp-choices">
               <label class="rsvp-choice">

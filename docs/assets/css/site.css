@@ -726,7 +726,12 @@
     }
     .rsvp-name .remove:hover { color: #c0392b; }
     /* RSVP form layout */
-    .rsvp-form { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rsvp-form { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+    .rsvp-form-heading {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--mid);
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+    }
     .rsvp-choices { display: flex; flex-direction: column; gap: 0.3rem; }
     .rsvp-choice {
       display: flex; align-items: flex-start; gap: 0.5rem;
