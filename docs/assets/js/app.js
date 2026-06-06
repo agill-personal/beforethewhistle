@@ -333,6 +333,11 @@ let rsvpData = (function() {
   try { var s = localStorage.getItem('btw_rsvp'); return s ? JSON.parse(s) : {}; } catch(e) { return {}; }
 })();
 
+function normalizeEntry(e) {
+  if (typeof e === 'string') return { name: e, response: 'going', comment: '' };
+  return { name: e.name || '', response: e.response || 'going', comment: e.comment || '' };
+}
+
 var btw_db = null;
 var _fbLocalWrite = false;
 
@@ -367,8 +372,23 @@ function initFirebase(config) {
     console.warn('Firebase init failed:', e);
   }
 }
-let activeDate = null;
-let activeType = null;
+let activeDate   = null;
+let activeType   = null;
+let activeSessionLocked = false;
+
+function sessionHasPassed(ds, endTimeStr) {
+  var now = new Date();
+  var nowStr = toDateStr(now);
+  if (ds < nowStr) return true;
+  if (ds > nowStr) return false;
+  if (!endTimeStr) return false;
+  var m = endTimeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return false;
+  var h = parseInt(m[1]), mn = parseInt(m[2]);
+  if (/PM/i.test(m[3]) && h !== 12) h += 12;
+  if (/AM/i.test(m[3]) && h === 12) h = 0;
+  return now >= new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, mn, 0);
+}
 
 const today = new Date();
 
@@ -452,7 +472,7 @@ function buildWeekCalendar() {
 
     if (SESSIONS[ds]) {
       const s   = SESSIONS[ds];
-      const cnt = (rsvpData[ds] || []).length;
+      const cnt = (rsvpData[ds] || []).filter(function(r){ return normalizeEntry(r).response === 'going'; }).length;
       const btn = document.createElement('button');
       btn.className = 'wk-event type-technical';
       btn.innerHTML = s.title + '<span class="ev-time">\u26BD ' + s.time + ' \u00B7 ' + s.location + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
@@ -534,7 +554,9 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
         '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (s.warmup||[]).map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>' +
         '<div class="plan-block"><h4>Main Session</h4><ul>' + (s.main  ||[]).map(function(x){return '<li>'+x+'</li>';}).join('') + '</ul></div>';
     }
+    activeSessionLocked = sessionHasPassed(key, s.end_time || s.time);
     rsvpSec.style.display = 'block';
+    applyRsvpLock();
     renderRsvp();
   } else if (type === 'fitness') {
     const ds = key.slice(4);
@@ -552,7 +574,9 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelPlan').innerHTML =
       '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (g.warmup || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>' +
       '<div class="plan-block"><h4>Main Session</h4><ul>' + (g.main   || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>';
+    activeSessionLocked = sessionHasPassed(key.slice(4), g.end_time || g.time);
     rsvpSec.style.display = 'block';
+    applyRsvpLock();
     renderRsvp();
   } else if (type === 'camp') {
     const ds = key.slice(5);
@@ -596,27 +620,61 @@ function closePanel() {
   if (panel) panel.style.display = 'none';
   activeDate = null;
   activeType = null;
+  activeSessionLocked = false;
+}
+
+function applyRsvpLock() {
+  var formEl   = document.getElementById('rsvpFormEl');
+  var lockedEl = document.getElementById('rsvpLockedMsg');
+  if (formEl)   formEl.style.display   = activeSessionLocked ? 'none'  : 'flex';
+  if (lockedEl) lockedEl.style.display = activeSessionLocked ? 'block' : 'none';
 }
 
 function renderRsvp() {
   if (activeType !== 'technical' && activeType !== 'fitness') return;
-  const names = rsvpData[activeDate] || [];
-  const list  = document.getElementById('rsvpList');
+  var raw  = rsvpData[activeDate] || [];
+  var list = document.getElementById('rsvpList');
   if (!list) return;
-  list.innerHTML = names.length === 0
-    ? '<span class="rsvp-empty">No one yet. Be the first!</span>'
-    : names.map(function(n,i){ return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="removeRsvp('+i+')">\u2715</button></div>'; }).join('');
+  if (raw.length === 0) {
+    list.innerHTML = '<span class="rsvp-empty">' + (activeSessionLocked ? 'No responses were recorded.' : 'No responses yet. Be the first!') + '</span>';
+    return;
+  }
+  var g = [], n = [], c = [];
+  raw.forEach(function(r, idx) {
+    var e   = normalizeEntry(r);
+    var row = '<div class="rsvp-name"><span class="rsvp-entry-name">' + e.name + '</span>'
+      + (e.comment ? '<span class="rsvp-entry-comment">' + e.comment + '</span>' : '')
+      + (!activeSessionLocked ? '<button class="remove" onclick="removeRsvp(' + idx + ')">&#x2715;</button>' : '')
+      + '</div>';
+    if (e.response === 'not_going') n.push(row);
+    else if (e.response === 'conflict') c.push(row);
+    else g.push(row);
+  });
+  function grp(label, cls, rows) {
+    if (!rows.length) return '';
+    return '<div class="rsvp-group"><div class="rsvp-group-label ' + cls + '">' + label + '</div>' + rows.join('') + '</div>';
+  }
+  list.innerHTML = grp("I'll be there!", 'rsvp-going', g)
+    + grp("Can't make it", 'rsvp-not-going', n)
+    + grp("Scheduling conflict", 'rsvp-conflict', c);
 }
 
 function addRsvp() {
   if (activeType !== 'technical' && activeType !== 'fitness') return;
-  var input = document.getElementById('rsvpInput');
-  var name  = input.value.trim();
-  if (!name) return;
+  if (activeSessionLocked) return;
+  var nameEl    = document.getElementById('rsvpInput');
+  var commentEl = document.getElementById('rsvpComment');
+  var respEl    = document.querySelector('input[name="rsvpResponse"]:checked');
+  var name = nameEl ? nameEl.value.trim() : '';
+  if (!name) { if (nameEl) nameEl.focus(); return; }
+  var response = respEl ? respEl.value : 'going';
+  var comment  = commentEl ? commentEl.value.trim() : '';
   if (!rsvpData[activeDate]) rsvpData[activeDate] = [];
-  if (!rsvpData[activeDate].includes(name)) rsvpData[activeDate].push(name);
+  var exists = rsvpData[activeDate].some(function(r) { return normalizeEntry(r).name === name; });
+  if (!exists) rsvpData[activeDate].push({ name: name, response: response, comment: comment });
   saveRsvp();
-  input.value = '';
+  if (nameEl) nameEl.value = '';
+  if (commentEl) commentEl.value = '';
   renderRsvp();
   var savedDate = activeDate;
   var savedType = activeType;
@@ -624,7 +682,17 @@ function addRsvp() {
   openPanel(savedDate, savedType);
 }
 
+function updateRsvpCommentHint() {
+  var el = document.querySelector('input[name="rsvpResponse"]:checked');
+  var commentEl = document.getElementById('rsvpComment');
+  if (!el || !commentEl) return;
+  commentEl.placeholder = el.value === 'conflict'
+    ? 'What time and place would work for you?'
+    : 'Add a comment (optional)...';
+}
+
 function removeRsvp(idx) {
+  if (activeSessionLocked) return;
   rsvpData[activeDate].splice(idx, 1);
   saveRsvp();
   var savedDate = activeDate;
@@ -684,8 +752,9 @@ function buildNextSession() {
   var dayLabel = isToday ? '\u26A1 Today' : isTomorrow ? 'Tomorrow' : DAYS_FULL[sessionDate.getDay()];
   if (rangeEl) rangeEl.textContent = MONTHS_SHORT[mo-1] + ' ' + d;
 
-  var names    = rsvpData[ds] || [];
-  var initials = names.slice(0,4).map(function(n){ return n.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
+  var raw      = rsvpData[ds] || [];
+  var going    = raw.map(normalizeEntry).filter(function(e){ return e.response === 'going'; });
+  var initials = going.slice(0,4).map(function(e){ return e.name.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
 
   var card = document.createElement('div');
   card.className = 'tw-card';
@@ -758,10 +827,20 @@ function buildNextSession() {
   var labelSpan = document.createElement('span');
   labelSpan.className = 'tw-rsvp-label';
   labelSpan.id = 'twlabel-' + ds;
-  labelSpan.textContent = names.length === 0 ? 'No RSVPs yet' : names.length + ' going';
+  (function() {
+    var entries = raw.map(normalizeEntry);
+    var nGoing    = entries.filter(function(e){ return e.response === 'going'; }).length;
+    var nConflict = entries.filter(function(e){ return e.response === 'conflict'; }).length;
+    var nCant     = entries.filter(function(e){ return e.response === 'not_going'; }).length;
+    var parts = [];
+    if (nGoing) parts.push(nGoing + ' going');
+    if (nConflict) parts.push(nConflict + ' conflict');
+    if (nCant) parts.push(nCant + " can't");
+    labelSpan.textContent = parts.length ? parts.join(' · ') : 'No responses yet';
+  })();
   var rBtn = document.createElement('button');
   rBtn.className = 'tw-rsvp-btn';
-  rBtn.textContent = '+ RSVP';
+  rBtn.textContent = 'Respond';
   rBtn.onclick = (function(d2) { return function() { twToggleRsvp(d2); }; })(ds);
   rsvpRow.appendChild(avatarsDiv);
   rsvpRow.appendChild(labelSpan);
@@ -771,23 +850,45 @@ function buildNextSession() {
   var inlineDiv = document.createElement('div');
   inlineDiv.className = 'tw-rsvp-inline';
   inlineDiv.id = 'twinline-' + ds;
-  var namesDiv = document.createElement('div');
-  namesDiv.id = 'twnames-' + ds;
-  namesDiv.innerHTML = names.map(function(n,i){
-    return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="twRemoveRsvp(\''+ds+'\','+i+')">✕</button></div>';
-  }).join('');
-  inlineDiv.appendChild(namesDiv);
-  var inputRow = document.createElement('div');
-  inputRow.className = 'rsvp-input-row';
-  var nameInput = document.createElement('input');
-  nameInput.type = 'text'; nameInput.id = 'twinput-' + ds;
-  nameInput.placeholder = 'Your name...'; nameInput.maxLength = 40;
-  nameInput.onkeydown = (function(d2) { return function(e) { if (e.key === 'Enter') twAddRsvp(d2); }; })(ds);
-  var aBtn = document.createElement('button');
-  aBtn.textContent = '+ RSVP';
-  aBtn.onclick = (function(d2) { return function() { twAddRsvp(d2); }; })(ds);
-  inputRow.appendChild(nameInput); inputRow.appendChild(aBtn);
-  inlineDiv.appendChild(inputRow);
+  // Build initial names display
+  (function() {
+    var g2 = [], n2 = [], c2 = [];
+    raw.forEach(function(r, idx) {
+      var e = normalizeEntry(r);
+      var row = '<div class="rsvp-name"><span class="rsvp-entry-name">' + e.name + '</span>'
+        + (e.comment ? '<span class="rsvp-entry-comment">' + e.comment + '</span>' : '')
+        + '<button class="remove" onclick="twRemoveRsvp(\'' + ds + '\',' + idx + ')">&#x2715;</button></div>';
+      if (e.response === 'not_going') n2.push(row);
+      else if (e.response === 'conflict') c2.push(row);
+      else g2.push(row);
+    });
+    function grp(label, cls, rows) {
+      if (!rows.length) return '';
+      return '<div class="rsvp-group"><div class="rsvp-group-label ' + cls + '">' + label + '</div>' + rows.join('') + '</div>';
+    }
+    var namesDiv = document.createElement('div');
+    namesDiv.id = 'twnames-' + ds;
+    namesDiv.innerHTML = grp("I'll be there!", 'rsvp-going', g2)
+      + grp("Can't make it", 'rsvp-not-going', n2)
+      + grp("Scheduling conflict", 'rsvp-conflict', c2);
+    inlineDiv.appendChild(namesDiv);
+  })();
+  // Build form
+  inlineDiv.innerHTML += '<input type="text" id="twinput-' + ds + '" placeholder="Your name..." maxlength="40" class="rsvp-comment-input" style="margin-bottom:0.5rem"/>'
+    + '<div class="rsvp-choices">'
+    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + ds + '" value="going" checked onchange="twUpdateCommentHint(\'' + ds + '\')"/><span>I\'ll be there!</span></label>'
+    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + ds + '" value="not_going" onchange="twUpdateCommentHint(\'' + ds + '\')"/><span>Can\'t make it</span></label>'
+    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + ds + '" value="conflict" onchange="twUpdateCommentHint(\'' + ds + '\')"/><span>Time/location conflict — I could join if it was at…</span></label>'
+    + '</div>'
+    + '<input type="text" id="twcomment-' + ds + '" class="rsvp-comment-input" placeholder="Add a comment (optional)..." maxlength="120" style="margin-top:0.5rem"/>'
+    + '<button class="rsvp-submit-btn" onclick="twAddRsvp(\'' + ds + '\')" style="margin-top:0.5rem">Submit RSVP</button>';
+  // Wire keydown after innerHTML is set
+  setTimeout(function() {
+    var ni = document.getElementById('twinput-' + ds);
+    var ci = document.getElementById('twcomment-' + ds);
+    if (ni) ni.onkeydown = function(ev) { if (ev.key === 'Enter') { var c = document.getElementById('twcomment-' + ds); if (c) c.focus(); } };
+    if (ci) ci.onkeydown = (function(d2) { return function(ev) { if (ev.key === 'Enter') twAddRsvp(d2); }; })(ds);
+  }, 0);
   card.appendChild(inlineDiv);
   container.appendChild(card);
 }
@@ -802,16 +903,31 @@ function twToggleRsvp(ds) {
 }
 
 function twAddRsvp(ds) {
-  var input = document.getElementById('twinput-'+ds);
-  if (!input) return;
-  var name = input.value.trim();
-  if (!name) return;
+  var nameInput    = document.getElementById('twinput-' + ds);
+  var commentInput = document.getElementById('twcomment-' + ds);
+  var respEl       = document.querySelector('input[name="twrsvp-' + ds + '"]:checked');
+  if (!nameInput) return;
+  var name = nameInput.value.trim();
+  if (!name) { nameInput.focus(); return; }
+  var response = respEl ? respEl.value : 'going';
+  var comment  = commentInput ? commentInput.value.trim() : '';
   if (!rsvpData[ds]) rsvpData[ds] = [];
-  if (!rsvpData[ds].includes(name)) rsvpData[ds].push(name);
+  var exists = rsvpData[ds].some(function(r) { return normalizeEntry(r).name === name; });
+  if (!exists) rsvpData[ds].push({ name: name, response: response, comment: comment });
   saveRsvp();
-  input.value = '';
+  nameInput.value = '';
+  if (commentInput) commentInput.value = '';
   twRefreshCard(ds);
   if (activeDate === ds) renderRsvp();
+}
+
+function twUpdateCommentHint(ds) {
+  var el = document.querySelector('input[name="twrsvp-' + ds + '"]:checked');
+  var commentEl = document.getElementById('twcomment-' + ds);
+  if (!el || !commentEl) return;
+  commentEl.placeholder = el.value === 'conflict'
+    ? 'What time and place would work for you?'
+    : 'Add a comment (optional)...';
 }
 
 function twRemoveRsvp(ds, idx) {
@@ -823,16 +939,42 @@ function twRemoveRsvp(ds, idx) {
 }
 
 function twRefreshCard(ds) {
-  var names    = rsvpData[ds] || [];
-  var initials = names.slice(0,4).map(function(n){ return n.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
+  var raw     = rsvpData[ds] || [];
+  var entries = raw.map(normalizeEntry);
+  var going    = entries.filter(function(e){ return e.response === 'going'; });
+  var conflict = entries.filter(function(e){ return e.response === 'conflict'; });
+  var cantMake = entries.filter(function(e){ return e.response === 'not_going'; });
+  var initials = going.slice(0,4).map(function(e){ return e.name.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
   var avEl = document.getElementById('twav-'+ds);
   var lbEl = document.getElementById('twlabel-'+ds);
   if (avEl) avEl.innerHTML = initials.map(function(i){ return '<div class="tw-avatar">'+i+'</div>'; }).join('');
-  if (lbEl) lbEl.textContent = names.length === 0 ? 'No RSVPs yet' : names.length + ' going';
+  if (lbEl) {
+    var parts = [];
+    if (going.length) parts.push(going.length + ' going');
+    if (conflict.length) parts.push(conflict.length + ' conflict');
+    if (cantMake.length) parts.push(cantMake.length + " can't");
+    lbEl.textContent = parts.length ? parts.join(' · ') : 'No responses yet';
+  }
   var namesEl = document.getElementById('twnames-'+ds);
-  if (namesEl) namesEl.innerHTML = names.map(function(n,i){
-    return '<div class="rsvp-name"><span>'+n+'</span><button class="remove" onclick="twRemoveRsvp(\''+ds+'\','+i+')">✕</button></div>';
-  }).join('');
+  if (namesEl) {
+    var g2 = [], n2 = [], c2 = [];
+    raw.forEach(function(r, idx) {
+      var e = normalizeEntry(r);
+      var row = '<div class="rsvp-name"><span class="rsvp-entry-name">' + e.name + '</span>'
+        + (e.comment ? '<span class="rsvp-entry-comment">' + e.comment + '</span>' : '')
+        + '<button class="remove" onclick="twRemoveRsvp(\'' + ds + '\',' + idx + ')">&#x2715;</button></div>';
+      if (e.response === 'not_going') n2.push(row);
+      else if (e.response === 'conflict') c2.push(row);
+      else g2.push(row);
+    });
+    function grp(label, cls, rows) {
+      if (!rows.length) return '';
+      return '<div class="rsvp-group"><div class="rsvp-group-label ' + cls + '">' + label + '</div>' + rows.join('') + '</div>';
+    }
+    namesEl.innerHTML = grp("I'll be there!", 'rsvp-going', g2)
+      + grp("Can't make it", 'rsvp-not-going', n2)
+      + grp("Scheduling conflict", 'rsvp-conflict', c2);
+  }
   buildWeekCalendar();
 }
 

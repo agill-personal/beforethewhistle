@@ -693,52 +693,85 @@
       margin-bottom: 0.75rem;
     }
     .rsvp-list {
-      display: flex; flex-direction: column; gap: 0.4rem;
+      display: flex; flex-direction: column; gap: 0;
       margin-bottom: 0.75rem;
-      max-height: 140px;
+      max-height: 220px;
       overflow-y: auto;
     }
+    .rsvp-group { margin-bottom: 0.5rem; }
+    .rsvp-group-label {
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; margin-bottom: 0.25rem; padding: 0 0.1rem;
+    }
+    .rsvp-going    { color: #1a6b3a; }
+    .rsvp-not-going { color: #a00; }
+    .rsvp-conflict { color: #7a5200; }
+    .rsvp-entry-name { font-size: 0.82rem; font-weight: 500; }
+    .rsvp-entry-comment {
+      font-size: 0.74rem; color: var(--mid); font-style: italic; margin-left: 0.4rem;
+    }
     .rsvp-name {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: baseline; justify-content: space-between;
       background: var(--off-white);
       border-radius: 2px;
-      padding: 0.35rem 0.6rem;
-      font-size: 0.82rem;
+      padding: 0.3rem 0.6rem;
+      margin-bottom: 0.2rem;
+      gap: 0.4rem;
     }
     .rsvp-name .remove {
       background: none; border: none;
       color: var(--mid); cursor: pointer;
-      font-size: 0.75rem; padding: 0;
+      font-size: 0.75rem; padding: 0; flex-shrink: 0;
       transition: color 0.15s;
     }
     .rsvp-name .remove:hover { color: #c0392b; }
+    /* RSVP form layout */
+    .rsvp-form { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rsvp-choices { display: flex; flex-direction: column; gap: 0.3rem; }
+    .rsvp-choice {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--border); border-radius: 4px;
+      cursor: pointer; font-size: 0.82rem; line-height: 1.4;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .rsvp-choice:hover { background: var(--off-white); }
+    .rsvp-choice input[type="radio"] { margin-top: 0.15rem; accent-color: var(--accent); flex-shrink: 0; }
+    .rsvp-choice:has(input:checked) { background: var(--accent-light); border-color: var(--accent); }
+    .rsvp-comment-input {
+      width: 100%; box-sizing: border-box;
+      border: 1px solid var(--border); border-radius: 2px;
+      padding: 0.5rem 0.75rem;
+      font-family: var(--sans); font-size: 0.83rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .rsvp-comment-input:focus { border-color: var(--accent); }
+    .rsvp-submit-btn {
+      background: var(--accent); color: #fff; border: none; border-radius: 2px;
+      padding: 0.5rem 1rem;
+      font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+      cursor: pointer; align-self: flex-start; transition: background 0.2s;
+    }
+    .rsvp-submit-btn:hover { background: #1a4d2a; }
     .rsvp-input-row { display: flex; gap: 0.5rem; }
     .rsvp-input-row input {
-      flex: 1;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 0.55rem 0.75rem;
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      outline: none;
-      transition: border-color 0.2s;
+      flex: 1; border: 1px solid var(--border); border-radius: 2px;
+      padding: 0.55rem 0.75rem; font-family: var(--sans); font-size: 0.85rem;
+      outline: none; transition: border-color 0.2s;
     }
     .rsvp-input-row input:focus { border-color: var(--accent); }
     .rsvp-input-row button {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 2px;
-      padding: 0.55rem 0.9rem;
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s;
+      background: var(--accent); color: #fff; border: none; border-radius: 2px;
+      padding: 0.55rem 0.9rem; font-family: var(--sans);
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      white-space: nowrap; transition: background 0.2s;
     }
     .rsvp-input-row button:hover { background: #1a3d64; }
     .rsvp-empty { font-size: 0.8rem; color: var(--mid); font-style: italic; }
+    .rsvp-locked-msg {
+      font-size: 0.78rem; color: var(--mid); font-style: italic;
+      padding: 0.5rem 0; margin-top: 0.25rem;
+    }
 
     /* ── STRENGTH PLAN ── */
     .strength-intro {
@@ -1084,11 +1117,19 @@
     .form-group textarea,
     .form-group select { color: inherit; }
     .gate-box input,
-    .rsvp-input-row input { background: var(--off-white); color: inherit; }
+    .rsvp-input-row input,
+    .rsvp-comment-input { background: var(--off-white); color: inherit; }
 
     /* Button hovers — lighter shade of the new brighter accent */
     .btn:hover,
     .rsvp-input-row button:hover { background: #2d7fbe; }
+    .rsvp-submit-btn:hover { background: #1a5c30; }
+
+    /* RSVP choice selected state on dark bg */
+    .rsvp-choice:has(input:checked) { background: rgba(46,107,62,0.18); border-color: var(--accent); }
+    .rsvp-going    { color: #4caf7a; }
+    .rsvp-not-going { color: #f08080; }
+    .rsvp-conflict { color: #d4a850; }
 
     /* Nav logo hover visible on dark bg */
     .nav-logo:hover { color: #fff; }
@@ -1121,6 +1162,7 @@
     .form-group textarea,
     .form-group select,
     .rsvp-input-row input,
+    .rsvp-comment-input,
     .gate-box input { background: var(--surface-hi); }
 
     /* Inner highlighted surfaces one step up from cards */
@@ -1474,20 +1516,3 @@
       left: 0;
       color: var(--mid);
     }
-    .drill-num-row {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.25rem;
-    }
-    .drill-cat {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.15rem 0.5rem;
-      border-radius: 2px;
-    }
-    .drill-cat-solo    { background: #dbeafe; color: #1e40af; }
-    .drill-cat-partner { background: #d1fae5; color: #065f46; }
-    .drill-cat-group   { background: #ede9fe; color: #4c1d95; }

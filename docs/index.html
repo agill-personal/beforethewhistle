@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BeforeTheWhistle — Home</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/css/site.css?v=20260611"/>
+  <link rel="stylesheet" href="assets/css/site.css?v=20260606"/>
 </head>
 <body>
 
@@ -71,12 +71,30 @@
         <div class="day-panel-meta" id="panelMeta"></div>
         <div id="panelPlan"></div>
         <div class="rsvp-section" id="panelRsvpSection">
-          <h4>Who's Coming: RSVP</h4>
+          <h4>RSVP</h4>
           <div class="rsvp-list" id="rsvpList"></div>
-          <div class="rsvp-input-row">
+          <div class="rsvp-locked-msg" id="rsvpLockedMsg" style="display:none">This session has passed — RSVPs are locked.</div>
+          <div class="rsvp-form" id="rsvpFormEl">
             <input type="text" id="rsvpInput" placeholder="Your name..." maxlength="40"
+              onkeydown="if(event.key==='Enter') document.getElementById('rsvpComment').focus()"/>
+            <div class="rsvp-choices">
+              <label class="rsvp-choice">
+                <input type="radio" name="rsvpResponse" value="going" checked onchange="updateRsvpCommentHint()"/>
+                <span>I'll be there!</span>
+              </label>
+              <label class="rsvp-choice">
+                <input type="radio" name="rsvpResponse" value="not_going" onchange="updateRsvpCommentHint()"/>
+                <span>Can't make it</span>
+              </label>
+              <label class="rsvp-choice">
+                <input type="radio" name="rsvpResponse" value="conflict" onchange="updateRsvpCommentHint()"/>
+                <span>Time/location conflict — I could join if it was at...</span>
+              </label>
+            </div>
+            <input type="text" id="rsvpComment" class="rsvp-comment-input"
+              placeholder="Add a comment (optional)..." maxlength="120"
               onkeydown="if(event.key==='Enter') addRsvp()"/>
-            <button onclick="addRsvp()">+ RSVP</button>
+            <button class="rsvp-submit-btn" onclick="addRsvp()">Submit RSVP</button>
           </div>
         </div>
       </div>
@@ -101,7 +119,7 @@
     <span>Summer Soccer Training · 2026 · Built with care for your athletes</span>
   </footer>
 
-  <script src="assets/js/app.js?v=20260611"></script>
+  <script src="assets/js/app.js?v=20260606"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
   <script>
