@@ -27,6 +27,45 @@
     </button>
   </nav>
 
+  <!-- STRENGTH TRAINING POLL (temporary) -->
+  <section id="strengthPoll">
+    <div class="poll-header">
+      <h2>Strength Training Poll</h2>
+    </div>
+    <div class="poll-body">
+      <p class="poll-question">Which works best?</p>
+      <div class="poll-options">
+        <label class="poll-option">
+          <input type="radio" name="pollChoice" value="1">
+          <div class="poll-option-content">
+            <div class="poll-option-label">Option 1</div>
+            <div class="poll-option-desc">
+              <strong>Strength Training Intro</strong>
+              <span class="poll-event-meta">Mon June 8 &middot; 3:15&ndash;4:45 PM &middot; Cypress Field</span>
+            </div>
+          </div>
+        </label>
+        <label class="poll-option">
+          <input type="radio" name="pollChoice" value="2">
+          <div class="poll-option-content">
+            <div class="poll-option-label">Option 2</div>
+            <div class="poll-option-desc">
+              <strong>First Touch &amp; Receiving</strong>
+              <span class="poll-event-meta">Mon June 8 &middot; 3:15&ndash;4:45 PM &middot; Cypress Field</span>
+              <strong>+ Strength Training Intro</strong>
+              <span class="poll-event-meta">Wed June 10 &middot; 3:15&ndash;4:45 PM &middot; Cypress Field</span>
+            </div>
+          </div>
+        </label>
+      </div>
+      <div class="poll-submit-row">
+        <input type="text" id="pollName" placeholder="Your name" class="poll-name-input" autocomplete="off">
+        <button onclick="submitPollVote()" class="poll-submit-btn">Submit</button>
+      </div>
+      <div id="pollResults"></div>
+    </div>
+  </section>
+
   <!-- THIS WEEK / NEXT SESSION -->
   <section id="thisweek">
     <div class="thisweek-header">

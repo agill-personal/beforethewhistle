@@ -87,25 +87,26 @@ var SHEET_CAMP_URL      = '';
 // \u2500\u2500 FALLBACK DATA \u2500\u2500
 var SESSIONS = {
   '2026-06-04': { focus:'first_touch', title:'First Touch & Receiving', time:'6:30 PM', end_time:'8:00 PM', location:'Park School', skills:['Receiving to feet and turning to face goal','Directional first touch to set up a pass or dribble','Receiving on the back foot and playing away from pressure','Settling a driven pass with a soft inside-of-foot touch','Checking off a defender to create space before receiving','Body shape and foot orientation before the ball arrives'], warmup:[], main:[] },
-  '2026-06-05': { focus:'passing', title:'Passing & Combination Play', time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field', skills:['Wall pass: give and go to break the defensive line','Third-man run: timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass'], warmup:[], main:[] },
-  '2026-06-07': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Step-over, scissors, or Cruyff turn to beat a defender','Committing the defender before attempting a move','Jockeying: staying goal-side and on feet under pressure','Forcing the attacker onto their weak foot','Winning the ball back with a clean tackle when the moment is right','Dribbling with purpose, head up, exploit space after the move'], warmup:[], main:[] },
+  '2026-06-05': { focus:'passing', title:'Passing & Combination Play', time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field', skills:['Wall pass — give and go to break the defensive line','Third-man run — timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass'], warmup:[], main:[] },
+  '2026-06-07': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'4:30 PM', end_time:'6:00 PM', location:'Cypress Field', skills:['Step-over, scissors, or Cruyff turn to beat a defender','Committing the defender before attempting a move','Jockeying — staying goal-side and on feet under pressure','Forcing the attacker onto their weak foot','Winning the ball back with a clean tackle when the moment is right','Dribbling with purpose — head up, exploit space after the move'], warmup:[], main:[] },
+  '2026-06-08': { focus:'first_touch', title:'Option 2: First Touch & Receiving', time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field', skills:['Chest control and immediate lay-off or turn','Thigh control from a lofted ball and playing under pressure','Half-volley control on a bouncing ball','Heading down to a teammate or into space','Catching a dropping ball on the instep and moving forward','Winning the second ball after an aerial contest'], warmup:[], main:[] },
   '2026-06-09': { focus:'first_touch', title:'First Touch & Receiving', time:'6:30 PM', end_time:'8:00 PM', location:'Park School', skills:['Chest control and immediate lay-off or turn','Thigh control from a lofted ball and playing under pressure','Half-volley control on a bouncing ball','Heading down to a teammate or into space','Catching a dropping ball on the instep and moving forward','Winning the second ball after an aerial contest'], warmup:[], main:[] },
-  '2026-06-12': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field', skills:['Placed finish into the far corner under pressure','One-touch finish from a cut-back or low cross','Closing down a shooter to force a rushed attempt','Shot power vs. placement: choosing the right technique','Finishing with the weaker foot from a realistic position','Block tackle or interception to prevent a shot on goal'], warmup:[], main:[] },
-  '2026-06-15': { focus:'first_touch', title:'First Touch & Receiving', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Shielding the ball on the first touch to protect possession','Fake receive: letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space'], warmup:[], main:[] },
-  '2026-06-16': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Overlap trigger: passing and running beyond to receive','Underlap combination: cutting inside as the overlap goes outside','Cross-field pass to change the point of attack','Backfoot pass to a runner arriving late','Third-man combination to break through a defensive block','Two-touch play in tight spaces under pressure'], warmup:[], main:[] },
-  '2026-06-18': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Holding up play with back to goal under physical pressure','Shielding the ball and drawing a foul','Flicking on or laying off from a back-to-goal position','Spinning off a marker into space behind the defense','Fronting a striker: physical positioning to prevent the turn','Timing a tackle when a forward tries to spin'], warmup:[], main:[] },
-  '2026-06-19': { focus:'crossing', title:'Crossing & Aerial Duels', time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field', skills:['Early cross delivery before the fullback can close','Near-post run: attacking the first zone of the cross','Far-post run: late arrival to attack the back stick','Defending a cross: calling, attacking the ball early','Near-post flick-on to redirect for a far-post finish','Tracking a far-post runner as a centerback'], warmup:[], main:[] },
-  '2026-06-21': { focus:'first_touch', title:'First Touch & Receiving', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Check-run and receive: creating space off a defender','Receiving on the half-turn to face forward immediately','Timing the run so the first touch is already in motion','Curved run to stay onside while receiving over the top','Combining movement with a wall pass to arrive in space','First touch into the channel to accelerate beyond the line'], warmup:[], main:[] },
-  '2026-06-22': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['GK 1v1: reading the goalkeeper\'s position','Chip finish when GK is off the line','Driven low finish across the body past a GK','Recovery run to deny a through ball before the finish','Composure in front of goal: slowing the moment down','Decision-making: shoot vs. square vs. hold up'], warmup:[], main:[] },
-  '2026-06-23': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Rondo: maintaining possession under a high press','Identifying and passing to the free player','Weight of pass when playing into a striker\'s feet','Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward'], warmup:[], main:[] },
-  '2026-06-25': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Second ball instinct: reacting to rebounds and saves','Box presence: positioning to arrive at the right moment','Clearing a rebound under pressure from a forward','Anticipating GK distribution and winning the first touch','Volley finish from a loose ball in the box','Heading technique in aerial duels inside the penalty area'], warmup:[], main:[] },
-  '2026-06-26': { focus:'passing', title:'Passing & Combination Play', time:'8:00 AM', end_time:'10:00 AM', location:'Harry Downes Field', skills:['Rondo: maintaining possession under a high press','Identifying and passing to the free player','Weight of pass when playing into a striker\'s feet','Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward'], warmup:[], main:[] },
-  '2026-06-28': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Second ball instinct: reacting to rebounds and saves','Box presence: positioning to arrive at the right moment','Clearing a rebound under pressure from a forward','Anticipating GK distribution and winning the first touch','Volley finish from a loose ball in the box','Heading technique in aerial duels inside the penalty area'], warmup:[], main:[] },
-  '2026-06-29': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Wall pass: give and go to break the defensive line','Third-man run: timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass'], warmup:[], main:[] },
+  '2026-06-12': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field', skills:['Placed finish into the far corner under pressure','One-touch finish from a cut-back or low cross','Closing down a shooter to force a rushed attempt','Shot power vs. placement — choosing the right technique','Finishing with the weaker foot from a realistic position','Block tackle or interception to prevent a shot on goal'], warmup:[], main:[] },
+  '2026-06-15': { focus:'first_touch', title:'First Touch & Receiving', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Shielding the ball on the first touch to protect possession','Fake receive — letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space'], warmup:[], main:[] },
+  '2026-06-16': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Overlap trigger — passing and running beyond to receive','Underlap combination — cutting inside as the overlap goes outside','Cross-field pass to change the point of attack','Backfoot pass to a runner arriving late','Third-man combination to break through a defensive block','Two-touch play in tight spaces under pressure'], warmup:[], main:[] },
+  '2026-06-18': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Holding up play with back to goal under physical pressure','Shielding the ball and drawing a foul','Flicking on or laying off from a back-to-goal position','Spinning off a marker into space behind the defense','Fronting a striker — physical positioning to prevent the turn','Timing a tackle when a forward tries to spin'], warmup:[], main:[] },
+  '2026-06-19': { focus:'crossing', title:'Crossing & Aerial Duels', time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field', skills:['Early cross delivery before the fullback can close','Near-post run — attacking the first zone of the cross','Far-post run — late arrival to attack the back stick','Defending a cross — calling, attacking the ball early','Near-post flick-on to redirect for a far-post finish','Tracking a far-post runner as a centerback'], warmup:[], main:[] },
+  '2026-06-21': { focus:'first_touch', title:'First Touch & Receiving', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Check-run and receive — creating space off a defender','Receiving on the half-turn to face forward immediately','Timing the run so the first touch is already in motion','Curved run to stay onside while receiving over the top','Combining movement with a wall pass to arrive in space','First touch into the channel to accelerate beyond the line'], warmup:[], main:[] },
+  '2026-06-22': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['GK 1v1 — reading the goalkeeper\'s position','Chip finish when GK is off the line','Driven low finish across the body past a GK','Recovery run to deny a through ball before the finish','Composure in front of goal — slowing the moment down','Decision-making: shoot vs. square vs. hold up'], warmup:[], main:[] },
+  '2026-06-23': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Rondo — maintaining possession under a high press','Identifying and passing to the free player','Weight of pass when playing into a striker\'s feet','Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession — when to recycle vs. when to play forward'], warmup:[], main:[] },
+  '2026-06-25': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Second ball instinct — reacting to rebounds and saves','Box presence — positioning to arrive at the right moment','Clearing a rebound under pressure from a forward','Anticipating GK distribution and winning the first touch','Volley finish from a loose ball in the box','Heading technique in aerial duels inside the penalty area'], warmup:[], main:[] },
+  '2026-06-26': { focus:'passing', title:'Passing & Combination Play', time:'8:00 AM', end_time:'10:00 AM', location:'Harry Downes Field', skills:['Rondo — maintaining possession under a high press','Identifying and passing to the free player','Weight of pass when playing into a striker\'s feet','Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession — when to recycle vs. when to play forward'], warmup:[], main:[] },
+  '2026-06-28': { focus:'finishing', title:'Finishing vs. Defensive Pressure', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Second ball instinct — reacting to rebounds and saves','Box presence — positioning to arrive at the right moment','Clearing a rebound under pressure from a forward','Anticipating GK distribution and winning the first touch','Volley finish from a loose ball in the box','Heading technique in aerial duels inside the penalty area'], warmup:[], main:[] },
+  '2026-06-29': { focus:'passing', title:'Passing & Combination Play', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Wall pass — give and go to break the defensive line','Third-man run — timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass'], warmup:[], main:[] },
   '2026-06-30': { focus:'crossing', title:'Crossing & Aerial Duels', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Getting to the byline and delivering a low cut-back','Late run from midfield to meet the cut-back and shoot','Holding a defensive line as runners attack the cut-back','First-time finish from a low cut-back across the box','Disguising cross direction to delay the defensive shift','Covering the cut-back channel as a defending fullback'], warmup:[], main:[] },
-  '2026-07-02': { focus:'first_touch', title:'First Touch & Receiving', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Shoulder check before receiving to identify pressure','Half-turn technique: opening the body to receive facing forward','Using peripheral vision to choose touch direction before contact','Receiving between lines and instantly playing forward','First touch away from pressure in a congested midfield','Controlling the tempo of the game through a composed first touch'], warmup:[], main:[] },
-  '2026-07-03': { focus:'crossing', title:'Crossing & Aerial Duels', time:'8:00 AM', end_time:'10:00 AM', location:'Harry Downes Field', skills:['Attacking a corner kick delivery: near post and far post runs','Zonal marking on set pieces: attacking the ball at highest point','Man-marking assignment on corners: staying with the runner','Heading technique for both attacking and defensive headers','Second ball reaction after a cleared set piece','Goalkeeper distribution from a set piece clearance'], warmup:[], main:[] },
-  '2026-07-05': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Pressing trigger: when and how to press the ball','Escape from a press: one-touch away from pressure','Ball protection on the dribble in a high-pressure situation','Coordinated pressing as a pair to cut off passing lanes','Winning the ball back high up the pitch from the front','Countering immediately after winning possession in the press'], warmup:[], main:[] },
+  '2026-07-02': { focus:'first_touch', title:'First Touch & Receiving', time:'6:00 PM', end_time:'7:30 PM', location:'Harry Downes Field', skills:['Shoulder check before receiving to identify pressure','Half-turn technique — opening the body to receive facing forward','Using peripheral vision to choose touch direction before contact','Receiving between lines and instantly playing forward','First touch away from pressure in a congested midfield','Controlling the tempo of the game through a composed first touch'], warmup:[], main:[] },
+  '2026-07-03': { focus:'crossing', title:'Crossing & Aerial Duels', time:'8:00 AM', end_time:'10:00 AM', location:'Harry Downes Field', skills:['Attacking a corner kick delivery — near post and far post runs','Zonal marking on set pieces — attacking the ball at highest point','Man-marking assignment on corners — staying with the runner','Heading technique for both attacking and defensive headers','Second ball reaction after a cleared set piece','Goalkeeper distribution from a set piece clearance'], warmup:[], main:[] },
+  '2026-07-05': { focus:'one_v_one', title:'1v1 Attacking vs. Defending', time:'4:30 PM', end_time:'6:00 PM', location:'Park School', skills:['Pressing trigger — when and how to press the ball','Escape from a press — one-touch away from pressure','Ball protection on the dribble in a high-pressure situation','Coordinated pressing as a pair to cut off passing lanes','Winning the ball back high up the pitch from the front','Countering immediately after winning possession in the press'], warmup:[], main:[] },
 };
 
 const MILESTONES = {
@@ -274,10 +275,11 @@ const WORKOUTS = {
 };
 
 var FITNESS_SESSIONS = {
-  '2026-06-08': { focus:'strength',  title:'Strength Training Intro',                  time:'5:00 PM', end_time:'6:30 PM', location:'Harry Downes Field',     warmup:['Band exercises'],         main:['Intro to strength training! Learn how to build lower body and core strength with proper form and volume, led by Coach Kat! Please bring sneakers and weights.'] },
-  '2026-06-11': { focus:'sprinting', title:'Sprint Mechanics and Conditioning Intro',   time:'6:30 PM', end_time:'8:00 PM', location:'Harry Downes Field',     warmup:['A/B-skips and runs'],     main:['Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats.'] },
-  '2026-06-14': { focus:'climbing',  title:'Harvard Stadium Steps',                     time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium', warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'] },
-  '2026-06-28': { focus:'climbing',  title:'Harvard Stadium Steps',                     time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium', warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'] },
+  '2026-06-08': { focus:'strength',  title:'Option 1: Strength Training Intro',         time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field',          warmup:['Band exercises'],         main:['Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'] },
+  '2026-06-10': { focus:'strength',  title:'Option 2: Strength Training Intro',         time:'3:15 PM', end_time:'4:45 PM', location:'Cypress Field',          warmup:['Band exercises'],         main:['Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'] },
+  '2026-06-11': { focus:'sprinting', title:'Sprint Mechanics and Conditioning Intro',   time:'6:30 PM', end_time:'8:00 PM', location:'Park School',             warmup:['A/B-skips and runs'],     main:['Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats.'] },
+  '2026-06-14': { focus:'climbing',  title:'Harvard Stadium Steps',                     time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'] },
+  '2026-06-28': { focus:'climbing',  title:'Harvard Stadium Steps',                     time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'] },
 };
 
 // Chan Camp sessions
@@ -417,6 +419,15 @@ function fmtDate(d)  { return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate(); }
 function toDateStr(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
 // \u2500\u2500 WEEK CALENDAR \u2500\u2500
+function parseTimeToMinutes(timeStr) {
+  var m = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return null;
+  var h = parseInt(m[1]), min = parseInt(m[2]), mer = m[3].toUpperCase();
+  if (mer === 'PM' && h !== 12) h += 12;
+  if (mer === 'AM' && h === 12) h = 0;
+  return h * 60 + min;
+}
+
 function buildWeekCalendar() {
   const wrap = document.getElementById('calWeekWrap');
   if (!wrap) return;
@@ -446,11 +457,14 @@ function buildWeekCalendar() {
     const body = document.createElement('div');
     body.className = 'wk-day-body' + (isToday ? ' today-body' : '');
 
+    var timedItems = [];
+    var untimedItems = [];
+
     if (MILESTONES[ds]) {
       const el = document.createElement('div');
       el.className = 'wk-milestone' + (MILESTONES[ds].cls ? ' ' + MILESTONES[ds].cls : '');
       el.textContent = MILESTONES[ds].label;
-      body.appendChild(el);
+      untimedItems.push(el);
     }
 
     if (CAMP_SESSIONS[ds]) {
@@ -460,24 +474,14 @@ function buildWeekCalendar() {
       btn.className = 'wk-event type-camp';
       btn.innerHTML = c.title + '<span class="ev-time">\u26FA ' + c.time + ' \u00B7 ' + c.location + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'camp'); }; })(cKey);
-      body.appendChild(btn);
+      timedItems.push({ el: btn, timeMin: parseTimeToMinutes(c.time), priority: 1 });
     }
 
     if (dow === 3 && ds <= '2026-08-24') {
       const cp = document.createElement('div');
       cp.className = 'wk-event type-captains';
       cp.innerHTML = "Captain's Practice" + '<span class="ev-time">\uD83C\uDFDF 6:30 \u2013 8:00 PM \u00B7 Downes</span>';
-      body.appendChild(cp);
-    }
-
-    if (SESSIONS[ds]) {
-      const s   = SESSIONS[ds];
-      const cnt = (rsvpData[ds] || []).filter(function(r){ return normalizeEntry(r).response === 'going'; }).length;
-      const btn = document.createElement('button');
-      btn.className = 'wk-event type-technical';
-      btn.innerHTML = s.title + '<span class="ev-time">\u26BD ' + s.time + ' \u00B7 ' + s.location + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
-      btn.onclick = function() { openPanel(ds, 'technical'); };
-      body.appendChild(btn);
+      timedItems.push({ el: cp, timeMin: parseTimeToMinutes('6:30 PM'), priority: 2 });
     }
 
     if (FITNESS_SESSIONS[ds]) {
@@ -487,7 +491,17 @@ function buildWeekCalendar() {
       btn.className = 'wk-event type-fitness';
       btn.innerHTML = g.title + '<span class="ev-time">\uD83C\uDFC3 ' + g.time + ' \u00B7 ' + g.location + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
-      body.appendChild(btn);
+      timedItems.push({ el: btn, timeMin: parseTimeToMinutes(g.time), priority: 3 });
+    }
+
+    if (SESSIONS[ds]) {
+      const s   = SESSIONS[ds];
+      const cnt = (rsvpData[ds] || []).filter(function(r){ return normalizeEntry(r).response === 'going'; }).length;
+      const btn = document.createElement('button');
+      btn.className = 'wk-event type-technical';
+      btn.innerHTML = s.title + '<span class="ev-time">\u26BD ' + s.time + ' \u00B7 ' + s.location + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
+      btn.onclick = function() { openPanel(ds, 'technical'); };
+      timedItems.push({ el: btn, timeMin: parseTimeToMinutes(s.time), priority: 4 });
     }
 
     if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START && !STRENGTH_SKIP_DATES.has(ds)) {
@@ -500,8 +514,15 @@ function buildWeekCalendar() {
       const evLabel = dow === 0 ? 'Sat or Sun' : workout.duration;
       btn.innerHTML = workout.title + '<span class="ev-time">\uD83D\uDCAA ' + evLabel + '</span>';
       btn.onclick = (function(k, p, w, d2) { return function() { openPanel(k, 'strength', d2, p, w); }; })(sKey, phase, wkIdx, new Date(day));
-      body.appendChild(btn);
+      untimedItems.push(btn);
     }
+
+    timedItems.sort(function(a, b) {
+      if (a.timeMin !== b.timeMin) return a.timeMin - b.timeMin;
+      return a.priority - b.priority;
+    });
+    timedItems.forEach(function(item) { body.appendChild(item.el); });
+    untimedItems.forEach(function(el) { body.appendChild(el); });
 
     if (dow === 6) {
       const rest = document.createElement('div');
@@ -1275,6 +1296,88 @@ function downloadICS() {
   document.body.removeChild(a); URL.revokeObjectURL(url);
 }
 
+// \u2500\u2500 STRENGTH TRAINING POLL (temporary) \u2500\u2500
+// Set POLL_DB_URL to your Firebase Realtime Database path, e.g.:
+// 'https://your-project-default-rtdb.firebaseio.com/strengthPoll'
+var POLL_DB_URL = 'https://beforethewhistle-63afc-default-rtdb.firebaseio.com/strengthPoll';
+var _pollData = {};
+
+function connectPollStream() {
+  if (!POLL_DB_URL || !document.getElementById('pollResults')) return;
+  var es = new EventSource(POLL_DB_URL + '.json');
+  es.addEventListener('put', function(e) {
+    var msg = JSON.parse(e.data);
+    if (msg.path === '/') {
+      _pollData = msg.data || {};
+    } else {
+      var key = msg.path.slice(1);
+      if (msg.data === null) { delete _pollData[key]; } else { _pollData[key] = msg.data; }
+    }
+    renderPollResults();
+  });
+  es.addEventListener('patch', function(e) {
+    var msg = JSON.parse(e.data);
+    Object.keys(msg.data || {}).forEach(function(k) {
+      if (msg.data[k] === null) { delete _pollData[k]; } else { _pollData[k] = msg.data[k]; }
+    });
+    renderPollResults();
+  });
+  es.onerror = function() { es.close(); };
+}
+
+function submitPollVote() {
+  var choice = document.querySelector('input[name="pollChoice"]:checked');
+  var nameEl = document.getElementById('pollName');
+  if (!choice) { alert('Please select an option.'); return; }
+  var name = nameEl.value.trim();
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!POLL_DB_URL) return;
+
+  var deletePromises = Object.keys(_pollData)
+    .filter(function(k) { return _pollData[k].name.toLowerCase() === name.toLowerCase(); })
+    .map(function(k) { return fetch(POLL_DB_URL + '/' + k + '.json', { method: 'DELETE' }); });
+
+  Promise.all(deletePromises)
+    .then(function() {
+      return fetch(POLL_DB_URL + '.json', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, choice: choice.value })
+      });
+    })
+    .then(function() { nameEl.value = ''; })
+    .catch(function() { alert('Could not submit. Please try again.'); });
+}
+
+function removePollVote(key) {
+  if (!POLL_DB_URL) return;
+  fetch(POLL_DB_URL + '/' + key + '.json', { method: 'DELETE' });
+}
+
+function renderPollResults() {
+  var el = document.getElementById('pollResults');
+  if (!el) return;
+  var entries = Object.entries(_pollData);
+  if (!entries.length) { el.innerHTML = ''; return; }
+  var opt1 = entries.filter(function(e) { return e[1].choice === '1'; });
+  var opt2 = entries.filter(function(e) { return e[1].choice === '2'; });
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  var html = '<div class="poll-results-title">Responses (' + entries.length + ')</div>';
+  if (opt1.length) {
+    html += '<div class="poll-result-group-label">Option 1 (' + opt1.length + ')</div>';
+    opt1.forEach(function(e) {
+      html += '<div class="poll-result-row"><span class="poll-result-name">' + esc(e[1].name) + '</span><button class="poll-result-remove" onclick="removePollVote(\'' + esc(e[0]) + '\')" title="Remove">&#x2715;</button></div>';
+    });
+  }
+  if (opt2.length) {
+    html += '<div class="poll-result-group-label">Option 2 (' + opt2.length + ')</div>';
+    opt2.forEach(function(e) {
+      html += '<div class="poll-result-row"><span class="poll-result-name">' + esc(e[1].name) + '</span><button class="poll-result-remove" onclick="removePollVote(\'' + esc(e[0]) + '\')" title="Remove">&#x2715;</button></div>';
+    });
+  }
+  el.innerHTML = html;
+}
+
 // \u2500\u2500 NAV \u2500\u2500
 function toggleNav() {
   document.getElementById('mainNav').classList.toggle('nav-open');
@@ -1285,6 +1388,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('mainNav').classList.remove('nav-open');
     });
   });
+  connectPollStream();
 });
 
 // \u2500\u2500 SCROLL FADE \u2500\u2500
