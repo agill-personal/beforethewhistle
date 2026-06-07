@@ -1048,6 +1048,22 @@
       opacity: 0.75;
     }
     .wk-event .ev-time { font-weight: 400; opacity: 0.75; font-size: 0.6rem; display: block; margin-top: 1px; }
+    .ev-status-tag {
+      display: inline-block;
+      font-size: 0.55rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 0.1rem 0.35rem; border-radius: 3px;
+      margin-left: 0.35rem; vertical-align: middle;
+    }
+    .ev-status-completed { background: rgba(150,150,150,0.25); color: #aaa; }
+    .ev-status-scheduled { background: rgba(74,210,140,0.2);  color: #4ad28c; }
+    .ev-status-postponed { background: rgba(250,190,50,0.25); color: #fabe32; }
+    .ev-status-cancelled { background: rgba(230,60,60,0.25);  color: #e63c3c; }
+    .ev-status-tentative { background: rgba(74,170,224,0.25); color: #4aaae0; }
+    .wk-event.status-completed { opacity: 0.6; }
+    .wk-event.status-postponed { opacity: 0.75; }
+    .wk-event.status-cancelled { opacity: 0.5; text-decoration: line-through; }
+    .wk-event.status-tentative { opacity: 0.8; }
     .wk-milestone {
       font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.04em; padding: 0.2rem 0.35rem;
