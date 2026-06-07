@@ -808,7 +808,7 @@ function buildNextSession() {
   topDiv.appendChild(dateSpan);
   topDiv.appendChild(focusSpan);
   var titleEl = document.createElement('h3');
-  titleEl.textContent = s.title;
+  titleEl.innerHTML = s.title + evStatusTag(s.status);
   var metaDiv = document.createElement('div');
   metaDiv.className = 'tw-card-meta';
   var sp1 = document.createElement('span'); sp1.textContent = s.time;
