@@ -1608,8 +1608,9 @@
       font-family: var(--sans);
       font-size: 0.9rem;
       background: var(--surface-raised);
-      color: inherit;
+      color: #d8e6f5;
     }
+    .poll-name-input::placeholder { color: var(--mid); }
     .poll-name-input:focus { outline: none; border-color: var(--accent); }
     .poll-submit-btn {
       padding: 0.55rem 1.25rem;
