@@ -1557,7 +1557,7 @@
       transition: background 0.15s, border-color 0.15s;
     }
     .poll-option:has(input:checked) {
-      background: var(--accent-light);
+      background: rgba(74, 170, 224, 0.15);
       border-color: var(--accent);
     }
     .poll-option input[type="radio"] {
@@ -1571,8 +1571,8 @@
       cursor: pointer;
       display: block;
     }
-    .poll-option-desc strong { color: #111; }
-    .poll-event-meta { color: #555; }
+    .poll-option-desc strong { color: inherit; }
+    .poll-event-meta { color: var(--mid); }
     .poll-option-label {
       font-size: 0.7rem;
       font-weight: 700;
@@ -1607,8 +1607,8 @@
       border-radius: 6px;
       font-family: var(--sans);
       font-size: 0.9rem;
-      background: #fff;
-      color: #111;
+      background: var(--surface-raised);
+      color: inherit;
     }
     .poll-name-input:focus { outline: none; border-color: var(--accent); }
     .poll-submit-btn {
