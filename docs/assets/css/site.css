@@ -1550,6 +1550,11 @@
       line-height: 1;
       margin-bottom: 1.5rem;
     }
+    .poll-empty {
+      color: var(--mid);
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
     .poll-question {
       font-size: 0.78rem;
       font-weight: 600;

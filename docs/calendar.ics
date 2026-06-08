@@ -44,15 +44,15 @@ DESCRIPTION:Skills:\nStep-over\, scissors\, or Cruyff turn to beat a defend
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-08@btw2026
-DTSTART:20260608T151500
-DTEND:20260608T164500
-SUMMARY:Option 1: First Touch & Receiving
+DTSTART:20260608T153000
+DTEND:20260608T170000
+SUMMARY:1v1 Attacking vs. Defending
 LOCATION:Cypress Field
-DESCRIPTION:Skills:\nChest control and immediate lay-off or turn\nThigh con
- trol from a lofted ball and playing under pressure\nHalf-volley control on 
- a bouncing ball\nHeading down to a teammate or into space\nCatching a dropp
- ing ball on the instep and moving forward\nWinning the second ball after an
-  aerial contest
+DESCRIPTION:Skills:\nStep-over\, scissors\, or Cruyff turn to beat a defend
+ er\nCommitting the defender before attempting a move\nJockeying: staying go
+ al-side and on feet under pressure\nForcing the attacker onto their weak fo
+ ot\nWinning the ball back with a clean tackle when the moment is right\nDri
+ bbling with purpose\, head up\, exploit space after the move
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-09@btw2026
@@ -259,20 +259,10 @@ DESCRIPTION:Skills:\nPressing trigger: when and how to press the ball\nEsca
  tering immediately after winning possession in the press
 END:VEVENT
 BEGIN:VEVENT
-UID:fit-2026-06-08@btw2026
-DTSTART:20260608T151500
-DTEND:20260608T164500
-SUMMARY:Option 2: Strength Training Intro
-LOCATION:Cypress Field
-DESCRIPTION:Intro to strength training! Coach Kat will be joining us to wal
- k through how to build lower body and core strength with proper form and vo
- lume! Please bring sneakers. Weights will be provided by the coaches.
-END:VEVENT
-BEGIN:VEVENT
 UID:fit-2026-06-10@btw2026
-DTSTART:20260610T151500
-DTEND:20260610T164500
-SUMMARY:Option 1: Strength Training Intro
+DTSTART:20260610T153000
+DTEND:20260610T170000
+SUMMARY:Strength Training Intro
 LOCATION:Cypress Field
 DESCRIPTION:Intro to strength training! Coach Kat will be joining us to wal
  k through how to build lower body and core strength with proper form and vo

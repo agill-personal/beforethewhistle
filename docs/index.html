@@ -27,45 +27,6 @@
     </button>
   </nav>
 
-  <!-- STRENGTH TRAINING POLL (temporary) -->
-  <section id="strengthPoll">
-    <div class="poll-header">
-      <h2>Strength Training Poll</h2>
-    </div>
-    <div class="poll-body">
-      <p class="poll-question">Which works best?</p>
-      <div class="poll-options">
-        <div class="poll-option">
-          <input type="radio" name="pollChoice" id="pollOpt1" value="1">
-          <label for="pollOpt1" class="poll-option-inner">
-            <div class="poll-option-label">Option 1</div>
-            <div class="poll-option-desc">
-              <strong>First Touch &amp; Receiving</strong>
-              <span class="poll-event-meta">Mon June 8 &middot; 3:15&ndash;4:45 PM &middot; Cypress Field</span>
-              <strong>+ Strength Training Intro</strong>
-              <span class="poll-event-meta">Wed June 10 &middot; 3:15&ndash;4:45 PM &middot; Cypress Field</span>
-            </div>
-          </label>
-        </div>
-        <div class="poll-option">
-          <input type="radio" name="pollChoice" id="pollOpt2" value="2">
-          <label for="pollOpt2" class="poll-option-inner">
-            <div class="poll-option-label">Option 2</div>
-            <div class="poll-option-desc">
-              <strong>Strength Training Intro</strong>
-              <span class="poll-event-meta">Mon June 8 &middot; 3:15&ndash;4:45 PM &middot; Cypress Field</span>
-            </div>
-          </label>
-        </div>
-      </div>
-      <div class="poll-submit-row">
-        <input type="text" id="pollName" placeholder="Your name" class="poll-name-input" autocomplete="off">
-        <button onclick="submitPollVote()" class="poll-submit-btn">Submit</button>
-      </div>
-      <div id="pollResults"></div>
-    </div>
-  </section>
-
   <!-- THIS WEEK / NEXT SESSION -->
   <section id="thisweek">
     <div class="thisweek-header">
@@ -138,6 +99,48 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- POLL -->
+  <section id="strengthPoll">
+    <div class="poll-header">
+      <h2>Poll</h2>
+    </div>
+    <div class="poll-body">
+      <p class="poll-empty">No active polls. In the future, we may use polling to choose between options.</p>
+
+      <!-- POLL TEMPLATE: remove the comment delimiters below to activate a new poll,
+           and update POLL_DB_URL in app.js to point to the correct Firebase path.
+      <p class="poll-question">Which works best?</p>
+      <div class="poll-options">
+        <div class="poll-option">
+          <input type="radio" name="pollChoice" id="pollOpt1" value="1">
+          <label for="pollOpt1" class="poll-option-inner">
+            <div class="poll-option-label">Option 1</div>
+            <div class="poll-option-desc">
+              <strong>Event Title</strong>
+              <span class="poll-event-meta">Day Date &middot; Time &middot; Location</span>
+            </div>
+          </label>
+        </div>
+        <div class="poll-option">
+          <input type="radio" name="pollChoice" id="pollOpt2" value="2">
+          <label for="pollOpt2" class="poll-option-inner">
+            <div class="poll-option-label">Option 2</div>
+            <div class="poll-option-desc">
+              <strong>Event Title</strong>
+              <span class="poll-event-meta">Day Date &middot; Time &middot; Location</span>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="poll-submit-row">
+        <input type="text" id="pollName" placeholder="Your name" class="poll-name-input" autocomplete="off">
+        <button onclick="submitPollVote()" class="poll-submit-btn">Submit</button>
+      </div>
+      <div id="pollResults"></div>
+      END POLL TEMPLATE -->
     </div>
   </section>
 
