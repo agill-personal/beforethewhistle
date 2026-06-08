@@ -1,0 +1,33 @@
+name: Regenerate calendar.ics
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/assets/js/app.js
+      - scripts/gen-ics.js
+
+permissions:
+  contents: write
+
+jobs:
+  gen-ics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate calendar.ics from app.js
+        run: node scripts/gen-ics.js
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/calendar.ics
+          git diff --cached --quiet && echo "No changes to calendar.ics" && exit 0
+          git commit -m "chore: regenerate calendar.ics [skip ci]"
+          git push

@@ -41,8 +41,10 @@ technical = [
    ['Receiving to feet and turning to face goal','Directional first touch to set up a pass or dribble','Receiving on the back foot and playing away from pressure','Settling a driven pass with a soft inside-of-foot touch','Checking off a defender to create space before receiving','Body shape and foot orientation before the ball arrives']),
   ('2026-06-05','Passing & Combination Play','3:15 PM','4:45 PM','Cypress Field',
    ['Wall pass: give and go to break the defensive line','Third-man run: timing a late run to receive after a combination','Weight and accuracy of short passes under pressure','One-touch passing to maintain speed of play','Playing through a press as a unit of three','Switching the point of attack with a driven pass']),
-  ('2026-06-07','1v1 Attacking vs. Defending','4:30 PM','6:00 PM','Park School',
+  ('2026-06-07','1v1 Attacking vs. Defending','4:30 PM','6:00 PM','Cypress Field',
    ['Step-over, scissors, or Cruyff turn to beat a defender','Committing the defender before attempting a move','Jockeying: staying goal-side and on feet under pressure','Forcing the attacker onto their weak foot','Winning the ball back with a clean tackle when the moment is right','Dribbling with purpose, head up, exploit space after the move']),
+  ('2026-06-08','Option 1: First Touch & Receiving','3:15 PM','4:45 PM','Cypress Field',
+   ['Chest control and immediate lay-off or turn','Thigh control from a lofted ball and playing under pressure','Half-volley control on a bouncing ball','Heading down to a teammate or into space','Catching a dropping ball on the instep and moving forward','Winning the second ball after an aerial contest']),
   ('2026-06-09','First Touch & Receiving','6:30 PM','8:00 PM','Park School',
    ['Chest control and immediate lay-off or turn','Thigh control from a lofted ball and playing under pressure','Half-volley control on a bouncing ball','Heading down to a teammate or into space','Catching a dropping ball on the instep and moving forward','Winning the second ball after an aerial contest']),
   ('2026-06-12','Finishing vs. Defensive Pressure','3:15 PM','4:45 PM','Cypress Field',
@@ -84,9 +86,11 @@ for ds, title, start, end, loc, skills in technical:
 
 # FITNESS / GROUP SESSIONS
 fitness = [
-  ('2026-06-08','Strength Training Intro','5:00 PM','6:30 PM','Harry Downes Field',
-   'Intro to strength training! Learn how to build lower body and core strength with proper form and volume, led by Coach Kat! Please bring sneakers and weights.'),
-  ('2026-06-11','Sprint Mechanics and Conditioning Intro','6:30 PM','8:00 PM','Harry Downes Field',
+  ('2026-06-08','Option 2: Strength Training Intro','3:15 PM','4:45 PM','Cypress Field',
+   'Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'),
+  ('2026-06-10','Option 1: Strength Training Intro','3:15 PM','4:45 PM','Cypress Field',
+   'Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'),
+  ('2026-06-11','Sprint Mechanics and Conditioning Intro','6:30 PM','8:00 PM','Park School',
    'Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats.'),
   ('2026-06-14','Harvard Stadium Steps','4:30 PM','6:00 PM','Harvard Stadium',
    'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'),
