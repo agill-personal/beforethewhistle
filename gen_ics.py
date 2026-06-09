@@ -50,7 +50,7 @@ technical = [
   ('2026-06-12','Finishing vs. Defensive Pressure','3:15 PM','4:45 PM','Cypress Field',
    ['Placed finish into the far corner under pressure','One-touch finish from a cut-back or low cross','Closing down a shooter to force a rushed attempt','Shot power vs. placement: choosing the right technique','Finishing with the weaker foot from a realistic position','Block tackle or interception to prevent a shot on goal']),
   ('2026-06-15','First Touch & Receiving','6:00 PM','7:30 PM','Harry Downes Field',
-   ['Shielding the ball on the first touch to protect possession','Fake receive: letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space']),
+   ['Chest control and immediate lay-off or turn','Thigh control from a lofted ball and playing under pressure','Half-volley control on a bouncing ball','Heading down to a teammate or into space','Catching a dropping ball on the instep and moving forward','Winning the second ball after an aerial contest']),
   ('2026-06-16','Passing & Combination Play','6:00 PM','7:30 PM','Harry Downes Field',
    ['Overlap trigger: passing and running beyond to receive','Underlap combination: cutting inside as the overlap goes outside','Cross-field pass to change the point of attack','Backfoot pass to a runner arriving late','Third-man combination to break through a defensive block','Two-touch play in tight spaces under pressure']),
   ('2026-06-18','1v1 Attacking vs. Defending','6:00 PM','7:30 PM','Harry Downes Field',
@@ -58,7 +58,7 @@ technical = [
   ('2026-06-19','Crossing & Aerial Duels','3:15 PM','4:45 PM','Cypress Field',
    ['Early cross delivery before the fullback can close','Near-post run: attacking the first zone of the cross','Far-post run: late arrival to attack the back stick','Defending a cross: calling, attacking the ball early','Near-post flick-on to redirect for a far-post finish','Tracking a far-post runner as a centerback']),
   ('2026-06-21','First Touch & Receiving','4:30 PM','6:00 PM','Park School',
-   ['Check-run and receive: creating space off a defender','Receiving on the half-turn to face forward immediately','Timing the run so the first touch is already in motion','Curved run to stay onside while receiving over the top','Combining movement with a wall pass to arrive in space','First touch into the channel to accelerate beyond the line']),
+   ['Shielding the ball on the first touch to protect possession','Fake receive: letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space']),
   ('2026-06-22','Finishing vs. Defensive Pressure','6:00 PM','7:30 PM','Harry Downes Field',
    ["GK 1v1: reading the goalkeeper's position",'Chip finish when GK is off the line','Driven low finish across the body past a GK','Recovery run to deny a through ball before the finish','Composure in front of goal: slowing the moment down','Decision-making: shoot vs. square vs. hold up']),
   ('2026-06-23','Passing & Combination Play','6:00 PM','7:30 PM','Harry Downes Field',
@@ -89,11 +89,11 @@ fitness = [
   ('2026-06-10','Strength Training Intro','3:30 PM','5:00 PM','Cypress Field',
    'Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'),
   ('2026-06-11','Sprint Mechanics and Conditioning Intro','6:30 PM','8:00 PM','Park School',
-   'Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats.'),
+   'Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats and sneakers.'),
   ('2026-06-14','Harvard Stadium Steps','4:30 PM','6:00 PM','Harvard Stadium',
-   'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'),
+   'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers, cleats, and a ball.'),
   ('2026-06-28','Harvard Stadium Steps','4:30 PM','6:00 PM','Harvard Stadium',
-   'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers and water (electrolytes recommended).'),
+   'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers, cleats, and a ball.'),
 ]
 for ds, title, start, end, loc, desc in fitness:
     events.append(vevent('fit-'+ds, 'DTSTART:'+dt(ds,start), 'DTEND:'+dt(ds,end), title, loc, desc))
