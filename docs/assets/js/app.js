@@ -584,7 +584,8 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     applyRsvpLock();
     renderRsvp();
   } else if (type === 'fitness') {
-    const ds = key.slice(4);
+    const ds = key.startsWith('fit-') ? key.slice(4) : key;
+    activeDate = ds;
     const g  = FITNESS_SESSIONS[ds];
     const parts = ds.split('-');
     const y = +parts[0], mo = +parts[1], d = +parts[2];
@@ -599,7 +600,7 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelPlan').innerHTML =
       '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (g.warmup || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>' +
       '<div class="plan-block"><h4>Main Session</h4><ul>' + (g.main   || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>';
-    activeSessionLocked = sessionHasPassed(key.slice(4), g.end_time || g.time);
+    activeSessionLocked = sessionHasPassed(ds, g.end_time || g.time);
     rsvpSec.style.display = 'block';
     applyRsvpLock();
     renderRsvp();
