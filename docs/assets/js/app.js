@@ -584,8 +584,7 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     applyRsvpLock();
     renderRsvp();
   } else if (type === 'fitness') {
-    const ds = key.length === 10 ? key : key.slice(4);
-    activeDate = ds;
+    const ds = key.slice(4);
     const g  = FITNESS_SESSIONS[ds];
     const parts = ds.split('-');
     const y = +parts[0], mo = +parts[1], d = +parts[2];
@@ -770,9 +769,10 @@ function buildNextSession() {
     return;
   }
 
-  var entry = upcoming[0];
-  var ds    = entry[0];
-  var s     = entry[1];
+  var entry    = upcoming[0];
+  var ds       = entry[0];
+  var s        = entry[1];
+  var rsvpKey  = entry[2] === 'fitness' ? 'grp-' + ds : ds;
   var parts = ds.split('-').map(Number);
   var y = parts[0], mo = parts[1], d = parts[2];
   var sessionDate = new Date(y, mo-1, d);
@@ -783,7 +783,7 @@ function buildNextSession() {
   var dayLabel = isToday ? '\u26A1 Today' : isTomorrow ? 'Tomorrow' : DAYS_FULL[sessionDate.getDay()];
   if (rangeEl) rangeEl.textContent = MONTHS_SHORT[mo-1] + ' ' + d;
 
-  var raw      = rsvpData[ds] || [];
+  var raw      = rsvpData[rsvpKey] || [];
   var going    = raw.map(normalizeEntry).filter(function(e){ return e.response === 'going'; });
   var initials = going.slice(0,4).map(function(e){ return e.name.trim().split(' ').map(function(p){return p[0];}).join('').toUpperCase().slice(0,2); });
 
@@ -850,14 +850,14 @@ function buildNextSession() {
   rsvpRow.className = 'tw-rsvp-row';
   var avatarsDiv = document.createElement('div');
   avatarsDiv.className = 'tw-rsvp-avatars';
-  avatarsDiv.id = 'twav-' + ds;
+  avatarsDiv.id = 'twav-' + rsvpKey;
   initials.forEach(function(ini) {
     var av = document.createElement('div'); av.className = 'tw-avatar'; av.textContent = ini;
     avatarsDiv.appendChild(av);
   });
   var labelSpan = document.createElement('span');
   labelSpan.className = 'tw-rsvp-label';
-  labelSpan.id = 'twlabel-' + ds;
+  labelSpan.id = 'twlabel-' + rsvpKey;
   (function() {
     var entries = raw.map(normalizeEntry);
     var nGoing    = entries.filter(function(e){ return e.response === 'going'; }).length;
@@ -872,7 +872,7 @@ function buildNextSession() {
   var rBtn = document.createElement('button');
   rBtn.className = 'tw-rsvp-btn';
   rBtn.textContent = 'Respond';
-  rBtn.onclick = (function(d2) { return function() { twToggleRsvp(d2); }; })(ds);
+  rBtn.onclick = (function(d2) { return function() { twToggleRsvp(d2); }; })(rsvpKey);
   rsvpRow.appendChild(avatarsDiv);
   rsvpRow.appendChild(labelSpan);
   rsvpRow.appendChild(rBtn);
@@ -880,7 +880,7 @@ function buildNextSession() {
 
   var inlineDiv = document.createElement('div');
   inlineDiv.className = 'tw-rsvp-inline';
-  inlineDiv.id = 'twinline-' + ds;
+  inlineDiv.id = 'twinline-' + rsvpKey;
   // Build initial names display
   (function() {
     var g2 = [], n2 = [], c2 = [];
@@ -888,7 +888,7 @@ function buildNextSession() {
       var e = normalizeEntry(r);
       var row = '<div class="rsvp-name"><span class="rsvp-entry-name">' + e.name + '</span>'
         + (e.comment ? '<span class="rsvp-entry-comment">' + e.comment + '</span>' : '')
-        + '<button class="remove" onclick="twRemoveRsvp(\'' + ds + '\',' + idx + ')">&#x2715;</button></div>';
+        + '<button class="remove" onclick="twRemoveRsvp(\'' + rsvpKey + '\',' + idx + ')">&#x2715;</button></div>';
       if (e.response === 'not_going') n2.push(row);
       else if (e.response === 'conflict') c2.push(row);
       else g2.push(row);
@@ -898,27 +898,27 @@ function buildNextSession() {
       return '<div class="rsvp-group"><div class="rsvp-group-label ' + cls + '">' + label + '</div>' + rows.join('') + '</div>';
     }
     var namesDiv = document.createElement('div');
-    namesDiv.id = 'twnames-' + ds;
+    namesDiv.id = 'twnames-' + rsvpKey;
     namesDiv.innerHTML = grp("I'll be there!", 'rsvp-going', g2)
       + grp("Can't make it", 'rsvp-not-going', n2)
       + grp("Scheduling conflict", 'rsvp-conflict', c2);
     inlineDiv.appendChild(namesDiv);
   })();
   // Build form
-  inlineDiv.innerHTML += '<input type="text" id="twinput-' + ds + '" placeholder="Your name..." maxlength="40" class="rsvp-comment-input" style="margin-bottom:0.5rem"/>'
+  inlineDiv.innerHTML += '<input type="text" id="twinput-' + rsvpKey + '" placeholder="Your name..." maxlength="40" class="rsvp-comment-input" style="margin-bottom:0.5rem"/>'
     + '<div class="rsvp-choices">'
-    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + ds + '" value="going" checked onchange="twUpdateCommentHint(\'' + ds + '\')"/><span>I\'ll be there!</span></label>'
-    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + ds + '" value="not_going" onchange="twUpdateCommentHint(\'' + ds + '\')"/><span>Can\'t make it</span></label>'
-    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + ds + '" value="conflict" onchange="twUpdateCommentHint(\'' + ds + '\')"/><span>Time/location conflict — I could join if it was at…</span></label>'
+    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + rsvpKey + '" value="going" checked onchange="twUpdateCommentHint(\'' + rsvpKey + '\')"/><span>I\'ll be there!</span></label>'
+    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + rsvpKey + '" value="not_going" onchange="twUpdateCommentHint(\'' + rsvpKey + '\')"/><span>Can\'t make it</span></label>'
+    + '<label class="rsvp-choice"><input type="radio" name="twrsvp-' + rsvpKey + '" value="conflict" onchange="twUpdateCommentHint(\'' + rsvpKey + '\')"/><span>Time/location conflict — I could join if it was at…</span></label>'
     + '</div>'
-    + '<input type="text" id="twcomment-' + ds + '" class="rsvp-comment-input" placeholder="Add a comment (optional)..." maxlength="120" style="margin-top:0.5rem"/>'
-    + '<button class="rsvp-submit-btn" onclick="twAddRsvp(\'' + ds + '\')" style="margin-top:0.5rem">Submit RSVP</button>';
+    + '<input type="text" id="twcomment-' + rsvpKey + '" class="rsvp-comment-input" placeholder="Add a comment (optional)..." maxlength="120" style="margin-top:0.5rem"/>'
+    + '<button class="rsvp-submit-btn" onclick="twAddRsvp(\'' + rsvpKey + '\')" style="margin-top:0.5rem">Submit RSVP</button>';
   // Wire keydown after innerHTML is set
   setTimeout(function() {
-    var ni = document.getElementById('twinput-' + ds);
-    var ci = document.getElementById('twcomment-' + ds);
-    if (ni) ni.onkeydown = function(ev) { if (ev.key === 'Enter') { var c = document.getElementById('twcomment-' + ds); if (c) c.focus(); } };
-    if (ci) ci.onkeydown = (function(d2) { return function(ev) { if (ev.key === 'Enter') twAddRsvp(d2); }; })(ds);
+    var ni = document.getElementById('twinput-' + rsvpKey);
+    var ci = document.getElementById('twcomment-' + rsvpKey);
+    if (ni) ni.onkeydown = function(ev) { if (ev.key === 'Enter') { var c = document.getElementById('twcomment-' + rsvpKey); if (c) c.focus(); } };
+    if (ci) ci.onkeydown = (function(d2) { return function(ev) { if (ev.key === 'Enter') twAddRsvp(d2); }; })(rsvpKey);
   }, 0);
   card.appendChild(inlineDiv);
   container.appendChild(card);
