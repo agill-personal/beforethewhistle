@@ -150,6 +150,8 @@
     .tw-card-accent.focus-one_v_one   { background: #ea580c; }
     .tw-card-accent.focus-crossing    { background: #db2777; }
     .tw-card-accent.focus-finishing   { background: #c0392b; }
+    .tw-card-accent.focus-strength    { background: #d97706; }
+    .tw-card-accent.focus-sprinting   { background: #2563eb; }
     .tw-card-content {
       flex: 1;
       padding: 1rem 1.1rem;
@@ -613,6 +615,8 @@
     .focus-one_v_one    { background: #ffedd5; color: #7c2d12; }
     .focus-crossing     { background: #fce7f3; color: #831843; }
     .focus-finishing    { background: #fde8e8; color: #8b1a1a; }
+    .focus-strength     { background: #fef3c7; color: #92400e; }
+    .focus-sprinting    { background: #dbeafe; color: #1e40af; }
     .milestone-tag {
       display: block;
       font-size: 0.62rem;
@@ -1208,6 +1212,8 @@
     .focus-one_v_one   { background: #ffedd5; color: #7c2d12; }
     .focus-crossing    { background: #fce7f3; color: #831843; }
     .focus-finishing   { background: #fde8e8; color: #8b1a1a; }
+    .focus-strength    { background: #fef3c7; color: #92400e; }
+    .focus-sprinting   { background: #dbeafe; color: #1e40af; }
 
     /* Tag chips match */
     .tag.fitness   { background: #ffd9a0; color: #5c2d00; }

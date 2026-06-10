@@ -741,7 +741,9 @@ function buildNextSession() {
   }
 
   var todayStr = toDateStr(today);
-  var upcoming = Object.entries(SESSIONS)
+  var allCandidates = Object.entries(SESSIONS).map(function(e) { return [e[0], e[1], 'technical']; })
+    .concat(Object.entries(FITNESS_SESSIONS).map(function(e) { return [e[0], e[1], 'fitness']; }));
+  var upcoming = allCandidates
     .filter(function(e) {
       var ds = e[0];
       if (ds > todayStr) return true;
@@ -756,7 +758,10 @@ function buildNextSession() {
       if (/AM/i.test(m[3]) && h === 12) h = 0;
       return today < new Date(today.getFullYear(), today.getMonth(), today.getDate(), h, mn, 0);
     })
-    .sort(function(a,b){ return a[0].localeCompare(b[0]); });
+    .sort(function(a, b) {
+      if (a[0] !== b[0]) return a[0].localeCompare(b[0]);
+      return parseTimeToMinutes(a[1].time) - parseTimeToMinutes(b[1].time);
+    });
 
   if (upcoming.length === 0) {
     if (rangeEl) rangeEl.textContent = '';
@@ -803,7 +808,7 @@ function buildNextSession() {
   var focusSpan = document.createElement('span');
   focusSpan.className = 'focus-pill focus-' + s.focus;
   focusSpan.style.fontSize = '0.62rem';
-  focusSpan.textContent = FOCUS_LABELS[s.focus];
+  focusSpan.textContent = FOCUS_LABELS[s.focus] || s.focus;
   topDiv.appendChild(dateSpan);
   topDiv.appendChild(focusSpan);
   var titleEl = document.createElement('h3');
