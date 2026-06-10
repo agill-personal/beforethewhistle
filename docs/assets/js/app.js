@@ -114,7 +114,7 @@ const MILESTONES = {
 };
 
 const PHASES = [
-  { label:'Phase 1',   sub:'Jun 11 \u2013 Jul 4',   tag:'Foundation',  desc:'Bodyweight and light load. Master movement patterns.' },
+  { label:'Phase 1',   sub:'Jun 15 \u2013 Jul 4',   tag:'Foundation',  desc:'Bodyweight and light load. Master movement patterns.' },
   { label:'Phase 2',   sub:'Jul 5 \u2013 Jul 25',   tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
   { label:'Phase 3',   sub:'Jul 26 \u2013 Aug 15',  tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
   { label:'Taper',     sub:'Aug 16 \u2013 Aug 28',  tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
@@ -326,8 +326,8 @@ const FOCUS_LABELS = {
   first_touch:'First Touch', one_v_one:'1v1', crossing:'Crossing', finishing:'Finishing',
 };
 const STRENGTH_DAYS = [2, 4, 0]; // Tue, Thu, Sun (floater)
-var STRENGTH_SEASON_START = '2026-06-11';
-const STRENGTH_SKIP_DATES = new Set(['2026-06-14', '2026-06-28']);
+var STRENGTH_SEASON_START = '2026-06-15';
+const STRENGTH_SKIP_DATES = new Set(['2026-06-28']);
 
 // \u2500\u2500 STATE \u2500\u2500
 let rsvpData = (function() {
@@ -1269,7 +1269,7 @@ function generateICS() {
       (g.main || []).join('\n')));
   });
 
-  // Strength workouts (all-day, Jun 11 \u2013 Aug 28)
+  // Strength workouts (all-day, Jun 15 \u2013 Aug 28)
   var strEnd = new Date(2026, 7, 28);
   for (var sd = new Date(2026, 5, 11); sd <= strEnd; sd.setDate(sd.getDate() + 1)) {
     var dow = sd.getDay();

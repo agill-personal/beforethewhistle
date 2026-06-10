@@ -100,7 +100,7 @@ for ds, title, start, end, loc, desc in fitness:
 
 # STRENGTH WORKOUTS (all-day events)
 STRENGTH_DAYS = {0, 2, 4}  # Sun=0, Tue=2, Thu=4 (JS weekday)
-SKIP = {'2026-06-14', '2026-06-28'}
+SKIP = {'2026-06-28'}
 workouts = {
     0: [(2,'Lower Body A','45-50 min'), (4,'Core & Stability','35-40 min'), (0,'Lower Body B','45-50 min')],
     1: [(2,'Lower Body A+','50-55 min'), (4,'Power & Core','40-45 min'), (0,'Lower Body B+','50-55 min')],
@@ -113,7 +113,7 @@ def get_phase(d):
     if d < datetime.date(2026,8,16): return 2
     return 3
 
-cur = datetime.date(2026,6,11)
+cur = datetime.date(2026,6,15)
 while cur <= datetime.date(2026,8,28):
     # JS weekday: Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6
     js_dow = cur.isoweekday() % 7
