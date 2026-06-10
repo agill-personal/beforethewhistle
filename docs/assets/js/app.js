@@ -277,8 +277,8 @@ const WORKOUTS = {
 var FITNESS_SESSIONS = {
   '2026-06-10': { focus:'strength',  title:'Strength Training Intro',                   time:'3:30 PM', end_time:'5:00 PM', location:'Cypress Field',          warmup:['Band exercises'],         main:['Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'] },
   '2026-06-11': { focus:'sprinting', title:'Sprint Mechanics and Conditioning Intro',   time:'6:30 PM', end_time:'8:00 PM', location:'Park School',             warmup:['A/B-skips and runs'],     main:['Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats and sneakers.'] },
-  '2026-06-14': { focus:'strength',  title:'Harvard Stadium Steps',                     time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers, cleats, and a ball.'] },
-  '2026-06-28': { focus:'strength',  title:'Harvard Stadium Steps',                     time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers, cleats, and a ball.'] },
+  '2026-06-14': { focus:'strength',  title:'Harvard Stadium Climb! + Ball Control',      time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Then, we\'ll juggle. Please bring sneakers, cleats, and a ball.'] },
+  '2026-06-28': { focus:'strength',  title:'Harvard Stadium Climb! + Ball Control',      time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Then, we\'ll juggle. Please bring sneakers, cleats, and a ball.'] },
 };
 
 // Chan Camp sessions

@@ -90,10 +90,10 @@ fitness = [
    'Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'),
   ('2026-06-11','Sprint Mechanics and Conditioning Intro','6:30 PM','8:00 PM','Park School',
    'Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats and sneakers.'),
-  ('2026-06-14','Harvard Stadium Steps','4:30 PM','6:00 PM','Harvard Stadium',
-   'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers, cleats, and a ball.'),
-  ('2026-06-28','Harvard Stadium Steps','4:30 PM','6:00 PM','Harvard Stadium',
-   'We will walk, jump, and run up the Harvard Stadium steps! Please bring sneakers, cleats, and a ball.'),
+  ('2026-06-14','Harvard Stadium Climb! + Ball Control','4:30 PM','6:00 PM','Harvard Stadium',
+   "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
+  ('2026-06-28','Harvard Stadium Climb! + Ball Control','4:30 PM','6:00 PM','Harvard Stadium',
+   "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
 ]
 for ds, title, start, end, loc, desc in fitness:
     events.append(vevent('fit-'+ds, 'DTSTART:'+dt(ds,start), 'DTEND:'+dt(ds,end), title, loc, desc))
