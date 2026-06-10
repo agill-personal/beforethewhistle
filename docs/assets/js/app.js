@@ -769,10 +769,11 @@ function buildNextSession() {
     return;
   }
 
-  var entry    = upcoming[0];
-  var ds       = entry[0];
-  var s        = entry[1];
-  var rsvpKey  = entry[2] === 'fitness' ? 'grp-' + ds : ds;
+  var entry       = upcoming[0];
+  var ds          = entry[0];
+  var s           = entry[1];
+  var sessionType = entry[2];
+  var rsvpKey     = sessionType === 'fitness' ? 'grp-' + ds : ds;
   var parts = ds.split('-').map(Number);
   var y = parts[0], mo = parts[1], d = parts[2];
   var sessionDate = new Date(y, mo-1, d);
@@ -794,7 +795,7 @@ function buildNextSession() {
   var mainDiv = document.createElement('div');
   mainDiv.className = 'tw-card-main';
   var accentDiv = document.createElement('div');
-  accentDiv.className = 'tw-card-accent focus-' + s.focus;
+  accentDiv.className = 'tw-card-accent type-' + sessionType;
   mainDiv.appendChild(accentDiv);
   var contentDiv = document.createElement('div');
   contentDiv.className = 'tw-card-content';

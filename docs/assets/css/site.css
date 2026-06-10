@@ -152,6 +152,8 @@
     .tw-card-accent.focus-finishing   { background: #c0392b; }
     .tw-card-accent.focus-strength    { background: #d97706; }
     .tw-card-accent.focus-sprinting   { background: #2563eb; }
+    .tw-card-accent.type-technical    { background: #14532d; }
+    .tw-card-accent.type-fitness      { background: #4c1d95; }
     .tw-card-content {
       flex: 1;
       padding: 1rem 1.1rem;
