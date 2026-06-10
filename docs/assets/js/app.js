@@ -491,9 +491,10 @@ function buildWeekCalendar() {
     if (FITNESS_SESSIONS[ds]) {
       const g    = FITNESS_SESSIONS[ds];
       const gKey = 'grp-' + ds;
+      const gCnt = (rsvpData[gKey] || []).filter(function(r){ return normalizeEntry(r).response === 'going'; }).length;
       const btn  = document.createElement('button');
       btn.className = 'wk-event type-fitness' + (g.status && g.status !== 'scheduled' ? ' status-' + g.status : '');
-      btn.innerHTML = g.title + evStatusTag(g.status) + '<span class="ev-time">\uD83C\uDFC3 ' + g.time + ' \u00B7 ' + g.location + '</span>';
+      btn.innerHTML = g.title + evStatusTag(g.status) + '<span class="ev-time">\uD83C\uDFC3 ' + g.time + ' \u00B7 ' + g.location + (gCnt > 0 ? ' \u00B7 ' + gCnt + ' going' : '') + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(g.time), priority: 3 });
     }
