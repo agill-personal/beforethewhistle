@@ -584,7 +584,7 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     applyRsvpLock();
     renderRsvp();
   } else if (type === 'fitness') {
-    const ds = key.slice(4);
+    const ds = key.length === 10 ? key : key.slice(4);
     activeDate = ds;
     const g  = FITNESS_SESSIONS[ds];
     const parts = ds.split('-');
