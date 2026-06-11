@@ -279,9 +279,9 @@ DESCRIPTION:Intro to sprinting mechanics and conditioning! Learn how to bui
 END:VEVENT
 BEGIN:VEVENT
 UID:fit-2026-06-14@btw2026
-DTSTART;VALUE=DATE:20260614
-DTEND;VALUE=DATE:20260615
-SUMMARY:Harvard Stadium Climb! + Ball Control (Time TBD)
+DTSTART:20260614T163000
+DTEND:20260614T180000
+SUMMARY:Harvard Stadium Climb! + Ball Control
 LOCATION:Harvard Stadium
 DESCRIPTION:We will walk\, jump\, and run up the Harvard Stadium steps! The
  n\, we'll juggle. Please bring sneakers\, cleats\, and a ball.
