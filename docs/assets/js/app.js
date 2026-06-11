@@ -277,7 +277,7 @@ const WORKOUTS = {
 var FITNESS_SESSIONS = {
   '2026-06-10': { focus:'strength',  title:'Strength Training Intro',                   time:'3:30 PM', end_time:'5:00 PM', location:'Cypress Field',          warmup:['Band exercises'],         main:['Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'] },
   '2026-06-11': { focus:'sprinting', title:'Sprint Mechanics and Conditioning Intro',   time:'6:30 PM', end_time:'8:00 PM', location:'Park School',             warmup:['A/B-skips and runs'],     main:['Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats and sneakers.'] },
-  '2026-06-14': { focus:'strength',  title:'Harvard Stadium Climb! + Ball Control',      time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Then, we\'ll juggle. Please bring sneakers, cleats, and a ball.'] },
+  '2026-06-14': { focus:'strength',  title:'Harvard Stadium Climb! + Ball Control',      time_decided:0, time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Then, we\'ll juggle. Please bring sneakers, cleats, and a ball.'] },
   '2026-06-28': { focus:'strength',  title:'Harvard Stadium Climb! + Ball Control',      time:'4:30 PM', end_time:'6:00 PM', location:'Harvard Stadium',        warmup:['Band exercises'],         main:['We will walk, jump, and run up the Harvard Stadium steps! Then, we\'ll juggle. Please bring sneakers, cleats, and a ball.'] },
 };
 
@@ -418,6 +418,9 @@ function fmtDate(d)  { return MONTHS_SHORT[d.getMonth()] + ' ' + d.getDate(); }
 function toDateStr(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
 // \u2500\u2500 WEEK CALENDAR \u2500\u2500
+function displayTime(s) {
+  return s.time_decided === 0 ? 'TBD' : s.time;
+}
 function evStatusTag(status) {
   if (!status || status === 'scheduled') return '';
   return '<span class="ev-status-tag ev-status-' + status + '">' + status + '</span>';
@@ -494,7 +497,7 @@ function buildWeekCalendar() {
       const gCnt = (rsvpData[gKey] || []).filter(function(r){ return normalizeEntry(r).response === 'going'; }).length;
       const btn  = document.createElement('button');
       btn.className = 'wk-event type-fitness' + (g.status && g.status !== 'scheduled' ? ' status-' + g.status : '');
-      btn.innerHTML = g.title + evStatusTag(g.status) + '<span class="ev-time">\uD83C\uDFC3 ' + g.time + ' \u00B7 ' + g.location + (gCnt > 0 ? ' \u00B7 ' + gCnt + ' going' : '') + '</span>';
+      btn.innerHTML = g.title + evStatusTag(g.status) + '<span class="ev-time">\uD83C\uDFC3 ' + displayTime(g) + ' \u00B7 ' + g.location + (gCnt > 0 ? ' \u00B7 ' + gCnt + ' going' : '') + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(g.time), priority: 3 });
     }
@@ -504,7 +507,7 @@ function buildWeekCalendar() {
       const cnt = (rsvpData[ds] || []).filter(function(r){ return normalizeEntry(r).response === 'going'; }).length;
       const btn = document.createElement('button');
       btn.className = 'wk-event type-technical' + (s.status && s.status !== 'scheduled' ? ' status-' + s.status : '');
-      btn.innerHTML = s.title + evStatusTag(s.status) + '<span class="ev-time">\u26BD ' + s.time + ' \u00B7 ' + s.location + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
+      btn.innerHTML = s.title + evStatusTag(s.status) + '<span class="ev-time">\u26BD ' + displayTime(s) + ' \u00B7 ' + s.location + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
       btn.onclick = function() { openPanel(ds, 'technical'); };
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(s.time), priority: 4 });
     }
@@ -570,7 +573,7 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelTitle').textContent = s.title;
     document.getElementById('panelMeta').innerHTML    =
       '<span class="focus-pill focus-' + s.focus + '">' + FOCUS_LABELS[s.focus] + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + s.time + (s.end_time ? ' \u2013 ' + s.end_time : '') + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + displayTime(s) + (s.time_decided !== 0 && s.end_time ? ' \u2013 ' + s.end_time : '') + '</span>' +
       '<span style="font-size:0.8rem;color:var(--mid)">\uD83D\uDCCD ' + s.location + '</span>';
     if (s.skills && s.skills.length) {
       document.getElementById('panelPlan').innerHTML =
@@ -595,7 +598,7 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
     document.getElementById('panelMeta').innerHTML    =
       '<span style="background:#dbeafe;color:#1d4ed8;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px">\uD83C\uDFC3 Fitness</span>' +
       '<span class="focus-pill focus-' + g.focus + '">' + (FOCUS_LABELS[g.focus] || g.focus) + '</span>' +
-      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + g.time + (g.end_time ? ' \u2013 ' + g.end_time : '') + '</span>' +
+      '<span style="font-size:0.8rem;color:var(--mid)">\u23F0 ' + displayTime(g) + (g.time_decided !== 0 && g.end_time ? ' \u2013 ' + g.end_time : '') + '</span>' +
       '<span style="font-size:0.8rem;color:var(--mid)">\uD83D\uDCCD ' + g.location + '</span>';
     document.getElementById('panelPlan').innerHTML =
       '<div class="plan-block"><h4>Warm-Up</h4><ul>'     + (g.warmup || []).map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul></div>' +
@@ -749,7 +752,8 @@ function buildNextSession() {
       var ds = e[0];
       if (ds > todayStr) return true;
       if (ds < todayStr) return false;
-      // Same day: only include if the session hasn't ended yet
+      // Same day: TBD sessions are always upcoming; otherwise check end time
+      if (e[1].time_decided === 0) return true;
       var endStr = e[1].end_time || e[1].time;
       if (!endStr) return true;
       var m = endStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
@@ -818,7 +822,7 @@ function buildNextSession() {
   titleEl.innerHTML = s.title + evStatusTag(s.status);
   var metaDiv = document.createElement('div');
   metaDiv.className = 'tw-card-meta';
-  var sp1 = document.createElement('span'); sp1.textContent = s.time;
+  var sp1 = document.createElement('span'); sp1.textContent = displayTime(s);
   var sp2 = document.createElement('span'); sp2.textContent = s.location;
   metaDiv.appendChild(sp1); metaDiv.appendChild(sp2);
   var toggleSpan = document.createElement('span');

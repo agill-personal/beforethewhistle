@@ -86,17 +86,21 @@ for ds, title, start, end, loc, skills in technical:
 
 # FITNESS / GROUP SESSIONS
 fitness = [
-  ('2026-06-10','Strength Training Intro','3:30 PM','5:00 PM','Cypress Field',
+  (1, '2026-06-10','Strength Training Intro','3:30 PM','5:00 PM','Cypress Field',
    'Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'),
-  ('2026-06-11','Sprint Mechanics and Conditioning Intro','6:30 PM','8:00 PM','Park School',
+  (1, '2026-06-11','Sprint Mechanics and Conditioning Intro','6:30 PM','8:00 PM','Park School',
    'Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats and sneakers.'),
-  ('2026-06-14','Harvard Stadium Climb! + Ball Control','4:30 PM','6:00 PM','Harvard Stadium',
+  (0, '2026-06-14','Harvard Stadium Climb! + Ball Control','4:30 PM','6:00 PM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
-  ('2026-06-28','Harvard Stadium Climb! + Ball Control','4:30 PM','6:00 PM','Harvard Stadium',
+  (1, '2026-06-28','Harvard Stadium Climb! + Ball Control','4:30 PM','6:00 PM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
 ]
-for ds, title, start, end, loc, desc in fitness:
-    events.append(vevent('fit-'+ds, 'DTSTART:'+dt(ds,start), 'DTEND:'+dt(ds,end), title, loc, desc))
+for time_decided, ds, title, start, end, loc, desc in fitness:
+    if time_decided:
+        events.append(vevent('fit-'+ds, 'DTSTART:'+dt(ds,start), 'DTEND:'+dt(ds,end), title, loc, desc))
+    else:
+        dc = ds.replace('-','')
+        events.append(vevent('fit-'+ds, 'DTSTART;VALUE=DATE:'+dc, 'DTEND;VALUE=DATE:'+next_day(ds), title+' (Time TBD)', loc, desc))
 
 # STRENGTH WORKOUTS (all-day events)
 STRENGTH_DAYS = {0, 2, 4}  # Sun=0, Tue=2, Thu=4 (JS weekday)
