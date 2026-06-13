@@ -90,11 +90,13 @@ fitness = [
    'Intro to strength training! Coach Kat will be joining us to walk through how to build lower body and core strength with proper form and volume! Please bring sneakers. Weights will be provided by the coaches.'),
   (1, '2026-06-11','Sprint Mechanics and Conditioning Intro','6:30 PM','8:00 PM','Park School',
    'Intro to sprinting mechanics and conditioning! Learn how to build sprinting form to accelerate quickly and maintain speed on the field, led by Coach Bearett! Please bring cleats and sneakers.'),
-  (1, '2026-06-14','Harvard Stadium Climb! + Ball Control','11:00 AM','12:30 PM','Harvard Stadium',
+  (1, '2026-06-14','Harvard Stadium Climb! + Ball Control','8:30 AM','10:00 AM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
   (1, '2026-06-17','Strength Training - Injury Prevention','3:30 PM','5:00 PM','Cypress Field',
    "Strength training! Coach Kat will be joining us to focus on strengthening muscles that play a key role in injury prevention (ACL, hips, etc.). Please bring sneakers. Weights will be provided by the coaches."),
-  (1, '2026-06-28','Harvard Stadium Climb! + Ball Control','4:30 PM','6:00 PM','Harvard Stadium',
+  (1, '2026-06-24','Strength Training','3:30 PM','5:00 PM','Cypress Field',
+   "Strength training! Coach Kat will be joining us to focus on building lower body and core strength. Please bring sneakers. Weights will be provided by the coaches."),
+  (1, '2026-06-28','Harvard Stadium Climb! + Ball Control','10:00 AM','11:30 AM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
 ]
 for time_decided, ds, title, start, end, loc, desc in fitness:
