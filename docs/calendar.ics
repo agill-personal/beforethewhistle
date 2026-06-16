@@ -4,8 +4,6 @@ PRODID:-//BeforeTheWhistle//Summer 2026//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:BeforeTheWhistle Summer 2026
-REFRESH-INTERVAL;VALUE=DURATION:PT12H
-X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:tech-2026-06-04@btw2026
 DTSTART:20260604T183000
@@ -24,11 +22,11 @@ DTSTART:20260605T151500
 DTEND:20260605T164500
 SUMMARY:Passing & Combination Play
 LOCATION:Cypress Field
-DESCRIPTION:Skills:\nWall pass: give and go to break the defensive line\nTh
- ird-man run: timing a late run to receive after a combination\nWeight and a
- ccuracy of short passes under pressure\nOne-touch passing to maintain speed
-  of play\nPlaying through a press as a unit of three\nSwitching the point o
- f attack with a driven pass
+DESCRIPTION:Skills:\nWall pass — give and go to break the defensive line\nT
+ hird-man run — timing a late run to receive after a combination\nWeight and
+  accuracy of short passes under pressure\nOne-touch passing to maintain spe
+ ed of play\nPlaying through a press as a unit of three\nSwitching the point
+  of attack with a driven pass
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-07@btw2026
@@ -37,10 +35,10 @@ DTEND:20260607T180000
 SUMMARY:1v1 Attacking vs. Defending
 LOCATION:Cypress Field
 DESCRIPTION:Skills:\nStep-over\, scissors\, or Cruyff turn to beat a defend
- er\nCommitting the defender before attempting a move\nJockeying: staying go
- al-side and on feet under pressure\nForcing the attacker onto their weak fo
- ot\nWinning the ball back with a clean tackle when the moment is right\nDri
- bbling with purpose\, head up\, exploit space after the move
+ er\nCommitting the defender before attempting a move\nJockeying — staying g
+ oal-side and on feet under pressure\nForcing the attacker onto their weak f
+ oot\nWinning the ball back with a clean tackle when the moment is right\nDr
+ ibbling with purpose — head up\, exploit space after the move
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-08@btw2026
@@ -49,10 +47,10 @@ DTEND:20260608T170000
 SUMMARY:1v1 Attacking vs. Defending
 LOCATION:Cypress Field
 DESCRIPTION:Skills:\nStep-over\, scissors\, or Cruyff turn to beat a defend
- er\nCommitting the defender before attempting a move\nJockeying: staying go
- al-side and on feet under pressure\nForcing the attacker onto their weak fo
- ot\nWinning the ball back with a clean tackle when the moment is right\nDri
- bbling with purpose\, head up\, exploit space after the move
+ er\nCommitting the defender before attempting a move\nJockeying — staying g
+ oal-side and on feet under pressure\nForcing the attacker onto their weak f
+ oot\nWinning the ball back with a clean tackle when the moment is right\nDr
+ ibbling with purpose — head up\, exploit space after the move
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-09@btw2026
@@ -74,9 +72,9 @@ SUMMARY:First Touch + Finishing vs. Defensive Pressure
 LOCATION:Cypress Field
 DESCRIPTION:Skills:\nFirst touch / ball control\nPlaced finish into the far
   corner under pressure\nOne-touch finish from a cut-back or low cross\nClos
- ing down a shooter to force a rushed attempt\nShot power vs. placement: cho
- osing the right technique\nFinishing with the weaker foot from a realistic 
- position\nBlock tackle or interception to prevent a shot on goal
+ ing down a shooter to force a rushed attempt\nShot power vs. placement — ch
+ oosing the right technique\nFinishing with the weaker foot from a realistic
+  position\nBlock tackle or interception to prevent a shot on goal
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-15@btw2026
@@ -104,8 +102,8 @@ LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nHolding up play with back to goal under physical press
  ure\nShielding the ball and drawing a foul\nFlicking on or laying off from 
  a back-to-goal position\nSpinning off a marker into space behind the defens
- e\nFronting a striker: physical positioning to prevent the turn\nTiming a t
- ackle when a forward tries to spin
+ e\nFronting a striker — physical positioning to prevent the turn\nTiming a 
+ tackle when a forward tries to spin
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-19@btw2026
@@ -114,10 +112,10 @@ DTEND:20260619T170000
 SUMMARY:Crossing & Aerial Duels
 LOCATION:Cypress Field
 DESCRIPTION:Skills:\nEarly cross delivery before the fullback can close\nNe
- ar-post run: attacking the first zone of the cross\nFar-post run: late arri
- val to attack the back stick\nDefending a cross: calling\, attacking the ba
- ll early\nNear-post flick-on to redirect for a far-post finish\nTracking a 
- far-post runner as a centerback
+ ar-post run — attacking the first zone of the cross\nFar-post run — late ar
+ rival to attack the back stick\nDefending a cross — calling\, attacking the
+  ball early\nNear-post flick-on to redirect for a far-post finish\nTracking
+  a far-post runner as a centerback
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-22@btw2026
@@ -126,10 +124,10 @@ DTEND:20260622T193000
 SUMMARY:First Touch & Receiving
 LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nShielding the ball on the first touch to protect posse
- ssion\nFake receive: letting the ball run to lose a tight marker\nScanning 
- before the ball arrives to choose touch direction\nOne-touch layoff when re
- ceiving under a high press\nBreaking the press line with a single forward t
- ouch\nStaying calm and composed when receiving in tight space
+ ssion\nFake receive — letting the ball run to lose a tight marker\nScanning
+  before the ball arrives to choose touch direction\nOne-touch layoff when r
+ eceiving under a high press\nBreaking the press line with a single forward 
+ touch\nStaying calm and composed when receiving in tight space
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-23@btw2026
@@ -137,11 +135,11 @@ DTSTART:20260623T180000
 DTEND:20260623T193000
 SUMMARY:Passing & Combination Play
 LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nRondo: maintaining possession under a high press\nIden
- tifying and passing to the free player\nWeight of pass when playing into a 
- striker's feet\nQuick combination in the final third to create a shooting o
- pportunity\nPlaying the killer pass through or over the defensive line\nPat
- ience in possession: when to recycle vs. when to play forward
+DESCRIPTION:Skills:\nRondo — maintaining possession under a high press\nIde
+ ntifying and passing to the free player\nWeight of pass when playing into a
+  striker's feet\nQuick combination in the final third to create a shooting 
+ opportunity\nPlaying the killer pass through or over the defensive line\nPa
+ tience in possession — when to recycle vs. when to play forward
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-25@btw2026
@@ -149,10 +147,11 @@ DTSTART:20260625T180000
 DTEND:20260625T193000
 SUMMARY:Finishing vs. Defensive Pressure
 LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nGK 1v1: reading the goalkeeper's position\nChip finish
-  when GK is off the line\nDriven low finish across the body past a GK\nReco
- very run to deny a through ball before the finish\nComposure in front of go
- al: slowing the moment down\nDecision-making: shoot vs. square vs. hold up
+DESCRIPTION:Skills:\nGK 1v1 — reading the goalkeeper's position\nChip finis
+ h when GK is off the line\nDriven low finish across the body past a GK\nRec
+ overy run to deny a through ball before the finish\nComposure in front of g
+ oal — slowing the moment down\nDecision-making: shoot vs. square vs. hold u
+ p
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-26@btw2026
@@ -160,11 +159,11 @@ DTSTART:20260626T080000
 DTEND:20260626T100000
 SUMMARY:Passing & Combination Play
 LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nRondo: maintaining possession under a high press\nIden
- tifying and passing to the free player\nWeight of pass when playing into a 
- striker's feet\nQuick combination in the final third to create a shooting o
- pportunity\nPlaying the killer pass through or over the defensive line\nPat
- ience in possession: when to recycle vs. when to play forward
+DESCRIPTION:Skills:\nRondo — maintaining possession under a high press\nIde
+ ntifying and passing to the free player\nWeight of pass when playing into a
+  striker's feet\nQuick combination in the final third to create a shooting 
+ opportunity\nPlaying the killer pass through or over the defensive line\nPa
+ tience in possession — when to recycle vs. when to play forward
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-29@btw2026
@@ -172,11 +171,11 @@ DTSTART:20260629T180000
 DTEND:20260629T193000
 SUMMARY:Passing & Combination Play
 LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nWall pass: give and go to break the defensive line\nTh
- ird-man run: timing a late run to receive after a combination\nWeight and a
- ccuracy of short passes under pressure\nOne-touch passing to maintain speed
-  of play\nPlaying through a press as a unit of three\nSwitching the point o
- f attack with a driven pass
+DESCRIPTION:Skills:\nWall pass — give and go to break the defensive line\nT
+ hird-man run — timing a late run to receive after a combination\nWeight and
+  accuracy of short passes under pressure\nOne-touch passing to maintain spe
+ ed of play\nPlaying through a press as a unit of three\nSwitching the point
+  of attack with a driven pass
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-30@btw2026
@@ -197,11 +196,11 @@ DTEND:20260702T193000
 SUMMARY:First Touch & Receiving
 LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nShoulder check before receiving to identify pressure\n
- Half-turn technique: opening the body to receive facing forward\nUsing peri
- pheral vision to choose touch direction before contact\nReceiving between l
- ines and instantly playing forward\nFirst touch away from pressure in a con
- gested midfield\nControlling the tempo of the game through a composed first
-  touch
+ Half-turn technique — opening the body to receive facing forward\nUsing per
+ ipheral vision to choose touch direction before contact\nReceiving between 
+ lines and instantly playing forward\nFirst touch away from pressure in a co
+ ngested midfield\nControlling the tempo of the game through a composed firs
+ t touch
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-07-03@btw2026
@@ -209,11 +208,11 @@ DTSTART:20260703T080000
 DTEND:20260703T100000
 SUMMARY:Crossing & Aerial Duels
 LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nAttacking a corner kick delivery: near post and far po
- st runs\nZonal marking on set pieces: attacking the ball at highest point\n
- Man-marking assignment on corners: staying with the runner\nHeading techniq
- ue for both attacking and defensive headers\nSecond ball reaction after a c
- leared set piece\nGoalkeeper distribution from a set piece clearance
+DESCRIPTION:Skills:\nAttacking a corner kick delivery — near post and far p
+ ost runs\nZonal marking on set pieces — attacking the ball at highest point
+ \nMan-marking assignment on corners — staying with the runner\nHeading tech
+ nique for both attacking and defensive headers\nSecond ball reaction after 
+ a cleared set piece\nGoalkeeper distribution from a set piece clearance
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-07-05@btw2026
@@ -221,11 +220,11 @@ DTSTART:20260705T163000
 DTEND:20260705T180000
 SUMMARY:1v1 Attacking vs. Defending
 LOCATION:Park School
-DESCRIPTION:Skills:\nPressing trigger: when and how to press the ball\nEsca
- pe from a press: one-touch away from pressure\nBall protection on the dribb
- le in a high-pressure situation\nCoordinated pressing as a pair to cut off 
- passing lanes\nWinning the ball back high up the pitch from the front\nCoun
- tering immediately after winning possession in the press
+DESCRIPTION:Skills:\nPressing trigger — when and how to press the ball\nEsc
+ ape from a press — one-touch away from pressure\nBall protection on the dri
+ bble in a high-pressure situation\nCoordinated pressing as a pair to cut of
+ f passing lanes\nWinning the ball back high up the pitch from the front\nCo
+ untering immediately after winning possession in the press
 END:VEVENT
 BEGIN:VEVENT
 UID:fit-2026-06-10@btw2026
@@ -305,213 +304,537 @@ DESCRIPTION:Strength training! Coach Kat will be joining us to focus on bui
  provided by the coaches.
 END:VEVENT
 BEGIN:VEVENT
+UID:str-2026-06-11@btw2026
+DTSTART;VALUE=DATE:20260611
+DTEND;VALUE=DATE:20260612
+SUMMARY:Strength: Core & Stability
+LOCATION:At Home
+DESCRIPTION:35–40 min\n3 × 12 ea Single-Leg Glute Bridge\n3 × 25 sec ea Sid
+ e Plank\n3 × 10 ea Bird Dog\n3 × 10 ea Pallof Press (Band)\n3 × 15 ea Later
+ al Band Walk\n3 × 20 sec Hollow Body Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-06-14@btw2026
+DTSTART;VALUE=DATE:20260614
+DTEND;VALUE=DATE:20260615
+SUMMARY:Strength: Lower Body B
+LOCATION:At Home
+DESCRIPTION:45–50 min\n3 × 8 ea Bulgarian Split Squat\n3 × 12 Sumo Squat\n3
+  × 6 Nordic Hamstring Curl\n3 × 10 ea Step-Up\n3 × 20 sec ea Copenhagen Pla
+ nk\n3 × 15 ea Russian Twist
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-06-16@btw2026
+DTSTART;VALUE=DATE:20260616
+DTEND;VALUE=DATE:20260617
+SUMMARY:Strength: Lower Body A
+LOCATION:At Home
+DESCRIPTION:45–50 min\n3 × 12 Goblet Squat\n3 × 10 Romanian Deadlift\n3 × 1
+ 0 ea Reverse Lunge\n3 × 15 Glute Bridge\n3 × 10 ea Dead Bug\n3 × 30 sec Pla
+ nk Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-06-18@btw2026
+DTSTART;VALUE=DATE:20260618
+DTEND;VALUE=DATE:20260619
+SUMMARY:Strength: Core & Stability
+LOCATION:At Home
+DESCRIPTION:35–40 min\n3 × 12 ea Single-Leg Glute Bridge\n3 × 25 sec ea Sid
+ e Plank\n3 × 10 ea Bird Dog\n3 × 10 ea Pallof Press (Band)\n3 × 15 ea Later
+ al Band Walk\n3 × 20 sec Hollow Body Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-06-21@btw2026
+DTSTART;VALUE=DATE:20260621
+DTEND;VALUE=DATE:20260622
+SUMMARY:Strength: Lower Body B
+LOCATION:At Home
+DESCRIPTION:45–50 min\n3 × 8 ea Bulgarian Split Squat\n3 × 12 Sumo Squat\n3
+  × 6 Nordic Hamstring Curl\n3 × 10 ea Step-Up\n3 × 20 sec ea Copenhagen Pla
+ nk\n3 × 15 ea Russian Twist
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-06-23@btw2026
+DTSTART;VALUE=DATE:20260623
+DTEND;VALUE=DATE:20260624
+SUMMARY:Strength: Lower Body A
+LOCATION:At Home
+DESCRIPTION:45–50 min\n3 × 12 Goblet Squat\n3 × 10 Romanian Deadlift\n3 × 1
+ 0 ea Reverse Lunge\n3 × 15 Glute Bridge\n3 × 10 ea Dead Bug\n3 × 30 sec Pla
+ nk Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-06-25@btw2026
+DTSTART;VALUE=DATE:20260625
+DTEND;VALUE=DATE:20260626
+SUMMARY:Strength: Core & Stability
+LOCATION:At Home
+DESCRIPTION:35–40 min\n3 × 12 ea Single-Leg Glute Bridge\n3 × 25 sec ea Sid
+ e Plank\n3 × 10 ea Bird Dog\n3 × 10 ea Pallof Press (Band)\n3 × 15 ea Later
+ al Band Walk\n3 × 20 sec Hollow Body Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-06-30@btw2026
+DTSTART;VALUE=DATE:20260630
+DTEND;VALUE=DATE:20260701
+SUMMARY:Strength: Lower Body A
+LOCATION:At Home
+DESCRIPTION:45–50 min\n3 × 12 Goblet Squat\n3 × 10 Romanian Deadlift\n3 × 1
+ 0 ea Reverse Lunge\n3 × 15 Glute Bridge\n3 × 10 ea Dead Bug\n3 × 30 sec Pla
+ nk Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-02@btw2026
+DTSTART;VALUE=DATE:20260702
+DTEND;VALUE=DATE:20260703
+SUMMARY:Strength: Core & Stability
+LOCATION:At Home
+DESCRIPTION:35–40 min\n3 × 12 ea Single-Leg Glute Bridge\n3 × 25 sec ea Sid
+ e Plank\n3 × 10 ea Bird Dog\n3 × 10 ea Pallof Press (Band)\n3 × 15 ea Later
+ al Band Walk\n3 × 20 sec Hollow Body Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-05@btw2026
+DTSTART;VALUE=DATE:20260705
+DTEND;VALUE=DATE:20260706
+SUMMARY:Strength: Lower Body B+
+LOCATION:At Home
+DESCRIPTION:50–55 min\n4 × 6 ea Bulgarian Split Squat (Weighted)\n4 × 6 Tra
+ p Bar / DB Deadlift\n3 × 10 ea Lateral Squat\n3 × 5 Depth Drop to Jump\n3 ×
+  25 sec ea Copenhagen Plank\n3 × 12 Hanging Knee Raise
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-07@btw2026
+DTSTART;VALUE=DATE:20260707
+DTEND;VALUE=DATE:20260708
+SUMMARY:Strength: Lower Body A+
+LOCATION:At Home
+DESCRIPTION:50–55 min\n4 × 8 Barbell / DB Squat\n4 × 8 Romanian Deadlift\n3
+  × 12 ea Walking Lunge\n3 × 6 Box Jump\n3 × 8 ea Plank to Push-Up\n3 × 10 e
+ a Dead Bug + Reach
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-09@btw2026
+DTSTART;VALUE=DATE:20260709
+DTEND;VALUE=DATE:20260710
+SUMMARY:Strength: Power & Core
+LOCATION:At Home
+DESCRIPTION:40–45 min\n4 × 4 Broad Jump\n3 × 6 ea Lateral Bound\n3 × 8 Medi
+ cine Ball Slam\n3 × 10 ea Side Plank + Row\n3 × 12 V-Up\n3 × 10 ea Pallof P
+ ress Variation
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-12@btw2026
+DTSTART;VALUE=DATE:20260712
+DTEND;VALUE=DATE:20260713
+SUMMARY:Strength: Lower Body B+
+LOCATION:At Home
+DESCRIPTION:50–55 min\n4 × 6 ea Bulgarian Split Squat (Weighted)\n4 × 6 Tra
+ p Bar / DB Deadlift\n3 × 10 ea Lateral Squat\n3 × 5 Depth Drop to Jump\n3 ×
+  25 sec ea Copenhagen Plank\n3 × 12 Hanging Knee Raise
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-14@btw2026
+DTSTART;VALUE=DATE:20260714
+DTEND;VALUE=DATE:20260715
+SUMMARY:Strength: Lower Body A+
+LOCATION:At Home
+DESCRIPTION:50–55 min\n4 × 8 Barbell / DB Squat\n4 × 8 Romanian Deadlift\n3
+  × 12 ea Walking Lunge\n3 × 6 Box Jump\n3 × 8 ea Plank to Push-Up\n3 × 10 e
+ a Dead Bug + Reach
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-16@btw2026
+DTSTART;VALUE=DATE:20260716
+DTEND;VALUE=DATE:20260717
+SUMMARY:Strength: Power & Core
+LOCATION:At Home
+DESCRIPTION:40–45 min\n4 × 4 Broad Jump\n3 × 6 ea Lateral Bound\n3 × 8 Medi
+ cine Ball Slam\n3 × 10 ea Side Plank + Row\n3 × 12 V-Up\n3 × 10 ea Pallof P
+ ress Variation
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-19@btw2026
+DTSTART;VALUE=DATE:20260719
+DTEND;VALUE=DATE:20260720
+SUMMARY:Strength: Lower Body B+
+LOCATION:At Home
+DESCRIPTION:50–55 min\n4 × 6 ea Bulgarian Split Squat (Weighted)\n4 × 6 Tra
+ p Bar / DB Deadlift\n3 × 10 ea Lateral Squat\n3 × 5 Depth Drop to Jump\n3 ×
+  25 sec ea Copenhagen Plank\n3 × 12 Hanging Knee Raise
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-21@btw2026
+DTSTART;VALUE=DATE:20260721
+DTEND;VALUE=DATE:20260722
+SUMMARY:Strength: Lower Body A+
+LOCATION:At Home
+DESCRIPTION:50–55 min\n4 × 8 Barbell / DB Squat\n4 × 8 Romanian Deadlift\n3
+  × 12 ea Walking Lunge\n3 × 6 Box Jump\n3 × 8 ea Plank to Push-Up\n3 × 10 e
+ a Dead Bug + Reach
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-23@btw2026
+DTSTART;VALUE=DATE:20260723
+DTEND;VALUE=DATE:20260724
+SUMMARY:Strength: Power & Core
+LOCATION:At Home
+DESCRIPTION:40–45 min\n4 × 4 Broad Jump\n3 × 6 ea Lateral Bound\n3 × 8 Medi
+ cine Ball Slam\n3 × 10 ea Side Plank + Row\n3 × 12 V-Up\n3 × 10 ea Pallof P
+ ress Variation
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-26@btw2026
+DTSTART;VALUE=DATE:20260726
+DTEND;VALUE=DATE:20260727
+SUMMARY:Strength: Peak Strength B
+LOCATION:At Home
+DESCRIPTION:55–60 min\n5 × 4 Trap Bar Deadlift Heavy\n4 × 6 ea Lateral Squa
+ t (Weighted)\n4 × 5 Nordic Hamstring Curl\n3 × 6 ea Single-Leg Landing Dril
+ l\n3 × 8 Ab Wheel Rollout\n3 × 30 sec ea Copenhagen Plank + Hip Abduction
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-28@btw2026
+DTSTART;VALUE=DATE:20260728
+DTEND;VALUE=DATE:20260729
+SUMMARY:Strength: Peak Strength A
+LOCATION:At Home
+DESCRIPTION:55–60 min\n5 × 5 Back Squat / Heavy Goblet\n4 × 6 Romanian Dead
+ lift Heavy\n4 × 5 ea Rear-Foot Elevated Split Squat\n4 × 4 Depth Jump to Sp
+ rint\n3 × 40 sec Weighted Plank\n3 × 8 ea Rotational Med Ball Throw
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-30@btw2026
+DTSTART;VALUE=DATE:20260730
+DTEND;VALUE=DATE:20260731
+SUMMARY:Strength: Explosive Power
+LOCATION:At Home
+DESCRIPTION:45–50 min\n4 × 3 Triple Broad Jump\n3 × 5 ea Single-Leg Box Jum
+ p\n6 × 10m Sprint 10m × 6\n4 × 6 ea Med Ball Rotational Throw\n3 × 10 sec L
+ -Sit Hold\n3 × 6 Dragon Flag Progression
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-02@btw2026
+DTSTART;VALUE=DATE:20260802
+DTEND;VALUE=DATE:20260803
+SUMMARY:Strength: Peak Strength B
+LOCATION:At Home
+DESCRIPTION:55–60 min\n5 × 4 Trap Bar Deadlift Heavy\n4 × 6 ea Lateral Squa
+ t (Weighted)\n4 × 5 Nordic Hamstring Curl\n3 × 6 ea Single-Leg Landing Dril
+ l\n3 × 8 Ab Wheel Rollout\n3 × 30 sec ea Copenhagen Plank + Hip Abduction
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-04@btw2026
+DTSTART;VALUE=DATE:20260804
+DTEND;VALUE=DATE:20260805
+SUMMARY:Strength: Peak Strength A
+LOCATION:At Home
+DESCRIPTION:55–60 min\n5 × 5 Back Squat / Heavy Goblet\n4 × 6 Romanian Dead
+ lift Heavy\n4 × 5 ea Rear-Foot Elevated Split Squat\n4 × 4 Depth Jump to Sp
+ rint\n3 × 40 sec Weighted Plank\n3 × 8 ea Rotational Med Ball Throw
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-06@btw2026
+DTSTART;VALUE=DATE:20260806
+DTEND;VALUE=DATE:20260807
+SUMMARY:Strength: Explosive Power
+LOCATION:At Home
+DESCRIPTION:45–50 min\n4 × 3 Triple Broad Jump\n3 × 5 ea Single-Leg Box Jum
+ p\n6 × 10m Sprint 10m × 6\n4 × 6 ea Med Ball Rotational Throw\n3 × 10 sec L
+ -Sit Hold\n3 × 6 Dragon Flag Progression
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-09@btw2026
+DTSTART;VALUE=DATE:20260809
+DTEND;VALUE=DATE:20260810
+SUMMARY:Strength: Peak Strength B
+LOCATION:At Home
+DESCRIPTION:55–60 min\n5 × 4 Trap Bar Deadlift Heavy\n4 × 6 ea Lateral Squa
+ t (Weighted)\n4 × 5 Nordic Hamstring Curl\n3 × 6 ea Single-Leg Landing Dril
+ l\n3 × 8 Ab Wheel Rollout\n3 × 30 sec ea Copenhagen Plank + Hip Abduction
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-11@btw2026
+DTSTART;VALUE=DATE:20260811
+DTEND;VALUE=DATE:20260812
+SUMMARY:Strength: Peak Strength A
+LOCATION:At Home
+DESCRIPTION:55–60 min\n5 × 5 Back Squat / Heavy Goblet\n4 × 6 Romanian Dead
+ lift Heavy\n4 × 5 ea Rear-Foot Elevated Split Squat\n4 × 4 Depth Jump to Sp
+ rint\n3 × 40 sec Weighted Plank\n3 × 8 ea Rotational Med Ball Throw
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-13@btw2026
+DTSTART;VALUE=DATE:20260813
+DTEND;VALUE=DATE:20260814
+SUMMARY:Strength: Explosive Power
+LOCATION:At Home
+DESCRIPTION:45–50 min\n4 × 3 Triple Broad Jump\n3 × 5 ea Single-Leg Box Jum
+ p\n6 × 10m Sprint 10m × 6\n4 × 6 ea Med Ball Rotational Throw\n3 × 10 sec L
+ -Sit Hold\n3 × 6 Dragon Flag Progression
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-16@btw2026
+DTSTART;VALUE=DATE:20260816
+DTEND;VALUE=DATE:20260817
+SUMMARY:Strength: Feel Good Session
+LOCATION:At Home
+DESCRIPTION:20–25 min\n2 × 10 Bodyweight Squat\n2 × 10 ea Single-Leg Glute 
+ Bridge\n2 × 8 ea Bird Dog\n10 min Light Jog + Dynamic Stretch
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-18@btw2026
+DTSTART;VALUE=DATE:20260818
+DTEND;VALUE=DATE:20260819
+SUMMARY:Strength: Maintenance A
+LOCATION:At Home
+DESCRIPTION:30–35 min\n2 × 8 Goblet Squat\n2 × 8 Romanian Deadlift\n2 × 12 
+ Glute Bridge\n2 × 30 sec Plank Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-20@btw2026
+DTSTART;VALUE=DATE:20260820
+DTEND;VALUE=DATE:20260821
+SUMMARY:Strength: Activation & Power
+LOCATION:At Home
+DESCRIPTION:25–30 min\n3 × 3 Broad Jump\n3 × 4 ea Lateral Bound\n2 × 20 sec
+  ea Side Plank\n4 × 20m Sprint Strides 20m × 4
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-23@btw2026
+DTSTART;VALUE=DATE:20260823
+DTEND;VALUE=DATE:20260824
+SUMMARY:Strength: Feel Good Session
+LOCATION:At Home
+DESCRIPTION:20–25 min\n2 × 10 Bodyweight Squat\n2 × 10 ea Single-Leg Glute 
+ Bridge\n2 × 8 ea Bird Dog\n10 min Light Jog + Dynamic Stretch
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-25@btw2026
+DTSTART;VALUE=DATE:20260825
+DTEND;VALUE=DATE:20260826
+SUMMARY:Strength: Maintenance A
+LOCATION:At Home
+DESCRIPTION:30–35 min\n2 × 8 Goblet Squat\n2 × 8 Romanian Deadlift\n2 × 12 
+ Glute Bridge\n2 × 30 sec Plank Hold
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-08-27@btw2026
+DTSTART;VALUE=DATE:20260827
+DTEND;VALUE=DATE:20260828
+SUMMARY:Strength: Activation & Power
+LOCATION:At Home
+DESCRIPTION:25–30 min\n3 × 3 Broad Jump\n3 × 4 ea Lateral Bound\n2 × 20 sec
+  ea Side Plank\n4 × 20m Sprint Strides 20m × 4
+END:VEVENT
+BEGIN:VEVENT
 UID:camp-2026-07-06@btw2026
 DTSTART:20260706T080000
 DTEND:20260706T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-07@btw2026
 DTSTART:20260707T080000
 DTEND:20260707T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-08@btw2026
 DTSTART:20260708T080000
 DTEND:20260708T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-09@btw2026
 DTSTART:20260709T080000
 DTEND:20260709T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-10@btw2026
 DTSTART:20260710T080000
 DTEND:20260710T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-13@btw2026
 DTSTART:20260713T080000
 DTEND:20260713T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-14@btw2026
 DTSTART:20260714T080000
 DTEND:20260714T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-15@btw2026
 DTSTART:20260715T080000
 DTEND:20260715T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-16@btw2026
 DTSTART:20260716T080000
 DTEND:20260716T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-17@btw2026
 DTSTART:20260717T080000
 DTEND:20260717T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-20@btw2026
 DTSTART:20260720T080000
 DTEND:20260720T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-21@btw2026
 DTSTART:20260721T080000
 DTEND:20260721T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-22@btw2026
 DTSTART:20260722T080000
 DTEND:20260722T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-23@btw2026
 DTSTART:20260723T080000
 DTEND:20260723T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-24@btw2026
 DTSTART:20260724T080000
 DTEND:20260724T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-27@btw2026
 DTSTART:20260727T080000
 DTEND:20260727T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-28@btw2026
 DTSTART:20260728T080000
 DTEND:20260728T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-29@btw2026
 DTSTART:20260729T080000
 DTEND:20260729T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-30@btw2026
 DTSTART:20260730T080000
 DTEND:20260730T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-31@btw2026
 DTSTART:20260731T080000
 DTEND:20260731T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-03@btw2026
 DTSTART:20260803T080000
 DTEND:20260803T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-04@btw2026
 DTSTART:20260804T080000
 DTEND:20260804T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-05@btw2026
 DTSTART:20260805T080000
 DTEND:20260805T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-06@btw2026
 DTSTART:20260806T080000
 DTEND:20260806T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-07@btw2026
 DTSTART:20260807T080000
 DTEND:20260807T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-10@btw2026
 DTSTART:20260810T080000
 DTEND:20260810T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-11@btw2026
 DTSTART:20260811T080000
 DTEND:20260811T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-12@btw2026
 DTSTART:20260812T080000
 DTEND:20260812T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-13@btw2026
 DTSTART:20260813T080000
 DTEND:20260813T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-14@btw2026
 DTSTART:20260814T080000
 DTEND:20260814T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes
+LOCATION:Downes Field
 END:VEVENT
 END:VCALENDAR
