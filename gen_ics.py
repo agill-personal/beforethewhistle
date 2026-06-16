@@ -107,7 +107,7 @@ for time_decided, ds, title, start, end, loc, desc in fitness:
         events.append(vevent('fit-'+ds, 'DTSTART;VALUE=DATE:'+dc, 'DTEND;VALUE=DATE:'+next_day(ds), title+' (Time TBD)', loc, desc))
 
 # STRENGTH WORKOUTS (all-day events)
-STRENGTH_DAYS = {0, 2, 4}  # Sun=0, Tue=2, Thu=4 (JS weekday)
+STRENGTH_DAYS = set()  # disabled for now; restore to {0, 2, 4} to re-enable
 SKIP = {'2026-06-28'}
 workouts = {
     0: [(2,'Lower Body A','45-50 min'), (4,'Core & Stability','35-40 min'), (0,'Lower Body B','45-50 min')],

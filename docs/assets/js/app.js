@@ -514,19 +514,6 @@ function buildWeekCalendar() {
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(s.time), priority: 4 });
     }
 
-    if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START && !STRENGTH_SKIP_DATES.has(ds)) {
-      const phase  = getPhaseForDate(day);
-      const wkIdx  = dow === 2 ? 0 : dow === 4 ? 1 : 2;
-      const workout = WORKOUTS[phase][wkIdx];
-      const sKey   = 'str-' + ds;
-      const btn    = document.createElement('button');
-      btn.className = 'wk-event type-strength';
-      const evLabel = dow === 0 ? 'Sat or Sun' : workout.duration;
-      btn.innerHTML = workout.title + '<span class="ev-time">\uD83D\uDCAA ' + evLabel + '</span>';
-      btn.onclick = (function(k, p, w, d2) { return function() { openPanel(k, 'strength', d2, p, w); }; })(sKey, phase, wkIdx, new Date(day));
-      untimedItems.push(btn);
-    }
-
     timedItems.sort(function(a, b) {
       if (a.timeMin !== b.timeMin) return a.timeMin - b.timeMin;
       return a.priority - b.priority;
