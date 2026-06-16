@@ -112,163 +112,188 @@ const MILESTONES = {
 };
 
 const PHASES = [
-  { label:'Phase 1',   sub:'Jun 15 \u2013 Jul 4',   tag:'Foundation',  desc:'Bodyweight and light load. Master movement patterns.' },
-  { label:'Phase 2',   sub:'Jul 5 \u2013 Jul 25',   tag:'Build',       desc:'Add resistance. Introduce plyometrics. Build work capacity.' },
-  { label:'Phase 3',   sub:'Jul 26 \u2013 Aug 15',  tag:'Power',       desc:'Heavy strength + explosive work. Peak before tapering.' },
-  { label:'Taper',     sub:'Aug 16 \u2013 Aug 28',  tag:'Taper',       desc:'Reduce volume. Stay sharp. Trust your training.' },
-  { label:'In-Season', sub:'Aug 29 onwards',   tag:'Sustain',     desc:'Maintain strength through the season. Quality over volume.' },
-  { label:'Spring',    sub:'Spring 2027',       tag:'Spring Build',desc:'Rebuild and progress entering spring season.' },
+  { label:'Phase 1', sub:'Jun 15 \u2013 Jul 4',  tag:'Foundation', desc:'Learn the movements and build comfort with load. Form first \u2014 these are the patterns you\u2019ll build on all summer.' },
+  { label:'Phase 2', sub:'Jul 5 \u2013 Jul 25',  tag:'Build',      desc:'Add load and reps. Introduce the RDL row. Build work capacity and single-leg strength.' },
+  { label:'Phase 3', sub:'Jul 26 \u2013 Aug 15', tag:'Power',      desc:'Four sets, heaviest loads. Push the eccentric strength and introduce single-leg landing progressions.' },
+  { label:'Taper',   sub:'Aug 16 \u2013 Aug 28', tag:'Taper',      desc:'Cut sets in half, keep the load. Stay sharp and fresh heading into tryouts.' },
+  { label:'In-Season', sub:'Aug 29+',            tag:'Sustain',    desc:'Maintain ACL resilience and posterior chain strength through the season. Quality over volume.' },
+  { label:'Spring',  sub:'Spring 2027',          tag:'Spring Build',desc:'Rebuild from off-season and progress back toward summer loads.' },
 ];
 
 const WORKOUTS = {
   0: [
-    { day:'Tuesday',   title:'Lower Body A',    duration:'45\u201350 min', exercises:[
-      { name:'Goblet Squat',          note:'Full depth, chest up',                  sets:'3 \u00D7 12' },
-      { name:'Romanian Deadlift',     note:'Slow eccentric, feel the stretch',      sets:'3 \u00D7 10' },
-      { name:'Reverse Lunge',         note:'Alternate legs, controlled',            sets:'3 \u00D7 10 ea' },
-      { name:'Glute Bridge',          note:'Pause 2 sec at top',                    sets:'3 \u00D7 15' },
-      { name:'Dead Bug',              note:'Lower back stays flat',                 sets:'3 \u00D7 10 ea' },
-      { name:'Plank Hold',            note:'Shoulders over wrists',                 sets:'3 \u00D7 30 sec' },
-    ]},
-    { day:'Thursday',  title:'Core & Stability', duration:'35\u201340 min', exercises:[
-      { name:'Single-Leg Glute Bridge', note:'Control the drop',                    sets:'3 \u00D7 12 ea' },
-      { name:'Side Plank',            note:"Hips stacked, don't sag",              sets:'3 \u00D7 25 sec ea' },
-      { name:'Bird Dog',              note:'Opposite arm + leg, slow',              sets:'3 \u00D7 10 ea' },
-      { name:'Pallof Press (Band)',   note:'Anti-rotation, no twisting',           sets:'3 \u00D7 10 ea' },
-      { name:'Lateral Band Walk',     note:'Stay low, knees soft',                  sets:'3 \u00D7 15 ea' },
-      { name:'Hollow Body Hold',      note:'Lower back pressed down',               sets:'3 \u00D7 20 sec' },
-    ]},
-    { day:'Sat / Sun', title:'Lower Body B',    duration:'45\u201350 min', exercises:[
-      { name:'Bulgarian Split Squat', note:'Back foot elevated, drop straight down', sets:'3 \u00D7 8 ea' },
-      { name:'Sumo Squat',            note:'Wide stance, toes out',                 sets:'3 \u00D7 12' },
-      { name:'Nordic Hamstring Curl', note:'Partner holds feet or use bench',       sets:'3 \u00D7 6' },
-      { name:'Step-Up',               note:'Drive through the heel on top',         sets:'3 \u00D7 10 ea' },
-      { name:'Copenhagen Plank',      note:'Adductor challenge',                    sets:'3 \u00D7 20 sec ea' },
-      { name:'Russian Twist',         note:'Controlled rotation',                   sets:'3 \u00D7 15 ea' },
-    ]},
+    { day:'Day A', title:'Lower Body & Core', duration:'~25 min', game:'Squat Hold Relay',
+      exercises:[
+        { name:'Goblet Squat',              note:'KB at chest, pause 1 sec at bottom, knees track over toes', sets:'3 \u00D7 10',           load:'Kettlebell' },
+        { name:'Glute Bridge Floor Press',  note:'Hold bridge position throughout all reps',                  sets:'3 \u00D7 10',           load:'Dumbbells' },
+        { name:'Reverse Lunge + Rotation',  note:'Step back, rotate torso over front leg, return. Hold one DB at chest', sets:'3 \u00D7 8/side', load:'DB or KB' },
+        { name:'Side Plank Hip Dips',       note:'Side plank position, tap hip to ground and lift',           sets:'3 \u00D7 10/side',      load:'Bodyweight' },
+      ],
+      finisher:{ name:'Nordic Negatives [ACL]', note:'Kneel with feet anchored. Lower as slowly as possible (4\u20135 sec). Catch with hands. Add reps each week.', sets:'3 \u00D7 3\u20136', load:'Bodyweight' }
+    },
+    { day:'Day B', title:'Hinge & Carry', duration:'~25 min', game:'Single-Leg Balance Tag',
+      exercises:[
+        { name:'DB Romanian Deadlift',           note:'Hinge at hips, soft knee, flat back. Feel the hamstring load',             sets:'3 \u00D7 10',       load:'Dumbbells' },
+        { name:'Suitcase Carry Lunge + Leg Lift', note:'Heavy DB in one hand, lunge forward, drive knee up at the top. Switch hands each set', sets:'3 \u00D7 10/side', load:'DB or KB' },
+        { name:'Lateral Band Walk into Squat',   note:'3 steps right, squat, 3 steps left, squat = 1 rep. Hip abductors loaded throughout', sets:'3 \u00D7 8 reps',  load:'Medium band' },
+        { name:'Banded Dead Bug',                note:'Hold band taut overhead while doing dead bug reps. Lower back stays pressed down', sets:'3 \u00D7 6/side',  load:'Light band' },
+      ],
+      finisher:{ name:'Copenhagen Plank Ladder [ACL]', note:'Side plank with top foot on bench/chair. 10 sec hold, rest 10 sec, 15 sec, rest, 20 sec \u2014 each side.', sets:'1/side \u00D7 10\u201315\u201320 sec', load:'Bodyweight' }
+    },
+    { day:'Day C', title:'Single-Leg & Stability', duration:'~25 min', game:'Carry AMRAP Race',
+      exercises:[
+        { name:'Single-Leg RDL to Row',       note:'Hinge on one leg, DB in opposite hand. Row before standing. Balance + hinge + pull', sets:'3 \u00D7 8/side',          load:'Kettlebell' },
+        { name:'Step-Up to Overhead Press',   note:'Step up onto box, drive knee up, press DBs overhead at top. Lower with control',    sets:'3 \u00D7 8/side',          load:'Dumbbells' },
+        { name:'Single-Leg Calf Raise',       note:'Elevate forefoot, full range of motion. Add a DB if needed',                        sets:'3 \u00D7 10\u201320/side',      load:'BW or DB' },
+        { name:'Single-Arm Plank Variation',  note:'Easiest to hardest: toe tap \u2192 shoulder tap \u2192 reach out \u2192 elbow to tall \u2192 single-arm hold', sets:'3 \u00D7 20 reps or 30 sec', load:'Bodyweight' },
+      ],
+      finisher:{ name:'Two-Foot Landing Drill [ACL]', note:'Step off a box, absorb on two feet. Soft knees, no valgus collapse. Land quiet. Progress to jumping off.', sets:'2 \u00D7 6', load:'Bodyweight' }
+    },
   ],
   1: [
-    { day:'Tuesday',   title:'Lower Body A+',  duration:'50\u201355 min', exercises:[
-      { name:'Barbell / DB Squat',    note:'Add weight from Phase 1 baseline',      sets:'4 \u00D7 8' },
-      { name:'Romanian Deadlift',     note:'Increase load 10\u201315%',                  sets:'4 \u00D7 8' },
-      { name:'Walking Lunge',         note:'Add dumbbells',                         sets:'3 \u00D7 12 ea' },
-      { name:'Box Jump',              note:'Land soft, absorb with hips',           sets:'3 \u00D7 6' },
-      { name:'Plank to Push-Up',      note:'Controlled transitions',                sets:'3 \u00D7 8 ea' },
-      { name:'Dead Bug + Reach',      note:'Slow and deliberate',                   sets:'3 \u00D7 10 ea' },
-    ]},
-    { day:'Thursday',  title:'Power & Core',   duration:'40\u201345 min', exercises:[
-      { name:'Broad Jump',            note:'Max effort, stick the landing',         sets:'4 \u00D7 4' },
-      { name:'Lateral Bound',         note:'Stick each landing before rebounding',  sets:'3 \u00D7 6 ea' },
-      { name:'Medicine Ball Slam',    note:'Full hip extension overhead',           sets:'3 \u00D7 8' },
-      { name:'Side Plank + Row',      note:'Resistance band, stay square',          sets:'3 \u00D7 10 ea' },
-      { name:'V-Up',                  note:'Keep legs straight',                    sets:'3 \u00D7 12' },
-      { name:'Pallof Press Variation',note:'Add half-kneeling position',            sets:'3 \u00D7 10 ea' },
-    ]},
-    { day:'Sat / Sun', title:'Lower Body B+',  duration:'50\u201355 min', exercises:[
-      { name:'Bulgarian Split Squat (Weighted)', note:'Dumbbells or barbell',       sets:'4 \u00D7 6 ea' },
-      { name:'Trap Bar / DB Deadlift',note:'Drive floor away, hips and shoulders rise together', sets:'4 \u00D7 6' },
-      { name:'Lateral Squat',         note:'Sit back into one hip',                 sets:'3 \u00D7 10 ea' },
-      { name:'Depth Drop to Jump',    note:'Step off, absorb, explode',             sets:'3 \u00D7 5' },
-      { name:'Copenhagen Plank',      note:'Longer hold for progression',           sets:'3 \u00D7 25 sec ea' },
-      { name:'Hanging Knee Raise',    note:'Control the swing',                     sets:'3 \u00D7 12' },
-    ]},
+    { day:'Day A', title:'Lower Body & Core', duration:'~30 min', game:'Squat Hold Relay',
+      exercises:[
+        { name:'Goblet Squat',             note:'Heavier KB than Phase 1. Pause 1 sec at bottom \u2014 try a jump squat if feeling strong', sets:'3 \u00D7 12',      load:'Heavier Kettlebell' },
+        { name:'Glute Bridge Floor Press', note:'Increase load from Phase 1. Full press, hold bridge throughout',                        sets:'3 \u00D7 12',      load:'Heavier Dumbbells' },
+        { name:'Reverse Lunge + Rotation', note:'More load than Phase 1. Pause in lunge before rotating',                               sets:'3 \u00D7 10/side', load:'Heavier DB or KB' },
+        { name:'Side Plank Hip Dips',      note:'Add a dumbbell to hip if Phase 1 felt easy',                                           sets:'3 \u00D7 12/side', load:'BW or DB' },
+      ],
+      finisher:{ name:'Nordic Negatives [ACL]', note:'Target 5+ sec lowering. Slower than Phase 1. Add reps from where you left off.', sets:'3 \u00D7 4\u20136', load:'Bodyweight' }
+    },
+    { day:'Day B', title:'Hinge & Carry', duration:'~30 min', game:'Single-Leg Balance Tag',
+      exercises:[
+        { name:'DB Romanian Deadlift + Row', note:'Add a row at the bottom before standing \u2014 new this phase. Heavier DBs than Phase 1', sets:'3 \u00D7 10',      load:'Heavier Dumbbells' },
+        { name:'Suitcase Carry Lunge + Leg Lift', note:'Heavier load. Drive the knee higher at the top',                                sets:'3 \u00D7 12/side', load:'Heavier DB or KB' },
+        { name:'Lateral Band Walk into Squat',   note:'Upgrade to a heavier band. Keep hips level, stay low',                          sets:'3 \u00D7 10 reps', load:'Heavy band' },
+        { name:'Banded Dead Bug',                note:'Upgrade to medium band. Ribcage down, no arching',                              sets:'3 \u00D7 8/side',  load:'Medium band' },
+      ],
+      finisher:{ name:'Copenhagen Plank Ladder [ACL]', note:'Longer holds than Phase 1: 15\u201320\u201325 sec. Add top-leg hip abduction if ready.', sets:'1/side \u00D7 15\u201320\u201325 sec', load:'Bodyweight' }
+    },
+    { day:'Day C', title:'Single-Leg & Stability', duration:'~30 min', game:'Carry AMRAP Race',
+      exercises:[
+        { name:'Single-Leg RDL to Row',      note:'Heavier KB. Full row range of motion at the bottom before standing',                 sets:'3 \u00D7 10/side', load:'Heavier Kettlebell' },
+        { name:'Step-Up to Overhead Press',  note:'Heavier DBs. Add a knee hold at the top before pressing',                            sets:'3 \u00D7 10/side', load:'Heavier Dumbbells' },
+        { name:'Single-Leg Calf Raise',      note:'Add a DB or KB. Full range \u2014 stretch at the very bottom',                            sets:'3 \u00D7 15/side', load:'DB or KB' },
+        { name:'Single-Arm Plank Variation', note:'Move to the next level from Phase 1: shoulder tap \u2192 reach out \u2192 elbow to tall plank', sets:'3 \u00D7 30 sec', load:'Bodyweight' },
+      ],
+      finisher:{ name:'Landing Drill [ACL]', note:'Progress to step off + land + immediately jump as high as possible. Stick each landing cold.', sets:'2 \u00D7 6', load:'Bodyweight' }
+    },
   ],
   2: [
-    { day:'Tuesday',   title:'Peak Strength A', duration:'55\u201360 min', exercises:[
-      { name:'Back Squat / Heavy Goblet', note:'Work up to 5-rep challenge set',   sets:'5 \u00D7 5' },
-      { name:'Romanian Deadlift Heavy',   note:'Focus on hamstring tension',        sets:'4 \u00D7 6' },
-      { name:'Rear-Foot Elevated Split Squat', note:'Heaviest phase weight',        sets:'4 \u00D7 5 ea' },
-      { name:'Depth Jump to Sprint',      note:'Land, explode, sprint 10m',         sets:'4 \u00D7 4' },
-      { name:'Weighted Plank',            note:'Plate on back',                     sets:'3 \u00D7 40 sec' },
-      { name:'Rotational Med Ball Throw', note:'Explosive hip rotation',            sets:'3 \u00D7 8 ea' },
-    ]},
-    { day:'Thursday',  title:'Explosive Power', duration:'45\u201350 min', exercises:[
-      { name:'Triple Broad Jump',      note:'3 consecutive jumps, max distance',    sets:'4 \u00D7 3' },
-      { name:'Single-Leg Box Jump',    note:'Lead with strong leg first',           sets:'3 \u00D7 5 ea' },
-      { name:'Sprint 10m \u00D7 6',         note:'Full rest between, max effort',        sets:'6 \u00D7 10m' },
-      { name:'Med Ball Rotational Throw', note:'Drive from ground up',              sets:'4 \u00D7 6 ea' },
-      { name:'L-Sit Hold',             note:'Build to 3 \u00D7 15 sec',                 sets:'3 \u00D7 10 sec' },
-      { name:'Dragon Flag Progression',note:'Scaled as needed',                     sets:'3 \u00D7 6' },
-    ]},
-    { day:'Sat / Sun', title:'Peak Strength B', duration:'55\u201360 min', exercises:[
-      { name:'Trap Bar Deadlift Heavy',note:'Max effort within solid form',         sets:'5 \u00D7 4' },
-      { name:'Lateral Squat (Weighted)',note:'Control the descent',                 sets:'4 \u00D7 6 ea' },
-      { name:'Nordic Hamstring Curl', note:'Eccentric focus, slow lower',          sets:'4 \u00D7 5' },
-      { name:'Single-Leg Landing Drill',note:'Drop from box, freeze on landing',   sets:'3 \u00D7 6 ea' },
-      { name:'Ab Wheel Rollout',       note:"Brace hard, don't let hips drop",     sets:'3 \u00D7 8' },
-      { name:'Copenhagen Plank + Hip Abduction', note:'Add top leg lift',          sets:'3 \u00D7 30 sec ea' },
-    ]},
+    { day:'Day A', title:'Lower Body & Core', duration:'~30 min', game:'Squat Hold Relay',
+      exercises:[
+        { name:'Goblet Squat',             note:'Heaviest load yet \u2014 4 sets. Aim for a challenge set where rep 10 is hard',             sets:'4 \u00D7 10',      load:'Heaviest Kettlebell' },
+        { name:'Glute Bridge Floor Press', note:'Heaviest load. Full range press, controlled tempo',                                     sets:'4 \u00D7 10',      load:'Heaviest Dumbbells' },
+        { name:'Reverse Lunge + Rotation', note:'Heaviest load. Explosive drive through front heel on the way back up',                  sets:'4 \u00D7 8/side',  load:'Heaviest DB or KB' },
+        { name:'Side Plank Hip Dips',      note:'Add dumbbell to hip. Full range of motion \u2014 full dip, full lift',                      sets:'3 \u00D7 15/side', load:'Dumbbell' },
+      ],
+      finisher:{ name:'Nordic Negatives [ACL]', note:'Slowest lowers yet \u2014 aim for 6+ sec. Try an assisted concentric (push back up with hands) if possible.', sets:'3 \u00D7 5\u20136', load:'Bodyweight' }
+    },
+    { day:'Day B', title:'Hinge & Carry', duration:'~30 min', game:'Single-Leg Balance Tag',
+      exercises:[
+        { name:'DB Romanian Deadlift + Row', note:'Heaviest load. Explosive hip extension on the way up \u2014 fast concentric',              sets:'4 \u00D7 8',       load:'Heaviest Dumbbells' },
+        { name:'Suitcase Carry Lunge + Leg Lift', note:'Heaviest load. Knee drive to hip height',                                       sets:'4 \u00D7 10/side', load:'Heaviest DB or KB' },
+        { name:'Lateral Band Walk into Squat',   note:'Heaviest band. 4 steps each way. Stay low the whole time',                      sets:'4 \u00D7 10 reps', load:'Heaviest band' },
+        { name:'Banded Dead Bug',                note:'Heaviest band. 2-second pause at full extension before returning',               sets:'3 \u00D7 8/side',  load:'Heavy band' },
+      ],
+      finisher:{ name:'Copenhagen Plank + Hip Abduction [ACL]', note:'Longest holds yet. Lift the top leg throughout each hold \u2014 no resting it down.', sets:'1/side \u00D7 20\u201325\u201330 sec', load:'Bodyweight' }
+    },
+    { day:'Day C', title:'Single-Leg & Stability', duration:'~30 min', game:'Carry AMRAP Race',
+      exercises:[
+        { name:'Single-Leg RDL to Row',      note:'Heaviest load \u2014 4 sets. Pause 1 sec at the bottom before rowing',                    sets:'4 \u00D7 8/side',  load:'Heaviest Kettlebell' },
+        { name:'Step-Up to Overhead Press',  note:'Heaviest load. Hold the knee up for 2 sec before pressing',                          sets:'4 \u00D7 8/side',  load:'Heaviest Dumbbells' },
+        { name:'Single-Leg Calf Raise',      note:'Heaviest load. Explosive push at the top \u2014 plyometric calf raise',                   sets:'3 \u00D7 15/side', load:'Heaviest DB or KB' },
+        { name:'Single-Arm Plank Hold',      note:'Hardest plank variation \u2014 full single-arm hold. Brace everything',                   sets:'3 \u00D7 30 sec/side', load:'Bodyweight' },
+      ],
+      finisher:{ name:'Single-Leg Landing Drill [ACL]', note:'Progress to single-leg: step off the box, absorb on one foot. Stick it \u2014 no wobble, no extra step.', sets:'2 \u00D7 6/side', load:'Bodyweight' }
+    },
   ],
   3: [
-    { day:'Tuesday',   title:'Maintenance A',   duration:'30\u201335 min', exercises:[
-      { name:'Goblet Squat',           note:'Moderate weight, move well',          sets:'2 \u00D7 8' },
-      { name:'Romanian Deadlift',      note:'Light, focus on feel',                 sets:'2 \u00D7 8' },
-      { name:'Glute Bridge',           note:'Activation only',                      sets:'2 \u00D7 12' },
-      { name:'Plank Hold',             note:'Quality over time',                    sets:'2 \u00D7 30 sec' },
-    ]},
-    { day:'Thursday',  title:'Activation & Power', duration:'25\u201330 min', exercises:[
-      { name:'Broad Jump',             note:'3 reps, feel the pop',                sets:'3 \u00D7 3' },
-      { name:'Lateral Bound',          note:'Light and snappy',                     sets:'3 \u00D7 4 ea' },
-      { name:'Side Plank',             note:'Short hold, sharp engagement',         sets:'2 \u00D7 20 sec ea' },
-      { name:'Sprint Strides 20m \u00D7 4',note:'75\u201380% effort, stay fluid',           sets:'4 \u00D7 20m' },
-    ]},
-    { day:'Sat / Sun', title:'Feel Good Session', duration:'20\u201325 min', exercises:[
-      { name:'Bodyweight Squat',            note:'Fluid, full range',               sets:'2 \u00D7 10' },
-      { name:'Single-Leg Glute Bridge',     note:'Feel that activation',            sets:'2 \u00D7 10 ea' },
-      { name:'Bird Dog',                    note:'Control and breathe',             sets:'2 \u00D7 8 ea' },
-      { name:'Light Jog + Dynamic Stretch', note:'Leave feeling loose and ready',  sets:'10 min' },
-    ]},
+    { day:'Day A', title:'Lower Body & Core', duration:'~20 min', game:'Squat Hold Relay',
+      exercises:[
+        { name:'Goblet Squat',             note:'Keep Phase 3 load, drop to 2 sets. Move well \u2014 no grinding', sets:'2 \u00D7 8',      load:'Phase 3 Kettlebell' },
+        { name:'Glute Bridge Floor Press', note:'Keep load, cut volume. Quality over quantity',                 sets:'2 \u00D7 10',     load:'Dumbbells' },
+        { name:'Reverse Lunge + Rotation', note:'Moderate load. Focus on control and range',                    sets:'2 \u00D7 8/side', load:'DB or KB' },
+        { name:'Side Plank Hip Dips',      note:'Sharp and clean. No sloppy reps',                             sets:'2 \u00D7 10/side', load:'BW or DB' },
+      ],
+      finisher:{ name:'Nordic Negatives [ACL]', note:'Reduced volume. Slow and controlled \u2014 maintain what you built.', sets:'2 \u00D7 3\u20134', load:'Bodyweight' }
+    },
+    { day:'Day B', title:'Hinge & Carry', duration:'~20 min', game:'Single-Leg Balance Tag',
+      exercises:[
+        { name:'DB Romanian Deadlift + Row', note:'Moderate load. Feel the movement \u2014 don\'t grind',           sets:'2 \u00D7 8',      load:'Moderate Dumbbells' },
+        { name:'Suitcase Carry Lunge + Leg Lift', note:'Moderate load. Controlled and precise',                sets:'2 \u00D7 10/side', load:'DB or KB' },
+        { name:'Lateral Band Walk into Squat',   note:'Medium band. Short and sharp \u2014 activate, don\'t fatigue', sets:'2 \u00D7 8 reps', load:'Medium band' },
+        { name:'Banded Dead Bug',                note:'Light band. Breathe and brace. Quality only',           sets:'2 \u00D7 6/side',  load:'Light band' },
+      ],
+      finisher:{ name:'Copenhagen Plank Ladder [ACL]', note:'Short holds, high quality. Activate and stay sharp.', sets:'1/side \u00D7 10\u201315 sec', load:'Bodyweight' }
+    },
+    { day:'Day C', title:'Single-Leg & Stability', duration:'~20 min', game:'Carry AMRAP Race',
+      exercises:[
+        { name:'Single-Leg RDL to Row',      note:'Moderate load. Balance and control above all',              sets:'2 \u00D7 8/side',  load:'Kettlebell' },
+        { name:'Step-Up to Overhead Press',  note:'Moderate load. Smooth and controlled',                      sets:'2 \u00D7 8/side',  load:'Dumbbells' },
+        { name:'Single-Leg Calf Raise',      note:'Moderate load. Full range, no bouncing',                    sets:'2 \u00D7 12/side', load:'BW or DB' },
+        { name:'Single-Arm Plank Hold',      note:'Short and sharp. Leave something in the tank',              sets:'2 \u00D7 20 sec/side', load:'Bodyweight' },
+      ],
+      finisher:{ name:'Landing Drill [ACL]', note:'Activation only \u2014 land clean and quiet. One set, no fatigue.', sets:'1 \u00D7 4/side', load:'Bodyweight' }
+    },
   ],
   4: [
-    { day:'Tuesday',   title:'In-Season Lower Body',      duration:'35\u201340 min', exercises:[
-      { name:'Trap Bar Deadlift',        note:'Heavy but crisp, explosive intent',        sets:'3 \u00D7 5' },
-      { name:'Bulgarian Split Squat',    note:'Controlled, add load from summer',          sets:'3 \u00D7 6 ea' },
-      { name:'Single-Leg RDL',           note:'Balance and hamstring strength',            sets:'3 \u00D7 8 ea' },
-      { name:'Copenhagen Plank',         note:'Groin and adductor health',                sets:'3 \u00D7 20 sec ea' },
-      { name:'Pallof Press',             note:'Core anti-rotation, stay tall',             sets:'3 \u00D7 10 ea' },
-    ]},
-    { day:'Thursday',  title:'Power & Core Maintenance',  duration:'30\u201335 min', exercises:[
-      { name:'Broad Jump',               note:'Maintain explosiveness, full effort',      sets:'3 \u00D7 4' },
-      { name:'Lateral Bound',            note:'Reactive landing control',                  sets:'3 \u00D7 5 ea' },
-      { name:'Med Ball Rotational Throw',note:'Hip drive and rotation power',              sets:'3 \u00D7 6 ea' },
-      { name:'Dead Bug',                 note:'Deep core stability',                       sets:'3 \u00D7 10 ea' },
-      { name:'Side Plank + Hip Abduction',note:'Glute med activation',                    sets:'3 \u00D7 20 sec ea' },
-      { name:'Ab Wheel Rollout',         note:'Total core strength',                       sets:'3 \u00D7 8' },
-    ]},
-    { day:'Sat / Sun', title:'Weekend Full Body',          duration:'40\u201345 min', exercises:[
-      { name:'Back Squat or Goblet Squat',note:'Keep load challenging but fresh',         sets:'3 \u00D7 6' },
-      { name:'Romanian Deadlift',        note:'Hamstring focus, slow eccentric',           sets:'3 \u00D7 8' },
-      { name:'Step-Up with Knee Drive',  note:'Single-leg power and balance',             sets:'3 \u00D7 10 ea' },
-      { name:'Nordic Hamstring Curl',    note:'Injury prevention, do not skip',          sets:'3 \u00D7 5' },
-      { name:'Plank Variations',         note:'Mix front, side, and RKC plank',           sets:'3 \u00D7 35 sec' },
-      { name:'Glute Bridge March',       note:'Hip stability and activation',              sets:'3 \u00D7 12 ea' },
-    ]},
+    { day:'Day A', title:'Lower Body & Core', duration:'~25 min', game:'Squat Hold Relay',
+      exercises:[
+        { name:'Goblet Squat',             note:'Moderate load. Move explosively \u2014 maintain power through the season', sets:'2 \u00D7 8',      load:'Kettlebell' },
+        { name:'Glute Bridge Floor Press', note:'Keep the muscle active. Controlled press',                             sets:'2 \u00D7 10',     load:'Dumbbells' },
+        { name:'Reverse Lunge + Rotation', note:'Single-leg focus. Control and range first',                            sets:'2 \u00D7 8/side', load:'DB or KB' },
+        { name:'Side Plank Hip Dips',      note:'Hip stability for the season. Sharp and clean',                        sets:'2 \u00D7 10/side', load:'Bodyweight' },
+      ],
+      finisher:{ name:'Nordic Negatives [ACL]', note:'Maintain eccentric hamstring strength through the season. Do not skip.', sets:'2 \u00D7 3', load:'Bodyweight' }
+    },
+    { day:'Day B', title:'Hinge & Carry', duration:'~25 min', game:'RDL Challenge',
+      exercises:[
+        { name:'DB Romanian Deadlift + Row', note:'Maintain summer load. Quality movement \u2014 no grinding',       sets:'2 \u00D7 8',      load:'Dumbbells' },
+        { name:'Suitcase Carry Lunge + Leg Lift', note:'Core stability and carry strength',                     sets:'2 \u00D7 8/side', load:'DB or KB' },
+        { name:'Lateral Band Walk into Squat',   note:'Hip abductor activation. Glute med health',              sets:'2 \u00D7 8 reps', load:'Medium band' },
+        { name:'Banded Dead Bug',                note:'Core maintenance. Lower back pressed down',              sets:'2 \u00D7 6/side', load:'Light band' },
+      ],
+      finisher:{ name:'Copenhagen Plank [ACL]', note:'Adductor and groin maintenance. Key ACL prevention \u2014 do not skip.', sets:'2 \u00D7 15 sec/side', load:'Bodyweight' }
+    },
+    { day:'Day C', title:'Single-Leg & Power', duration:'~25 min', game:'EMOM Ladder',
+      exercises:[
+        { name:'Single-Leg RDL to Row',      note:'Single-leg balance and posterior chain. Keep summer load',   sets:'2 \u00D7 8/side',  load:'Kettlebell' },
+        { name:'Step-Up to Overhead Press',  note:'Functional leg + shoulder strength. Controlled',             sets:'2 \u00D7 8/side',  load:'Dumbbells' },
+        { name:'Single-Leg Calf Raise',      note:'Ankle and lower-leg strength. Full range',                   sets:'2 \u00D7 12/side', load:'BW or DB' },
+        { name:'Single-Arm Plank Hold',      note:'Core stability maintenance',                                  sets:'2 \u00D7 20 sec/side', load:'Bodyweight' },
+      ],
+      finisher:{ name:'Landing Drill [ACL]', note:'Stay sharp \u2014 land clean and quiet before every game. Habit, not workout.', sets:'1 \u00D7 4/side', load:'Bodyweight' }
+    },
   ],
   5: [
-    { day:'Tuesday',   title:'Strength Rebuild A',        duration:'50\u201355 min', exercises:[
-      { name:'Back Squat',               note:'Rebuild from 70%, add 5 lb each week',    sets:'4 \u00D7 6' },
-      { name:'Romanian Deadlift',        note:'Load progression from fall baseline',       sets:'4 \u00D7 8' },
-      { name:'Walking Lunge (Weighted)', note:'Single-leg strength endurance',             sets:'3 \u00D7 10 ea' },
-      { name:'Box Jump',                 note:'Re-establish explosive power',              sets:'4 \u00D7 4' },
-      { name:'Hanging Knee Raise',       note:'Core strength from dead hang',              sets:'3 \u00D7 12' },
-      { name:'Lateral Band Walk',        note:'Hip activation, always warm up here',      sets:'3 \u00D7 15 ea' },
-    ]},
-    { day:'Thursday',  title:'Power & Athleticism',       duration:'45\u201350 min', exercises:[
-      { name:'Triple Broad Jump',        note:'Consecutive explosive jumps',               sets:'4 \u00D7 3' },
-      { name:'Single-Leg Box Jump',      note:'Reactive power each side',                 sets:'3 \u00D7 5 ea' },
-      { name:'Sprint 20m \u00D7 5',           note:'Max effort, full recovery between',        sets:'5 \u00D7 20m' },
-      { name:'Med Ball Slam',            note:'Full-body explosive chain',                 sets:'3 \u00D7 8' },
-      { name:'Copenhagen Plank',         note:'Groin strength, injury prevention',        sets:'3 \u00D7 25 sec ea' },
-      { name:'Russian Twist (Weighted)', note:'Rotational core power',                     sets:'3 \u00D7 12 ea' },
-    ]},
-    { day:'Sat / Sun', title:'Strength Rebuild B',        duration:'50\u201355 min', exercises:[
-      { name:'Trap Bar Deadlift',           note:'Primary posterior chain builder',        sets:'4 \u00D7 5' },
-      { name:'Bulgarian Split Squat (Heavy)',note:'Heavier than fall, test yourself',     sets:'4 \u00D7 6 ea' },
-      { name:'Nordic Hamstring Curl',       note:'Eccentric strength, protect your hamstrings', sets:'4 \u00D7 6' },
-      { name:'Lateral Squat',               note:'Hip mobility and adductor strength',     sets:'3 \u00D7 10 ea' },
-      { name:'Ab Wheel Rollout',            note:'Anti-extension core strength',           sets:'3 \u00D7 10' },
-      { name:'Bird Dog with Band',          note:'Glute and core activation',              sets:'3 \u00D7 10 ea' },
-    ]},
+    { day:'Day A', title:'Lower Body & Core', duration:'~30 min', game:'Squat Hold Relay',
+      exercises:[
+        { name:'Goblet Squat',             note:'Rebuild from off-season. Progress load across spring weeks \u2014 add KB weight each session', sets:'3 \u00D7 10',      load:'Kettlebell (building)' },
+        { name:'Glute Bridge Floor Press', note:'Re-establish pressing pattern. Progress toward Phase 2 load',                              sets:'3 \u00D7 10',      load:'Dumbbells (building)' },
+        { name:'Reverse Lunge + Rotation', note:'Work back toward summer Phase 2 load. Controlled throughout',                              sets:'3 \u00D7 10/side', load:'DB or KB (building)' },
+        { name:'Side Plank Hip Dips',      note:'Hip stability rebuild. Add load when Phase 1 feels easy again',                            sets:'3 \u00D7 12/side', load:'BW or DB' },
+      ],
+      finisher:{ name:'Nordic Negatives [ACL]', note:'Maintain eccentric strength from off-season. Slow and controlled \u2014 build reps back up.', sets:'3 \u00D7 4\u20135', load:'Bodyweight' }
+    },
+    { day:'Day B', title:'Hinge & Carry', duration:'~30 min', game:'Single-Leg Balance Tag',
+      exercises:[
+        { name:'DB Romanian Deadlift + Row', note:'Rebuild to summer load. Progress load each session',          sets:'3 \u00D7 10',      load:'Dumbbells (building)' },
+        { name:'Suitcase Carry Lunge + Leg Lift', note:'Rebuild carry strength. Progress across weeks',          sets:'3 \u00D7 10/side', load:'DB or KB (building)' },
+        { name:'Lateral Band Walk into Squat',   note:'Hip abductor and glute rebuild',                          sets:'3 \u00D7 10 reps', load:'Medium-heavy band' },
+        { name:'Banded Dead Bug',                note:'Core stability rebuild. Medium band, controlled',          sets:'3 \u00D7 8/side',  load:'Medium band' },
+      ],
+      finisher:{ name:'Copenhagen Plank Ladder [ACL]', note:'Rebuild adductor and groin strength. Progress holds across spring weeks.', sets:'1/side \u00D7 15\u201320\u201325 sec', load:'Bodyweight' }
+    },
+    { day:'Day C', title:'Single-Leg & Power', duration:'~30 min', game:'Carry AMRAP Race',
+      exercises:[
+        { name:'Single-Leg RDL to Row',      note:'Progress back to summer load. Add weight each session',       sets:'3 \u00D7 10/side', load:'Kettlebell (building)' },
+        { name:'Step-Up to Overhead Press',  note:'Rebuild overhead stability and single-leg strength',          sets:'3 \u00D7 10/side', load:'Dumbbells (building)' },
+        { name:'Single-Leg Calf Raise',      note:'Progress to added weight across weeks. Full range always',    sets:'3 \u00D7 15/side', load:'BW to DB' },
+        { name:'Single-Arm Plank Hold',      note:'Full single-arm hold. Build back to Phase 3 quality',         sets:'3 \u00D7 30 sec/side', load:'Bodyweight' },
+      ],
+      finisher:{ name:'Single-Leg Landing Drill [ACL]', note:'Rebuild landing quality. Single-leg, stick it cold, no wobble.', sets:'2 \u00D7 6/side', load:'Bodyweight' }
+    },
   ],
 };
 
@@ -1005,7 +1030,7 @@ function twRefreshCard(ds) {
 }
 
 // \u2500\u2500 STRENGTH SECTION \u2500\u2500
-var activePhase = 0;
+var activePhase = 1;
 function renderTabs() {
   var tabs = document.getElementById('weekTabs');
   if (!tabs) return;
@@ -1021,13 +1046,29 @@ function renderWorkouts() {
   container.innerHTML =
     '<div style="grid-column:1/-1;font-size:0.85rem;color:var(--mid);margin-bottom:0.5rem;"><strong style="color:inherit">'+phase.label+': '+phase.sub+'</strong>. '+phase.desc+'</div>' +
     days.map(function(w){
+      function loadBadge(load) {
+        if (!load) return '';
+        return '<span style="font-size:0.68rem;font-weight:500;padding:0.1rem 0.45rem;border-radius:3px;background:var(--surface-raised);color:var(--mid);white-space:nowrap;margin-top:0.2rem">'+load+'</span>';
+      }
+      var exHTML = w.exercises.map(function(e){
+        return '<li class="exercise-item"><div><div class="ex-name">'+e.name+'</div><div class="ex-note">'+e.note+'</div></div>' +
+          '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.2rem"><span class="ex-sets">'+e.sets+'</span>'+loadBadge(e.load)+'</div></li>';
+      }).join('');
+      var finisherHTML = w.finisher ?
+        '<div style="margin-top:1rem;padding-top:0.75rem;border-top:1px solid var(--border)">' +
+          '<div style="font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);margin-bottom:0.5rem">Finisher \u00B7 ~5 min</div>' +
+          '<div class="exercise-item" style="padding:0.25rem 0 0">' +
+            '<div><div class="ex-name">'+w.finisher.name+'</div><div class="ex-note">'+w.finisher.note+'</div></div>' +
+            '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.2rem"><span class="ex-sets">'+w.finisher.sets+'</span>'+loadBadge(w.finisher.load)+'</div>' +
+          '</div></div>' : '';
+      var gameHTML = w.game ?
+        '<div style="margin-top:0.85rem;font-size:0.8rem;font-weight:500;color:var(--accent)">Game: <a href="#strength-games" style="color:inherit;text-decoration:underline;text-underline-offset:2px">'+w.game+'</a></div>' : '';
       return '<div class="workout-card">' +
         '<div class="workout-card-header"><div class="day-label">'+w.day+'</div><h3>'+w.title+'</h3><div class="duration">\u23F1 '+w.duration+'</div></div>' +
-        '<ul class="exercise-list">' +
-        w.exercises.map(function(e){
-          return '<li class="exercise-item"><div><div class="ex-name">'+e.name+'</div><div class="ex-note">'+e.note+'</div></div><span class="ex-sets">'+e.sets+'</span></li>';
-        }).join('') +
-        '</ul></div>';
+        '<div style="font-size:0.72rem;color:var(--mid);margin-bottom:0.75rem">Circuit \u00B7 3 rounds \u00B7 30 sec rest between exercises \u00B7 90 sec between rounds</div>' +
+        '<ul class="exercise-list">'+exHTML+'</ul>' +
+        finisherHTML + gameHTML +
+        '</div>';
     }).join('');
 }
 function setPhase(i) { activePhase = i; renderTabs(); renderWorkouts(); }
