@@ -307,325 +307,320 @@ BEGIN:VEVENT
 UID:str-2026-06-11@btw2026
 DTSTART;VALUE=DATE:20260611
 DTEND;VALUE=DATE:20260612
-SUMMARY:Strength: Core & Stability
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:35–40 min\n3 × 12 ea Single-Leg Glute Bridge\n3 × 25 sec ea Sid
- e Plank\n3 × 10 ea Bird Dog\n3 × 10 ea Pallof Press (Band)\n3 × 15 ea Later
- al Band Walk\n3 × 20 sec Hollow Body Hold
+DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
+ y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
+ ded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-14@btw2026
 DTSTART;VALUE=DATE:20260614
 DTEND;VALUE=DATE:20260615
-SUMMARY:Strength: Lower Body B
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:45–50 min\n3 × 8 ea Bulgarian Split Squat\n3 × 12 Sumo Squat\n3
-  × 6 Nordic Hamstring Curl\n3 × 10 ea Step-Up\n3 × 20 sec ea Copenhagen Pla
- nk\n3 × 15 ea Russian Twist
+DESCRIPTION:~25 min\n3 × 8/side Single-Leg RDL to Row\n3 × 8/side Step-Up t
+ o Overhead Press\n3 × 10–20/side Single-Leg Calf Raise\n3 × 20 reps or 30 s
+ ec Single-Arm Plank Variation
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-16@btw2026
 DTSTART;VALUE=DATE:20260616
 DTEND;VALUE=DATE:20260617
-SUMMARY:Strength: Lower Body A
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:45–50 min\n3 × 12 Goblet Squat\n3 × 10 Romanian Deadlift\n3 × 1
- 0 ea Reverse Lunge\n3 × 15 Glute Bridge\n3 × 10 ea Dead Bug\n3 × 30 sec Pla
- nk Hold
+DESCRIPTION:~25 min\n3 × 10 Goblet Squat\n3 × 10 Glute Bridge Floor Press\n
+ 3 × 8/side Reverse Lunge + Rotation\n3 × 10/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-18@btw2026
 DTSTART;VALUE=DATE:20260618
 DTEND;VALUE=DATE:20260619
-SUMMARY:Strength: Core & Stability
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:35–40 min\n3 × 12 ea Single-Leg Glute Bridge\n3 × 25 sec ea Sid
- e Plank\n3 × 10 ea Bird Dog\n3 × 10 ea Pallof Press (Band)\n3 × 15 ea Later
- al Band Walk\n3 × 20 sec Hollow Body Hold
+DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
+ y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
+ ded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-21@btw2026
 DTSTART;VALUE=DATE:20260621
 DTEND;VALUE=DATE:20260622
-SUMMARY:Strength: Lower Body B
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:45–50 min\n3 × 8 ea Bulgarian Split Squat\n3 × 12 Sumo Squat\n3
-  × 6 Nordic Hamstring Curl\n3 × 10 ea Step-Up\n3 × 20 sec ea Copenhagen Pla
- nk\n3 × 15 ea Russian Twist
+DESCRIPTION:~25 min\n3 × 8/side Single-Leg RDL to Row\n3 × 8/side Step-Up t
+ o Overhead Press\n3 × 10–20/side Single-Leg Calf Raise\n3 × 20 reps or 30 s
+ ec Single-Arm Plank Variation
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-23@btw2026
 DTSTART;VALUE=DATE:20260623
 DTEND;VALUE=DATE:20260624
-SUMMARY:Strength: Lower Body A
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:45–50 min\n3 × 12 Goblet Squat\n3 × 10 Romanian Deadlift\n3 × 1
- 0 ea Reverse Lunge\n3 × 15 Glute Bridge\n3 × 10 ea Dead Bug\n3 × 30 sec Pla
- nk Hold
+DESCRIPTION:~25 min\n3 × 10 Goblet Squat\n3 × 10 Glute Bridge Floor Press\n
+ 3 × 8/side Reverse Lunge + Rotation\n3 × 10/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-25@btw2026
 DTSTART;VALUE=DATE:20260625
 DTEND;VALUE=DATE:20260626
-SUMMARY:Strength: Core & Stability
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:35–40 min\n3 × 12 ea Single-Leg Glute Bridge\n3 × 25 sec ea Sid
- e Plank\n3 × 10 ea Bird Dog\n3 × 10 ea Pallof Press (Band)\n3 × 15 ea Later
- al Band Walk\n3 × 20 sec Hollow Body Hold
+DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
+ y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
+ ded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-30@btw2026
 DTSTART;VALUE=DATE:20260630
 DTEND;VALUE=DATE:20260701
-SUMMARY:Strength: Lower Body A
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:45–50 min\n3 × 12 Goblet Squat\n3 × 10 Romanian Deadlift\n3 × 1
- 0 ea Reverse Lunge\n3 × 15 Glute Bridge\n3 × 10 ea Dead Bug\n3 × 30 sec Pla
- nk Hold
+DESCRIPTION:~25 min\n3 × 10 Goblet Squat\n3 × 10 Glute Bridge Floor Press\n
+ 3 × 8/side Reverse Lunge + Rotation\n3 × 10/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-02@btw2026
 DTSTART;VALUE=DATE:20260702
 DTEND;VALUE=DATE:20260703
-SUMMARY:Strength: Core & Stability
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:35–40 min\n3 × 12 ea Single-Leg Glute Bridge\n3 × 25 sec ea Sid
- e Plank\n3 × 10 ea Bird Dog\n3 × 10 ea Pallof Press (Band)\n3 × 15 ea Later
- al Band Walk\n3 × 20 sec Hollow Body Hold
+DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
+ y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
+ ded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-05@btw2026
 DTSTART;VALUE=DATE:20260705
 DTEND;VALUE=DATE:20260706
-SUMMARY:Strength: Lower Body B+
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:50–55 min\n4 × 6 ea Bulgarian Split Squat (Weighted)\n4 × 6 Tra
- p Bar / DB Deadlift\n3 × 10 ea Lateral Squat\n3 × 5 Depth Drop to Jump\n3 ×
-  25 sec ea Copenhagen Plank\n3 × 12 Hanging Knee Raise
+DESCRIPTION:~30 min\n3 × 10/side Single-Leg RDL to Row\n3 × 10/side Step-Up
+  to Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec Single-Ar
+ m Plank Variation
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-07@btw2026
 DTSTART;VALUE=DATE:20260707
 DTEND;VALUE=DATE:20260708
-SUMMARY:Strength: Lower Body A+
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:50–55 min\n4 × 8 Barbell / DB Squat\n4 × 8 Romanian Deadlift\n3
-  × 12 ea Walking Lunge\n3 × 6 Box Jump\n3 × 8 ea Plank to Push-Up\n3 × 10 e
- a Dead Bug + Reach
+DESCRIPTION:~30 min\n3 × 12 Goblet Squat\n3 × 12 Glute Bridge Floor Press\n
+ 3 × 10/side Reverse Lunge + Rotation\n3 × 12/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-09@btw2026
 DTSTART;VALUE=DATE:20260709
 DTEND;VALUE=DATE:20260710
-SUMMARY:Strength: Power & Core
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:40–45 min\n4 × 4 Broad Jump\n3 × 6 ea Lateral Bound\n3 × 8 Medi
- cine Ball Slam\n3 × 10 ea Side Plank + Row\n3 × 12 V-Up\n3 × 10 ea Pallof P
- ress Variation
+DESCRIPTION:~30 min\n3 × 10 DB Romanian Deadlift + Row\n3 × 12/side Suitcas
+ e Carry Lunge + Leg Lift\n3 × 10 reps Lateral Band Walk into Squat\n3 × 8/s
+ ide Banded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-12@btw2026
 DTSTART;VALUE=DATE:20260712
 DTEND;VALUE=DATE:20260713
-SUMMARY:Strength: Lower Body B+
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:50–55 min\n4 × 6 ea Bulgarian Split Squat (Weighted)\n4 × 6 Tra
- p Bar / DB Deadlift\n3 × 10 ea Lateral Squat\n3 × 5 Depth Drop to Jump\n3 ×
-  25 sec ea Copenhagen Plank\n3 × 12 Hanging Knee Raise
+DESCRIPTION:~30 min\n3 × 10/side Single-Leg RDL to Row\n3 × 10/side Step-Up
+  to Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec Single-Ar
+ m Plank Variation
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-14@btw2026
 DTSTART;VALUE=DATE:20260714
 DTEND;VALUE=DATE:20260715
-SUMMARY:Strength: Lower Body A+
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:50–55 min\n4 × 8 Barbell / DB Squat\n4 × 8 Romanian Deadlift\n3
-  × 12 ea Walking Lunge\n3 × 6 Box Jump\n3 × 8 ea Plank to Push-Up\n3 × 10 e
- a Dead Bug + Reach
+DESCRIPTION:~30 min\n3 × 12 Goblet Squat\n3 × 12 Glute Bridge Floor Press\n
+ 3 × 10/side Reverse Lunge + Rotation\n3 × 12/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-16@btw2026
 DTSTART;VALUE=DATE:20260716
 DTEND;VALUE=DATE:20260717
-SUMMARY:Strength: Power & Core
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:40–45 min\n4 × 4 Broad Jump\n3 × 6 ea Lateral Bound\n3 × 8 Medi
- cine Ball Slam\n3 × 10 ea Side Plank + Row\n3 × 12 V-Up\n3 × 10 ea Pallof P
- ress Variation
+DESCRIPTION:~30 min\n3 × 10 DB Romanian Deadlift + Row\n3 × 12/side Suitcas
+ e Carry Lunge + Leg Lift\n3 × 10 reps Lateral Band Walk into Squat\n3 × 8/s
+ ide Banded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-19@btw2026
 DTSTART;VALUE=DATE:20260719
 DTEND;VALUE=DATE:20260720
-SUMMARY:Strength: Lower Body B+
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:50–55 min\n4 × 6 ea Bulgarian Split Squat (Weighted)\n4 × 6 Tra
- p Bar / DB Deadlift\n3 × 10 ea Lateral Squat\n3 × 5 Depth Drop to Jump\n3 ×
-  25 sec ea Copenhagen Plank\n3 × 12 Hanging Knee Raise
+DESCRIPTION:~30 min\n3 × 10/side Single-Leg RDL to Row\n3 × 10/side Step-Up
+  to Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec Single-Ar
+ m Plank Variation
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-21@btw2026
 DTSTART;VALUE=DATE:20260721
 DTEND;VALUE=DATE:20260722
-SUMMARY:Strength: Lower Body A+
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:50–55 min\n4 × 8 Barbell / DB Squat\n4 × 8 Romanian Deadlift\n3
-  × 12 ea Walking Lunge\n3 × 6 Box Jump\n3 × 8 ea Plank to Push-Up\n3 × 10 e
- a Dead Bug + Reach
+DESCRIPTION:~30 min\n3 × 12 Goblet Squat\n3 × 12 Glute Bridge Floor Press\n
+ 3 × 10/side Reverse Lunge + Rotation\n3 × 12/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-23@btw2026
 DTSTART;VALUE=DATE:20260723
 DTEND;VALUE=DATE:20260724
-SUMMARY:Strength: Power & Core
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:40–45 min\n4 × 4 Broad Jump\n3 × 6 ea Lateral Bound\n3 × 8 Medi
- cine Ball Slam\n3 × 10 ea Side Plank + Row\n3 × 12 V-Up\n3 × 10 ea Pallof P
- ress Variation
+DESCRIPTION:~30 min\n3 × 10 DB Romanian Deadlift + Row\n3 × 12/side Suitcas
+ e Carry Lunge + Leg Lift\n3 × 10 reps Lateral Band Walk into Squat\n3 × 8/s
+ ide Banded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-26@btw2026
 DTSTART;VALUE=DATE:20260726
 DTEND;VALUE=DATE:20260727
-SUMMARY:Strength: Peak Strength B
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:55–60 min\n5 × 4 Trap Bar Deadlift Heavy\n4 × 6 ea Lateral Squa
- t (Weighted)\n4 × 5 Nordic Hamstring Curl\n3 × 6 ea Single-Leg Landing Dril
- l\n3 × 8 Ab Wheel Rollout\n3 × 30 sec ea Copenhagen Plank + Hip Abduction
+DESCRIPTION:~30 min\n4 × 8/side Single-Leg RDL to Row\n4 × 8/side Step-Up t
+ o Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec/side Single
+ -Arm Plank Hold
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-28@btw2026
 DTSTART;VALUE=DATE:20260728
 DTEND;VALUE=DATE:20260729
-SUMMARY:Strength: Peak Strength A
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:55–60 min\n5 × 5 Back Squat / Heavy Goblet\n4 × 6 Romanian Dead
- lift Heavy\n4 × 5 ea Rear-Foot Elevated Split Squat\n4 × 4 Depth Jump to Sp
- rint\n3 × 40 sec Weighted Plank\n3 × 8 ea Rotational Med Ball Throw
+DESCRIPTION:~30 min\n4 × 10 Goblet Squat\n4 × 10 Glute Bridge Floor Press\n
+ 4 × 8/side Reverse Lunge + Rotation\n3 × 15/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-30@btw2026
 DTSTART;VALUE=DATE:20260730
 DTEND;VALUE=DATE:20260731
-SUMMARY:Strength: Explosive Power
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:45–50 min\n4 × 3 Triple Broad Jump\n3 × 5 ea Single-Leg Box Jum
- p\n6 × 10m Sprint 10m × 6\n4 × 6 ea Med Ball Rotational Throw\n3 × 10 sec L
- -Sit Hold\n3 × 6 Dragon Flag Progression
+DESCRIPTION:~30 min\n4 × 8 DB Romanian Deadlift + Row\n4 × 10/side Suitcase
+  Carry Lunge + Leg Lift\n4 × 10 reps Lateral Band Walk into Squat\n3 × 8/si
+ de Banded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-02@btw2026
 DTSTART;VALUE=DATE:20260802
 DTEND;VALUE=DATE:20260803
-SUMMARY:Strength: Peak Strength B
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:55–60 min\n5 × 4 Trap Bar Deadlift Heavy\n4 × 6 ea Lateral Squa
- t (Weighted)\n4 × 5 Nordic Hamstring Curl\n3 × 6 ea Single-Leg Landing Dril
- l\n3 × 8 Ab Wheel Rollout\n3 × 30 sec ea Copenhagen Plank + Hip Abduction
+DESCRIPTION:~30 min\n4 × 8/side Single-Leg RDL to Row\n4 × 8/side Step-Up t
+ o Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec/side Single
+ -Arm Plank Hold
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-04@btw2026
 DTSTART;VALUE=DATE:20260804
 DTEND;VALUE=DATE:20260805
-SUMMARY:Strength: Peak Strength A
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:55–60 min\n5 × 5 Back Squat / Heavy Goblet\n4 × 6 Romanian Dead
- lift Heavy\n4 × 5 ea Rear-Foot Elevated Split Squat\n4 × 4 Depth Jump to Sp
- rint\n3 × 40 sec Weighted Plank\n3 × 8 ea Rotational Med Ball Throw
+DESCRIPTION:~30 min\n4 × 10 Goblet Squat\n4 × 10 Glute Bridge Floor Press\n
+ 4 × 8/side Reverse Lunge + Rotation\n3 × 15/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-06@btw2026
 DTSTART;VALUE=DATE:20260806
 DTEND;VALUE=DATE:20260807
-SUMMARY:Strength: Explosive Power
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:45–50 min\n4 × 3 Triple Broad Jump\n3 × 5 ea Single-Leg Box Jum
- p\n6 × 10m Sprint 10m × 6\n4 × 6 ea Med Ball Rotational Throw\n3 × 10 sec L
- -Sit Hold\n3 × 6 Dragon Flag Progression
+DESCRIPTION:~30 min\n4 × 8 DB Romanian Deadlift + Row\n4 × 10/side Suitcase
+  Carry Lunge + Leg Lift\n4 × 10 reps Lateral Band Walk into Squat\n3 × 8/si
+ de Banded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-09@btw2026
 DTSTART;VALUE=DATE:20260809
 DTEND;VALUE=DATE:20260810
-SUMMARY:Strength: Peak Strength B
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:55–60 min\n5 × 4 Trap Bar Deadlift Heavy\n4 × 6 ea Lateral Squa
- t (Weighted)\n4 × 5 Nordic Hamstring Curl\n3 × 6 ea Single-Leg Landing Dril
- l\n3 × 8 Ab Wheel Rollout\n3 × 30 sec ea Copenhagen Plank + Hip Abduction
+DESCRIPTION:~30 min\n4 × 8/side Single-Leg RDL to Row\n4 × 8/side Step-Up t
+ o Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec/side Single
+ -Arm Plank Hold
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-11@btw2026
 DTSTART;VALUE=DATE:20260811
 DTEND;VALUE=DATE:20260812
-SUMMARY:Strength: Peak Strength A
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:55–60 min\n5 × 5 Back Squat / Heavy Goblet\n4 × 6 Romanian Dead
- lift Heavy\n4 × 5 ea Rear-Foot Elevated Split Squat\n4 × 4 Depth Jump to Sp
- rint\n3 × 40 sec Weighted Plank\n3 × 8 ea Rotational Med Ball Throw
+DESCRIPTION:~30 min\n4 × 10 Goblet Squat\n4 × 10 Glute Bridge Floor Press\n
+ 4 × 8/side Reverse Lunge + Rotation\n3 × 15/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-13@btw2026
 DTSTART;VALUE=DATE:20260813
 DTEND;VALUE=DATE:20260814
-SUMMARY:Strength: Explosive Power
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:45–50 min\n4 × 3 Triple Broad Jump\n3 × 5 ea Single-Leg Box Jum
- p\n6 × 10m Sprint 10m × 6\n4 × 6 ea Med Ball Rotational Throw\n3 × 10 sec L
- -Sit Hold\n3 × 6 Dragon Flag Progression
+DESCRIPTION:~30 min\n4 × 8 DB Romanian Deadlift + Row\n4 × 10/side Suitcase
+  Carry Lunge + Leg Lift\n4 × 10 reps Lateral Band Walk into Squat\n3 × 8/si
+ de Banded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-16@btw2026
 DTSTART;VALUE=DATE:20260816
 DTEND;VALUE=DATE:20260817
-SUMMARY:Strength: Feel Good Session
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:20–25 min\n2 × 10 Bodyweight Squat\n2 × 10 ea Single-Leg Glute 
- Bridge\n2 × 8 ea Bird Dog\n10 min Light Jog + Dynamic Stretch
+DESCRIPTION:~20 min\n2 × 8/side Single-Leg RDL to Row\n2 × 8/side Step-Up t
+ o Overhead Press\n2 × 12/side Single-Leg Calf Raise\n2 × 20 sec/side Single
+ -Arm Plank Hold
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-18@btw2026
 DTSTART;VALUE=DATE:20260818
 DTEND;VALUE=DATE:20260819
-SUMMARY:Strength: Maintenance A
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:30–35 min\n2 × 8 Goblet Squat\n2 × 8 Romanian Deadlift\n2 × 12 
- Glute Bridge\n2 × 30 sec Plank Hold
+DESCRIPTION:~20 min\n2 × 8 Goblet Squat\n2 × 10 Glute Bridge Floor Press\n2
+  × 8/side Reverse Lunge + Rotation\n2 × 10/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-20@btw2026
 DTSTART;VALUE=DATE:20260820
 DTEND;VALUE=DATE:20260821
-SUMMARY:Strength: Activation & Power
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:25–30 min\n3 × 3 Broad Jump\n3 × 4 ea Lateral Bound\n2 × 20 sec
-  ea Side Plank\n4 × 20m Sprint Strides 20m × 4
+DESCRIPTION:~20 min\n2 × 8 DB Romanian Deadlift + Row\n2 × 10/side Suitcase
+  Carry Lunge + Leg Lift\n2 × 8 reps Lateral Band Walk into Squat\n2 × 6/sid
+ e Banded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-23@btw2026
 DTSTART;VALUE=DATE:20260823
 DTEND;VALUE=DATE:20260824
-SUMMARY:Strength: Feel Good Session
+SUMMARY:Strength: Single-Leg & Stability
 LOCATION:At Home
-DESCRIPTION:20–25 min\n2 × 10 Bodyweight Squat\n2 × 10 ea Single-Leg Glute 
- Bridge\n2 × 8 ea Bird Dog\n10 min Light Jog + Dynamic Stretch
+DESCRIPTION:~20 min\n2 × 8/side Single-Leg RDL to Row\n2 × 8/side Step-Up t
+ o Overhead Press\n2 × 12/side Single-Leg Calf Raise\n2 × 20 sec/side Single
+ -Arm Plank Hold
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-25@btw2026
 DTSTART;VALUE=DATE:20260825
 DTEND;VALUE=DATE:20260826
-SUMMARY:Strength: Maintenance A
+SUMMARY:Strength: Lower Body & Core
 LOCATION:At Home
-DESCRIPTION:30–35 min\n2 × 8 Goblet Squat\n2 × 8 Romanian Deadlift\n2 × 12 
- Glute Bridge\n2 × 30 sec Plank Hold
+DESCRIPTION:~20 min\n2 × 8 Goblet Squat\n2 × 10 Glute Bridge Floor Press\n2
+  × 8/side Reverse Lunge + Rotation\n2 × 10/side Side Plank Hip Dips
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-27@btw2026
 DTSTART;VALUE=DATE:20260827
 DTEND;VALUE=DATE:20260828
-SUMMARY:Strength: Activation & Power
+SUMMARY:Strength: Hinge & Carry
 LOCATION:At Home
-DESCRIPTION:25–30 min\n3 × 3 Broad Jump\n3 × 4 ea Lateral Bound\n2 × 20 sec
-  ea Side Plank\n4 × 20m Sprint Strides 20m × 4
+DESCRIPTION:~20 min\n2 × 8 DB Romanian Deadlift + Row\n2 × 10/side Suitcase
+  Carry Lunge + Leg Lift\n2 × 8 reps Lateral Band Walk into Squat\n2 × 6/sid
+ e Banded Dead Bug
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-06@btw2026
