@@ -1055,17 +1055,17 @@ function renderWorkouts() {
           '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.2rem"><span class="ex-sets">'+e.sets+'</span>'+loadBadge(e.load)+'</div></li>';
       }).join('');
       var finisherHTML = w.finisher ?
-        '<div style="margin-top:1rem;padding-top:0.75rem;border-top:1px solid var(--border)">' +
-          '<div style="font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);margin-bottom:0.5rem">Finisher \u00B7 ~5 min</div>' +
-          '<div class="exercise-item" style="padding:0.25rem 0 0">' +
+        '<div style="margin-top:1rem;border-top:1px solid var(--border)">' +
+          '<div style="font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);padding:0.75rem 1.25rem 0.5rem">Finisher \u00B7 ~5 min</div>' +
+          '<div class="exercise-item" style="padding:0.5rem 1.25rem">' +
             '<div><div class="ex-name">'+w.finisher.name+'</div><div class="ex-note">'+w.finisher.note+'</div></div>' +
             '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.2rem"><span class="ex-sets">'+w.finisher.sets+'</span>'+loadBadge(w.finisher.load)+'</div>' +
           '</div></div>' : '';
       var gameHTML = w.game ?
-        '<div style="margin-top:0.85rem;font-size:0.8rem;font-weight:500;color:var(--accent)">Game: <a href="#strength-games" style="color:inherit;text-decoration:underline;text-underline-offset:2px">'+w.game+'</a></div>' : '';
+        '<div style="padding:0.75rem 1.25rem;font-size:0.8rem;font-weight:500;color:var(--accent)">Game: <a href="#strength-games" style="color:inherit;text-decoration:underline;text-underline-offset:2px">'+w.game+'</a></div>' : '';
       return '<div class="workout-card">' +
         '<div class="workout-card-header"><div class="day-label">'+w.day+'</div><h3>'+w.title+'</h3><div class="duration">\u23F1 '+w.duration+'</div></div>' +
-        '<div style="font-size:0.72rem;color:var(--mid);margin-bottom:0.75rem">Circuit \u00B7 3 rounds \u00B7 30 sec rest between exercises \u00B7 90 sec between rounds</div>' +
+        '<div style="font-size:0.72rem;color:var(--mid);padding:0.5rem 1.25rem 0.75rem">Circuit \u00B7 3 rounds \u00B7 30 sec rest between exercises \u00B7 90 sec between rounds</div>' +
         '<ul class="exercise-list">'+exHTML+'</ul>' +
         finisherHTML + gameHTML +
         '</div>';
