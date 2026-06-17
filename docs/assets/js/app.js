@@ -493,6 +493,7 @@ function buildWeekCalendar() {
 
     var timedItems = [];
     var untimedItems = [];
+    var strengthItems = [];
 
     if (MILESTONES[ds]) {
       const el = document.createElement('div');
@@ -511,7 +512,7 @@ function buildWeekCalendar() {
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(c.time), priority: 1 });
     }
 
-    if (dow === 3 && ds <= '2026-08-24') {
+    if (dow === 3 && ds <= '2026-08-24' && ds !== '2026-06-17' && ds !== '2026-06-24') {
       const cp = document.createElement('div');
       cp.className = 'wk-event type-captains';
       cp.innerHTML = "Captain's Practice" + '<span class="ev-time">\uD83C\uDFDF 6:30 \u2013 8:00 PM \u00B7 Downes</span>';
@@ -529,7 +530,7 @@ function buildWeekCalendar() {
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(g.time), priority: 3 });
     }
 
-    if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START && !STRENGTH_SKIP_DATES.has(ds)) {
+    if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START && !STRENGTH_SKIP_DATES.has(ds) && !FITNESS_SESSIONS[ds]) {
       var phase = getPhaseForDate(day);
       var wkIdx = dow === 1 ? 0 : dow === 3 ? 1 : 2;
       var wo = WORKOUTS[phase] && WORKOUTS[phase][wkIdx];
@@ -539,7 +540,7 @@ function buildWeekCalendar() {
         strBtn.innerHTML = wo.day + ': ' + wo.title + '<span class="ev-time">\uD83D\uDCAA At Home \u00B7 ' + wo.duration + '</span>';
         var _day = new Date(day), _ph = phase, _wi = wkIdx, _ds = ds;
         strBtn.onclick = function() { openPanel('str-' + _ds, 'strength', _day, _ph, _wi); };
-        timedItems.push({ el: strBtn, timeMin: 600, priority: 5 });
+        strengthItems.push(strBtn);
       }
     }
 
@@ -559,6 +560,7 @@ function buildWeekCalendar() {
     });
     timedItems.forEach(function(item) { body.appendChild(item.el); });
     untimedItems.forEach(function(el) { body.appendChild(el); });
+    strengthItems.forEach(function(el) { body.appendChild(el); });
 
     if (dow === 6) {
       const rest = document.createElement('div');

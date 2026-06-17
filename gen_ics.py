@@ -107,6 +107,7 @@ for time_decided, ds, title, start, end, loc, desc in fitness:
         events.append(vevent('fit-'+ds, 'DTSTART;VALUE=DATE:'+dc, 'DTEND;VALUE=DATE:'+next_day(ds), title+' (Time TBD)', loc, desc))
 
 # STRENGTH WORKOUTS (all-day events)
+FITNESS_DATES = {ds for _, ds, *_ in fitness}
 STRENGTH_DAYS = {1, 3, 5}  # Mon=1, Wed=3, Fri=5 (js_dow = isoweekday() % 7)
 SKIP = {'2026-06-28'}
 workouts = {
@@ -126,7 +127,7 @@ while cur <= datetime.date(2026,8,28):
     # JS weekday: Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6
     js_dow = cur.isoweekday() % 7
     ds = cur.isoformat()
-    if js_dow in STRENGTH_DAYS and ds not in SKIP:
+    if js_dow in STRENGTH_DAYS and ds not in SKIP and ds not in FITNESS_DATES:
         phase = get_phase(cur)
         wk_idx = {1:0, 3:1, 5:2}[js_dow]
         wo_list = workouts.get(phase, [])
