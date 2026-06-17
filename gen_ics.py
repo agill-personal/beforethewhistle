@@ -107,13 +107,13 @@ for time_decided, ds, title, start, end, loc, desc in fitness:
         events.append(vevent('fit-'+ds, 'DTSTART;VALUE=DATE:'+dc, 'DTEND;VALUE=DATE:'+next_day(ds), title+' (Time TBD)', loc, desc))
 
 # STRENGTH WORKOUTS (all-day events)
-STRENGTH_DAYS = set()  # disabled for now; restore to {0, 2, 4} to re-enable
+STRENGTH_DAYS = {1, 3, 5}  # Mon=1, Wed=3, Fri=5 (js_dow = isoweekday() % 7)
 SKIP = {'2026-06-28'}
 workouts = {
-    0: [(2,'Lower Body A','45-50 min'), (4,'Core & Stability','35-40 min'), (0,'Lower Body B','45-50 min')],
-    1: [(2,'Lower Body A+','50-55 min'), (4,'Power & Core','40-45 min'), (0,'Lower Body B+','50-55 min')],
-    2: [(2,'Peak Strength A','55-60 min'), (4,'Explosive Power','45-50 min'), (0,'Peak Strength B','55-60 min')],
-    3: [(2,'Maintenance A','30-35 min'), (4,'Activation & Power','25-30 min'), (0,'Feel Good Session','20-25 min')],
+    0: [(1,'Lower Body A','45-50 min'), (3,'Core & Stability','35-40 min'), (5,'Lower Body B','45-50 min')],
+    1: [(1,'Lower Body A+','50-55 min'), (3,'Power & Core','40-45 min'), (5,'Lower Body B+','50-55 min')],
+    2: [(1,'Peak Strength A','55-60 min'), (3,'Explosive Power','45-50 min'), (5,'Peak Strength B','55-60 min')],
+    3: [(1,'Maintenance A','30-35 min'), (3,'Activation & Power','25-30 min'), (5,'Feel Good Session','20-25 min')],
 }
 def get_phase(d):
     if d < datetime.date(2026,7,5):  return 0
@@ -121,14 +121,14 @@ def get_phase(d):
     if d < datetime.date(2026,8,16): return 2
     return 3
 
-cur = datetime.date(2026,6,15)
+cur = datetime.date(2026,6,19)
 while cur <= datetime.date(2026,8,28):
     # JS weekday: Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6
     js_dow = cur.isoweekday() % 7
     ds = cur.isoformat()
     if js_dow in STRENGTH_DAYS and ds not in SKIP:
         phase = get_phase(cur)
-        wk_idx = {2:0, 4:1, 0:2}[js_dow]
+        wk_idx = {1:0, 3:1, 5:2}[js_dow]
         wo_list = workouts.get(phase, [])
         wo = next((w for w in wo_list if w[0] == js_dow), None)
         if wo:

@@ -352,8 +352,8 @@ const FOCUS_LABELS = {
   defending:'Defending', trapping:'Trapping/Clearing', scrimmage:'Scrimmage',
   first_touch:'First Touch', one_v_one:'1v1', crossing:'Crossing', finishing:'Finishing',
 };
-const STRENGTH_DAYS = [2, 4, 0]; // Tue, Thu, Sun (floater)
-var STRENGTH_SEASON_START = '2026-06-15';
+const STRENGTH_DAYS = [1, 3, 5]; // Mon, Wed, Fri
+var STRENGTH_SEASON_START = '2026-06-19';
 const STRENGTH_SKIP_DATES = new Set(['2026-06-28']);
 
 // \u2500\u2500 STATE \u2500\u2500
@@ -527,6 +527,20 @@ function buildWeekCalendar() {
       btn.innerHTML = g.title + evStatusTag(g.status) + '<span class="ev-time">\uD83C\uDFC3 ' + displayTime(g) + ' \u00B7 ' + g.location + (gCnt > 0 ? ' \u00B7 ' + gCnt + ' going' : '') + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(g.time), priority: 3 });
+    }
+
+    if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START && !STRENGTH_SKIP_DATES.has(ds)) {
+      var phase = getPhaseForDate(day);
+      var wkIdx = dow === 1 ? 0 : dow === 3 ? 1 : 2;
+      var wo = WORKOUTS[phase] && WORKOUTS[phase][wkIdx];
+      if (wo) {
+        var strBtn = document.createElement('button');
+        strBtn.className = 'wk-event type-strength';
+        strBtn.innerHTML = wo.day + ': ' + wo.title + '<span class="ev-time">\uD83D\uDCAA At Home \u00B7 ' + wo.duration + '</span>';
+        var _day = new Date(day), _ph = phase, _wi = wkIdx, _ds = ds;
+        strBtn.onclick = function() { openPanel('str-' + _ds, 'strength', _day, _ph, _wi); };
+        timedItems.push({ el: strBtn, timeMin: 600, priority: 5 });
+      }
     }
 
     if (SESSIONS[ds]) {
@@ -1303,14 +1317,14 @@ function generateICS() {
       (g.main || []).join('\n')));
   });
 
-  // Strength workouts (all-day, Jun 15 \u2013 Aug 28)
+  // Strength workouts (all-day, Jun 19 \u2013 Aug 28)
   var strEnd = new Date(2026, 7, 28);
-  for (var sd = new Date(2026, 5, 11); sd <= strEnd; sd.setDate(sd.getDate() + 1)) {
+  for (var sd = new Date(2026, 5, 19); sd <= strEnd; sd.setDate(sd.getDate() + 1)) {
     var dow = sd.getDay();
     var ds = sd.getFullYear() + '-' + pad(sd.getMonth()+1) + '-' + pad(sd.getDate());
     if (!STRENGTH_DAYS.includes(dow) || STRENGTH_SKIP_DATES.has(ds)) continue;
     var phase = getPhaseForDate(sd);
-    var wkIdx = dow === 2 ? 0 : dow === 4 ? 1 : 2;
+    var wkIdx = dow === 1 ? 0 : dow === 3 ? 1 : 2;
     var wo = WORKOUTS[phase] && WORKOUTS[phase][wkIdx];
     if (!wo || !wo.title) continue;
     var desc = (wo.duration || '') + (wo.exercises ? '\n' + wo.exercises.map(function(e){ return e.sets + ' ' + e.name; }).join('\n') : '');
