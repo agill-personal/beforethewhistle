@@ -665,7 +665,7 @@ function openPanel(key, type, dayObj, phase, wkIdx) {
       '<div class="plan-block"><h4>Exercises</h4><ul style="gap:0.6rem">' +
       workout.exercises.map(function(e) {
         return '<li style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem">' +
-          '<div><div style="font-size:0.85rem;font-weight:600">' + e.name + '</div>' +
+          '<div style="flex:1"><div style="font-size:0.85rem;font-weight:600">' + e.name + '</div>' +
           '<div style="font-size:0.72rem;color:var(--mid)">' + e.note + '</div></div>' +
           '<span class="ex-sets" style="flex-shrink:0">' + e.sets + '</span></li>';
       }).join('') + '</ul></div>';
