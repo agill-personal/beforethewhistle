@@ -532,7 +532,7 @@ function buildWeekCalendar() {
 
     if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START && !STRENGTH_SKIP_DATES.has(ds) && !FITNESS_SESSIONS[ds]) {
       var phase = getPhaseForDate(day);
-      var wkIdx = dow === 1 ? 0 : dow === 3 ? 1 : 2;
+      var wkIdx = dow === 5 ? 0 : dow === 1 ? 1 : 2;
       var wo = WORKOUTS[phase] && WORKOUTS[phase][wkIdx];
       if (wo) {
         var strBtn = document.createElement('button');

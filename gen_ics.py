@@ -111,10 +111,10 @@ FITNESS_DATES = {ds for _, ds, *_ in fitness}
 STRENGTH_DAYS = {1, 3, 5}  # Mon=1, Wed=3, Fri=5 (js_dow = isoweekday() % 7)
 SKIP = {'2026-06-28'}
 workouts = {
-    0: [(1,'Lower Body A','45-50 min'), (3,'Core & Stability','35-40 min'), (5,'Lower Body B','45-50 min')],
-    1: [(1,'Lower Body A+','50-55 min'), (3,'Power & Core','40-45 min'), (5,'Lower Body B+','50-55 min')],
-    2: [(1,'Peak Strength A','55-60 min'), (3,'Explosive Power','45-50 min'), (5,'Peak Strength B','55-60 min')],
-    3: [(1,'Maintenance A','30-35 min'), (3,'Activation & Power','25-30 min'), (5,'Feel Good Session','20-25 min')],
+    0: [(5,'Lower Body A','45-50 min'), (1,'Core & Stability','35-40 min'), (3,'Lower Body B','45-50 min')],
+    1: [(5,'Lower Body A+','50-55 min'), (1,'Power & Core','40-45 min'), (3,'Lower Body B+','50-55 min')],
+    2: [(5,'Peak Strength A','55-60 min'), (1,'Explosive Power','45-50 min'), (3,'Peak Strength B','55-60 min')],
+    3: [(5,'Maintenance A','30-35 min'), (1,'Activation & Power','25-30 min'), (3,'Feel Good Session','20-25 min')],
 }
 def get_phase(d):
     if d < datetime.date(2026,7,5):  return 0
@@ -129,7 +129,7 @@ while cur <= datetime.date(2026,8,28):
     ds = cur.isoformat()
     if js_dow in STRENGTH_DAYS and ds not in SKIP and ds not in FITNESS_DATES:
         phase = get_phase(cur)
-        wk_idx = {1:0, 3:1, 5:2}[js_dow]
+        wk_idx = {5:0, 1:1, 3:2}[js_dow]
         wo_list = workouts.get(phase, [])
         wo = next((w for w in wo_list if w[0] == js_dow), None)
         if wo:
