@@ -531,15 +531,14 @@ function buildWeekCalendar() {
     }
 
     if (STRENGTH_DAYS.includes(dow) && ds >= STRENGTH_SEASON_START && !STRENGTH_SKIP_DATES.has(ds) && !FITNESS_SESSIONS[ds]) {
-      var phase = getPhaseForDate(day);
-      var wkIdx = dow === 5 ? 0 : dow === 1 ? 1 : 2;
-      var wo = WORKOUTS[phase] && WORKOUTS[phase][wkIdx];
+      const phase = getPhaseForDate(day);
+      const wkIdx = dow === 5 ? 0 : dow === 1 ? 1 : 2;
+      const wo = WORKOUTS[phase] && WORKOUTS[phase][wkIdx];
       if (wo) {
-        var strBtn = document.createElement('button');
+        const strBtn = document.createElement('button');
         strBtn.className = 'wk-event type-strength';
         strBtn.innerHTML = wo.day + ': ' + wo.title + '<span class="ev-time">\uD83D\uDCAA At Home \u00B7 ' + wo.duration + '</span>';
-        var _day = new Date(day), _ph = phase, _wi = wkIdx, _ds = ds;
-        strBtn.onclick = function() { openPanel('str-' + _ds, 'strength', _day, _ph, _wi); };
+        strBtn.onclick = function() { openPanel('str-' + ds, 'strength', day, phase, wkIdx); };
         strengthItems.push(strBtn);
       }
     }
