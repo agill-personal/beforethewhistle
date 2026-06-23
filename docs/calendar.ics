@@ -4,6 +4,8 @@ PRODID:-//BeforeTheWhistle//Summer 2026//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:BeforeTheWhistle Summer 2026
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:tech-2026-06-04@btw2026
 DTSTART:20260604T183000
@@ -22,10 +24,11 @@ DTSTART:20260605T151500
 DTEND:20260605T164500
 SUMMARY:Passing & Combination Play
 LOCATION:Cypress Field
-DESCRIPTION:Skills:\nWall pass\nThird-man run\nWeight and accuracy of short
-  passes under pressure\nOne-touch passing to maintain speed of play\nPlayin
- g through a press as a unit of three\nSwitching the point of attack with a 
- driven pass
+DESCRIPTION:Skills:\nWall pass: give and go to break the defensive line\nTh
+ ird-man run: timing a late run to receive after a combination\nWeight and a
+ ccuracy of short passes under pressure\nOne-touch passing to maintain speed
+  of play\nPlaying through a press as a unit of three\nSwitching the point o
+ f attack with a driven pass
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-07@btw2026
@@ -34,9 +37,10 @@ DTEND:20260607T180000
 SUMMARY:1v1 Attacking vs. Defending
 LOCATION:Cypress Field
 DESCRIPTION:Skills:\nStep-over\, scissors\, or Cruyff turn to beat a defend
- er\nCommitting the defender before attempting a move\nJockeying\nForcing th
- e attacker onto their weak foot\nWinning the ball back with a clean tackle 
- when the moment is right\nDribbling with purpose
+ er\nCommitting the defender before attempting a move\nJockeying: staying go
+ al-side and on feet under pressure\nForcing the attacker onto their weak fo
+ ot\nWinning the ball back with a clean tackle when the moment is right\nDri
+ bbling with purpose\, head up\, exploit space after the move
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-08@btw2026
@@ -45,9 +49,10 @@ DTEND:20260608T170000
 SUMMARY:1v1 Attacking vs. Defending
 LOCATION:Cypress Field
 DESCRIPTION:Skills:\nStep-over\, scissors\, or Cruyff turn to beat a defend
- er\nCommitting the defender before attempting a move\nJockeying\nForcing th
- e attacker onto their weak foot\nWinning the ball back with a clean tackle 
- when the moment is right\nDribbling with purpose
+ er\nCommitting the defender before attempting a move\nJockeying: staying go
+ al-side and on feet under pressure\nForcing the attacker onto their weak fo
+ ot\nWinning the ball back with a clean tackle when the moment is right\nDri
+ bbling with purpose\, head up\, exploit space after the move
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-09@btw2026
@@ -256,13 +261,14 @@ DESCRIPTION:We will walk\, jump\, and run up the Harvard Stadium steps! The
 END:VEVENT
 BEGIN:VEVENT
 UID:fit-2026-06-24@btw2026
-DTSTART:20260624T153000
-DTEND:20260624T170000
-SUMMARY:Strength Training
-LOCATION:Cypress Field
-DESCRIPTION:Strength training! Coach Kat will be joining us to focus on bui
- lding lower body and core strength. Please bring sneakers. Weights will be 
- provided by the coaches.
+DTSTART:20260624T160000
+DTEND:20260624T180000
+SUMMARY:Strength + Conditioning
+LOCATION:Harry Downes Field
+DESCRIPTION:Strength training\, plus conditioning! Coach Kat and Coach Bear
+ ett will be walking us through a lower body strength workout followed by a 
+ conditioning circuit. Please bring sneakers and cleats. Weights will be pro
+ vided by the coaches.
 END:VEVENT
 BEGIN:VEVENT
 UID:fit-2026-06-28@btw2026
@@ -287,510 +293,442 @@ BEGIN:VEVENT
 UID:str-2026-06-19@btw2026
 DTSTART;VALUE=DATE:20260619
 DTEND;VALUE=DATE:20260620
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Lower Body A
 LOCATION:At Home
-DESCRIPTION:~25 min\n3 × 8/side Single-Leg RDL to Row\n3 × 8/side Step-Up t
- o Overhead Press\n3 × 10–20/side Single-Leg Calf Raise\n3 × 20 reps or 30 s
- ec Single-Arm Plank Variation
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-22@btw2026
 DTSTART;VALUE=DATE:20260622
 DTEND;VALUE=DATE:20260623
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Core & Stability
 LOCATION:At Home
-DESCRIPTION:~25 min\n3 × 10 Goblet Squat\n3 × 10 Glute Bridge Floor Press\n
- 3 × 8/side Reverse Lunge + Rotation\n3 × 10/side Side Plank Hip Dips
-END:VEVENT
-BEGIN:VEVENT
-UID:str-2026-06-24@btw2026
-DTSTART;VALUE=DATE:20260624
-DTEND;VALUE=DATE:20260625
-SUMMARY:Strength: Hinge & Carry
-LOCATION:At Home
-DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
- y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
- ded Dead Bug
+DESCRIPTION:35-40 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-26@btw2026
 DTSTART;VALUE=DATE:20260626
 DTEND;VALUE=DATE:20260627
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Lower Body A
 LOCATION:At Home
-DESCRIPTION:~25 min\n3 × 8/side Single-Leg RDL to Row\n3 × 8/side Step-Up t
- o Overhead Press\n3 × 10–20/side Single-Leg Calf Raise\n3 × 20 reps or 30 s
- ec Single-Arm Plank Variation
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-06-29@btw2026
 DTSTART;VALUE=DATE:20260629
 DTEND;VALUE=DATE:20260630
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Core & Stability
 LOCATION:At Home
-DESCRIPTION:~25 min\n3 × 10 Goblet Squat\n3 × 10 Glute Bridge Floor Press\n
- 3 × 8/side Reverse Lunge + Rotation\n3 × 10/side Side Plank Hip Dips
-END:VEVENT
-BEGIN:VEVENT
-UID:str-2026-07-01@btw2026
-DTSTART;VALUE=DATE:20260701
-DTEND;VALUE=DATE:20260702
-SUMMARY:Strength: Hinge & Carry
-LOCATION:At Home
-DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
- y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
- ded Dead Bug
+DESCRIPTION:35-40 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-03@btw2026
 DTSTART;VALUE=DATE:20260703
 DTEND;VALUE=DATE:20260704
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Lower Body A
 LOCATION:At Home
-DESCRIPTION:~25 min\n3 × 8/side Single-Leg RDL to Row\n3 × 8/side Step-Up t
- o Overhead Press\n3 × 10–20/side Single-Leg Calf Raise\n3 × 20 reps or 30 s
- ec Single-Arm Plank Variation
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-06@btw2026
 DTSTART;VALUE=DATE:20260706
 DTEND;VALUE=DATE:20260707
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Power & Core
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 12 Goblet Squat\n3 × 12 Glute Bridge Floor Press\n
- 3 × 10/side Reverse Lunge + Rotation\n3 × 12/side Side Plank Hip Dips
+DESCRIPTION:40-45 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-08@btw2026
 DTSTART;VALUE=DATE:20260708
 DTEND;VALUE=DATE:20260709
-SUMMARY:Strength: Hinge & Carry
+SUMMARY:Strength: Lower Body B+
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 10 DB Romanian Deadlift + Row\n3 × 12/side Suitcas
- e Carry Lunge + Leg Lift\n3 × 10 reps Lateral Band Walk into Squat\n3 × 8/s
- ide Banded Dead Bug
+DESCRIPTION:50-55 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-10@btw2026
 DTSTART;VALUE=DATE:20260710
 DTEND;VALUE=DATE:20260711
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Lower Body A+
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 10/side Single-Leg RDL to Row\n3 × 10/side Step-Up
-  to Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec Single-Ar
- m Plank Variation
+DESCRIPTION:50-55 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-13@btw2026
 DTSTART;VALUE=DATE:20260713
 DTEND;VALUE=DATE:20260714
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Power & Core
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 12 Goblet Squat\n3 × 12 Glute Bridge Floor Press\n
- 3 × 10/side Reverse Lunge + Rotation\n3 × 12/side Side Plank Hip Dips
+DESCRIPTION:40-45 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-15@btw2026
 DTSTART;VALUE=DATE:20260715
 DTEND;VALUE=DATE:20260716
-SUMMARY:Strength: Hinge & Carry
+SUMMARY:Strength: Lower Body B+
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 10 DB Romanian Deadlift + Row\n3 × 12/side Suitcas
- e Carry Lunge + Leg Lift\n3 × 10 reps Lateral Band Walk into Squat\n3 × 8/s
- ide Banded Dead Bug
+DESCRIPTION:50-55 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-17@btw2026
 DTSTART;VALUE=DATE:20260717
 DTEND;VALUE=DATE:20260718
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Lower Body A+
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 10/side Single-Leg RDL to Row\n3 × 10/side Step-Up
-  to Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec Single-Ar
- m Plank Variation
+DESCRIPTION:50-55 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-20@btw2026
 DTSTART;VALUE=DATE:20260720
 DTEND;VALUE=DATE:20260721
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Power & Core
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 12 Goblet Squat\n3 × 12 Glute Bridge Floor Press\n
- 3 × 10/side Reverse Lunge + Rotation\n3 × 12/side Side Plank Hip Dips
+DESCRIPTION:40-45 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-22@btw2026
 DTSTART;VALUE=DATE:20260722
 DTEND;VALUE=DATE:20260723
-SUMMARY:Strength: Hinge & Carry
+SUMMARY:Strength: Lower Body B+
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 10 DB Romanian Deadlift + Row\n3 × 12/side Suitcas
- e Carry Lunge + Leg Lift\n3 × 10 reps Lateral Band Walk into Squat\n3 × 8/s
- ide Banded Dead Bug
+DESCRIPTION:50-55 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-24@btw2026
 DTSTART;VALUE=DATE:20260724
 DTEND;VALUE=DATE:20260725
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Lower Body A+
 LOCATION:At Home
-DESCRIPTION:~30 min\n3 × 10/side Single-Leg RDL to Row\n3 × 10/side Step-Up
-  to Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec Single-Ar
- m Plank Variation
+DESCRIPTION:50-55 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-27@btw2026
 DTSTART;VALUE=DATE:20260727
 DTEND;VALUE=DATE:20260728
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Explosive Power
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 10 Goblet Squat\n4 × 10 Glute Bridge Floor Press\n
- 4 × 8/side Reverse Lunge + Rotation\n3 × 15/side Side Plank Hip Dips
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-29@btw2026
 DTSTART;VALUE=DATE:20260729
 DTEND;VALUE=DATE:20260730
-SUMMARY:Strength: Hinge & Carry
+SUMMARY:Strength: Peak Strength B
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 8 DB Romanian Deadlift + Row\n4 × 10/side Suitcase
-  Carry Lunge + Leg Lift\n4 × 10 reps Lateral Band Walk into Squat\n3 × 8/si
- de Banded Dead Bug
+DESCRIPTION:55-60 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-31@btw2026
 DTSTART;VALUE=DATE:20260731
 DTEND;VALUE=DATE:20260801
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Peak Strength A
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 8/side Single-Leg RDL to Row\n4 × 8/side Step-Up t
- o Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec/side Single
- -Arm Plank Hold
+DESCRIPTION:55-60 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-03@btw2026
 DTSTART;VALUE=DATE:20260803
 DTEND;VALUE=DATE:20260804
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Explosive Power
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 10 Goblet Squat\n4 × 10 Glute Bridge Floor Press\n
- 4 × 8/side Reverse Lunge + Rotation\n3 × 15/side Side Plank Hip Dips
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-05@btw2026
 DTSTART;VALUE=DATE:20260805
 DTEND;VALUE=DATE:20260806
-SUMMARY:Strength: Hinge & Carry
+SUMMARY:Strength: Peak Strength B
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 8 DB Romanian Deadlift + Row\n4 × 10/side Suitcase
-  Carry Lunge + Leg Lift\n4 × 10 reps Lateral Band Walk into Squat\n3 × 8/si
- de Banded Dead Bug
+DESCRIPTION:55-60 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-07@btw2026
 DTSTART;VALUE=DATE:20260807
 DTEND;VALUE=DATE:20260808
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Peak Strength A
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 8/side Single-Leg RDL to Row\n4 × 8/side Step-Up t
- o Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec/side Single
- -Arm Plank Hold
+DESCRIPTION:55-60 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-10@btw2026
 DTSTART;VALUE=DATE:20260810
 DTEND;VALUE=DATE:20260811
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Explosive Power
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 10 Goblet Squat\n4 × 10 Glute Bridge Floor Press\n
- 4 × 8/side Reverse Lunge + Rotation\n3 × 15/side Side Plank Hip Dips
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-12@btw2026
 DTSTART;VALUE=DATE:20260812
 DTEND;VALUE=DATE:20260813
-SUMMARY:Strength: Hinge & Carry
+SUMMARY:Strength: Peak Strength B
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 8 DB Romanian Deadlift + Row\n4 × 10/side Suitcase
-  Carry Lunge + Leg Lift\n4 × 10 reps Lateral Band Walk into Squat\n3 × 8/si
- de Banded Dead Bug
+DESCRIPTION:55-60 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-14@btw2026
 DTSTART;VALUE=DATE:20260814
 DTEND;VALUE=DATE:20260815
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Peak Strength A
 LOCATION:At Home
-DESCRIPTION:~30 min\n4 × 8/side Single-Leg RDL to Row\n4 × 8/side Step-Up t
- o Overhead Press\n3 × 15/side Single-Leg Calf Raise\n3 × 30 sec/side Single
- -Arm Plank Hold
+DESCRIPTION:55-60 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-17@btw2026
 DTSTART;VALUE=DATE:20260817
 DTEND;VALUE=DATE:20260818
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Activation & Power
 LOCATION:At Home
-DESCRIPTION:~20 min\n2 × 8 Goblet Squat\n2 × 10 Glute Bridge Floor Press\n2
-  × 8/side Reverse Lunge + Rotation\n2 × 10/side Side Plank Hip Dips
+DESCRIPTION:25-30 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-19@btw2026
 DTSTART;VALUE=DATE:20260819
 DTEND;VALUE=DATE:20260820
-SUMMARY:Strength: Hinge & Carry
+SUMMARY:Strength: Feel Good Session
 LOCATION:At Home
-DESCRIPTION:~20 min\n2 × 8 DB Romanian Deadlift + Row\n2 × 10/side Suitcase
-  Carry Lunge + Leg Lift\n2 × 8 reps Lateral Band Walk into Squat\n2 × 6/sid
- e Banded Dead Bug
+DESCRIPTION:20-25 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-21@btw2026
 DTSTART;VALUE=DATE:20260821
 DTEND;VALUE=DATE:20260822
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Maintenance A
 LOCATION:At Home
-DESCRIPTION:~20 min\n2 × 8/side Single-Leg RDL to Row\n2 × 8/side Step-Up t
- o Overhead Press\n2 × 12/side Single-Leg Calf Raise\n2 × 20 sec/side Single
- -Arm Plank Hold
+DESCRIPTION:30-35 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-24@btw2026
 DTSTART;VALUE=DATE:20260824
 DTEND;VALUE=DATE:20260825
-SUMMARY:Strength: Lower Body & Core
+SUMMARY:Strength: Activation & Power
 LOCATION:At Home
-DESCRIPTION:~20 min\n2 × 8 Goblet Squat\n2 × 10 Glute Bridge Floor Press\n2
-  × 8/side Reverse Lunge + Rotation\n2 × 10/side Side Plank Hip Dips
+DESCRIPTION:25-30 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-26@btw2026
 DTSTART;VALUE=DATE:20260826
 DTEND;VALUE=DATE:20260827
-SUMMARY:Strength: Hinge & Carry
+SUMMARY:Strength: Feel Good Session
 LOCATION:At Home
-DESCRIPTION:~20 min\n2 × 8 DB Romanian Deadlift + Row\n2 × 10/side Suitcase
-  Carry Lunge + Leg Lift\n2 × 8 reps Lateral Band Walk into Squat\n2 × 6/sid
- e Banded Dead Bug
+DESCRIPTION:20-25 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-08-28@btw2026
 DTSTART;VALUE=DATE:20260828
 DTEND;VALUE=DATE:20260829
-SUMMARY:Strength: Single-Leg & Stability
+SUMMARY:Strength: Maintenance A
 LOCATION:At Home
-DESCRIPTION:~20 min\n2 × 8/side Single-Leg RDL to Row\n2 × 8/side Step-Up t
- o Overhead Press\n2 × 12/side Single-Leg Calf Raise\n2 × 20 sec/side Single
- -Arm Plank Hold
+DESCRIPTION:30-35 min
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-06@btw2026
 DTSTART:20260706T080000
 DTEND:20260706T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-07@btw2026
 DTSTART:20260707T080000
 DTEND:20260707T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-08@btw2026
 DTSTART:20260708T080000
 DTEND:20260708T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-09@btw2026
 DTSTART:20260709T080000
 DTEND:20260709T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-10@btw2026
 DTSTART:20260710T080000
 DTEND:20260710T100000
 SUMMARY:Chan Camp Week 1
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-13@btw2026
 DTSTART:20260713T080000
 DTEND:20260713T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-14@btw2026
 DTSTART:20260714T080000
 DTEND:20260714T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-15@btw2026
 DTSTART:20260715T080000
 DTEND:20260715T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-16@btw2026
 DTSTART:20260716T080000
 DTEND:20260716T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-17@btw2026
 DTSTART:20260717T080000
 DTEND:20260717T100000
 SUMMARY:Chan Camp Week 2
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-20@btw2026
 DTSTART:20260720T080000
 DTEND:20260720T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-21@btw2026
 DTSTART:20260721T080000
 DTEND:20260721T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-22@btw2026
 DTSTART:20260722T080000
 DTEND:20260722T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-23@btw2026
 DTSTART:20260723T080000
 DTEND:20260723T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-24@btw2026
 DTSTART:20260724T080000
 DTEND:20260724T100000
 SUMMARY:Chan Camp Week 3
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-27@btw2026
 DTSTART:20260727T080000
 DTEND:20260727T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-28@btw2026
 DTSTART:20260728T080000
 DTEND:20260728T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-29@btw2026
 DTSTART:20260729T080000
 DTEND:20260729T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-30@btw2026
 DTSTART:20260730T080000
 DTEND:20260730T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-07-31@btw2026
 DTSTART:20260731T080000
 DTEND:20260731T100000
 SUMMARY:Chan Camp Week 4
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-03@btw2026
 DTSTART:20260803T080000
 DTEND:20260803T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-04@btw2026
 DTSTART:20260804T080000
 DTEND:20260804T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-05@btw2026
 DTSTART:20260805T080000
 DTEND:20260805T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-06@btw2026
 DTSTART:20260806T080000
 DTEND:20260806T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-07@btw2026
 DTSTART:20260807T080000
 DTEND:20260807T100000
 SUMMARY:Chan Camp Week 5
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-10@btw2026
 DTSTART:20260810T080000
 DTEND:20260810T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-11@btw2026
 DTSTART:20260811T080000
 DTEND:20260811T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-12@btw2026
 DTSTART:20260812T080000
 DTEND:20260812T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-13@btw2026
 DTSTART:20260813T080000
 DTEND:20260813T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 BEGIN:VEVENT
 UID:camp-2026-08-14@btw2026
 DTSTART:20260814T080000
 DTEND:20260814T100000
 SUMMARY:Chan Camp Week 6
-LOCATION:Downes Field
+LOCATION:Downes
 END:VEVENT
 END:VCALENDAR
