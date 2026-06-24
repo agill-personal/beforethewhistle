@@ -91,7 +91,7 @@ fitness = [
    "Strength training! (+ dribbling) Coach Kat will be joining us to focus on strengthening muscles, especially those that play a key role in injury prevention. Please bring sneakers AND cleats (and a ball). Weights will be provided by the coaches."),
   (1, '2026-06-21','Harvard Stadium Climb! + Ball Control','8:30 AM','10:00 AM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
-  (1, '2026-06-24','Strength + Conditioning','3:30 PM','5:30 PM','Harry Downes Field',
+  (1, '2026-06-24','Strength + Conditioning','3:30 PM','5:00 PM','Harry Downes Field',
    "Strength training, plus conditioning! Coach Kat and Coach Bearett will be walking us through a lower body strength workout followed by a conditioning circuit. Please bring sneakers and cleats. Weights will be provided by the coaches."),
   (1, '2026-06-28','Harvard Stadium Climb! + Ball Control','8:30 AM','10:00 AM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
