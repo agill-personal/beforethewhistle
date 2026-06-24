@@ -256,8 +256,8 @@ DESCRIPTION:We will walk\, jump\, and run up the Harvard Stadium steps! The
 END:VEVENT
 BEGIN:VEVENT
 UID:fit-2026-06-24@btw2026
-DTSTART:20260624T160000
-DTEND:20260624T180000
+DTSTART:20260624T153000
+DTEND:20260624T173000
 SUMMARY:Strength + Conditioning
 LOCATION:Harry Downes Field
 DESCRIPTION:Strength training\, plus conditioning! Coach Kat and Coach Bear
