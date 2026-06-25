@@ -562,7 +562,7 @@ function buildWeekCalendar() {
     untimedItems.forEach(function(el) { body.appendChild(el); });
     strengthItems.forEach(function(el) { body.appendChild(el); });
 
-    if (dow === 6) {
+    if (dow === 6 && timedItems.length === 0 && untimedItems.length === 0) {
       const rest = document.createElement('div');
       rest.className = 'wk-rest-day';
       rest.textContent = '\uD83D\uDECC Rest Day';
