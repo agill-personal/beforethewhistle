@@ -64,6 +64,8 @@ technical = [
    ['Soccer tennis','Back of the net','World cup','Scrimmage']),
   ('2026-06-26','Passing & Combination Play','6:00 PM','7:30 PM','Harry Downes Field',
    ['Rondo: maintaining possession under a high press','Identifying and passing to the free player',"Weight of pass when playing into a striker's feet",'Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward']),
+  ('2026-06-28','Ball Control','8:30 AM','10:00 AM','Harry Downes Field',
+   ['Juggling with different parts of your foot','Control and change of direction in tight areas']),
   ('2026-06-29','First Touch & Receiving','6:00 PM','7:30 PM','Harry Downes Field',
    ['Shielding the ball on the first touch to protect possession','Fake receive: letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space']),
   ('2026-06-30','1v1 Attacking vs. Defending','8:00 AM','10:00 AM','Harry Downes Field',
@@ -93,7 +95,7 @@ fitness = [
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
   (1, '2026-06-24','Strength + Conditioning','3:30 PM','5:00 PM','Harry Downes Field',
    "Strength training, plus conditioning! Coach Kat and Coach Bearett will be walking us through a lower body strength workout followed by a conditioning circuit. Please bring sneakers and cleats. Weights will be provided by the coaches."),
-  (1, '2026-06-28','Harvard Stadium Climb! + Ball Control','8:30 AM','10:00 AM','Harvard Stadium',
+  (1, '2026-06-27','Harvard Stadium Climb! + Ball Control','8:30 AM','10:00 AM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
   (1, '2026-07-01','Strength Training','3:30 PM','5:00 PM','Cypress Field',
    "Strength training! Coach Kat will be joining us to focus on building lower body and core strength. Please bring sneakers. Weights will be provided by the coaches."),
@@ -108,7 +110,7 @@ for time_decided, ds, title, start, end, loc, desc in fitness:
 # STRENGTH WORKOUTS (all-day events)
 FITNESS_DATES = {ds for _, ds, *_ in fitness}
 STRENGTH_DAYS = {1, 3, 5}  # Mon=1, Wed=3, Fri=5 (js_dow = isoweekday() % 7)
-SKIP = {'2026-06-28'}
+SKIP = set()
 workouts = {
     0: [(5,'Lower Body A','45-50 min'), (1,'Core & Stability','35-40 min'), (3,'Lower Body B','45-50 min')],
     1: [(5,'Lower Body A+','50-55 min'), (1,'Power & Core','40-45 min'), (3,'Lower Body B+','50-55 min')],
