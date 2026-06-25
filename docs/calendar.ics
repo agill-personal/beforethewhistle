@@ -125,13 +125,9 @@ BEGIN:VEVENT
 UID:tech-2026-06-25@btw2026
 DTSTART:20260625T180000
 DTEND:20260625T193000
-SUMMARY:First Touch & Receiving
+SUMMARY:Games
 LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nShielding the ball on the first touch to protect posse
- ssion\nFake receive: letting the ball run to lose a tight marker\nScanning 
- before the ball arrives to choose touch direction\nOne-touch layoff when re
- ceiving under a high press\nBreaking the press line with a single forward t
- ouch\nStaying calm and composed when receiving in tight space
+DESCRIPTION:Skills:\nSoccer tennis\nBack of the net\nWorld cup\nScrimmage
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-26@btw2026
@@ -149,12 +145,13 @@ BEGIN:VEVENT
 UID:tech-2026-06-29@btw2026
 DTSTART:20260629T180000
 DTEND:20260629T193000
-SUMMARY:Finishing vs. Defensive Pressure
+SUMMARY:First Touch & Receiving
 LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nGK 1v1: reading the goalkeeper's position\nChip finish
-  when GK is off the line\nDriven low finish across the body past a GK\nReco
- very run to deny a through ball before the finish\nComposure in front of go
- al: slowing the moment down\nDecision-making: shoot vs. square vs. hold up
+DESCRIPTION:Skills:\nShielding the ball on the first touch to protect posse
+ ssion\nFake receive: letting the ball run to lose a tight marker\nScanning 
+ before the ball arrives to choose touch direction\nOne-touch layoff when re
+ ceiving under a high press\nBreaking the press line with a single forward t
+ ouch\nStaying calm and composed when receiving in tight space
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-30@btw2026
