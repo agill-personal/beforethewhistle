@@ -136,15 +136,13 @@ DESCRIPTION:Skills:\nSoccer tennis\nBack of the net\nWorld cup\nScrimmage
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-26@btw2026
-DTSTART:20260626T180000
-DTEND:20260626T193000
+DTSTART:20260626T170000
+DTEND:20260626T183000
 SUMMARY:Passing & Combination Play
 LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nRondo: maintaining possession under a high press\nIden
- tifying and passing to the free player\nWeight of pass when playing into a 
- striker's feet\nQuick combination in the final third to create a shooting o
- pportunity\nPlaying the killer pass through or over the defensive line\nPat
- ience in possession: when to recycle vs. when to play forward
+DESCRIPTION:Skills:\nPossession under pressure\nQuick combos in the final t
+ hird to shoot\nBreaking pass through or over the defensive line\nWhen to re
+ cycle vs. when to play forward
 END:VEVENT
 BEGIN:VEVENT
 UID:tech-2026-06-28@btw2026
