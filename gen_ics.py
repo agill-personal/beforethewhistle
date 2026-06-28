@@ -66,16 +66,14 @@ technical = [
    ['Possession under pressure','Quick combos in the final third to shoot','Breaking pass through or over the defensive line','When to recycle vs. when to play forward']),
   ('2026-06-28','Ball Control','10:00 AM','11:30 AM','Harry Downes Field',
    ['Juggling with different parts of your foot','Controlling the ball in the air','Judging long passes']),
-  ('2026-06-29','First Touch & Receiving','6:00 PM','7:30 PM','Harry Downes Field',
+  ('2026-06-29','Ball Control','6:30 PM','8:00 PM','Harry Downes Field',
+   ['Juggling with different parts of your foot','Controlling the ball in the air','Judging long passes']),
+  ('2026-06-30','First Touch & Receiving','7:00 PM','8:30 PM','Harry Downes Field',
    ['Shielding the ball on the first touch to protect possession','Fake receive: letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space']),
-  ('2026-06-30','1v1 Attacking vs. Defending','8:00 AM','10:00 AM','Harry Downes Field',
+  ('2026-07-02','1v1 Attacking vs. Defending','7:00 PM','8:30 PM','Harry Downes Field',
    ['Holding up play with back to goal under physical pressure','Shielding the ball and drawing a foul','Flicking on or laying off from a back-to-goal position','Spinning off a marker into space behind the defense','Fronting a striker: physical positioning to prevent the turn','Timing a tackle when a forward tries to spin']),
-  ('2026-07-02','Passing & Combination Play','6:00 PM','7:30 PM','Harry Downes Field',
+  ('2026-07-03','Passing & Combination Play','7:00 PM','8:30 PM','Harry Downes Field',
    ['Rondo: maintaining possession under a high press','Identifying and passing to the free player',"Weight of pass when playing into a striker's feet",'Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward']),
-  ('2026-07-03','Crossing & Aerial Duels','6:00 PM','7:30 PM','Harry Downes Field',
-   ['Getting to the byline and delivering a low cut-back','Late run from midfield to meet the cut-back and shoot','Holding a defensive line as runners attack the cut-back','First-time finish from a low cut-back across the box','Disguising cross direction to delay the defensive shift','Covering the cut-back channel as a defending fullback']),
-  ('2026-07-05','First Touch & Receiving','6:00 PM','7:30 PM','Harry Downes Field',
-   ['Shoulder check before receiving to identify pressure','Half-turn technique: opening the body to receive facing forward','Using peripheral vision to choose touch direction before contact','Receiving between lines and instantly playing forward','First touch away from pressure in a congested midfield','Controlling the tempo of the game through a composed first touch']),
 ]
 for ds, title, start, end, loc, skills in technical:
     desc = 'Skills:\n' + '\n'.join(skills)
@@ -97,8 +95,8 @@ fitness = [
    "Strength training, plus conditioning! Coach Kat and Coach Bearett will be walking us through a lower body strength workout followed by a conditioning circuit. Please bring sneakers and cleats. Weights will be provided by the coaches."),
   (1, '2026-06-27','Harvard Stadium Climb! + Ball Control','8:30 AM','10:00 AM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
-  (1, '2026-07-01','Strength Training','3:30 PM','5:00 PM','Cypress Field',
-   "Strength training! Coach Kat will be joining us to focus on building lower body and core strength. Please bring sneakers. Weights will be provided by the coaches."),
+  (1, '2026-07-01','Strength Training','7:00 PM','8:30 PM','Harry Downes Field',
+   "Strength training! Focusing on building lower body and core strength. Please bring sneakers and cleats. Weights will be provided by the coaches."),
 ]
 for time_decided, ds, title, start, end, loc, desc in fitness:
     if time_decided:
