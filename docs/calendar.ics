@@ -263,16 +263,6 @@ DESCRIPTION:We will walk\, jump\, and run up the Harvard Stadium steps! The
  n\, we'll juggle. Please bring sneakers\, cleats\, and a ball.
 END:VEVENT
 BEGIN:VEVENT
-UID:fit-2026-07-01@btw2026
-DTSTART:20260701T190000
-DTEND:20260701T203000
-SUMMARY:Strength Training
-LOCATION:Harry Downes Field
-DESCRIPTION:Strength training! Focusing on building lower body and core str
- ength. Please bring sneakers and cleats. Weights will be provided by the co
- aches.
-END:VEVENT
-BEGIN:VEVENT
 UID:str-2026-06-19@btw2026
 DTSTART;VALUE=DATE:20260619
 DTEND;VALUE=DATE:20260620
@@ -329,6 +319,14 @@ LOCATION:At Home
 DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
  y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
  ded Dead Bug
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-01@btw2026
+DTSTART;VALUE=DATE:20260701
+DTEND;VALUE=DATE:20260702
+SUMMARY:Strength: Lower Body B
+LOCATION:At Home
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-03@btw2026

@@ -95,8 +95,6 @@ fitness = [
    "Strength training, plus conditioning! Coach Kat and Coach Bearett will be walking us through a lower body strength workout followed by a conditioning circuit. Please bring sneakers and cleats. Weights will be provided by the coaches."),
   (1, '2026-06-27','Harvard Stadium Climb! + Ball Control','8:30 AM','10:00 AM','Harvard Stadium',
    "We will walk, jump, and run up the Harvard Stadium steps! Then, we'll juggle. Please bring sneakers, cleats, and a ball."),
-  (1, '2026-07-01','Strength Training','7:00 PM','8:30 PM','Harry Downes Field',
-   "Strength training! Focusing on building lower body and core strength. Please bring sneakers and cleats. Weights will be provided by the coaches."),
 ]
 for time_decided, ds, title, start, end, loc, desc in fitness:
     if time_decided:
