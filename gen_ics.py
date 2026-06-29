@@ -68,12 +68,12 @@ technical = [
    ['Juggling with different parts of your foot','Controlling the ball in the air','Judging long passes']),
   ('2026-06-29','Ball Control','6:30 PM','8:00 PM','Harry Downes Field',
    ['Juggling with different parts of your foot','Controlling the ball in the air','Judging long passes']),
-  ('2026-06-30','First Touch & Receiving','7:00 PM','8:30 PM','Harry Downes Field',
+  ('2026-06-30','Ball Control','7:00 PM','8:30 PM','Harry Downes Field',
+   ['Juggling with different parts of your foot','Controlling the ball in the air','Judging long passes']),
+  ('2026-07-02','First Touch & Receiving','7:00 PM','8:30 PM','Harry Downes Field',
    ['Shielding the ball on the first touch to protect possession','Fake receive: letting the ball run to lose a tight marker','Scanning before the ball arrives to choose touch direction','One-touch layoff when receiving under a high press','Breaking the press line with a single forward touch','Staying calm and composed when receiving in tight space']),
-  ('2026-07-02','1v1 Attacking vs. Defending','7:00 PM','8:30 PM','Harry Downes Field',
+  ('2026-07-03','1v1 Attacking vs. Defending','7:00 PM','8:30 PM','Harry Downes Field',
    ['Holding up play with back to goal under physical pressure','Shielding the ball and drawing a foul','Flicking on or laying off from a back-to-goal position','Spinning off a marker into space behind the defense','Fronting a striker: physical positioning to prevent the turn','Timing a tackle when a forward tries to spin']),
-  ('2026-07-03','Passing & Combination Play','7:00 PM','8:30 PM','Harry Downes Field',
-   ['Rondo: maintaining possession under a high press','Identifying and passing to the free player',"Weight of pass when playing into a striker's feet",'Quick combination in the final third to create a shooting opportunity','Playing the killer pass through or over the defensive line','Patience in possession: when to recycle vs. when to play forward']),
 ]
 for ds, title, start, end, loc, skills in technical:
     desc = 'Skills:\n' + '\n'.join(skills)
