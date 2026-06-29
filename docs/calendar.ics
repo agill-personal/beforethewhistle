@@ -149,15 +149,6 @@ DESCRIPTION:Skills:\nJuggling with different parts of your foot\nControllin
  g the ball in the air\nJudging long passes
 END:VEVENT
 BEGIN:VEVENT
-UID:tech-2026-06-29@btw2026
-DTSTART:20260629T183000
-DTEND:20260629T200000
-SUMMARY:Ball Control
-LOCATION:Harry Downes Field
-DESCRIPTION:Skills:\nJuggling with different parts of your foot\nControllin
- g the ball in the air\nJudging long passes
-END:VEVENT
-BEGIN:VEVENT
 UID:tech-2026-06-30@btw2026
 DTSTART:20260630T190000
 DTEND:20260630T203000
@@ -316,6 +307,14 @@ LOCATION:At Home
 DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
  y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
  ded Dead Bug
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-01@btw2026
+DTSTART;VALUE=DATE:20260701
+DTEND;VALUE=DATE:20260702
+SUMMARY:Strength: Lower Body B
+LOCATION:At Home
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-03@btw2026
