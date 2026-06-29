@@ -66,6 +66,8 @@ technical = [
    ['Possession under pressure','Quick combos in the final third to shoot','Breaking pass through or over the defensive line','When to recycle vs. when to play forward']),
   ('2026-06-28','Ball Control','10:00 AM','11:30 AM','Harry Downes Field',
    ['Juggling with different parts of your foot','Controlling the ball in the air','Judging long passes']),
+  ('2026-06-29','Ball Control','6:30 PM','8:00 PM','Harry Downes Field',
+   ['Juggling with different parts of your foot','Controlling the ball in the air','Judging long passes']),
   ('2026-06-30','Ball Control','7:00 PM','8:30 PM','Harry Downes Field',
    ['Juggling with different parts of your foot','Controlling the ball in the air','Judging long passes']),
   ('2026-07-02','First Touch & Receiving','7:00 PM','8:30 PM','Harry Downes Field',
