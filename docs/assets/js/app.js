@@ -511,12 +511,6 @@ function buildWeekCalendar() {
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(c.time), priority: 1 });
     }
 
-    if (dow === 3 && ds <= '2026-08-24' && ds !== '2026-06-17' && ds !== '2026-06-24') {
-      const cp = document.createElement('div');
-      cp.className = 'wk-event type-captains';
-      cp.innerHTML = "Captain's Practice" + '<span class="ev-time">\uD83C\uDFDF 6:30 \u2013 8:00 PM \u00B7 Downes</span>';
-      timedItems.push({ el: cp, timeMin: parseTimeToMinutes('6:30 PM'), priority: 2 });
-    }
 
     if (FITNESS_SESSIONS[ds]) {
       const g    = FITNESS_SESSIONS[ds];
