@@ -167,9 +167,9 @@ DESCRIPTION:Skills:\nJuggling with different parts of your foot\nControllin
  g the ball in the air\nJudging long passes
 END:VEVENT
 BEGIN:VEVENT
-UID:tech-2026-07-02@btw2026
-DTSTART:20260702T190000
-DTEND:20260702T203000
+UID:tech-2026-07-01@btw2026
+DTSTART:20260701T190000
+DTEND:20260701T203000
 SUMMARY:First Touch & Receiving
 LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nShielding the ball on the first touch to protect posse
@@ -179,9 +179,9 @@ DESCRIPTION:Skills:\nShielding the ball on the first touch to protect posse
  ouch\nStaying calm and composed when receiving in tight space
 END:VEVENT
 BEGIN:VEVENT
-UID:tech-2026-07-03@btw2026
-DTSTART:20260703T190000
-DTEND:20260703T203000
+UID:tech-2026-07-02@btw2026
+DTSTART:20260702T190000
+DTEND:20260702T203000
 SUMMARY:1v1 Attacking vs. Defending
 LOCATION:Harry Downes Field
 DESCRIPTION:Skills:\nHolding up play with back to goal under physical press
@@ -316,6 +316,14 @@ LOCATION:At Home
 DESCRIPTION:~25 min\n3 × 10 DB Romanian Deadlift\n3 × 10/side Suitcase Carr
  y Lunge + Leg Lift\n3 × 8 reps Lateral Band Walk into Squat\n3 × 6/side Ban
  ded Dead Bug
+END:VEVENT
+BEGIN:VEVENT
+UID:str-2026-07-01@btw2026
+DTSTART;VALUE=DATE:20260701
+DTEND;VALUE=DATE:20260702
+SUMMARY:Strength: Lower Body B
+LOCATION:At Home
+DESCRIPTION:45-50 min
 END:VEVENT
 BEGIN:VEVENT
 UID:str-2026-07-03@btw2026
