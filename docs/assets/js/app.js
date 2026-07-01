@@ -447,6 +447,10 @@ function toDateStr(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStar
 function displayTime(s) {
   return s.time_decided === 0 ? 'TBD' : s.time;
 }
+function displayTimeRange(s) {
+  if (s.time_decided === 0) return 'TBD';
+  return s.end_time ? s.time + ' – ' + s.end_time : s.time;
+}
 function evStatusTag(status) {
   if (!status || status === 'scheduled') return '';
   return '<span class="ev-status-tag ev-status-' + status + '">' + status + '</span>';
@@ -506,7 +510,7 @@ function buildWeekCalendar() {
       const cKey  = 'camp-' + ds;
       const btn   = document.createElement('button');
       btn.className = 'wk-event type-camp';
-      btn.innerHTML = c.title + '<span class="ev-time">\u26FA ' + c.time + ' \u00B7 ' + c.location + '</span>';
+      btn.innerHTML = c.title + '<span class="ev-time">\u26FA ' + c.time + ' \u2013 ' + c.end_time + ' \u00B7 ' + c.location + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'camp'); }; })(cKey);
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(c.time), priority: 1 });
     }
@@ -518,7 +522,7 @@ function buildWeekCalendar() {
       const gCnt = (rsvpData[gKey] || []).filter(function(r){ return normalizeEntry(r).response === 'going'; }).length;
       const btn  = document.createElement('button');
       btn.className = 'wk-event type-fitness' + (g.status && g.status !== 'scheduled' ? ' status-' + g.status : '');
-      btn.innerHTML = g.title + evStatusTag(g.status) + '<span class="ev-time">\uD83C\uDFC3 ' + displayTime(g) + ' \u00B7 ' + g.location + (gCnt > 0 ? ' \u00B7 ' + gCnt + ' going' : '') + '</span>';
+      btn.innerHTML = g.title + evStatusTag(g.status) + '<span class="ev-time">\uD83C\uDFC3 ' + displayTimeRange(g) + ' \u00B7 ' + g.location + (gCnt > 0 ? ' \u00B7 ' + gCnt + ' going' : '') + '</span>';
       btn.onclick = (function(k) { return function() { openPanel(k, 'fitness'); }; })(gKey);
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(g.time), priority: 3 });
     }
@@ -541,7 +545,7 @@ function buildWeekCalendar() {
       const cnt = (rsvpData[ds] || []).filter(function(r){ return normalizeEntry(r).response === 'going'; }).length;
       const btn = document.createElement('button');
       btn.className = 'wk-event type-technical' + (s.status && s.status !== 'scheduled' ? ' status-' + s.status : '');
-      btn.innerHTML = s.title + evStatusTag(s.status) + '<span class="ev-time">\u26BD ' + displayTime(s) + ' \u00B7 ' + s.location + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
+      btn.innerHTML = s.title + evStatusTag(s.status) + '<span class="ev-time">\u26BD ' + displayTimeRange(s) + ' \u00B7 ' + s.location + (cnt > 0 ? ' \u00B7 ' + cnt + ' going' : '') + '</span>';
       btn.onclick = function() { openPanel(ds, 'technical'); };
       timedItems.push({ el: btn, timeMin: parseTimeToMinutes(s.time), priority: 4 });
     }
@@ -844,7 +848,7 @@ function buildNextSession() {
   titleEl.innerHTML = s.title + evStatusTag(s.status);
   var metaDiv = document.createElement('div');
   metaDiv.className = 'tw-card-meta';
-  var sp1 = document.createElement('span'); sp1.textContent = displayTime(s);
+  var sp1 = document.createElement('span'); sp1.textContent = displayTimeRange(s);
   var sp2 = document.createElement('span'); sp2.textContent = s.location;
   metaDiv.appendChild(sp1); metaDiv.appendChild(sp2);
   var toggleSpan = document.createElement('span');
